@@ -1,0 +1,18 @@
+<view class="weui-article">
+    <view class="weui-article__section">
+        <view class="quote"><text class="del">单纯</text>的我，和外面那些妖艳贱货不一样。</view>
+        <view class="weui-article__p">目前只有课表一个功能，还能加点啥呢——好像也没啥了。</view>        
+        <view class="weui-article__p">有问题或建议欢迎反馈。</view>
+    </view>
+    <view class="weui-article__section">
+        <view class="weui-article__h3">主页</view>
+        <text class="weui-article__p" selectable="true">https://github.com/choyri/WeGifun</text>
+        <view class="weui-article__p">欢迎 Star。</view>
+    </view>
+    <view class="weui-article__section">
+        <view class="weui-article__h3">感谢</view>
+        <view class="weui-article__p">二绯</view>
+        <view class="weui-article__p">WeUI</view>        
+        <view class="weui-article__p">Iconfont</view>            
+    </view>
+</view>

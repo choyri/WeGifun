@@ -1,0 +1,30 @@
+page {
+    background-color: #fff;
+    overflow: hidden;
+}
+.login .weui-cells::before {
+    border-top: 0;
+}
+.login .weui-cells::after {
+    border-bottom: 0;
+}
+.login .weui-cell::before {
+    border-top: 0;
+}
+.login .weui-cell::after {
+    content: " ";
+    position: absolute;
+    left: 15px;
+    bottom: 0;
+    right: 15px;
+    height: 1px;
+    border-bottom: 1rpx solid #D9D9D9;
+    color: #D9D9D9;
+}
+.login .weui-cell.focus::after {
+    border-bottom-color: #1AAD19;
+}
+.login .weui-label {
+    width: 90px;
+    text-indent:15px
+}

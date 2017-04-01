@@ -1,0 +1,54 @@
+<view class="page">
+    <view class="head corner">
+        <view class="weeks left">
+            <text>{{weeks}}</text>
+            <text>周</text>
+        </view>
+        <view class="week-title">
+            <text wx:for="{{weekTitle}}" wx:key="*this">{{item}}</text>
+        </view>
+    </view>
+    <view class="placeholder"></view>
+    <view class="body">
+        <view class="sidebar corner">
+            <view>
+                <text>1</text>
+                <text>2</text>
+            </view>
+            <view>
+                <text>3</text>
+                <text>4</text>
+            </view>
+            <view>
+                <text>5</text>
+                <text>6</text>
+            </view>
+            <view>
+                <text>7</text>
+                <text>8</text>
+            </view>
+            <view>
+                <text>9</text>
+                <text>10</text>
+            </view>
+            <view>
+                <text>11</text>
+            </view>
+        </view>
+        <view class="content">
+            <!-- 循环 每天 -->
+            <view class="column" wx:for="{{courses}}" wx:key="day" wx:for-item="column" wx:for-index="day">
+                <!-- 循环 每节 -->
+                <view class="course-wrap" style="top: {{courseTop[index]}}rpx;" wx:for="{{column}}" wx:key="lesson">
+                    <!-- 循环 单双周 -->
+                    <block wx:for="{{item}}" wx:key="id" wx:for-item="course" wx:for-index="id">
+                        <view class="course" style="{{course.display ? ('background-color: ' + course.bg) : 'z-index: 0'}}; {{course.height ? ('height: ' + course.height) : ''}}rpx;" data-day="{{day}}" data-lesson="{{index}}" data-id="{{id}}" bindtap="showDetail">
+                            <text>{{course.name}}</text>
+                            <text>{{course.room}}</text>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

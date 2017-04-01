@@ -1,0 +1,12 @@
+<form bindsubmit="formSubmit">
+    <view class="weui-cells">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea name="content" class="weui-textarea" placeholder="说说心里的话" bindinput="inputInput" />
+            </view>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" disabled="{{btn_disabled}}" loading="{{btn_loading}}" formType="submit">就这样</button>
+    </view>
+</form>

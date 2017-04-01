@@ -1,0 +1,107 @@
+.page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.corner {
+    font-size: 9pt;
+    background-color: #fff;
+    color: #888;
+    text-align:center;
+}
+.corner .left, .corner.sidebar {
+    width: 35rpx;
+    border-right: 1px solid #d5d5d5;
+}
+.head {
+    display: flex;
+    position:fixed;
+    width: 100%;
+    height: 60rpx;
+    z-index: 100;
+}
+.head::after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-bottom: 1px solid #d5d5d5;
+}
+.head .weeks text {
+    display: block;
+    line-height: 30rpx;
+}
+.head .week-title {
+    flex: auto;
+    display: flex;
+}
+.week-title text {
+    flex: auto;
+    line-height: 60rpx;
+}
+.placeholder {
+    height: 60rpx;
+}
+.body {
+    display: flex;
+}
+.sidebar {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    padding: 10rpx 0;
+}
+.sidebar view {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    height: 200rpx;
+}
+.sidebar view:last-child {
+    height: 100rpx;
+}
+.sidebar view:nth-child(1), .sidebar view:nth-child(3) {
+    margin-bottom: 10rpx;
+}
+.sidebar view:nth-child(2), .sidebar view:nth-child(4) {
+    margin-bottom: 15rpx;
+}
+.content {
+    flex: auto;
+    display: flex;
+    padding: 10rpx 0;
+}
+.content .column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0 3px;
+}
+.column .course-wrap {
+    position: absolute;
+    width: 100%;
+    height: 200rpx;
+}
+.course-wrap text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 10pt;
+    line-height: 11pt;
+}
+.course-wrap .course {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #b2b2b2;
+    color: #fff;
+    z-index: 1;
+}

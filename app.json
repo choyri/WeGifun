@@ -1,0 +1,35 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/home/home",
+        "pages/home/statement",
+        "pages/home/feedback",
+        "pages/home/about",
+        "pages/login/login"
+    ],
+    "window": {
+        "navigationBarTitleText": "微吉风",
+        "navigationBarBackgroundColor": "#393a3e",
+        "backgroundColor": "#ebebeb"
+    },
+    "tabBar": {
+        "color": "#979797",
+        "selectedColor": "#45c018",
+        "backgroundColor": "#fcfcfc",
+        "borderStyle": "white",
+        "list": [{
+            "pagePath": "pages/index/index",
+            "text": "课表",
+            "iconPath": "images/icon_index.png",
+            "selectedIconPath": "images/icon_index_hl.png"
+         }, {
+            "pagePath": "pages/home/home",
+            "text": "我",
+            "iconPath": "images/icon_home.png",
+            "selectedIconPath": "images/icon_home_hl.png"
+        }]
+    },
+    "networkTimeout": {
+        "request": 15000
+    }
+}

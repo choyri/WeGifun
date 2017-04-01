@@ -1,0 +1,30 @@
+<view>
+    <view class="weui-cells">
+        <view class="weui-cell">
+            <view class="weui-cell__bd" bindtap="login">{{stuid ? '当前用户：' + stuid : '未登录'}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+    <view class="weui-cells" wx:if="{{stuid}}">
+        <view class="weui-cell">
+            <view class="weui-cell__bd" bindtap="update">{{stuid ? '上次更新：' + updateTime : ''}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+    </view>
+    <view class="weui-cells">
+        <navigator url="/pages/home/statement" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">说明</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+    <view class="weui-cells">
+        <navigator url="/pages/home/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">反馈</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/home/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">关于</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+    </view>
+</view>

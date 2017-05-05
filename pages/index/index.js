@@ -39,6 +39,7 @@ pageParams.onUnload = function() {
 };
 
 pageParams.renderCourses = function() {
+    this.recover();
     let weeks = app.cache.week,
         resCourses = app.cache.courses,
         resWeekTitle = [],

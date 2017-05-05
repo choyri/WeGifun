@@ -43,7 +43,9 @@ pageParams.renderCourses = function() {
     let weeks = app.cache.week,
         resCourses = app.cache.courses,
         resWeekTitle = [],
-        index = 0;
+        index = 0,
+        colorIndex = Math.floor(Math.random()*(this.data.palette.length)),
+        courseBg =  {};
 
     for (let key in resCourses) {
         resWeekTitle.push(this.data.weekTitle[key]);
@@ -51,7 +53,15 @@ pageParams.renderCourses = function() {
         for (let subKey in resCourses[key]) {
             for (let subSubKey in resCourses[key][subKey]) {
                 let course = resCourses[key][subKey][subSubKey];
-                course['bg'] = this.data.palette[Math.floor(Math.random()*10)];
+                course['shortName'] = course['name'];
+                if (course['name'].length > 9) {
+                    course['shortName'] = course['name'].slice(0,9) + '...';
+                }
+                let bgKey = course['name'];
+                if (! courseBg[bgKey]) {
+                    courseBg[bgKey] = this.data.palette[colorIndex++ % (this.data.palette.length)];
+                }
+                course['bg'] = courseBg[bgKey];
             }
         }
     }
@@ -61,7 +71,7 @@ pageParams.renderCourses = function() {
             content: '本周无课哟～ 关掉手机浪去吧~',
             confirmText: 'Get',
             showCancel: false
-    });
+        });
     }
     // 保存渲染后的课程信息
     this.setData({

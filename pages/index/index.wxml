@@ -33,6 +33,7 @@
             </view>
             <view>
                 <text>11</text>
+                <text>12</text>
             </view>
         </view>
         <view class="content">
@@ -40,9 +41,9 @@
             <view class="column" wx:for="{{courses}}" wx:key="day" wx:for-item="column" wx:for-index="day">
                 <!-- 循环 每节 -->
                 <view class="course-wrap" style="top: {{courseTop[index]}}rpx;" wx:for="{{column}}" wx:key="lesson">
-                    <!-- 循环 单双周 -->
+                    <!-- 循环 -->
                     <block wx:for="{{item}}" wx:key="id" wx:for-item="course" wx:for-index="id">
-                        <view class="course" style="{{course.display ? ('background-color: ' + course.bg) : 'z-index: 0'}}; {{course.height ? ('height: ' + course.height) : ''}}rpx;" data-day="{{day}}" data-lesson="{{index}}" data-id="{{id}}" bindtap="showDetail">
+                        <view class="course" style="background-color: {{course.bg}};" data-day="{{day}}" data-lesson="{{index}}" data-id="{{id}}" bindtap="showDetail">
                             <text>{{course.name}}</text>
                             <text>{{course.room}}</text>
                         </view>

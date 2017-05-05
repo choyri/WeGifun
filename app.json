@@ -8,7 +8,7 @@
         "pages/login/login"
     ],
     "window": {
-        "navigationBarTitleText": "微吉风",
+        "navigationBarTitleText": "OurDPU",
         "navigationBarBackgroundColor": "#393a3e",
         "backgroundColor": "#ebebeb"
     },

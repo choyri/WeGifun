@@ -44,7 +44,7 @@ pageParams.inputInput = function(e) {
         });
     }
     let btn = true;
-    if (this.data.stuid.length == 8 && this.data.stupwd.length >= 6) {
+    if (this.data.stuid.length == 10 && this.data.stupwd.length >= 6) {
         btn = false;
     }
     this.setData({

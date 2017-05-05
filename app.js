@@ -1,8 +1,10 @@
 let appParams = {
-    SERVER_URL: 'https://www.test.com',
+    SERVER_URL: 'https://mydlpu.xu42.cn',
     VERSION: 'v0.1.0',
     event: require('./utils/event'),
-    cache: {}
+    cache: {},
+    week: 0,
+    semester: '2016-2017-2'
 };
 
 appParams.onLaunch = function() {
@@ -32,54 +34,71 @@ appParams.saveData = function(obj) {
     }
 }
 
-appParams.getCourses = function(id, pwd) {
+
+appParams.getTime = function() {
     wx.request({
-        url: this.SERVER_URL + '/jw/courses',
-        data: {
-            stuid: id,
-            stupwd: pwd
-        },
-        method: 'POST',
+        url: this.SERVER_URL + '/api/mina/time',
+        method: 'get',
         success: (res) => {
-            if (res.data.status == 200) {
-                console.log(res.data.data)
-                let data = res.data.data;
-
-                // 将数组内容转换成对象
-                for (let key in data.courses) {
-                    for (let subKey in data.courses[key]) {
-                        for (let subSubKey in data.courses[key][subKey]) {
-                            let tmp = data.courses[key][subKey][subSubKey];
-                            data.courses[key][subKey][subSubKey] = {
-                                'name': tmp[0],
-                                'week': tmp[1],
-                                'teacher': tmp[2],
-                                'room': tmp[3]
-                            }
-                        }
-                    }
-                }
-
-                this.saveData({
-                    'termBegin': data.termBegin,
-                    'courses': data.courses,
-                    'stuInfo': [id, pwd],
-                    'updateTime': (new Date()).getTime()
-                });
-
-                this.event.emit('getCoursesSuccess');
-            } else {
-                wx.showModal({
-                    title: '捂脸',
-                    content: res.data.msg,
+            if (res.statusCode != 200) {
+                 wx.showModal({
+                    title: '啊喔',
+                    content: res.data.errmsg,
                     showCancel: false
+                });
+            } else { //正确获取数据
+                let data = res.data;
+                this.saveData({
+                    'semester': data.semester,
+                    'week': data.week,
+                    'timeUpdateTime': (new Date()).getTime()
                 });
             }
         },
         fail: () => {
             wx.showModal({
-                title: '摊手',
-                content: '你网络有问题，或者服务器君被人抱走了，稍后再试吧。',
+                title: '啊喔',
+                content: '要么是你网络问题, 要么是服务器挂了~',
+                showCancel: false
+            });
+        }
+    });
+}
+
+appParams.getCourses = function(id, pwd) {
+    wx.clearStorage();
+    this.getTime();
+    wx.request({
+        url: this.SERVER_URL + '/api/mina/timetable',
+        data: {
+            stuid: id,
+            stupwd: pwd,
+            semester: this.cache.semester,
+            week: this.cache.week,
+        },
+        method: 'get',
+        success: (res) => {
+            if (res.statusCode != 200) {
+                 wx.showModal({
+                    title: '啊喔',
+                    content: res.data.errmsg,
+                    showCancel: false
+                });
+            } else { //正确获取数据
+                let data = res.data;
+                this.saveData({
+                    'courses': data,
+                    'stuInfo': [id, pwd],
+                    'updateTime': (new Date()).getTime()
+                });
+
+                this.event.emit('getCoursesSuccess');
+            }
+        },
+        fail: () => {
+            wx.showModal({
+                title: '啊喔',
+                content: '要么是你网络问题, 要么是服务器挂了~',
                 showCancel: false
             });
         },

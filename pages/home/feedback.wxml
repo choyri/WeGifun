@@ -7,6 +7,6 @@
         </view>
     </view>
     <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" disabled="{{btn_disabled}}" loading="{{btn_loading}}" formType="submit">就这样</button>
+        <button class="weui-btn" type="primary" disabled="{{btn_disabled}}" loading="{{btn_loading}}" formType="submit">走起</button>
     </view>
 </form>

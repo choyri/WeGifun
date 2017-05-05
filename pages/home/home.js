@@ -43,16 +43,16 @@ pageParams.login = function() {
         });
     } else {
         wx.showModal({
-            title: '嘿嘿',
+            title: '啊喔',
             content: '退出当前帐号？',
-            confirmText: '来吧',
-            cancelText: '不要',
+            confirmText: '是哒',
+            cancelText: '才不',
             success: function (res) {
                 if (res.confirm) {
                     app.event.emit('logout');
                     wx.clearStorage();
                     wx.switchTab({
-                        url: '/pages/index/index'
+                        url: '/pages/login/login'
                     });
                 }
             }
@@ -62,10 +62,10 @@ pageParams.login = function() {
 
 pageParams.update = function() {
     wx.showModal({
-        title: '嘿嘿',
+        title: '啊喔',
         content: '现在获取最新课表？',
-        confirmText: '来吧',
-        cancelText: '不要',
+        confirmText: '是哒',
+        cancelText: '才不',
         success: function (res) {
             if (res.confirm) {
                 wx.showNavigationBarLoading();

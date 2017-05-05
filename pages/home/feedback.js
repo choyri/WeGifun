@@ -21,15 +21,15 @@ pageParams.formSubmit = function(e) {
         btn_loading: true
     });
     wx.request({
-        url: app.SERVER_URL + '/feedback',
+        url: app.SERVER_URL + '/api/mina/feedback',
         data: {
-            data: e.detail.value.content
+            content: e.detail.value.content
         },
         method: 'POST',
         success: (res) => {
-            if (res.data.status == 200) {
+            if (res.statusCode == 200) {
                 wx.showModal({
-                    title: '啦啦啦',
+                    title: '嘟嘟嘟',
                     content: '已提交，谢谢啦！',
                     showCancel: false,
                     success: function (res) {
@@ -38,16 +38,16 @@ pageParams.formSubmit = function(e) {
                 });
             } else {
                 wx.showModal({
-                    title: '捂脸',
-                    content: res.data.msg || '服务君发呆中。',
+                    title: '啊喔',
+                    content: '要么是你网络问题, 要么是服务器挂了~',
                     showCancel: false
                 });
             }
         },
         fail: () => {
             wx.showModal({
-                title: '摊手',
-                content: '你网络有问题，或者服务器君被人抱走了，稍后再试吧。',
+                title: '啊喔',
+                content: '要么是你网络问题, 要么是服务器挂了~',
                 showCancel: false
             });
         },

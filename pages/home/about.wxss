@@ -1,7 +1,7 @@
 image {
     margin-top: 1.17647059em;
-    width: 100%;
-    height: 250rpx;
+    height: 288rpx;
+    width: 288rpx;
 }
 text {
     display: block;

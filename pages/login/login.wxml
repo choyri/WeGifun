@@ -3,13 +3,13 @@
         <view class="weui-cell weui-cell_input{{stuid_focus ? ' focus' : ''}}">
             <text class="weui-label">学  号</text>
             <view class="weui-cell__bd">
-                <input id="stuid" class="weui-input" type="number" maxlength="8" placeholder="学号" bindinput="inputInput" bindfocus="inputFocus" bindblur="inputBlur" />
+                <input id="stuid" class="weui-input" type="number" maxlength="10" placeholder="暂不支持研究生登录" bindinput="inputInput" bindfocus="inputFocus" bindblur="inputBlur"/>
             </view>
         </view>
         <view class="weui-cell weui-cell_input{{stupwd_focus ? ' focus' : ''}}">
             <text class="weui-label">密  码</text>
             <view class="weui-cell__bd">
-                <input id="stupwd" class="weui-input" password maxlength="16" placeholder="非校园卡密码" bindinput="inputInput" bindfocus="inputFocus" bindblur="inputBlur" />
+                <input id="stupwd" class="weui-input" password maxlength="16" placeholder="请输入密码" bindinput="inputInput" bindfocus="inputFocus" bindblur="inputBlur"/>
             </view>
         </view>
     </view>

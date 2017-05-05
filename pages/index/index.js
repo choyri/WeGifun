@@ -41,11 +41,12 @@ pageParams.onUnload = function() {
 pageParams.renderCourses = function() {
     let weeks = app.cache.week,
         resCourses = app.cache.courses,
-        resWeekTitle = [];
+        resWeekTitle = [],
+        index = 0;
 
     for (let key in resCourses) {
         resWeekTitle.push(this.data.weekTitle[key]);
-
+        index+=1;
         for (let subKey in resCourses[key]) {
             for (let subSubKey in resCourses[key][subKey]) {
                 let course = resCourses[key][subKey][subSubKey];
@@ -53,7 +54,14 @@ pageParams.renderCourses = function() {
             }
         }
     }
-
+    if (index == 0) {
+        wx.showModal({
+            title: '哎哟～',
+            content: '本周无课哟～ 关掉手机浪去吧~',
+            confirmText: 'Get',
+            showCancel: false
+    });
+    }
     // 保存渲染后的课程信息
     this.setData({
         weekTitle: resWeekTitle,

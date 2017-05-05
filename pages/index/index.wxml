@@ -44,7 +44,7 @@
                     <!-- 循环 -->
                     <block wx:for="{{item}}" wx:key="id" wx:for-item="course" wx:for-index="id">
                         <view class="course" style="background-color: {{course.bg}};" data-day="{{day}}" data-lesson="{{index}}" data-id="{{id}}" bindtap="showDetail">
-                            <text>{{course.name}}</text>
+                            <text>{{course.shortName}}</text>
                             <text>{{course.room}}</text>
                         </view>
                     </block>

@@ -3,7 +3,7 @@ let app = getApp(),
         data: {
             weekTitle: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
             courseTop: ['', 210, 425, 635, 850, 1060],
-            palette: ['#1abc9c', '#2ecc71', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#e74c3c', '#bdc3c7', '#95a5a6'],
+            palette: ['#1abc9c', '#2ecc71', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#e74c3c', '#d35400', '#f39c12', '#2c3e50', '#8e44ad'],
             weeks: 0,
             courses: {}
         }

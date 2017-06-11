@@ -38,6 +38,11 @@
 - 项目发布
 
 
+## 文档
+
+详见 [Wiki](https://github.com/choyri/WeGifun/wiki)。
+
+
 ## 许可
 
 WTFPL.

@@ -1,0 +1,6 @@
+<view class="weui-article">
+    <view wx:for="{{changelog}}" wx:key="*this" class="weui-article__section">
+        <view class="weui-article__h3">{{item[0]}}</view>
+        <text class="weui-article__p">{{item[1]}}</text>
+    </view>
+</view>

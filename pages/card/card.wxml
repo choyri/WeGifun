@@ -1,0 +1,13 @@
+<view class="weui-msg">
+    <image src="/images/icon_money.png" />
+    <text>{{text_balance}}</text>
+    <text class="balance">{{balance}}</text>
+    <view class="weui-msg__opr-area">
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="toRecord">{{text_confirm}}</button>
+        </view>
+    </view>
+</view>
+<view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__text">{{text_witticism}}</view>
+</view>

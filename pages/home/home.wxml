@@ -1,30 +1,27 @@
-<view>
-    <view class="weui-cells">
-        <view class="weui-cell">
-            <view class="weui-cell__bd" bindtap="login">{{stuid ? '当前用户：' + stuid : '未登录'}}</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+<view class="weui-cells">
+    <navigator url="/pages/home/profile/profile" class="weui-cell head" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="{{userInfo.avatar}}" />
         </view>
-    </view>
-    <view class="weui-cells" wx:if="{{stuid}}">
-        <view class="weui-cell">
-            <view class="weui-cell__bd" bindtap="update">{{stuid ? '上次更新：' + updateTime : ''}}</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        <view class="weui-cell__bd">
+            <view>{{userInfo.nickname}}</view>
+            <view class="id">{{userInfo.stuid}}</view>
         </view>
-    </view>
-    <view class="weui-cells">
-        <navigator url="/pages/home/statement" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__bd">说明</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
-    </view>
-    <view class="weui-cells">
-        <navigator url="/pages/home/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__bd">反馈</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
-        <navigator url="/pages/home/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__bd">关于</view>
-            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-        </navigator>
-    </view>
+    </navigator>
+</view>
+<view wx:if="{{userInfo.isBindCard}}" class="weui-cells">
+    <navigator url="/pages/card/card" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="/images/icon_card.png" />
+        </view>
+        <view class="weui-cell__bd">{{text_card}}</view>
+    </navigator>
+</view>
+<view class="weui-cells">
+    <navigator url="/pages/setting/setting" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="/images/icon_setting.png" />
+        </view>
+        <view class="weui-cell__bd">{{text_setting}}</view>
+    </navigator>
 </view>

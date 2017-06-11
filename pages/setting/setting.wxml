@@ -1,0 +1,26 @@
+<view class="weui-cells">
+    <navigator wx:if="{{isLogin}}" url="/pages/setting/jw/jw" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{text_jw}}</view>
+    </navigator>
+    <view wx:if="{{wxSettingCanUse}}" class="weui-cell" hover-class="weui-cell_active" bindtap="bindWxSetting">
+        <view class="weui-cell__bd">{{text_authorization}}</view>
+    </view>
+</view>
+<view class="weui-cells">
+    <navigator url="/pages/setting/feedback/feedback" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{text_feedback}}</view>
+    </navigator>
+    <navigator url="/pages/setting/about/about" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{text_about}}</view>
+    </navigator>
+</view>
+<view class="weui-cells">
+    <navigator url="/pages/setting/changelog/changelog" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{text_changelog}}</view>
+    </navigator>
+</view>
+<view wx:if="{{isLogin}}" class="weui-cells">
+    <view class="weui-cell" hover-class="weui-cell_active" bindtap="bindExit">
+        <view class="weui-cell__bd">{{text_exit}}</view>
+    </view>
+</view>

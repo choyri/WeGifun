@@ -1,0 +1,41 @@
+<view bindtap="bindClick">
+    <image src="/images/about.png" />
+</view>
+<view class="weui-cells__tips blockquote">{{quote}}</view>
+<view class="weui-article">
+    <view class="weui-article__section">
+        <view class="weui-article__h3">{{text_open_source}}</view>
+        <text class="weui-article__p url" selectable="true" bindtap="bindCopy">http://t.cn/RSpL1p5</text>
+    </view>
+    <view class="weui-article__section">
+        <view class="weui-article__h3">{{text_security}}</view>
+        <text class="weui-article__p">{{security_content}}</text>
+    </view>
+    <view class="weui-article__section">
+        <view class="weui-article__h3">{{text_gratitude}}</view>
+        <view class="weui-article__p">
+            <text>二绯</text>
+            <text>WeUI</text>
+            <text>Iconfont</text>
+            <text>Peeper</text>
+        </view>
+    </view>
+</view>
+<view class="weui-footer">
+    <view class="weui-footer__links">
+        <view class="weui-footer__link">海畔吉风</view>
+    </view>
+    <view class="weui-footer__text">© 2017 Chotow. {{version}}.</view>
+</view>
+<view class="egg-bubbles{{egg_display ? ' display' : ''}}">
+    <view></view>
+    <view></view>
+    <view>菜</view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view>蛋</view>
+    <view></view>
+    <view></view>
+</view>

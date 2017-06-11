@@ -1,0 +1,5 @@
+.weui-cells__tips {
+    margin-top: .3em;
+    text-align: left;
+    font-size: 13px;
+}

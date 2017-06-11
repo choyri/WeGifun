@@ -1,21 +1,29 @@
 {
     "pages": [
         "pages/index/index",
+
         "pages/home/home",
-        "pages/home/statement",
-        "pages/home/feedback",
-        "pages/home/about",
+        "pages/home/profile/profile",
+
+        "pages/card/card",
+        "pages/card/record/record",
+
+        "pages/setting/setting",
+        "pages/setting/jw/jw",
+        "pages/setting/feedback/feedback",
+        "pages/setting/about/about",
+        "pages/setting/changelog/changelog",
+
         "pages/login/login"
     ],
     "window": {
-        "navigationBarTitleText": "微吉风",
-        "navigationBarBackgroundColor": "#393a3e",
-        "backgroundColor": "#ebebeb"
+        "navigationBarBackgroundColor": "#393A3F",
+        "navigationBarTitleText": "微吉风"
     },
     "tabBar": {
-        "color": "#979797",
-        "selectedColor": "#45c018",
-        "backgroundColor": "#fcfcfc",
+        "color": "#999999",
+        "selectedColor": "#46C01B",
+        "backgroundColor": "#FCFCFC",
         "borderStyle": "white",
         "list": [{
             "pagePath": "pages/index/index",
@@ -30,6 +38,6 @@
         }]
     },
     "networkTimeout": {
-        "request": 15000
+        "request": 8000
     }
 }

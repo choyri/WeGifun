@@ -1,36 +1,38 @@
 let app = getApp(),
+    request = require('../../utils/request.js'),
     pageParams = {
         data: {
-            weekTitle: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+            // 课程块高度 # 课程块为绝对定位 # 通过设置其 top 进行上下定位 详见文档
+            courseTop: ['placeholder', 0, 210, 425, 635, 850],
+        },
 
-            // 每节课通过 style 的 top 进行定位 # 第一个是占位符 →_→ 后面的数字 计算过程见文档
-            courseTop: ['LaLaLa', 0, 210, 425, 635, 850],
-
-            // 调色板 # 课程背景颜色
-            palette: ['#3399CC', '#669999', '#CC9966', '#FF6666', '#666699', '#33CC99', '#996666', '#FF99CC', '#99CC33', '#99CCFF'],
-
-            // 当前周数
-            weeks: 0,
-
-            // 课程信息
-            courses: {}
-        }
+        // 调色板 # 课程背景颜色 每门课一种 当前内置十种
+        palette: ['#3399CC', '#669999', '#CC9966', '#FF6666', '#666699', '#33CC99', '#996666', '#FF99CC', '#99CC33', '#99CCFF']
     };
 
-pageParams.onLoad = function() {
-    // 绑定事件
-    app.event.on('getCoursesSuccess', this.renderCourses, this);
-    app.event.on('logout', this.recover, this);
+pageParams.onLoad = function () {
+    app.event.on('jwUpdate', this.renderPage, this);
+    app.event.on('exit', this.recovery, this)
 
-    if (app.cache.courses) {
-        this.renderCourses();
+    wx.setNavigationBarTitle({
+        title: app.lang.title,
+    });
+
+    if (app.cache.jw) {
+        this.renderPage();
     } else {
+        this.recovery();
+    }
+};
+
+pageParams.onReady = function () {
+    if (!app.cache.jw) {
         wx.showModal({
-            title: '嘿嘿',
-            content: '数据为空，现在就去获取课表？',
-            confirmText: '来吧',
-            cancelText: '不要',
-            success: function (res) {
+            title: app.lang.modal_title,
+            content: app.lang.index_schedule_null,
+            confirmText: app.lang.modal_confirm,
+            cancelText: app.lang.modal_cancel,
+            success(res) {
                 if (res.confirm) {
                     wx.navigateTo({
                         url: '/pages/login/login'
@@ -41,51 +43,91 @@ pageParams.onLoad = function() {
     }
 };
 
-pageParams.onUnload = function() {
-    app.event.remove('getCoursesSuccess', this);
-    app.event.remove('logout', this);
+pageParams.onUnload = function () {
+    app.event.off(this);
 };
 
-pageParams.renderCourses = function() {
-    // 当前周数 # 根据开学日期和当前日期计算
-    // # 参考资料 JS原生Date类型方法的一些冷知识 http://t.cn/RyAh1MZ
-    let weeks = Math.ceil(((new Date()).getTime() - (new Date(app.cache.termBegin)).getTime()) / 1000 / 3600 / 24 / 7),
-        resCourses = app.cache.courses,
-        resWeekTitle = [],
-        index = 0,
-        courseBg =  {};
+pageParams.renderPage = function () {
+        // 当前周数 # 根据开学日期和当前日期计算 # 参考资料 http://t.cn/RyAh1MZ
+    let currWeek = Math.ceil(((new Date()).getTime() - (new Date(app.cache.jw.termBegin)).getTime()) / 1000 / 3600 / 24 / 7),
 
-    for (let key in resCourses) {
-        // 根据课程信息筛选 # 隐藏没有课的 周X
-        resWeekTitle.push(this.data.weekTitle[key - 1]);
+        schedule = app.cache.jw.schedule,
+        weekTitle = [],
 
-        for (let subKey in resCourses[key]) {
-            for (let subSubKey in resCourses[key][subKey]) {
-                let course = resCourses[key][subKey][subSubKey];
+        scheduleBg = {},
+        lenPalette = this.palette.length,
+
+        // 调色板下标
+        index = 0;
+
+    // 处理课表
+    for (let key in schedule) {
+        // 每一天
+
+        // 将这一天对应的星期标题加到结果数组中 # 目的是如果某一天没课就可以将那一列隐藏
+        weekTitle.push(app.lang.index_week_title[key - 1]);
+
+        for (let subKey in schedule[key]) {
+            // 每一大节
+
+            for (let subSubKey in schedule[key][subKey]) {
+                // 同一时间的课程 # 不区分单双周的话只有一门 否则多于一门
+
+                let course = schedule[key][subKey][subSubKey],
+
+                    // 课程周期范围
+                    weekRange = course.week.split('-');
+
+                // 特殊课程 # 只上一周
+                if (weekRange[0] == weekRange[1]) {
+                    if (currWeek == weekRange[0]) {
+                        // 需要上课
+
+                        // 如果和其他课程冲突 删除排在前面的课程 # 特殊课程优先级高 忽略其他课程
+                        if (subSubKey != 0) {
+                            schedule[key][subKey].splice(0, subSubKey);
+                        }
+                    } else {
+                        // 不用上课 那就删除 # 结课后还是会存在于课表中
+
+                        if (subSubKey == 0) {
+                            // 同一时间只有一节 直接删除这段时间的课
+                            delete schedule[key][subKey];
+                        } else {
+                            // 否则 删除自己
+                            schedule[key][subKey].splice(subSubKey, 1);
+                        }
+
+                        continue;
+                    }
+                }
 
                 // 每门课一种颜色 # 以课程名字当索引
-                let bgKey = course['name'];
-                if (! courseBg[bgKey]) {
-                    courseBg[bgKey] = this.data.palette[index++ % 10];
-                }
-                course['bg'] = courseBg[bgKey];
+                let bgKey = course.name;
+                scheduleBg[bgKey] = scheduleBg[bgKey] || this.palette[index++ % lenPalette];
+
+                course.bg = scheduleBg[bgKey];
 
                 // 是否显示该门课 # 根据当前周数和单双周分析
-                course['display'] = false;
-                let weekTime = course['week'].split('-');
-                if (weeks >= weekTime[0] && weeks <= weekTime[1]) {
-                    switch (weekTime[2]) {
+                course.display = false;
+                if (currWeek >= weekRange[0] && currWeek <= weekRange[1]) {
+                    // 当前周大于等于起始周 小于等于结束周
+
+                    switch (weekRange[2]) {
                         case '0':
-                            course['display'] = true;
+                            // 每周都上
+                            course.display = true;
                             break;
                         case '1':
-                            if (weeks % 2 == 1) {
-                                course['display'] = true;
+                            // 单周上
+                            if (currWeek % 2 == 1) {
+                                course.display = true;
                             }
                             break;
                         case '2':
-                            if (weeks % 2 == 0) {
-                                course['display'] = true;
+                            // 双周上
+                            if (currWeek % 2 == 0) {
+                                course.display = true;
                             }
                             break;
                         default:
@@ -93,43 +135,27 @@ pageParams.renderCourses = function() {
                     }
                 }
 
-                // 特殊课程 # 只上一周
-                if (weekTime[0] == weekTime[1]) {
-                    if (weeks == weekTime[0]) {
-                        // 需要上课
+                // 当前课程是否连上 # 如 1-4 / 5-8 / 9-11 小节连上
+                course.height = 0;
+                let lastCourse = schedule[key][subKey - 1];
+                if (lastCourse) {
+                    // 如果上一大节有课 进行对比
 
-                        // 如果和其他课程冲突 删除排在前面的课程
-                        if (subSubKey != 0) {
-                            resCourses[key][subKey].splice(0, subSubKey);
-                        }
-                    } else {
-                        // 不用上课就删除
+                    let current = course.name + course.week + course.room,
+                        last = '';
 
-                        if (subSubKey == 0) {
-                            // 同一时间只有一节 直接删除
-                            delete resCourses[key][subKey];
-                        } else {
-                            // 否则 删除自己
-                            resCourses[key][subKey].splice(subSubKey, 1);
-                        }
-                    }
-                }
+                    for (let key in lastCourse) {
+                        last = lastCourse[key].name + lastCourse[key].week + lastCourse[key].room;
 
-                // 该课程是否多小节连上 # 如 1-4 / 5-8 / 9-11 小节连上
-                course['height'] = 0;
-                if (resCourses[key][subKey - 1]) {
-                    // 如果上一节有课 进行对比
-                    let tmp = resCourses[key][subKey - 1];
-                    for (let tmpKey in tmp) {
-                        let tmp1 = course['name'] + course['week'] + course['room'],
-                            tmp2 = tmp[tmpKey]['name'] + tmp[tmpKey]['week'] + tmp[tmpKey]['room'];
-                        if (tmp1 == tmp2) {
+                        if (current == last) {
                             // 如果上一节课和当前课一样 即连上 修改上节的 height
-                            // # subkey 为 6 时表示第 11 小节 故设为 300 否则设为 410
-                            tmp[tmpKey]['height'] = subKey == 6 ? 300 : 410;
+
+                            // subkey 为 6 时[表示第 11 小节]设为 300  否则设为 410
+                            // # 9-11 三小节所以是 300  1-4 和 5-8 四小节所以是 410 [加上中间间隔的 10]
+                            lastCourse[key].height = subKey == 6 ? 300 : 410;
 
                             // 删除当前这节课 # 不删也行 上一节课变长就挡住了这节
-                            delete resCourses[key][subKey];
+                            delete schedule[key][subKey];
                         }
                     }
                 }
@@ -137,45 +163,46 @@ pageParams.renderCourses = function() {
         }
 
         // 删除特殊课程后 有可能出现空对象 此处将他们删除
-        if (Object.getOwnPropertyNames(resCourses[key]).length == 0) {
-            delete resCourses[key];
-            resWeekTitle.splice(key - 1, 1);
+        if (Object.getOwnPropertyNames(schedule[key]).length == 0) {
+            delete schedule[key];
+            weekTitle.splice(key - 1, 1);
         }
     }
 
     // 保存渲染后的课程信息
     this.setData({
-        weekTitle: resWeekTitle,
-        weeks: weeks,
-        courses: resCourses
-    })
-
-    console.log(this.data.courses)
+        weekTitle,
+        currWeek: app.lang.index_curr_week.replace('{0}', currWeek),
+        schedule
+    });
 };
 
-pageParams.recover = function() {
+pageParams.recovery = function () {
     this.setData({
-        weekTitle: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-        weeks: 0,
-        courses: {}
-    })
+        weekTitle: app.lang.index_week_title,
+        currWeek: app.lang.index_curr_week.replace('{0}', 0),
+        schedule: null
+    });
 };
 
-pageParams.showDetail = function(e) {
+pageParams.showDetail = function (e) {
     let dataSet = e.currentTarget.dataset,
-        course = this.data.courses[dataSet.day][dataSet.lesson][dataSet.id],
-        weekTime = course['week'].split('-'),
-        weekArr = ['', ', 单', ', 双'],
-        week = '';
+        course = this.data.schedule[dataSet.day][dataSet.course][dataSet.id],
+        weekRange = course.week.split('-'),
+        weekArr = ['', ', ' + app.lang.index_detail_odd, ', ' + app.lang.index_detail_even];
 
-    week = weekTime[0] + '-' + weekTime[1] + ' 周' + weekArr[weekTime[2]];
+    let week = app.lang.index_detail_week.replace('{0}', weekRange[0] + '-' + weekRange[1]) + weekArr[weekRange[2]];
 
     wx.showModal({
-        title: '详情',
-        content: course['name'] + ' / ' + course['teacher'] + ' / ' + course['room'] + ' / ' + week,
-        confirmText: '多谢',
+        title: app.lang.index_schedule_detail_title,
+        content: course.name + ' / ' + course.teacher + ' / ' + course.room + ' / ' + week,
+        confirmText: app.lang.modal_confirm,
         showCancel: false
     });
+
+    if (wx.vibrateShort) {
+        wx.vibrateShort();
+    }
 };
 
 Page(pageParams);

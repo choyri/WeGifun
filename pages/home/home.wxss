@@ -1,1 +1,25 @@
-/* pages/home/home.wxss */
+@import '/utils/page-after.wxss';
+
+.weui-cell.head {
+    font-size: 17px;    
+    padding: 10px 15px;
+}
+.weui-cell.head image {
+    margin-left: 0;
+    width: 60px;
+    height: 60px;
+}
+.id {
+    font-size: 13px;
+    color: #999;
+}
+.weui-cell__hd {
+    font-size: 0;
+}
+.weui-cell__hd image {
+    margin-left: 6px;
+    margin-right: 20px;
+    vertical-align: middle;
+    width: 22px;
+    height: 22px;
+}

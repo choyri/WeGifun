@@ -1,19 +1,21 @@
-<view class="page__bd login">
-    <view class="weui-cells">
-        <view class="weui-cell weui-cell_input{{stuid_focus ? ' focus' : ''}}">
-            <text class="weui-label">学  号</text>
-            <view class="weui-cell__bd">
-                <input id="stuid" class="weui-input" type="number" maxlength="8" placeholder="学号" bindinput="inputInput" bindfocus="inputFocus" bindblur="inputBlur" />
-            </view>
-        </view>
-        <view class="weui-cell weui-cell_input{{stupwd_focus ? ' focus' : ''}}">
-            <text class="weui-label">密  码</text>
-            <view class="weui-cell__bd">
-                <input id="stupwd" class="weui-input" password maxlength="16" placeholder="非校园卡密码" bindinput="inputInput" bindfocus="inputFocus" bindblur="inputBlur" />
-            </view>
+<view class="weui-cells">
+    <view class="weui-cell{{id_focus}}">
+        <text class="weui-label">{{text_id}}</text>
+        <view class="weui-cell__bd">
+            <input id="id" class="weui-input" value="{{id_curr}}" type="number" disabled="{{id_disabled}}" maxlength="8" bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
         </view>
     </view>
-    <view class="weui-btn-area">
-        <button class="weui-btn" type="primary" disabled="{{btn_disabled}}" loading="{{btn_loading}}" bindtap="getData">登录</button>
+    <view class="weui-cell{{pwd_focus}}">
+        <text class="weui-label">{{text_pwd}}</text>
+        <view class="weui-cell__bd">
+            <input id="pwd" class="weui-input" value="{{pwd_value}}" type="{{pwd_type}}" password maxlength="{{pwd_maxlength}}" bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
+        </view>
     </view>
+</view>
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" disabled="{{btn_disabled}}" bindtap="bindConfirm">{{btn_title}}</button>
+</view>
+<view class="weui-footer weui-footer_fixed-bottom">
+    <view wx:if="{{tip_edit_pwd}}" class="weui-footer__text">{{tip_edit_pwd}}</view>
+    <view class="weui-footer__text">{{tip}}</view>
 </view>

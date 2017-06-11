@@ -1,0 +1,15 @@
+page {
+    background-color: #FFFFFF;
+}
+text {
+    display: block;
+}
+.weui-msg image {
+    width: 128px;
+    height: 128px;
+    vertical-align: top;
+}
+.balance {
+    font-size: 36px;
+    height: 60px;
+}

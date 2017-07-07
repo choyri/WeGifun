@@ -78,6 +78,9 @@ pageParams.renderPage = function () {
                     // 课程周期范围
                     weekRange = course.week.split('-');
 
+                // 课程是否可视
+                course.display = true;
+
                 // 特殊课程 # 只上一周
                 if (weekRange[0] == weekRange[1]) {
                     if (currWeek == weekRange[0]) {
@@ -102,37 +105,21 @@ pageParams.renderPage = function () {
                     }
                 }
 
-                // 每门课一种颜色 # 以课程名字当索引
-                let bgKey = course.name;
-                scheduleBg[bgKey] = scheduleBg[bgKey] || this.palette[index++ % lenPalette];
+                // 单周时双周的课和双周时单周的课不显示
+                if ((weekRange[2] === '1' && currWeek % 2 === 0) || (weekRange[2] === '2' && currWeek % 2 === 1)) {
+                    course.display = false;
+                    continue;
+                }
 
-                course.bg = scheduleBg[bgKey];
-
-                // 是否显示该门课 # 根据当前周数和单双周分析
-                course.display = false;
+                // 课程背景色 # 不在周期内的课程没有背景色 即默认的灰色
                 if (currWeek >= weekRange[0] && currWeek <= weekRange[1]) {
                     // 当前周大于等于起始周 小于等于结束周
 
-                    switch (weekRange[2]) {
-                        case '0':
-                            // 每周都上
-                            course.display = true;
-                            break;
-                        case '1':
-                            // 单周上
-                            if (currWeek % 2 == 1) {
-                                course.display = true;
-                            }
-                            break;
-                        case '2':
-                            // 双周上
-                            if (currWeek % 2 == 0) {
-                                course.display = true;
-                            }
-                            break;
-                        default:
-                            break;
-                    }
+                    // 每门课一种颜色 # 以课程名字当索引
+                    let bgKey = course.name;
+                    scheduleBg[bgKey] = scheduleBg[bgKey] || this.palette[index++ % lenPalette];
+
+                    course.bg = scheduleBg[bgKey];
                 }
 
                 // 当前课程是否连上 # 如 1-4 / 5-8 / 9-11 小节连上

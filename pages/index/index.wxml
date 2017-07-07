@@ -39,10 +39,12 @@
             <view wx:for="{{column}}" wx:key="*this" class="course-wrap" style="top: {{courseTop[index]}}rpx;">
                 <!-- 循环 单双周 -->
                 <block wx:for="{{item}}" wx:for-item="course" wx:key="*this" wx:for-index="id">
-                    <view class="course" style="{{course.display ? ('background-color: ' + course.bg) : 'display: none'}};{{course.height ? (' height: ' + course.height + 'rpx;') : ''}}" data-day="{{day}}" data-course="{{index}}" data-id="{{id}}" bindtap="showDetail" hover-class="course-hover">
-                        <text>{{course.name}}</text>
-                        <text>{{course.room}}</text>
-                    </view>
+                    <block wx:if="{{course.display}}">
+                        <view class="course" style="{{course.bg ? ('background-color: ' + course.bg) : ''}};{{course.height ? (' height: ' + course.height + 'rpx;') : ''}}" data-day="{{day}}" data-course="{{index}}" data-id="{{id}}" bindtap="showDetail" hover-class="course-hover">
+                            <text>{{course.name}}</text>
+                            <text>{{course.room}}</text>
+                        </view>
+                    </block>
                 </block>
             </view>
         </view>

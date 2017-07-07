@@ -131,17 +131,17 @@ pageParams.renderPage = function () {
                     let current = course.name + course.week + course.room,
                         last = '';
 
-                    for (let key in lastCourse) {
-                        last = lastCourse[key].name + lastCourse[key].week + lastCourse[key].room;
+                    for (let tmpKey in lastCourse) {
+                        last = lastCourse[tmpKey].name + lastCourse[tmpKey].week + lastCourse[tmpKey].room;
 
                         if (current == last) {
                             // 如果上一节课和当前课一样 即连上 修改上节的 height
 
                             // subkey 为 6 时[表示第 11 小节]设为 300  否则设为 410
                             // # 9-11 三小节所以是 300  1-4 和 5-8 四小节所以是 410 [加上中间间隔的 10]
-                            lastCourse[key].height = subKey == 6 ? 300 : 410;
+                            lastCourse[tmpKey].height = subKey == 6 ? 300 : 410;
 
-                            // 删除当前这节课 # 不删也行 上一节课变长就挡住了这节
+                            // 删除当前这节课
                             delete schedule[key][subKey];
                         }
                     }

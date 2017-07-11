@@ -3,7 +3,7 @@ let app = getApp(),
     pageParams = {
         data: {
             // 课程块高度 # 课程块为绝对定位 # 通过设置其 top 进行上下定位 详见文档
-            courseTop: ['placeholder', 0, 210, 425, 635, 850],
+            courseTop: ['placeholder', 0, 210, 420, 630, 840],
         },
 
         // 调色板 # 课程背景颜色 每门课一种 当前内置十种
@@ -81,6 +81,61 @@ pageParams.renderPage = function () {
                 // 课程是否可视
                 course.display = true;
 
+                // 有同一时间的课
+                if (subSubKey !== 0) {
+                    let flag = false;
+                    for (let i = 0; i < subSubKey; i++) {
+                        let siblingCourse = schedule[key][subKey][i];
+
+                        // 如果其他课程需要上 或者他们是连上课程 那就说明当前课程不用上
+                        if (siblingCourse.display === true || siblingCourse.forwardFrom) {
+                            course.display = false;
+                            flag = true;
+                            continue;
+                        }
+                    }
+                    if (flag) {
+                        continue;
+                    }
+                }
+
+                // 处理连上课程
+                let previousCourseGroup = schedule[key][subKey - 1];
+                if (previousCourseGroup) {
+                    let currentValue = course.name + course.week + course.room,
+                        previousValue = '',
+                        flag = false;
+
+                    for (let tmpKey in previousCourseGroup) {
+                        let previousCourse = previousCourseGroup[tmpKey];
+                        previousValue = previousCourse.name + previousCourse.week + previousCourse.room;
+
+                        // 如果前一节需要上的课和本节课相同 或者前一节是连上课程
+                        if ((previousCourse.display === true && currentValue === previousValue) || previousCourse.forwardFrom) {
+                            course.display = false;
+
+                            // 给当前课程打标记 第几节开始的课
+                            course.forwardFrom = previousCourse.forwardFrom || subKey - 1;
+
+                            // 修改连上课程的高度
+                            let startCourseGroup = schedule[key][course.forwardFrom];
+                            for (let tmpKey in startCourseGroup) {
+                                let startCourse = startCourseGroup[tmpKey];
+                                if (startCourse.display === true) {
+                                    // 每个课程块高度 200  间隔 10
+                                    startCourse.height = (subKey - course.forwardFrom) * 210 + 200;
+                                    continue;
+                                }
+                            }
+                            flag = true;
+                            continue;
+                        }
+                    }
+                    if (flag) {
+                        continue;
+                    }
+                }
+
                 // 特殊课程 # 只上一周
                 if (weekRange[0] == weekRange[1]) {
                     if (currWeek == weekRange[0]) {
@@ -120,31 +175,6 @@ pageParams.renderPage = function () {
                     scheduleBg[bgKey] = scheduleBg[bgKey] || this.palette[index++ % lenPalette];
 
                     course.bg = scheduleBg[bgKey];
-                }
-
-                // 当前课程是否连上 # 如 1-4 / 5-8 / 9-11 小节连上
-                course.height = 0;
-                let lastCourse = schedule[key][subKey - 1];
-                if (lastCourse) {
-                    // 如果上一大节有课 进行对比
-
-                    let current = course.name + course.week + course.room,
-                        last = '';
-
-                    for (let tmpKey in lastCourse) {
-                        last = lastCourse[tmpKey].name + lastCourse[tmpKey].week + lastCourse[tmpKey].room;
-
-                        if (current == last) {
-                            // 如果上一节课和当前课一样 即连上 修改上节的 height
-
-                            // subkey 为 6 时[表示第 11 小节]设为 300  否则设为 410
-                            // # 9-11 三小节所以是 300  1-4 和 5-8 四小节所以是 410 [加上中间间隔的 10]
-                            lastCourse[tmpKey].height = subKey == 6 ? 300 : 410;
-
-                            // 删除当前这节课
-                            delete schedule[key][subKey];
-                        }
-                    }
                 }
             }
         }

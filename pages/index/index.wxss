@@ -86,11 +86,8 @@
 .sidebar view:last-child {
     height: 100rpx;
 }
-.sidebar view:nth-child(1), .sidebar view:nth-child(3) {
+.sidebar view {
     margin-bottom: 10rpx;
-}
-.sidebar view:nth-child(2), .sidebar view:nth-child(4) {
-    margin-bottom: 15rpx;
 }
 .content {
     flex: auto;

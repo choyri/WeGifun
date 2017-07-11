@@ -136,30 +136,6 @@ pageParams.renderPage = function () {
                     }
                 }
 
-                // 特殊课程 # 只上一周
-                if (weekRange[0] == weekRange[1]) {
-                    if (currWeek == weekRange[0]) {
-                        // 需要上课
-
-                        // 如果和其他课程冲突 删除排在前面的课程 # 特殊课程优先级高 忽略其他课程
-                        if (subSubKey != 0) {
-                            schedule[key][subKey].splice(0, subSubKey);
-                        }
-                    } else {
-                        // 不用上课 那就删除 # 结课后还是会存在于课表中
-
-                        if (subSubKey == 0) {
-                            // 同一时间只有一节 直接删除这段时间的课
-                            delete schedule[key][subKey];
-                        } else {
-                            // 否则 删除自己
-                            schedule[key][subKey].splice(subSubKey, 1);
-                        }
-
-                        continue;
-                    }
-                }
-
                 // 单周时双周的课和双周时单周的课不显示
                 if ((weekRange[2] === '1' && currWeek % 2 === 0) || (weekRange[2] === '2' && currWeek % 2 === 1)) {
                     course.display = false;
@@ -177,12 +153,6 @@ pageParams.renderPage = function () {
                     course.bg = scheduleBg[bgKey];
                 }
             }
-        }
-
-        // 删除特殊课程后 有可能出现空对象 此处将他们删除
-        if (Object.getOwnPropertyNames(schedule[key]).length == 0) {
-            delete schedule[key];
-            weekTitle.splice(key - 1, 1);
         }
     }
 

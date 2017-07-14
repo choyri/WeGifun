@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.2.2 (20170714)',
+            '更新 改进对连上课程的处理\n更新 不再支持特殊课程'
+        ],
+        [
             'v0.2.1 (20170707)',
             '修复 未在教学周期内时课程不显示\n修复 存在连上的课程时导致课表无法显示'
         ],
@@ -14,6 +18,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.2.2 (20170714)',
+            'UPDATE: Improve the handling of continuous course\nUPDATE: Special courses are no longer supported'
+        ],
         [
             'v0.2.1 (20170707)',
             'FIX: Courses are not shown outside the teaching period\nFIX: The schedule can not be shown when continuous course existing'

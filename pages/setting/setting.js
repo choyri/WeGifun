@@ -42,10 +42,9 @@ pageParams.bindExit = function () {
 
 pageParams.bindWxSetting = function () {
     wx.openSetting({
-        success(res) {
-            app.getWxInfo(function () {
-                app.event.emit('changeAuth');
-            });
+        success() {
+            console.warn('授权状态已变更');
+            app.event.emit('changeAuth');
         }
     });
 };

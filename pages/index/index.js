@@ -4,6 +4,10 @@ let app = getApp(),
         data: {
             // 课程块高度 # 课程块为绝对定位 # 通过设置其 top 进行上下定位 详见文档
             courseTop: ['placeholder', 0, 210, 420, 630, 840],
+
+            currWeek: app.lang.index_curr_week.replace('{0}', (app.cache.dataCurrWeek || 0)),
+            schedule: app.cache.dataSchedule || null,
+            weekTitle: app.cache.dataWeekTitle || app.lang.index_week_title
         },
 
         // 调色板 # 课程背景颜色 每门课一种 当前内置十种
@@ -18,11 +22,7 @@ pageParams.onLoad = function () {
         title: app.lang.title,
     });
 
-    if (app.cache.jw) {
-        this.renderPage();
-    } else {
-        this.recovery();
-    }
+    this.renderPage();
 };
 
 pageParams.onReady = function () {
@@ -47,11 +47,33 @@ pageParams.onUnload = function () {
     app.event.off(this);
 };
 
-pageParams.renderPage = function () {
-        // 当前周数 # 根据开学日期和当前日期计算 # 参考资料 http://t.cn/RyAh1MZ
-    let currWeek = Math.ceil(((new Date()).getTime() - (new Date(app.cache.jw.termBegin)).getTime()) / 1000 / 3600 / 24 / 7),
+pageParams.renderPage = function (refresh = false) {
+    if (!app.cache.jw) {
+        return;
+    }
 
-        schedule = app.cache.jw.schedule,
+    // 当前周数 # 根据开学日期和当前日期计算 # 参考资料 http://t.cn/RyAh1MZ
+    let currWeek = Math.ceil(((new Date()).getTime() - (new Date(app.cache.jw.termBegin)).getTime()) / 1000 / 3600 / 24 / 7);
+
+    if (currWeek != app.cache.dataCurrWeek || refresh) {
+        let res = this.parseSchedule(currWeek);
+
+        this.setData({
+            currWeek: app.lang.index_curr_week.replace('{0}', currWeek),
+            schedule: res.schedule,
+            weekTitle: res.weekTitle
+        });
+
+        app.saveData({
+            dataCurrWeek: currWeek,
+            dataSchedule: res.schedule,
+            dataWeekTitle: res.weekTitle
+        });
+    }
+};
+
+pageParams.parseSchedule = function (currWeek) {
+    let schedule = app.cache.jw.schedule,
         weekTitle = [],
 
         scheduleBg = {},
@@ -156,12 +178,10 @@ pageParams.renderPage = function () {
         }
     }
 
-    // 保存渲染后的课程信息
-    this.setData({
-        weekTitle,
-        currWeek: app.lang.index_curr_week.replace('{0}', currWeek),
-        schedule
-    });
+    return {
+        schedule,
+        weekTitle
+    };
 };
 
 pageParams.recovery = function () {

@@ -130,7 +130,7 @@ pageParams.requestSuccess = function (requestType, res, target) {
         app.event.emit('loginSuccess');
 
         if (requestType == 'jw') {
-            app.event.emit('jwUpdate');
+            app.event.emit('jwUpdate', true);
         }
 
         if (that.data.id_disabled) {

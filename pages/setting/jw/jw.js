@@ -27,7 +27,7 @@ pageParams.bindUpdate = function () {
             app.saveData({
                 jw
             });
-            app.event.emit('jwUpdate');
+            app.event.emit('jwUpdate', true);
 
             that.setData({
                 updateTime: that.renderUpdateTime(jw.updateTime)

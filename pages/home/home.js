@@ -1,5 +1,12 @@
 let app = getApp(),
-    pageParams = {};
+    pageParams = {
+        data: {
+            text_card: app.lang.home_card,
+            text_setting: app.lang.home_setting,
+            stuId: (app.cache.userInfoStu ? app.lang.home_stuid.replace('{0}', app.cache.userInfoStu.id) : app.lang.home_stuid_null),
+            userInfo: app.cache.dataUserInfo || null
+        }
+    };
 
 pageParams.onLoad = function () {
     app.event.on('changeAuth', this.getUserInfoWx, this);
@@ -22,38 +29,31 @@ pageParams.onUnload = function () {
     app.event.off(this);
 };
 
-pageParams.renderPage = function () {
-    let userInfo = {
-            isBindCard: false,
-            stuid: app.lang.home_stuid_null
-        };
-
-    let stuInfo = app.cache.userInfoStu;
-    if (stuInfo) {
-        userInfo.stuid = app.lang.home_stuid.replace('{0}', stuInfo.id);
-
-        if (stuInfo.cardPwd) {
-            userInfo.isBindCard = true;
-        }
+pageParams.renderPage = function (refresh = false) {
+    if (app.cache.dataUserInfo && ! refresh) {
+        console.log('直接渲染用户信息缓存');
+        return;
     }
+
+    let userInfo = {
+            isBindCard: ((app.cache.userInfoStu && app.cache.userInfoStu.cardPwd) ? true : false)
+        };
 
     this.updateUserInfoWx(userInfo, app.cache.userInfoWx);
 
     this.setData({
-        userInfo,
-        text_card: app.lang.home_card,
-        text_setting: app.lang.home_setting
+        userInfo
+    });
+
+    app.saveData({
+        dataUserInfo: userInfo
     });
 };
 
 pageParams.getUserInfoWx = function () {
     console.log('开始获取 userInfoWx');
     app.getUserInfoWx(() => {
-        let userInfo = this.data.userInfo;
-        this.updateUserInfoWx(userInfo, app.cache.userInfoWx);
-        this.setData({
-            userInfo
-        });
+        this.renderPage(true);
     });
 };
 

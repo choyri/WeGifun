@@ -127,7 +127,7 @@ pageParams.requestSuccess = function (requestType, res, target) {
         }
 
         app.saveData(data);
-        app.event.emit('loginSuccess');
+        app.event.emit('loginSuccess', true);
 
         if (requestType == 'jw') {
             app.event.emit('jwUpdate', true);

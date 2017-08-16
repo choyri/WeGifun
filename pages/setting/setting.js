@@ -31,7 +31,7 @@ pageParams.bindExit = function () {
             if (res.confirm) {
                 wx.clearStorage();
                 delete app.cache.userInfoStu;
-                app.event.emit('exit');
+                app.event.emit('exit', true);
                 wx.switchTab({
                     url: '/pages/home/home',
                 });

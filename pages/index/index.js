@@ -103,6 +103,14 @@ pageParams.parseSchedule = function (currWeek) {
                 // 课程是否可视
                 course.display = true;
 
+                // 周期内的课程状态
+                course.state = true;
+
+                // 单周时双周的课和双周时单周的课不用上
+                if ((weekRange[2] === '1' && currWeek % 2 === 0) || (weekRange[2] === '2' && currWeek % 2 === 1)) {
+                    course.state = false;
+                }
+
                 // 有同一时间的课
                 if (subSubKey !== 0) {
                     let flag = false;
@@ -110,9 +118,15 @@ pageParams.parseSchedule = function (currWeek) {
                         let siblingCourse = schedule[key][subKey][i];
 
                         // 如果其他课程需要上 或者他们是连上课程 那就说明当前课程不用上
-                        if (siblingCourse.display === true || siblingCourse.forwardFrom) {
+                        if ((siblingCourse.display === true && siblingCourse.state === true) || siblingCourse.forwardFrom) {
                             course.display = false;
                             flag = true;
+                            continue;
+                        }
+
+                        // 因单双周而不用上的课 同一时间有其他课程要上的时候 这节课需要隐藏
+                        if (siblingCourse.state === false) {
+                            siblingCourse.display = false;
                             continue;
                         }
                     }
@@ -158,14 +172,8 @@ pageParams.parseSchedule = function (currWeek) {
                     }
                 }
 
-                // 单周时双周的课和双周时单周的课不显示
-                if ((weekRange[2] === '1' && currWeek % 2 === 0) || (weekRange[2] === '2' && currWeek % 2 === 1)) {
-                    course.display = false;
-                    continue;
-                }
-
                 // 课程背景色 # 不在周期内的课程没有背景色 即默认的灰色
-                if (currWeek >= weekRange[0] && currWeek <= weekRange[1]) {
+                if (currWeek >= weekRange[0] && currWeek <= weekRange[1] && course.state) {
                     // 当前周大于等于起始周 小于等于结束周
 
                     // 每门课一种颜色 # 以课程名字当索引

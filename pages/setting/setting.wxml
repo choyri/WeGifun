@@ -7,9 +7,9 @@
     </view>
 </view>
 <view class="weui-cells">
-    <navigator url="/pages/setting/feedback/feedback" class="weui-cell" hover-class="weui-cell_active">
+    <button class="weui-cell" hover-class="weui-cell_active" open-type="contact" bindtap="bindContact">
         <view class="weui-cell__bd">{{text_feedback}}</view>
-    </navigator>
+    </button>
     <navigator url="/pages/setting/about/about" class="weui-cell" hover-class="weui-cell_active">
         <view class="weui-cell__bd">{{text_about}}</view>
     </navigator>

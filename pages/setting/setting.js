@@ -21,6 +21,12 @@ pageParams.onLoad = function () {
     });
 };
 
+pageParams.bindContact = function () {
+    if (! wx.canIUse || ! wx.canIUse('button.open-type.contact')) {
+        app.showErrModal(app.lang.wx_version_warn);
+    }
+};
+
 pageParams.bindExit = function () {
     wx.showModal({
         title: app.lang.modal_title,

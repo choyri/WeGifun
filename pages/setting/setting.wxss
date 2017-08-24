@@ -1,0 +1,9 @@
+button {
+    font-size: 17px;
+    line-height: 1.41176471;
+    text-align: left;
+    background-color: #FFFFFF;
+}
+button::after {
+    display: none;
+}

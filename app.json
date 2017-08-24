@@ -10,7 +10,6 @@
 
         "pages/setting/setting",
         "pages/setting/jw/jw",
-        "pages/setting/feedback/feedback",
         "pages/setting/about/about",
         "pages/setting/changelog/changelog",
 

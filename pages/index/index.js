@@ -82,107 +82,126 @@ pageParams.parseSchedule = function (currWeek) {
         // 调色板下标
         index = 0;
 
-    // 处理课表
-    for (let key in schedule) {
-        // 每一天
+    // 每天
+    for (let day of schedule) {
+        day.unique = currWeek + '_' + day.unique;
 
         // 将这一天对应的星期标题加到结果数组中 # 目的是如果某一天没课就可以将那一列隐藏
-        weekTitle.push(app.lang.index_week_title[key - 1]);
+        weekTitle.push(app.lang.index_week_title[day.index - 1]);
 
-        for (let subKey in schedule[key]) {
-            // 每一大节
+        // 节次下标 # 用于定位上一大节课
+        let sectionIndex = 0;
 
-            for (let subSubKey in schedule[key][subKey]) {
-                // 同一时间的课程 # 不区分单双周的话只有一门 否则多于一门
+        // 每节次
+        for (let section of day.data) {
+            section.unique = currWeek + '_' + section.unique;
 
-                let course = schedule[key][subKey][subSubKey],
+            // 每门 # 不区分单双周的话只有一门 否则多于一门
+            for (let course of section.data) {
+                course.unique = currWeek + '_' + course.unique;
+
+                let courseData = course.data,
 
                     // 课程周期范围
-                    weekRange = course.week.split('-');
+                    weekRange = courseData.week.split('-');
 
                 // 课程是否可视
-                course.display = true;
+                courseData.display = true;
 
                 // 周期内的课程状态
-                course.state = true;
+                courseData.state = true;
 
                 // 单周时双周的课和双周时单周的课不用上
                 if ((weekRange[2] === '1' && currWeek % 2 === 0) || (weekRange[2] === '2' && currWeek % 2 === 1)) {
-                    course.state = false;
+                    courseData.state = false;
                 }
 
-                // 有同一时间的课
-                if (subSubKey !== 0) {
+                // 有同一时间的课 # 单双周
+                if (course.index !== 0) {
                     let flag = false;
-                    for (let i = 0; i < subSubKey; i++) {
-                        let siblingCourse = schedule[key][subKey][i];
+                    for (let i = 0; i < course.index; i++) {
+                        let siblingCourseData = section.data[i].data;
 
                         // 如果其他课程需要上 或者他们是连上课程 那就说明当前课程不用上
-                        if ((siblingCourse.display === true && siblingCourse.state === true) || siblingCourse.forwardFrom) {
-                            course.display = false;
+                        if ((siblingCourseData.display === true && siblingCourseData.state === true) || siblingCourseData.forwardFrom !== undefined) {
+                            courseData.display = false;
                             flag = true;
                             continue;
                         }
 
                         // 因单双周而不用上的课 同一时间有其他课程要上的时候 这节课需要隐藏
-                        if (siblingCourse.state === false) {
-                            siblingCourse.display = false;
+                        if (siblingCourseData.state === false) {
+                            siblingCourseData.display = false;
                             continue;
                         }
                     }
+
+                    // 如果已有需要上的课程 即可跳过本次循环
                     if (flag) {
                         continue;
                     }
                 }
 
                 // 处理连上课程
-                let previousCourseGroup = schedule[key][subKey - 1];
-                if (previousCourseGroup) {
-                    let currentValue = course.name + course.week + course.room,
+                let previousSectionIndex = sectionIndex - 1,
+                    previousSection = day.data[previousSectionIndex];
+                if (previousSection) {
+                    let currentValue = courseData.name + courseData.week + courseData.room,
                         previousValue = '',
                         flag = false;
 
-                    for (let tmpKey in previousCourseGroup) {
-                        let previousCourse = previousCourseGroup[tmpKey];
-                        previousValue = previousCourse.name + previousCourse.week + previousCourse.room;
+                    for (let tmpCourse of previousSection.data) {
+                        let previousCourseData = tmpCourse.data;
+
+                        previousValue = previousCourseData.name + previousCourseData.week + previousCourseData.room;
 
                         // 如果前一节需要上的课和本节课相同 或者前一节是连上课程
-                        if ((previousCourse.display === true && currentValue === previousValue) || previousCourse.forwardFrom) {
-                            course.display = false;
+                        if ((previousCourseData.display === true && currentValue === previousValue) || previousCourseData.forwardFrom !== undefined) {
+                            // 隐藏当前课程
+                            courseData.display = false;
 
                             // 给当前课程打标记 第几节开始的课
-                            course.forwardFrom = previousCourse.forwardFrom || subKey - 1;
+                            courseData.forwardFrom = previousCourseData.forwardFrom !== undefined ? previousCourseData.forwardFrom : previousSectionIndex;
 
                             // 修改连上课程的高度
-                            let startCourseGroup = schedule[key][course.forwardFrom];
-                            for (let tmpKey in startCourseGroup) {
-                                let startCourse = startCourseGroup[tmpKey];
-                                if (startCourse.display === true) {
-                                    // 每个课程块高度 200  间隔 10
-                                    startCourse.height = (subKey - course.forwardFrom) * 210 + 200;
+                            let startSection = day.data[courseData.forwardFrom];
+                            for (let tmpCourse of startSection.data) {
+                                // 因为前面那个时间段可能不止一门课 所以用循环找出目标
+
+                                let startCourseData = tmpCourse.data;
+                                if (startCourseData.display === true) {
+                                    // 每个课程块高度 200  间隔 10 # 例如 两节连上的话高度就为 410
+                                    startCourseData.height = (sectionIndex - courseData.forwardFrom) * 210 + 200;
                                     continue;
                                 }
                             }
+
+                            // 完成操作 跳出循环
                             flag = true;
                             continue;
                         }
                     }
+
+                    // 如果当前课程是连上课程 即可跳过本次循环
                     if (flag) {
                         continue;
                     }
                 }
 
                 // 课程背景色 # 不在周期内的课程没有背景色 即默认的灰色
-                if (currWeek >= weekRange[0] && currWeek <= weekRange[1] && course.state) {
+                if (currWeek >= weekRange[0] && currWeek <= weekRange[1] && courseData.state) {
                     // 当前周大于等于起始周 小于等于结束周
 
                     // 每门课一种颜色 # 以课程名字当索引
-                    let bgKey = course.name;
+                    let bgKey = courseData.name;
                     scheduleBg[bgKey] = scheduleBg[bgKey] || this.palette[index++ % lenPalette];
 
-                    course.bg = scheduleBg[bgKey];
+                    courseData.bg = scheduleBg[bgKey];
                 }
             }
+
+            // 节次结束 下标自增
+            sectionIndex++;
         }
     }
 
@@ -202,7 +221,7 @@ pageParams.recovery = function () {
 
 pageParams.showDetail = function (e) {
     let dataSet = e.currentTarget.dataset,
-        course = this.data.schedule[dataSet.day][dataSet.course][dataSet.id],
+        course = this.data.schedule[dataSet.day].data[dataSet.section].data[dataSet.course].data,
         weekRange = course.week.split('-'),
         weekArr = ['', ', ' + app.lang.index_detail_odd, ', ' + app.lang.index_detail_even];
 

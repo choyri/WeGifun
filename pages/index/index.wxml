@@ -34,15 +34,15 @@
     </view>
     <view wx:if="{{schedule}}" class="content">
         <!-- 循环 每天 -->
-        <view wx:for="{{schedule}}" wx:for-item="column" wx:key="*this" wx:for-index="day" class="column">
-            <!-- 循环 每节 -->
-            <view wx:for="{{column}}" wx:key="*this" class="course-wrap" style="top: {{courseTop[index]}}rpx;">
-                <!-- 循环 单双周 -->
-                <block wx:for="{{item}}" wx:for-item="course" wx:key="*this" wx:for-index="id">
-                    <block wx:if="{{course.display}}">
-                        <view class="course" style="{{course.bg ? ('background-color: ' + course.bg) : ''}};{{course.height ? (' height: ' + course.height + 'rpx;') : ''}}" data-day="{{day}}" data-course="{{index}}" data-id="{{id}}" bindtap="showDetail" hover-class="course-hover">
-                            <text>{{course.name}}</text>
-                            <text>{{course.room}}</text>
+        <view wx:for="{{schedule}}" wx:for-index="dayIndex" wx:for-item="day" wx:key="unique" class="column">
+            <!-- 循环 每节次 -->
+            <view wx:for="{{day.data}}" wx:for-index="sectionIndex" wx:for-item="section" wx:key="unique" class="course-wrap" style="top: {{courseTop[section.index]}}rpx;">
+                <!-- 循环 每门 # 单双周 -->
+                <block wx:for="{{section.data}}" wx:for-index="courseIndex" wx:for-item="course" wx:key="unique">
+                    <block wx:if="{{course.data.display}}">
+                        <view class="course" hover-class="course-hover" style="{{course.data.bg ? ('background-color:' + course.data.bg + ';') : ''}}{{course.data.height ? ('height:' + course.data.height + 'rpx;') : ''}}" data-day="{{dayIndex}}" data-section="{{sectionIndex}}" data-course="{{courseIndex}}" bindtap="showDetail">
+                            <text>{{course.data.name}}</text>
+                            <text>{{course.data.room}}</text>
                         </view>
                     </block>
                 </block>

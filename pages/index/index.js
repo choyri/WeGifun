@@ -188,6 +188,12 @@ pageParams.parseSchedule = function (currWeek) {
                     }
                 }
 
+                // 处理节次偏移
+                if (courseData.offset) {
+                    courseData.offset = courseData.offset === 1 ? 0 : 100;
+                    courseData.height = 100;
+                }
+
                 // 课程背景色 # 不在周期内的课程没有背景色 即默认的灰色
                 if (currWeek >= weekRange[0] && currWeek <= weekRange[1] && courseData.state) {
                     // 当前周大于等于起始周 小于等于结束周

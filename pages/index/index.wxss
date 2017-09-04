@@ -1,5 +1,3 @@
-@import '/utils/page-after.wxss';
-
 .edge {
     font-size: 26rpx;
 

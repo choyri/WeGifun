@@ -23,7 +23,7 @@
         "color": "#999999",
         "selectedColor": "#46C01B",
         "backgroundColor": "#FCFCFC",
-        "borderStyle": "white",
+        "borderStyle": "black",
         "list": [{
             "pagePath": "pages/index/index",
             "text": "课表",

@@ -1,5 +1,3 @@
-@import '/utils/page-after.wxss';
-
 .weui-cell.head {
     padding: 8px 14px;
 }

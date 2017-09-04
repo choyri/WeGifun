@@ -48,7 +48,9 @@ pageParams.onUnload = function () {
     app.event.off(this);
 };
 
-pageParams.renderPage = function (refresh = false) {
+pageParams.renderPage = function (refresh) {
+    refresh = refresh || app.cache.globalRefresh || false;
+
     // 当前周数 # 根据开学日期和当前日期计算 # 参考资料 http://t.cn/RyAh1MZ
     let currWeek = Math.ceil(((new Date()).getTime() - (new Date(app.cache.edu.termBegin)).getTime()) / 604800000);     // 1000 * 3600 * 24 * 7
 

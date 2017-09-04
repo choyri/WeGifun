@@ -16,6 +16,16 @@ pageParams.onReady = function () {
     wx.setNavigationBarTitle({
         title: app.lang.home_setting
     });
+
+    this.renderPage();
+};
+
+pageParams.renderPage = function() {
+    if (app.cache.globalRefresh) {
+        this.setData({
+            isLogin: app.cache.stu ? true : false
+        });
+    }
 };
 
 pageParams.bindContact = function () {
@@ -36,8 +46,11 @@ pageParams.bindExit = function () {
         success(res) {
             if (res.confirm) {
                 wx.clearStorage();
-                delete app.cache.stu;
-                app.event.emit('exit', true);
+                app.cache = {
+                    globalRefresh: true,
+                    userWxInfo: app.cache.userWxInfo
+                };
+                app.event.emit('exit');
                 wx.switchTab({
                     url: '/pages/home/home'
                 });

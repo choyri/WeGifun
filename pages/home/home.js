@@ -33,13 +33,8 @@ pageParams.onUnload = function () {
     app.event.off(this);
 };
 
-pageParams.renderPage = function (refresh = false) {
-    this.checkStuID();
-
-    // 清空缓存后 如果不强制刷新 home页会留有之前的学号信息
-    if (app.cache.clearStorage === true) {
-        refresh = true;
-    }
+pageParams.renderPage = function (refresh) {
+    refresh = refresh || app.cache.globalRefresh || false;
 
     if (this.data.userInfo && ! refresh) {
         console.log('直接渲染用户信息缓存');
@@ -49,6 +44,7 @@ pageParams.renderPage = function (refresh = false) {
     console.log(refresh ? '强制刷新用户信息' : '开始生成用户信息');
 
     let stu = app.cache.stu,
+        stu_id = (stu ? app.lang.home_stuid.replace('{0}', stu.id) : app.lang.home_stuid_null),
         userInfo = {
             isBindCard: ((stu && stu.cardPwd) ? true : false),
             isBindEdu: ((stu && stu.eduPwd) ? true : false)
@@ -59,24 +55,13 @@ pageParams.renderPage = function (refresh = false) {
     console.info('用户信息生成结束：', userInfo);
 
     this.setData({
+        stu_id,
         userInfo
     });
 
     app.saveData({
         dataUserInfo: userInfo
     });
-};
-
-pageParams.checkStuID = function () {
-    if (this.data.stu_id !== app.lang.home_stuid_null) {
-        return;
-    }
-
-    if (app.cache.stu) {
-        this.setData({
-            stu_id: app.lang.home_stuid.replace('{0}', app.cache.stu.id)
-        });
-    }
 };
 
 pageParams.getUserWxInfo = function () {

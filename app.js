@@ -21,7 +21,7 @@ appParams.onLaunch = function () {
             console.log('该版本要求强制清理本地数据缓存');
             wx.clearStorageSync();
             this.cache = {
-                clearStorage: true
+                globalRefresh: true
             };
         }
 

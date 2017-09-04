@@ -36,19 +36,29 @@ pageParams.onReady = function () {
 };
 
 pageParams.renderPage = function () {
-    let params = app.cache.loginParams;
+    let params = app.cache.loginParams,
+        refresh = app.cache.globalRefresh || false;
+
     this.is_add = (params && params.action !== 'add') ? false : true,
     this.is_edu = (params && params.type !== 'edu') ? false : true;
 
     console.info('登录操作？', this.is_add, '教务管理系统？', this.is_edu);
 
-    this.setData({
+    let data = {
         pwd_type: (this.is_edu ? 'text' : 'number'),
         pwd_maxlength: (this.is_edu ? '16' : '6'),
         tip: (this.is_edu ? app.lang.login_tip_edu : app.lang.login_tip_card),
         tip_edit: (this.is_add ? null : app.lang.login_tip_edit),
         title: (this.is_edu ? app.lang.login_title_edu : app.lang.login_title_card)
-    });
+    };
+
+    if (refresh) {
+        data.id_value = app.cache.stu ? app.cache.stu.id : '';
+        data.id_disabled = data.id_value ? true : false;
+        this.id = data.id_value;
+    }
+
+    this.setData(data);
 };
 
 pageParams.clear = function (e) {
@@ -154,8 +164,9 @@ pageParams.requestSuccess = function (res, hasData = false) {
     }
 
     app.saveData(data);
+    app.cache.globalRefresh = true;
 
-    app.event.emit('loginSuccess', true);
+    app.event.emit('loginSuccess');
 
     if (hasData) {
         app.event.emit('updateSchedule', true);

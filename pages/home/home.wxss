@@ -1,25 +1,37 @@
 @import '/utils/page-after.wxss';
 
 .weui-cell.head {
-    font-size: 17px;    
-    padding: 10px 15px;
+    padding: 8px 14px;
 }
+
 .weui-cell.head image {
+    width: 134rpx;
+    height: 134rpx;
+    margin-right: 16px;
     margin-left: 0;
-    width: 60px;
-    height: 60px;
 }
+
+.name {
+    margin-top: 2rpx;
+}
+
 .id {
-    font-size: 13px;
+    font-size: 30rpx;
+
+    margin-top: 8rpx;
+
     color: #999;
 }
+
 .weui-cell__hd {
     font-size: 0;
 }
+
 .weui-cell__hd image {
-    margin-left: 6px;
-    margin-right: 20px;
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 18px;
+    margin-left: 5px;
+
     vertical-align: middle;
-    width: 22px;
-    height: 22px;
 }

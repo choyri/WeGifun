@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.3.0 (20170903)',
+            '更新 修改获取用户信息的方案\n更新 修改课表解析与渲染的方案\n更新 取消隐藏因单双周而不用上的课程\n更新 反馈途径更改为客服会话\n更新 修改课表的存储格式\n更新 优化了外观样式\n更新 重构了程序\n新增 支持单小节课程'
+        ],
+        [
             'v0.2.2 (20170714)',
             '更新 改进对连上课程的处理\n更新 不再支持特殊课程'
         ],
@@ -18,6 +22,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.3.0 (20170903)',
+            'UPDATE: Modify the scheme to obtain user information\nUPDATE: Modify the scheme to analysing and rendering schedule\nUPDATE: Unhide the course because of alternate weeks\nUPDATE: The feedback entrance is changed to Wechat Contact\nUPDATE: Modify the storage format of the schedule\nUPDATE: Optimize the appearance style\nUPDATE: Refactor the program\nNEW: Support for half-section course'
+        ],
         [
             'v0.2.2 (20170714)',
             'UPDATE: Improve the handling of continuous course\nUPDATE: Special courses are no longer supported'

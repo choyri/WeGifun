@@ -1,13 +1,18 @@
-/* 截至开发者工具 0.17.172600 版本  page 加上 after 伪元素后会使调试模式下的 Wxml 面板呈现空白状态  建议开发时注释此元素 */
+/* 截至开发者工具 0.22.202200 版本  page 加上 after 伪元素后会使调试模式下的 Wxml 面板呈现空白状态  建议开发时注释此元素 */
+
 page::after {
-    content: "";
     position: fixed;
-    left: 0;
     bottom: 0;
+    left: 0;
+
     width: 100%;
-    border-bottom: 1rpx solid #D6D6D6;
+
+    content: '';
     transform-origin: bottom;
+
+    border-bottom: 1rpx solid #d6d6d6;
 }
+
 @media (min-resolution: 3dppx) {
     page::after {
         transform: scaleY(.666666);

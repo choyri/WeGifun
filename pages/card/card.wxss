@@ -1,15 +1,18 @@
 page {
-    background-color: #FFFFFF;
+    background-color: #fff;
 }
+
 text {
     display: block;
 }
+
 .weui-msg image {
-    width: 128px;
-    height: 128px;
+    width: 250rpx;
+    height: 250rpx;
+
     vertical-align: top;
 }
+
 .balance {
-    font-size: 36px;
-    height: 60px;
+    font-size: 72rpx;
 }

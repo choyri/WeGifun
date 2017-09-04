@@ -1,9 +1,9 @@
 <view class="weui-cells">
-    <view id="jw" class="weui-cell" hover-class="weui-cell_active" bindtap="bindJump">
-        <view class="weui-cell__bd">{{text_jw}}</view>
-        <view class="weui-cell__ft">{{jw_bind_status}}</view>
+    <view id="edu" class="weui-cell" hover-class="weui-cell_active" data-action="{{edu_action}}" bindtap="bindJump">
+        <view class="weui-cell__bd">{{text_edu}}</view>
+        <view class="weui-cell__ft">{{edu_bind_status}}</view>
     </view>
-    <view id="card" class="weui-cell" hover-class="weui-cell_active" bindtap="bindJump">
+    <view id="card" class="weui-cell" hover-class="weui-cell_active" data-action="{{card_action}}" bindtap="bindJump">
         <view class="weui-cell__bd">{{text_card}}</view>
         <view class="weui-cell__ft">{{card_bind_status}}</view>
     </view>

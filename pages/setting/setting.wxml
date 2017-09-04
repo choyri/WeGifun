@@ -1,6 +1,6 @@
 <view class="weui-cells">
-    <navigator wx:if="{{isLogin}}" url="/pages/setting/jw/jw" class="weui-cell" hover-class="weui-cell_active">
-        <view class="weui-cell__bd">{{text_jw}}</view>
+    <navigator wx:if="{{isLogin}}" url="/pages/setting/edu/edu" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{text_edu}}</view>
     </navigator>
     <view wx:if="{{wxSettingCanUse}}" class="weui-cell" hover-class="weui-cell_active" bindtap="bindWxSetting">
         <view class="weui-cell__bd">{{text_authorization}}</view>

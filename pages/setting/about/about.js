@@ -1,28 +1,29 @@
 let app = getApp(),
     pageParams = {
         data: {
+            egg_display: false,
             quote: app.config.quote,
-            egg_display: false
+            qqGroup: app.config.qqGroup,
+            text_communication: app.lang.about_communication,
+            communication_content: app.lang.about_communication_content,
+            text_gratitude: app.lang.about_gratitude,
+            text_open_source: app.lang.about_open_source,
+            text_security: app.lang.about_security,
+            security_content: app.lang.about_security_content,
+            version: app.config.version
         },
         countClick: 0
     };
 
-pageParams.onLoad = function () {
+pageParams.onReady = function () {
     wx.setNavigationBarTitle({
         title: app.lang.setting_about
-    });
-
-    this.setData({
-        text_open_source: app.lang.about_open_source,
-        text_security: app.lang.about_security,
-        security_content: app.lang.about_security_content,
-        text_gratitude: app.lang.about_gratitude,
-        version: app.config.version
     });
 };
 
 pageParams.bindClick = function () {
-    if (++this.countClick == 5) {
+    if (++this.countClick === 5) {
+        // 基础库 1.2.0 开始支持
         if (wx.vibrateLong) {
             wx.vibrateLong();
         }
@@ -33,13 +34,14 @@ pageParams.bindClick = function () {
     }
 };
 
-pageParams.bindCopy = function () {
+pageParams.bindCopy = function (e) {
+    // 基础库 1.1.0 开始支持
     if (wx.setClipboardData) {
         wx.setClipboardData({
-            data: 'http://t.cn/RSpL1p5',
-            success(res) {
+            data: e.currentTarget.dataset.text || '',
+            success() {
                 wx.showToast({
-                    title: app.lang.about_copy_success,
+                    title: app.lang.about_copy_success
                 });
             }
         });

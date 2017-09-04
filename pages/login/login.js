@@ -1,158 +1,197 @@
 let app = getApp(),
-    jwHelper = require('../../utils/jwHelper.js'),
+    eduService = require('../../utils/eduService.js'),
     request = require('../../utils/request.js'),
+
+    id_value = app.cache.stu ? app.cache.stu.id : '',
+    id_disabled = id_value ? true : false,
+
     pageParams = {
         data: {
-            btn_disabled: true
+            btn_disabled: true,
+            btn_title: app.lang.btn_title,
+            id_clear: '',
+            id_disabled,
+            id_focus: '',
+            id_value,
+            pwd_clear: '',
+            pwd_focus: '',
+            text_id: app.lang.login_id,
+            text_pwd: app.lang.login_pwd,
+
+            // 初始值 # 不设置的话渲染页面时会抖动 # 不过这种方法 渲染时改为其他标题也会造成轻微的视觉影响 目前用CSS动画掩盖
+            title: '.'
         },
-        id: '',
+        id: id_value,
         pwd: ''
     };
 
-pageParams.onLoad = function (query) {
-    wx.setNavigationBarTitle({
-        title: app.lang.login_title
-    });
-
-    // 判断当前服务类型 # 教务管理系统 亦或 校园卡
-    this.is_jw = query.type == 'card' ? false : true;
-
-    // 判断当前操作类型 # 添加 亦或 修改
-    this.is_add = query.action == 'edit' ? false : true;
-
-    if (query.id) {
-        this.id = query.id;
+pageParams.onReady = function () {
+    if (! app.lang.isCN) {
+        wx.setNavigationBarTitle({
+            title: app.lang.title
+        });
     }
 
-    // 如果带学号参数 那么显示学号并禁用学号输入框
-    let id_curr = query.id || '',
-        id_disabled = id_curr ? true : false,
+    this.renderPage();
+};
 
-        // 如果是修改（密码）操作 显示提示
-        tip_edit_pwd = this.is_add ? null : app.lang.login_tip_edit_pwd,
+pageParams.renderPage = function () {
+    let params = app.cache.loginParams;
+    this.is_add = (params && params.action !== 'add') ? false : true,
+    this.is_edu = (params && params.type !== 'edu') ? false : true;
 
-        // 根据不同服务类型显示对应的提示
-        tip = this.is_jw ? app.lang.login_tip_jw : app.lang.login_tip_card,
-
-        // 密码类型 # 字符密码 亦或 数字密码
-        pwd_type = this.is_jw ? 'text' : 'number',
-
-        // 密码长度
-        pwd_maxlength = this.is_jw ? '16' : '6';
+    console.info('登录操作？', this.is_add, '教务管理系统？', this.is_edu);
 
     this.setData({
-        text_id: app.lang.login_id,
-        text_pwd: app.lang.login_pwd,
-        btn_title: app.lang.btn_title,
-        tip,
-        id_curr,
-        id_disabled,
-        pwd_type,
-        pwd_maxlength,
-        tip_edit_pwd
+        pwd_type: (this.is_edu ? 'text' : 'number'),
+        pwd_maxlength: (this.is_edu ? '16' : '6'),
+        tip: (this.is_edu ? app.lang.login_tip_edu : app.lang.login_tip_card),
+        tip_edit: (this.is_add ? null : app.lang.login_tip_edit),
+        title: (this.is_edu ? app.lang.login_title_edu : app.lang.login_title_card)
     });
 };
 
-pageParams.onUnload = function () {
-    app.event.off(this);
+pageParams.clear = function (e) {
+    let data = {},
+        target = e.currentTarget.dataset.target;
+
+    // 清空数据
+    this[target] = '';
+    data[target + '_value'] = '';
+
+    // 隐藏清除按钮
+    data[target + '_clear'] = '';
+
+    // 确定按钮不可点击
+    if (this.data.btn_disabled !== true) {
+        data.btn_disabled = true;
+    }
+
+    this.setData(data);
+};
+
+pageParams.bindInput = function (e) {
+    let data = {},
+        target = e.currentTarget.id;
+
+    this[target] = e.detail.value;
+
+    // 学号密码长度一定时 解除确定按钮的禁止态
+    data.btn_disabled = (this.id.length === 8 && this.pwd.length >= 6) ? false : true;
+
+    // 学号密码开始输入后 显示对应的清除按钮
+    data[target + '_clear'] = (this[target].length > 0) ? 'show' : '';
+
+    // 找到值有变动的项目 # 不同时才修改 提高性能
+    for (let item in data) {
+        if (data[item] === this.data[item]) {
+            delete data[item];
+        }
+    }
+
+    if (Object.getOwnPropertyNames(data).length > 0) {
+        console.info('新值：', data);
+        this.setData(data);
+    }
 };
 
 pageParams.bindFocusBlur = function (e) {
-    let tmp = {},
+    let data = {},
         eventType = {
             focus: ' focus',
             blur: ''
         };
 
-    tmp[e.currentTarget.id + '_focus'] = eventType[e.type];
+    data[e.currentTarget.id + '_focus'] = eventType[e.type];
 
-    this.setData(tmp);
+    this.setData(data);
 };
 
-pageParams.bindInput = function (e) {
-    this[e.currentTarget.id] = e.detail.value;
-
-    let btn_disabled = true;
-
-    if (this.id.length == 8 && this.pwd.length >= 6) {
-        btn_disabled = false;
-    }
-
-    // 只有在目的状态与当前状态不同时才会修改数据 提高性能
-    if (btn_disabled != this.data.btn_disabled) {
-        this.setData({
-            btn_disabled
-        });
-    }
-};
-
-pageParams.bindConfirm = function () {
-    let that = this,
-        data = {
+pageParams.submit = function () {
+    let data = {
             id: this.id,
             pwd: this.pwd
         };
 
-    if (this.is_jw) {
-        if (this.is_add) {
-            request.getJwSchedule(data, function (res) {
-                that.requestSuccess('jw', res, 'schedule');
-            });
-        } else {
-            request.jwVerify(data, function (res) {
-                that.requestSuccess('jw', res);
-            });
-        }
-    } else {
-        request.cardVerify(data, function (res) {
-            that.requestSuccess('card', res);
+    if (! this.is_edu) {
+        console.log('校园卡 开始鉴权');
+
+        request.cardAuth(data, (res) => {
+            this.requestSuccess(res);
+        }, (res) => {
+            this.requestFail(res);
         });
+        return;
     }
+
+    if (this.is_add) {
+        console.log('教务管理系统 开始获取课表');
+
+        request.getEduSchedule(data, (res) => {
+            this.requestSuccess(res, true);
+        }, (res) => {
+            this.requestFail(res);
+        });
+        return;
+    }
+
+    console.log('教务管理系统 开始鉴权');
+
+    request.eduAuth(data, (res) => {
+        this.requestSuccess(res);
+    }, (res) => {
+        this.requestFail(res);
+    });
 };
 
-pageParams.requestSuccess = function (requestType, res, target) {
-    let that = this;
-
-    if (res.status == 200) {
-        let userInfoStu = app.cache.userInfoStu || {};
-        userInfoStu.id = this.id;
-        userInfoStu[requestType + 'Pwd'] = this.pwd;
-
-        let data = {
-            userInfoStu
+pageParams.requestSuccess = function (res, hasData = false) {
+    let data = {
+            stu: this.handleAuth()
         };
 
-        if (target) {
-            data.jw = jwHelper.processSchedule(res.data);
-        }
+    if (hasData) {
+        data.edu = this.handleSchedule(res);
+    }
 
-        app.saveData(data);
-        app.event.emit('loginSuccess', true);
+    app.saveData(data);
 
-        if (requestType == 'jw') {
-            app.event.emit('jwUpdate', true);
-        }
+    app.event.emit('loginSuccess', true);
 
-        if (that.data.id_disabled) {
-            wx.navigateBack();
-        } else {
-            let url = target ? '/pages/index/index' : '/pages/home/home';
+    if (hasData) {
+        app.event.emit('updateSchedule', true);
+    }
 
-            wx.switchTab({
-                url
-            });
-        }
+    if (this.data.id_disabled) {
+        wx.navigateBack();
     } else {
-        app.showErrModal(res.msg, function () {
-            // 如果学号不可编辑 返回错误就清空密码
-            if (that.data.id_disabled) {
-                that.setData({
-                    pwd_value: '',
-                    btn_disabled: true
-                });
-            }
+        wx.switchTab({
+            url: (hasData ? '/pages/index/index' : '/pages/home/home')
         });
     }
 };
+
+pageParams.requestFail = function () {
+    // 如果学号不可编辑 返回错误就清空密码
+    if (this.data.id_disabled) {
+        this.setData({
+            btn_disabled: true,
+            pwd_value: ''
+        });
+    }
+}
+
+pageParams.handleAuth = function () {
+    let pwdType = this.is_edu ? 'eduPwd' : 'cardPwd',
+        stu = {};
+
+    stu.id = this.id;
+    stu[pwdType] = this.pwd;
+
+    return stu;
+};
+
+pageParams.handleSchedule = function (res) {
+    return eduService.processSchedule(res.data);
+}
 
 Page(pageParams);

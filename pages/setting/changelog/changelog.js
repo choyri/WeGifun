@@ -1,13 +1,13 @@
 let app = getApp(),
-    pageParams = {};
+    pageParams = {
+        data: {
+            changelog: app.lang.changelog
+        }
+    };
 
-pageParams.onLoad = function () {
+pageParams.onReady = function () {
     wx.setNavigationBarTitle({
         title: app.lang.setting_changelog
-    });
-
-    this.setData({
-        changelog: app.lang.changelog
     });
 };
 

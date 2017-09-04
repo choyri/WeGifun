@@ -1,37 +1,54 @@
 .weui-cell__bd {
     text-align: right;
 }
+
 .weui-form-preview {
+    font-size: 32rpx;
+
     margin-top: 1.17647059em;
-    font-size: 16px;
 }
+
 .weui-form-preview:last-child {
     margin-bottom: 1.17647059em;
 }
+
 .weui-form-preview::before {
     transform-origin: top;
 }
+
 .weui-form-preview::after {
     transform-origin: bottom;
 }
+
 @media (min-resolution: 2dppx) {
-    .weui-form-preview::before, .weui-form-preview::after, .weui-form-preview__hd::after {
+    .weui-form-preview::before,
+    .weui-form-preview::after,
+    .weui-form-preview__hd::after {
         transform: scaleY(.5);
     }
 }
+
 @media (min-resolution: 3dppx) {
-    .weui-form-preview::before, .weui-form-preview::after, .weui-form-preview__hd::after {
+    .weui-form-preview::before,
+    .weui-form-preview::after,
+    .weui-form-preview__hd::after {
         transform: scaleY(.333333);
     }
 }
+
 .weui-form-preview__hd {
-    font-size: 17px;
+    font-size: 34rpx;
 }
+
 .weui-form-preview__hd::after {
     right: 15px;
-    border-bottom-style: dashed;
+
     transform-origin: bottom;
+
+    border-bottom-style: dashed;
 }
-.weui-form-preview__bd, .weui-form-preview__value {
+
+.weui-form-preview__bd,
+.weui-form-preview__value {
     font-size: inherit;
 }

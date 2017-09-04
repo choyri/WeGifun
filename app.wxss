@@ -2,52 +2,69 @@
 
 page {
     /* 移动端字体设置 http://t.cn/Rad9zxW */
-    font-family: -apple-system, BlinkMacSystemFont, PingFang, "Helvetica Neue", STHeiti, Tahoma, Simsun, sans-serif;
-    background-color: #EBEBEB;
+    font-family: -apple-system, BlinkMacSystemFont, PingFang, 'Helvetica Neue', STHeiti, Tahoma, sans-serif;
+
+    background-color: #ebebeb;
 }
-button, button::after {
+
+button,
+button::after {
     border-radius: 3px;
 }
-button[disabled][type="primary"] {
-    background-color: #A3DEA3;
+
+button[disabled][type='primary'] {
+    background-color: #a3dea3;
 }
-.weui-cells::before, .weui-cells::after {
+
+.weui-cells::before,
+.weui-cells::after {
     border: 0;
 }
+
 .weui-cells:last-child {
     margin-bottom: 1.17647059em;
 }
+
 .weui-cells__tips {
-    margin-top: 1.17647059em;    
+    margin-top: 1.17647059em;
+
     text-align: center;
 }
+
 .weui-cell::before {
     right: 15px;
+
     transform-origin: top;
 }
+
 @media (min-resolution: 2dppx) {
     .weui-cell::before {
         transform: scaleY(.5);
     }
 }
+
 @media (min-resolution: 3dppx) {
     .weui-cell::before {
         transform: scaleY(.333333);
     }
 }
+
 .weui-cell {
     padding-top: 12px;
     padding-bottom: 12px;
-    font-size: 16px;
 }
+
 .weui-cell.weui-cell_input {
     padding-top: 0;
     padding-bottom: 0;
 }
+
 .weui-cell_active {
-    background-color: #D9D9D9;
     transition: all .2s ease-in-out;
+
+    background-color: #d9d9d9;
 }
+
 .weui-badge {
     vertical-align: inherit;
 }

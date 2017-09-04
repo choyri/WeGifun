@@ -17,6 +17,7 @@ class Event {
             args;
 
         if (store) {
+            store = store.slice(0);
             args = [].slice.call(arguments, 1);
 
             store.map((tmp) => {
@@ -28,7 +29,7 @@ class Event {
     off(ctx) {
         this._stores = this._stores || {};
 
-        if (!arguments.length) {
+        if (! arguments.length) {
             this._stores = {};
             return;
         }

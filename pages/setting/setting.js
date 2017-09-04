@@ -1,30 +1,30 @@
 let app = getApp(),
-    pageParams = {};
+    pageParams = {
+        data: {
+            text_about: app.lang.setting_about,
+            text_authorization: app.lang.setting_authorization,
+            text_changelog: app.lang.setting_changelog,
+            text_edu: app.lang.edu,
+            text_exit: app.lang.setting_exit,
+            text_feedback: app.lang.setting_feedback,
+            isLogin: (app.cache.stu ? true : false),
+            wxSettingCanUse: (wx.openSetting ? true : false)
+        }
+    };
 
-pageParams.onLoad = function () {
+pageParams.onReady = function () {
     wx.setNavigationBarTitle({
         title: app.lang.home_setting
-    });
-
-    let isLogin = app.cache.userInfoStu ? true : false,
-        wxSettingCanUse = wx.openSetting ? true : false;
-
-    this.setData({
-        isLogin,
-        wxSettingCanUse,
-        text_jw: app.lang.setting_jw,
-        text_authorization: app.lang.setting_authorization,
-        text_feedback: app.lang.setting_feedback,
-        text_about: app.lang.setting_about,
-        text_changelog: app.lang.setting_changelog,
-        text_exit: app.lang.setting_exit
     });
 };
 
 pageParams.bindContact = function () {
+    // 基础库 1.1.0 开始支持
     if (! wx.canIUse || ! wx.canIUse('button.open-type.contact')) {
         app.showErrModal(app.lang.wx_version_warn);
     }
+
+    console.log('进入客服会话');
 };
 
 pageParams.bindExit = function () {
@@ -36,10 +36,10 @@ pageParams.bindExit = function () {
         success(res) {
             if (res.confirm) {
                 wx.clearStorage();
-                delete app.cache.userInfoStu;
+                delete app.cache.stu;
                 app.event.emit('exit', true);
                 wx.switchTab({
-                    url: '/pages/home/home',
+                    url: '/pages/home/home'
                 });
             }
         }
@@ -49,7 +49,7 @@ pageParams.bindExit = function () {
 pageParams.bindWxSetting = function () {
     wx.openSetting({
         success() {
-            console.warn('授权状态已变更');
+            console.info('授权状态已变更');
             app.event.emit('changeAuth');
         }
     });

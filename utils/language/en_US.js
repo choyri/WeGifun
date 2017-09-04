@@ -1,17 +1,19 @@
 module.exports = {
+    title: 'WeGifun',
+
+    edu: 'Education Management System',
+    card: 'Campus Card',
+
+    btn_title: 'Confirm',
+    loading: 'Loading',
+    request_failed: 'Request failed. Please check the network.',
+    wx_version_warn: 'WeChat version is too low, some features are limited.',
+
     modal_title: 'Uh',
     modal_confirm: 'OK',
     modal_cancel: 'No',
 
-    btn_title: 'Confirm',
-
-    loading: 'Loading',
-    request_failed: 'Request failed. Please check the network.',
-    server_error: 'Server error, please try again later.',
-
-    title: 'WeGifun',
-
-    index_schedule_null: 'Empty data, get schedule now?',
+    index_schedule_null: 'Empty schedule, get it now?',
     index_schedule_detail_title: 'Detail',
     index_curr_week: 'No \n {0}',
     index_week_title: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
@@ -22,39 +24,35 @@ module.exports = {
     home_default_nickname: 'Gifuner',
     home_stuid: 'StuID：{0}',
     home_stuid_null: 'Not logged in',
-    home_card: 'Campus Card',
     home_setting: 'Setting',
 
-    profile: 'My Profile',
-    profile_jw: 'Education Management System',
-    profile_card: 'Campus Card',
+    profile_title: 'My Profile',
     profile_bind: 'Bind',
     profile_unbind: 'Unbind',
     profile_tip: 'Only allowed to bind services under the same StuID.',
 
-    login_title: 'Login',
+    login_title_edu: 'Education Management System - Login',
+    login_title_card: 'Campus Card - Login',
     login_id: 'Stu ID',
     login_pwd: 'Password',
-    login_tip_edit_pwd: 'If the password has changed, you can enter the new password to update the binding.',
-    login_tip_jw: 'Password of Education Management System, 6-16 characters.',
-    login_tip_card: 'Password of Campus Card, 6 digits.',
+    login_tip_edit: 'If the password has changed, you can enter the new password to update the binding.',
+    login_tip_edu: 'Password format: 6-16 characters.',
+    login_tip_card: 'Password format: 6 digits.',
 
-    card_balance_label: 'My Balance',
-    card_record_btn: 'Records',
+    card_balance: 'My Balance',
+    card_record: 'Records',
     card_witticism: 'Money is not everything. There\'s Alipay and Tenpay.',
 
     record_start_date: 'Start Date',
     record_end_date: 'End Date',
-    record_confirm: 'Confirm',
     record_tip: '{0} record(s), {1} CNY.',
     record_amount: 'Amount',
     record_area: 'Area',
     record_platform: 'Platform',
     record_time: 'Time',
 
-    setting_jw: 'Education Management System',
-    setting_jw_update_schedule: 'Update schedule',
-    setting_jw_last_update: 'Last update: {0}',
+    setting_edu_update_schedule: 'Update schedule',
+    setting_edu_last_update: 'Last update: {0}',
     setting_authorization: 'Authorization',
     setting_feedback: 'Feedback',
     setting_about: 'About',
@@ -62,14 +60,11 @@ module.exports = {
     setting_exit: 'Exit',
     setting_exit_content: 'It will clear all local cache when you exit, continue?',
 
-    feedback_content: 'Content',
-    feedback_contact_way: 'Contact way (optional)',
-    feedback_tip: 'If there are any questions or suggestions, welcome your feedback.',
-    feedback_success: 'Submit success. Thanks!',
-
     about_open_source: 'Open Source',
     about_copy_success: 'Has been copied',
-    about_security: 'Privacy and Security',
-    about_security_content: 'All the password of services you have bound are stored locally, so it will bring the StuID and password in each request.\nThe Server will record your StuID (not include password) to cache data for a short period of time.\nIn each request, we will store some information anonymously for statistics.\nPlease do not use this program if you are worried about our service.',
-    about_gratitude: 'Gratitude'
+    about_security: 'Security and Privacy',
+    about_security_content: 'All the password of services you have bound are stored locally. Each time you use the service will carry the StuID and password, and then through the HTTPS encryption channel to interact with the server. Please ensure the safety of your network to prevent MITM.\nIn each request, the Server will store some information anonymously (not include password) for statistics and short-term cache.\nPlease DO NOT USE this program if you do not trust me.',
+    about_gratitude: 'Gratitude',
+    about_communication: 'Communication',
+    about_communication_content: 'Welcome to join the QQ Group. Please indicate \'WeGifun\'.'
 };

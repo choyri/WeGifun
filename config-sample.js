@@ -1,13 +1,13 @@
 let host = 'https://www.test.com',
     config = {
         // 教务管理系统帐号验证
-        jwVerifyURL: host + '/test1',
+        eduAuthURL: host + '/test1',
 
         // 课表
-        jwScheduleURL: host + '/test2',
+        eduScheduleURL: host + '/test2',
 
         // 校园卡帐号验证
-        cardVerifyURL: host + '/test3',
+        cardAuthURL: host + '/test3',
 
         // 校园卡余额
         cardBalanceURL: host + '/test4',
@@ -15,13 +15,14 @@ let host = 'https://www.test.com',
         // 校园卡消费记录
         cardRecordURL: host + '/test5',
 
-        // 反馈
-        feedbackURL: host + '/test6',
+        // 小程序版本
+        version: 'v0.3.0',
+
+        // 新版本强制清理本地数据缓存
+        clearStorage: true,
 
         quote: '那只敏捷的棕毛狐狸跃过那只懒狗。',
-
-        // 小程序版本
-        version: 'v0.1.0',
+        qqGroup: '10001'
     };
 
 module.exports = config;

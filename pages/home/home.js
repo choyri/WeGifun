@@ -1,27 +1,31 @@
 let app = getApp(),
     pageParams = {
         data: {
-            text_card: app.lang.home_card,
+            stu_id: (app.cache.stu ? app.lang.home_stuid.replace('{0}', app.cache.stu.id) : app.lang.home_stuid_null),
+            text_card: app.lang.card,
             text_setting: app.lang.home_setting,
-            stuId: (app.cache.userInfoStu ? app.lang.home_stuid.replace('{0}', app.cache.userInfoStu.id) : app.lang.home_stuid_null),
             userInfo: app.cache.dataUserInfo || null
         }
     };
 
 pageParams.onLoad = function () {
-    app.event.on('changeAuth', this.getUserInfoWx, this);
+    app.event.on('changeAuth', this.getUserWxInfo, this);
     app.event.on('exit', this.renderPage, this);
     app.event.on('loginSuccess', this.renderPage, this);
+};
 
-    wx.setNavigationBarTitle({
-        title: app.lang.title,
-    });
+pageParams.onReady = function () {
+    if (! app.lang.isCN) {
+        wx.setNavigationBarTitle({
+            title: app.lang.title
+        });
+    }
 
     this.renderPage();
 
-    if (! app.cache.userInfoWx && app.cache.authUserInfo !== false) {
-        console.log('开始首次授权');
-        this.getUserInfoWx();
+    if (! app.cache.userWxInfo && app.cache.hasAuth !== false) {
+        console.log('首次授权');
+        this.getUserWxInfo();
     }
 };
 
@@ -30,16 +34,29 @@ pageParams.onUnload = function () {
 };
 
 pageParams.renderPage = function (refresh = false) {
-    if (app.cache.dataUserInfo && ! refresh) {
+    this.checkStuID();
+
+    // 清空缓存后 如果不强制刷新 home页会留有之前的学号信息
+    if (app.cache.clearStorage === true) {
+        refresh = true;
+    }
+
+    if (this.data.userInfo && ! refresh) {
         console.log('直接渲染用户信息缓存');
         return;
     }
 
-    let userInfo = {
-            isBindCard: ((app.cache.userInfoStu && app.cache.userInfoStu.cardPwd) ? true : false)
+    console.log(refresh ? '强制刷新用户信息' : '开始生成用户信息');
+
+    let stu = app.cache.stu,
+        userInfo = {
+            isBindCard: ((stu && stu.cardPwd) ? true : false),
+            isBindEdu: ((stu && stu.eduPwd) ? true : false)
         };
 
-    this.updateUserInfoWx(userInfo, app.cache.userInfoWx);
+    this.decorateUser(userInfo, app.cache.userWxInfo);
+
+    console.info('用户信息生成结束：', userInfo);
 
     this.setData({
         userInfo
@@ -50,16 +67,29 @@ pageParams.renderPage = function (refresh = false) {
     });
 };
 
-pageParams.getUserInfoWx = function () {
-    console.log('开始获取 userInfoWx');
-    app.getUserInfoWx(() => {
+pageParams.checkStuID = function () {
+    if (this.data.stu_id !== app.lang.home_stuid_null) {
+        return;
+    }
+
+    if (app.cache.stu) {
+        this.setData({
+            stu_id: app.lang.home_stuid.replace('{0}', app.cache.stu.id)
+        });
+    }
+};
+
+pageParams.getUserWxInfo = function () {
+    console.log('开始获取 userWxInfo');
+
+    app.storeUserWxInfo(() => {
         this.renderPage(true);
     });
 };
 
-pageParams.updateUserInfoWx = function (origin, userInfoWx = null) {
-    origin.avatar = userInfoWx ? userInfoWx.avatarUrl : '/images/avatar.png';
-    origin.nickname = userInfoWx ? userInfoWx.nickName : app.lang.home_default_nickname;
+pageParams.decorateUser = function (origin, userWxInfo = null) {
+    origin.avatar = userWxInfo ? userWxInfo.avatarUrl : '/images/avatar.png';
+    origin.nickName = userWxInfo ? userWxInfo.nickName : app.lang.home_default_nickname;
 };
 
 Page(pageParams);

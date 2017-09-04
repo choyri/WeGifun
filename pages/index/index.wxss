@@ -1,132 +1,189 @@
 @import '/utils/page-after.wxss';
 
 .edge {
+    font-size: 26rpx;
+
     position: relative;
-    font-size: 13px;
-    color: #999999;
-    background-color: #FFFFFF;
+
     text-align: center;
+
+    color: #999;
+    background-color: #fff;
 }
-.edge::after, .head .left::after {
-    content: "";
+
+.edge::after,
+.curr-week::after {
     position: absolute;
+
+    content: '';
 }
+
 .edge.head::after {
-    left: 0;
     bottom: 0;
+    left: 0;
+
     width: 100%;
-    border-bottom: 1rpx solid #D9D9D9;
+
     transform-origin: bottom;
+
+    border-bottom: 1rpx solid #d9d9d9;
 }
-.edge.sidebar::after, .head .left::after {
-    right: 0;
+
+.edge.sidebar::after,
+.curr-week::after {
     top: 0;
+    right: 0;
+
     height: 100%;
-    border-right: 1rpx solid #D9D9D9;
+
     transform-origin: right;
+
+    border-right: 1rpx solid #d9d9d9;
 }
+
 @media (min-resolution: 2dppx) {
     .edge.head::after {
         transform: scaleY(.5);
     }
-    .edge.sidebar::after, .head .left::after {
+    .edge.sidebar::after,
+    .curr-week::after {
         transform: scaleX(.5);
     }
 }
+
 @media (min-resolution: 3dppx) {
     .edge.head::after {
         transform: scaleY(.333333);
     }
-    .edge.sidebar::after, .head .left::after {
+    .edge.sidebar::after,
+    .curr-week::after {
         transform: scaleX(.333333);
     }
 }
+
 .head {
-    display: flex;
     position: fixed;
+    z-index: 100;
+
+    display: flex;
+
     width: 100%;
     height: 60rpx;
-    z-index: 100;
 }
-.head .left {
+
+.curr-week {
     position: relative;
 }
-.head .left, .sidebar {
+
+.curr-week,
+.sidebar {
     width: 35rpx;
 }
-.head .left text {
-    display: block;
+
+.curr-week text {
     line-height: 30rpx;
-    font-size: 90%;
+
+    display: block;
 }
-.head .week-title {
-    flex: auto;
+
+.week-title {
     display: flex;
-}
-.week-title text {
+
     flex: auto;
-    line-height: 60rpx;
 }
+
+.week-title text {
+    line-height: 60rpx;
+
+    flex: auto;
+}
+
 .body {
     display: flex;
+
     padding-top: 60rpx;
 }
+
 .sidebar {
-    flex: none;
     display: flex;
     flex-direction: column;
+
     padding: 10rpx 0;
+
+    flex: none;
 }
+
 .sidebar view {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+
     height: 200rpx;
+    margin-bottom: 10rpx;
+
+    justify-content: space-around;
 }
+
 .sidebar view:last-child {
     height: 100rpx;
 }
-.sidebar view {
-    margin-bottom: 10rpx;
-}
+
 .content {
-    flex: auto;
     display: flex;
+
     padding: 10rpx 0;
-}
-.content .column {
+
     flex: auto;
+}
+
+.content .column {
+    position: relative;
+
     display: flex;
     flex-direction: column;
-    position: relative;
-    margin: 0 3px;
+
+    margin: 0 6rpx;
+
+    flex: auto;
 }
+
 .column .course-wrap {
     position: absolute;
-    width: 100%;
+
     overflow: hidden;
+
+    width: 100%;
 }
+
 .course-wrap .course {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    height: 200rpx;
-    text-align: center;
-    background-color: #B2B2B2;
-    color: #FFFFFF;
-    padding: 2px;
+
     box-sizing: border-box;
+    height: 200rpx;
+    padding: 2rpx;
+
+    text-align: center;
+
+    color: #fff;
+    background-color: #b2b2b2;
+
+    justify-content: space-around;
 }
+
 .course-wrap text {
-    /* 多行溢出省略号 http://t.cn/zWUS0VF */
+    font-size: 28rpx;
+    line-height: 32rpx;
+
     display: -webkit-box;
+    overflow: hidden;
+
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    font-size: 13px;
-    line-height: 15px;
+    /* 多行溢出省略号 http://t.cn/zWUS0VF */
 }
+
 .course-hover {
-    opacity: .8;
     transition: all .2s ease-in-out;
+
+    opacity: .8;
 }

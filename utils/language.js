@@ -1,8 +1,17 @@
-let currLang = wx.getSystemInfoSync().language || 'zh_CN';
-currLang = currLang.indexOf('zh') > -1 ? 'zh_CN' : 'en_US';
+let currLang = wx.getSystemInfoSync().language || 'zh_CN',
+    isCN = true,
+    lang = null;
 
-let lang = require('./language/' + currLang + '.js');
+if (currLang.indexOf('zh') > -1) {
+    currLang = 'zh_CN';
+} else {
+    currLang = 'en_US';
+    isCN = false;
+}
+
+lang = require('./language/' + currLang + '.js');
 
 lang.changelog = require('./changelog.js')[currLang];
+lang.isCN = isCN;
 
 module.exports = lang;

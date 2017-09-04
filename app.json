@@ -2,6 +2,8 @@
     "pages": [
         "pages/index/index",
 
+        "pages/login/login",
+
         "pages/home/home",
         "pages/home/profile/profile",
 
@@ -9,11 +11,9 @@
         "pages/card/record/record",
 
         "pages/setting/setting",
-        "pages/setting/jw/jw",
+        "pages/setting/edu/edu",
         "pages/setting/about/about",
-        "pages/setting/changelog/changelog",
-
-        "pages/login/login"
+        "pages/setting/changelog/changelog"
     ],
     "window": {
         "navigationBarBackgroundColor": "#393A3F",
@@ -31,12 +31,12 @@
             "selectedIconPath": "images/icon_index_hl.png"
          }, {
             "pagePath": "pages/home/home",
-            "text": "我",
+            "text": "我的",
             "iconPath": "images/icon_home.png",
             "selectedIconPath": "images/icon_home_hl.png"
         }]
     },
     "networkTimeout": {
-        "request": 8000
+        "request": 5000
     }
 }

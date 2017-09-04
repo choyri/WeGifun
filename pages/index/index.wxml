@@ -1,5 +1,5 @@
 <view class="head edge">
-    <view class="left">
+    <view class="curr-week">
         <text>{{currWeek}}</text>
     </view>
     <view class="week-title">

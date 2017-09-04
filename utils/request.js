@@ -1,14 +1,15 @@
 let app = getApp(),
-    url = '',
-    request = {};;
+    request = {},
+    targetStatusCode = 200,
+    url = '';
 
-const config = app.config,
-    lang = app.lang;
+const config = app.config;
 
 function proxy(data, successCallback, failCallback, completeCallback) {
+    // 基础库 1.1.0 开始支持
     if (wx.showLoading) {
         wx.showLoading({
-            title: lang.loading
+            title: app.lang.loading
         });
     }
 
@@ -17,18 +18,23 @@ function proxy(data, successCallback, failCallback, completeCallback) {
         data,
         method: 'POST',
         success(res) {
-            if (res.statusCode == 200) {
+            if (res.statusCode === targetStatusCode) {
+                console.info('服务正常：', res.data || '无返回');
                 successCallback(res.data);
             } else {
-                app.showErrModal(lang.server_error);
+                console.warn('服务出错：', res.data);
+                let content = '#' + res.data.code + '，' + res.data.msg;
+                app.showErrModal(content, failCallback);
             }
-        },
-        fail(res) {
-            app.showErrModal(lang.request_failed);
 
-            typeof failCallback == 'function' && failCallback();
+            // 复位
+            targetStatusCode = 200;
+        },
+        fail() {
+            app.showErrModal(app.lang.request_failed);
         },
         complete() {
+            // 基础库 1.1.0 开始支持
             if (wx.hideLoading) {
                 wx.hideLoading();
             }
@@ -38,33 +44,30 @@ function proxy(data, successCallback, failCallback, completeCallback) {
     });
 }
 
-request.jwVerify = function (data, successCallback) {
-    url = config.jwVerifyURL;
+request.eduAuth = function (data, successCallback, failCallback) {
+    targetStatusCode = 204;
+    url = config.eduAuthURL;
     proxy(data, successCallback);
 };
 
-request.getJwSchedule = function (data, successCallback) {
-    url = config.jwScheduleURL;
-    proxy(data, successCallback);
+request.getEduSchedule = function (data, successCallback, failCallback) {
+    url = config.eduScheduleURL;
+    proxy(data, successCallback, failCallback);
 };
 
-request.cardVerify = function (data, successCallback) {
-    url = config.cardVerifyURL;
-    proxy(data, successCallback);
+request.cardAuth = function (data, successCallback, failCallback) {
+    targetStatusCode = 204;
+    url = config.cardAuthURL;
+    proxy(data, successCallback, failCallback);
 };
 
-request.getCardBalance = function (data, successCallback, completeCallback) {
+request.getCardBalance = function (data, successCallback) {
     url = config.cardBalanceURL;
-    proxy(data, successCallback, null, completeCallback);
+    proxy(data, successCallback);
 };
 
 request.getCardRecord = function (data, successCallback) {
     url = config.cardRecordURL;
-    proxy(data, successCallback);
-};
-
-request.feedback = function (data, successCallback) {
-    url = config.feedbackURL;
     proxy(data, successCallback);
 };
 

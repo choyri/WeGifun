@@ -1,11 +1,19 @@
 let app = getApp(),
-    pageParams = {};
+    pageParams = {
+        data: {
+            text_card: app.lang.card,
+            text_edu: app.lang.edu,
+            tip: app.lang.profile_tip
+        }
+    };
 
 pageParams.onLoad = function () {
     app.event.on('loginSuccess', this.renderPage, this);
+};
 
+pageParams.onReady = function () {
     wx.setNavigationBarTitle({
-        title: app.lang.profile
+        title: app.lang.profile_title
     });
 
     this.renderPage();
@@ -16,48 +24,36 @@ pageParams.onUnload = function () {
 };
 
 pageParams.renderPage = function () {
-    this.stuInfo = app.cache.userInfoStu;
+    let action = {
+            true: 'edit',
+            false: 'add'
+        },
+        bind = {
+            true: app.lang.profile_bind,
+            false: app.lang.profile_unbind
+        },
+        userInfo = app.cache.dataUserInfo,
+        is_bind_card = userInfo.isBindCard || false,
+        is_bind_edu = userInfo.isBindEdu || false;
 
-    let jw_bind_status = '',
-        card_bind_status = '';
-
-    if (this.stuInfo) {
-        jw_bind_status = this.stuInfo.jwPwd ? app.lang.profile_bind : app.lang.profile_unbind;
-        card_bind_status = this.stuInfo.cardPwd ? app.lang.profile_bind : app.lang.profile_unbind;
-    } else {
-        jw_bind_status = card_bind_status = app.lang.profile_unbind;
-    }
+    console.info('教务管理系统已绑定？', is_bind_edu, '校园卡已绑定？', is_bind_card);
 
     this.setData({
-        text_jw: app.lang.profile_jw,
-        jw_bind_status,
-        text_card: app.lang.profile_card,
-        card_bind_status,
-        tip: app.lang.profile_tip
+        card_bind_status: bind[is_bind_card],
+        card_action: action[is_bind_card],
+        edu_bind_status: bind[is_bind_edu],
+        edu_action: action[is_bind_edu]
     });
 };
 
 pageParams.bindJump = function (e) {
-    let url = [];
-
-    url.push('type=' + e.currentTarget.id);
-
-    if (this.stuInfo) {
-        url.push('id=' + this.stuInfo.id);
-
-        let tmp = 'action=';
-        if (e.currentTarget.id == 'jw') {
-            tmp += this.stuInfo.jwPwd ? 'edit' : 'add';
-        } else {
-            tmp += this.stuInfo.cardPwd ? 'edit' : 'add';
-        }
-        url.push(tmp);
-    }
-
-    url = '/pages/login/login?' + url.join('&');
+    app.cache.loginParams = {
+        action: e.currentTarget.dataset.action,
+        type: e.currentTarget.id
+    };
 
     wx.navigateTo({
-        url
+        url: '/pages/login/login'
     });
 };
 

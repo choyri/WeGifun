@@ -63,7 +63,7 @@ pageParams.renderPage = function (refresh = false) {
     let res = eduService.renderSchedule(currWeek, app.cache.edu.schedule);
 
     for (let i = res.weekTitle.length - 1; i >= 0; i--) {
-        res.weekTitle[i] = app.lang.index_week_title[i];
+        res.weekTitle[i] = app.lang.index_week_title[res.weekTitle[i]];
     }
 
     res.currWeek = currWeek;

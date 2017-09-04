@@ -60,10 +60,16 @@ pageParams.renderPage = function (refresh = false) {
     console.log(refresh ? '强制刷新课表' : '周数变动');
     console.info('之前周数：', schedule.currWeek, '当前周数：', currWeek);
 
-    let res = eduService.renderSchedule(currWeek, app.cache.edu.schedule);
+    let res = {};
 
-    for (let i = res.weekTitle.length - 1; i >= 0; i--) {
-        res.weekTitle[i] = app.lang.index_week_title[res.weekTitle[i]];
+    if (app.cache.edu.schedule.length !== 0) {
+        res = eduService.renderSchedule(currWeek, app.cache.edu.schedule);
+        for (let i = res.weekTitle.length - 1; i >= 0; i--) {
+            res.weekTitle[i] = app.lang.index_week_title[res.weekTitle[i]];
+        }
+    } else {
+        res.schedule = null;
+        res.weekTitle = app.lang.index_week_title;
     }
 
     res.currWeek = currWeek;

@@ -84,12 +84,12 @@ appParams.saveData = function (newData) {
         oldData = null;
 
     for (let key in newData) {
-        console.info('key：', key, '旧数据：', oldData);
-
         isObjData = typeof newData[key] === 'object';
 
         // 如已存在数据 则只更新新的部分
         oldData = this.cache[key] || (isObjData ? {} : null);
+
+        console.info('key：', key, '旧数据：', oldData);
 
         data = isObjData ? Object.assign(oldData, newData[key]) : newData[key];
 

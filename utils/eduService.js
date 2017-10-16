@@ -160,8 +160,8 @@ function renderSchedule(currWeek, schedule) {
 
                                 let startCourseData = tmpCourse.data;
                                 if (startCourseData.display === true) {
-                                    // 每个课程块高度 200  间隔 10 # 例如 两节连上的话高度就为 410
-                                    startCourseData.height = (sectionIndex - courseData.forwardFrom) * 210 + 200;
+                                    // 每个课程块高度 200  间隔 10 # 例如 两节连上的话高度就为 410 # 最后一节高度 100
+                                    startCourseData.height = (sectionIndex - courseData.forwardFrom) * 210 + (section.index === 6 ? 100 : 200);
                                     continue;
                                 }
                             }

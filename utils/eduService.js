@@ -93,36 +93,44 @@ function renderSchedule(currWeek, schedule) {
                 let courseData = course.data,
 
                     // 课程周期范围
-                    weekRange = courseData.week.split('-');
+                    weekRange = courseData.week.split('-'),
+
+                    // 不在周期内
+                    outRange = (currWeek < weekRange[0] || currWeek > weekRange[1]) || false;
 
                 // 课程是否可视
                 courseData.display = true;
 
-                // 周期内的课程状态
+                // 课程状态
                 courseData.state = true;
 
-                // 单周时双周的课和双周时单周的课不用上
-                if ((weekRange[2] === '1' && currWeek % 2 === 0) || (weekRange[2] === '2' && currWeek % 2 === 1)) {
+                // 单周时双周的课 双周时单周的课 不在周期内的课 不用上
+                if ((weekRange[2] === '1' && currWeek % 2 === 0) || (weekRange[2] === '2' && currWeek % 2 === 1) || outRange) {
                     courseData.state = false;
                 }
 
-                // 有同一时间的课 # 单双周
+                // 同一时间段不同周有不同的课 # 1-15周(单),2-16周(双) / 1-3周(单),4-16周
                 if (course.index !== 0) {
+                    // 当前课程不在周期内的话 隐藏自己
+                    if (outRange) {
+                        courseData.display = false;
+                        continue;
+                    }
+
                     let flag = false;
                     for (let i = 0; i < course.index; i++) {
                         let siblingCourseData = section.data[i].data;
 
-                        // 如果其他课程需要上 或者他们是连上课程 那就说明当前课程不用上
+                        // 隔壁课程需要上 或者他们是连上课程 那就说明当前课程不用上
                         if ((siblingCourseData.display === true && siblingCourseData.state === true) || siblingCourseData.forwardFrom !== undefined) {
                             courseData.display = false;
                             flag = true;
                             continue;
                         }
 
-                        // 因单双周而不用上的课 同一时间有其他课程要上的时候 这节课需要隐藏
+                        // 隔壁课程不用上 那就隐藏它
                         if (siblingCourseData.state === false) {
                             siblingCourseData.display = false;
-                            continue;
                         }
                     }
 
@@ -185,7 +193,7 @@ function renderSchedule(currWeek, schedule) {
                 }
 
                 // 课程背景色 # 不在周期内的课程没有背景色 即默认的灰色
-                if (currWeek >= weekRange[0] && currWeek <= weekRange[1] && courseData.state) {
+                if (! outRange && courseData.state) {
                     // 当前周大于等于起始周 小于等于结束周
 
                     // 每门课一种颜色 # 以课程名字当索引

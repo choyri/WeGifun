@@ -7,7 +7,7 @@ module.exports = {
 
     btn_title: 'Confirm',
     loading: 'Loading',
-    request_failed: 'Request failed. Please check the network.',
+    request_failed: 'Request failed, maybe there\'s something wrong with the network.',
     service_unavailable: 'Service Unavailable, please try again later.',
     wx_version_warn: 'WeChat version is too low, some features are limited.',
 

@@ -21,9 +21,9 @@
     </view>
 </view>
 <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="bindSubmit">{{text_confirm}}</button>
+    <button class="weui-btn" type="primary" bindtap="bindSubmit">{{text_btnTitle}}</button>
 </view>
-<view wx:if="{{records}}" class="weui-cells__tips">{{tip}}</view>
+<view wx:if="{{records}}" class="weui-cells__title">{{tip}}</view>
 <view wx:for="{{records}}" wx:key="*this" class="weui-form-preview">
     <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">

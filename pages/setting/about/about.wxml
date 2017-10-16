@@ -1,7 +1,7 @@
 <view bindtap="bindClick">
     <image src="/images/about.png" />
 </view>
-<view class="weui-cells__tips blockquote">{{quote}}</view>
+<view class="weui-cells__tips center blockquote">{{quote}}</view>
 <view class="weui-article">
     <view class="weui-article__section">
         <view class="weui-article__h3">{{text_open_source}}</view>

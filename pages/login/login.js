@@ -117,7 +117,7 @@ pageParams.bindFocusBlur = function (e) {
     this.setData(data);
 };
 
-pageParams.submit = function () {
+pageParams.bindSubmit = function () {
     let data = {
             id: this.id,
             pwd: this.pwd

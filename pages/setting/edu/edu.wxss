@@ -1,7 +1,0 @@
-.weui-cells__tips {
-    font-size: 26rpx;
-
-    margin-top: .3em;
-
-    text-align: left;
-}

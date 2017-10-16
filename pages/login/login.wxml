@@ -2,7 +2,7 @@
 <view class="weui-cells">
     <view class="weui-cell{{id_focus}}">
         <view class="weui-cell__hd">
-            <text class="weui-label">{{text_id}}</text>
+            <view class="weui-label">{{text_id}}</view>
         </view>
         <view class="weui-cell__bd">
             <input id="id" class="weui-input" value="{{id_value}}" type="number" disabled="{{id_disabled}}" maxlength="8" bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
@@ -13,7 +13,7 @@
     </view>
     <view class="weui-cell{{pwd_focus}}">
         <view class="weui-cell__hd">
-            <text class="weui-label">{{text_pwd}}</text>
+            <view class="weui-label">{{text_pwd}}</view>
         </view>
         <view class="weui-cell__bd">
             <input id="pwd" class="weui-input" value="{{pwd_value}}" type="{{pwd_type}}" password maxlength="{{pwd_maxlength}}" bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
@@ -24,7 +24,7 @@
     </view>
 </view>
 <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" disabled="{{btn_disabled}}" bindtap="submit">{{btn_title}}</button>
+    <button class="weui-btn" type="primary" disabled="{{btn_disabled}}" bindtap="bindSubmit">{{btn_title}}</button>
 </view>
 <view class="weui-footer weui-footer_fixed-bottom">
     <text wx:if="{{tip_edit}}" class="weui-footer__text">{{tip_edit}}</text>

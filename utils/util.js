@@ -1,7 +1,7 @@
 // 不足两位则补全前导零 # e.g. 1 → 01
 function padNum(n) {
     n = n.toString();
-    return n.length > 2 ? n : n[1] ? n : '0' + n;
+    return n.length > 1 ? n : '0' + n;
 }
 
 // 处理时间戳 返回日期 # e.g. 2017-01-01

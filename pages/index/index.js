@@ -29,6 +29,13 @@ pageParams.onReady = function () {
         return;
     }
 
+    if (app.cache.dataUserInfo && app.cache.dataUserInfo.isBindCard) {
+        wx.switchTab({
+            url: '/pages/home/home'
+        });
+        return;
+    }
+
     wx.showModal({
         title: app.lang.modal_title,
         content: app.lang.index_schedule_null,

@@ -3,8 +3,8 @@ let app = getApp(),
     pageParams = {
         data: {
             balance: 'N/A',
-            text_confirm: app.lang.card_record,
             text_balance: app.lang.card_balance,
+            text_record: app.lang.card_record,
             text_witticism: app.lang.card_witticism
         }
     };

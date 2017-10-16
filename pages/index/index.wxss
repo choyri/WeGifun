@@ -123,6 +123,7 @@
 
 .sidebar view:last-child {
     height: 100rpx;
+    margin-bottom: 0;
 }
 
 .content {

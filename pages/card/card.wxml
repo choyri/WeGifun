@@ -1,10 +1,10 @@
 <view class="weui-msg">
     <image src="/images/icon_money.png" />
     <text>{{text_balance}}</text>
-    <text class="balance">{{balance}}</text>
+    <text class="result">{{balance}}</text>
     <view class="weui-msg__opr-area">
         <view class="weui-btn-area">
-            <button class="weui-btn" type="primary" bindtap="toRecord">{{text_confirm}}</button>
+            <button class="weui-btn" type="primary" bindtap="toRecord">{{text_record}}</button>
         </view>
     </view>
 </view>

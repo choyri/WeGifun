@@ -4,7 +4,7 @@ let app = getApp(),
         data: {
             text_amount: app.lang.record_amount,
             text_area: app.lang.record_area,
-            text_confirm: app.lang.btn_title,
+            text_btnTitle: app.lang.btn_title,
             text_startDate: app.lang.record_start_date,
             text_endDate: app.lang.record_end_date,
             text_platform: app.lang.record_platform,

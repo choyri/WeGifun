@@ -13,6 +13,6 @@ text {
     vertical-align: top;
 }
 
-.balance {
+.result {
     font-size: 72rpx;
 }

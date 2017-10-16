@@ -6,37 +6,52 @@ let app = getApp(),
 const config = app.config;
 
 function proxy(data, successCallback, failCallback, completeCallback) {
-    // 基础库 1.1.0 开始支持
-    if (wx.showLoading) {
-        wx.showLoading({
-            title: app.lang.loading
-        });
+    app.cache.requestSum = app.cache.requestSum || 0;
+
+    if (app.cache.requestSum === 0) {
+        // 基础库 1.1.0 开始支持
+        if (wx.showLoading) {
+            wx.showLoading({
+                title: app.lang.loading
+            });
+        } else {
+            wx.showNavigationBarLoading();
+        }
     }
+
+    app.cache.requestSum++;
 
     wx.request({
         url,
         data,
         method: 'POST',
         success(res) {
-            if (res.statusCode === targetStatusCode) {
+            if (res.statusCode === targetStatusCode && (res.data.data || res.data.code || res.data === '')) {
                 console.info('服务正常：', res.data || '无返回');
-                successCallback(res.data);
+                typeof successCallback == 'function' && successCallback(res.data);
             } else {
-                console.warn('服务出错：', res.data);
-                let content = '#' + res.data.code + '，' + res.data.msg;
+                console.warn('服务出错 状态码：', res.statusCode, '详细信息：', res);
+                let content = res.data.code ? ('#' + res.data.code + '，' + res.data.msg) : app.lang.service_unavailable;
                 app.showErrModal(content, failCallback);
             }
 
             // 复位
             targetStatusCode = 200;
         },
-        fail() {
+        fail(res) {
+            console.error(res);
             app.showErrModal(app.lang.request_failed);
         },
         complete() {
-            // 基础库 1.1.0 开始支持
-            if (wx.hideLoading) {
-                wx.hideLoading();
+            app.cache.requestSum--;
+
+            if (app.cache.requestSum === 0) {
+                // 基础库 1.1.0 开始支持
+                if (wx.hideLoading) {
+                    wx.hideLoading();
+                } else {
+                    wx.hideNavigationBarLoading();
+                }
             }
 
             typeof completeCallback == 'function' && completeCallback();

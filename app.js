@@ -84,7 +84,7 @@ appParams.saveData = function (newData) {
         oldData = null;
 
     for (let key in newData) {
-        isObjData = typeof newData[key] === 'object';
+        isObjData = Object.prototype.toString.call(newData[key]) === '[object Object]';
 
         // 如已存在数据 则只更新新的部分
         oldData = this.cache[key] || (isObjData ? {} : null);

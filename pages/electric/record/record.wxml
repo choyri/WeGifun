@@ -1,0 +1,88 @@
+<import src="../../../utils/template/template.wxml" />
+<view class="weui-flex titles">
+    <block wx:for="{{text_title}}" wx:key="*this">
+        <text class="{{index === swiperSelected.index ? 'selected' : ''}}" data-id="{{index}}" bindtap="bindTitleTap">{{item}}</text>
+    </block>
+    <view class="title-slider" style="width: {{titleSlider.width}}%; left: {{titleSlider.left}}%;"></view>
+</view>
+<swiper class="outer" current="{{swiperSelected.outer}}">
+    <swiper-item class="outer" catchtouchmove="forbidSwiperMove">
+        <view class="weui-cells dorm-info-head">
+            <navigator url="/pages/electric/setting/setting?action=call&id={{dormInfo.id}}" class="weui-cell" hover-class="weui-cell_active">
+                <template is="dormInfo" data="{{...dormInfo}}" />
+            </navigator> 
+        </view>
+        <view class="swiper-wrap">
+            <swiper class="inner" current="{{swiperSelected.inner}}">
+                <swiper-item catchtouchmove="forbidSwiperMove">
+                    <scroll-view scroll-y="true" enable-back-to-top="true">
+                        <block wx:if="{{dormConsume}}">
+                            <view class="placeholder"></view>
+                            <view class="weui-cells">
+                                <view class="weui-cell">
+                                        <view class="weui-flex__item vertical-flex">
+                                            <text>{{dormConsume.remain}}</text>
+                                            <text>{{text_dormConsumeInfo[0]}}</text>
+                                        </view>
+                                        <view class="weui-flex__item vertical-flex">
+                                            <text>{{dormConsume.avg}}</text>
+                                            <text>{{text_dormConsumeInfo[1]}}</text>
+                                        </view>
+                                        <view class="weui-flex__item vertical-flex">
+                                            <text>{{dormConsume.expect}}</text>
+                                            <text>{{text_dormConsumeInfo[2]}}</text>
+                                        </view>
+                                </view>
+                            </view>
+                            <view class="weui-cells">
+                                <view class="weui-cell">
+                                    <template is="table" data="{{table: dormConsume.detail}}" />
+                                </view>
+                            </view>
+                        </block>
+                        <view wx:else class="default-bg">
+                            <image src="/images/icon_bg.png" />
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+                <swiper-item catchtouchmove="forbidSwiperMove">
+                    <scroll-view scroll-y="true" enable-back-to-top="true">
+                        <block wx:if="{{dormRecharge}}">
+                            <view class="placeholder"></view>
+                            <!-- 因为表格第一行是标题 所以如果等于一就表明数据为空 -->
+                            <view wx:if="{{dormRecharge.length === 1}}" class="weui-cells__tips center">{{text_dormRechargeNull}}</view>
+                            <block wx:else>
+                                <view class="weui-cells__title">{{text_dormRechargeTitle}}</view>
+                                <view class="weui-cells weui-cells_after-title">
+                                    <view class="weui-cell">
+                                        <template is="table" data="{{table: dormRecharge}}" />
+                                    </view>
+                                </view>
+                            </block>
+                        </block>
+                        <view wx:else class="default-bg">
+                            <image src="/images/icon_bg.png" />
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </swiper-item>
+    <swiper-item class="outer" catchtouchmove="forbidSwiperMove">
+        <scroll-view scroll-y="true" enable-back-to-top="true" bindscrolltolower="bindScrollToLower">
+            <block wx:if="{{userRecharge}}">
+                <view class="weui-cells__tips center">{{text_userRechargeTip}}</view>
+                <template is="formPreview" data="{{formPreview: userRecharge}}" />
+            </block>
+            <view wx:else class="default-bg">
+                <image src="/images/icon_bg.png" />
+            </view>
+            <view wx:if="{{refreshState_loading}}" class="weui-loadmore">
+                <view class="weui-loading"></view>
+            </view>
+            <view wx:if="{{refreshState_end}}" class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot"></view>
+            </view>
+        </scroll-view>
+    </swiper-item>
+</swiper>

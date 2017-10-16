@@ -1,0 +1,112 @@
+.weui-form-preview {
+    font-size: 32rpx;
+
+    margin-top: 1.17647059em;
+}
+
+.weui-form-preview:last-child {
+    margin-bottom: 1.17647059em;
+}
+
+.weui-form-preview::before {
+    transform-origin: top;
+}
+
+.weui-form-preview::after {
+    transform-origin: bottom;
+}
+
+@media (min-resolution: 2dppx) {
+    .weui-form-preview::before,
+    .weui-form-preview::after,
+    .weui-form-preview__hd::after {
+        transform: scaleY(.5);
+    }
+}
+
+@media (min-resolution: 3dppx) {
+    .weui-form-preview::before,
+    .weui-form-preview::after,
+    .weui-form-preview__hd::after {
+        transform: scaleY(.333333);
+    }
+}
+
+.weui-form-preview__hd {
+    font-size: 34rpx;
+}
+
+.weui-form-preview__hd::after {
+    right: 15px;
+
+    transform-origin: bottom;
+
+    border-bottom-style: dashed;
+}
+
+.weui-form-preview__bd,
+.weui-form-preview__value {
+    font-size: inherit;
+}
+
+.dorm-info {
+    flex: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dorm-info text {
+    vertical-align: middle;
+}
+
+.dorm-info .content {
+    font-size: 48rpx;
+}
+
+.dorm-info .tip {
+    font-size: 26rpx;
+}
+
+.dorm-info .tip.green {
+    color: #46c01b;
+}
+
+.dorm-info .tip.red {
+    color: #e64340;
+}
+
+.dorm-info.weui-select {
+    line-height: inherit;
+
+    height: inherit;
+    min-height: inherit;
+    padding-left: 0;
+
+    border-right: none;
+}
+
+.table {
+    width: 100%;
+}
+
+.table .tr {
+    line-height: 2em;
+
+    display: flex;
+
+    height: 1.9em;
+}
+
+.table .tr:nth-child(even) {
+    background-color: #f3f3f7;
+}
+
+.table .td {
+    text-align: center;
+
+    flex: 1;
+}
+
+.table .gray {
+    color: #ccc;
+}

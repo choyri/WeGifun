@@ -16,6 +16,12 @@
         </view>
         <view class="weui-cell__bd">{{text_card}}</view>
     </navigator>
+    <navigator url="/pages/electric/electric" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="/images/icon_electric.png" />
+        </view>
+        <view class="weui-cell__bd">{{text_electric}}</view>
+    </navigator>
 </view>
 <view class="weui-cells">
     <navigator url="/pages/setting/setting" class="weui-cell" hover-class="weui-cell_active">

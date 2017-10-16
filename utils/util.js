@@ -37,6 +37,12 @@ function formatTime(time, smart = true) {
     return res + ([target.getHours(), target.getMinutes(), target.getSeconds()]).map(padNum).join(':');
 }
 
+// 返回指定长度的自然数数组
+// start: 下标从何开始
+function getNumArr(length, start = 0) {
+    return Array.from({length}, (v, k) => k + start);
+}
+
 // 计算指定天数前的日期 并以 [开始日期, 今天日期] 数组形式返回
 function getRecentDate(len = 7) {
     let endDate = new Date();
@@ -48,6 +54,8 @@ function getRecentDate(len = 7) {
 }
 
 module.exports = {
+    padNum,
     formatTime,
+    getNumArr,
     getRecentDate
 };

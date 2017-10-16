@@ -71,4 +71,42 @@ request.getCardRecord = function (data, successCallback) {
     proxy(data, successCallback);
 };
 
+request.handleDorm = function (data, successCallback, completeCallback) {
+    url = config.dormURL;
+    proxy(data, successCallback, null, completeCallback);
+};
+
+request.elecRecharge = function (data, successCallback, failCallback) {
+    if (data.check) {
+        targetStatusCode = 204;
+    }
+    url = config.elecRechargeURL;
+    proxy(data, successCallback, failCallback);
+};
+
+request.getElecConsumeRecord = function (data, successCallback) {
+    data.type = 'consume';
+    url = config.elecRecordURL;
+    proxy(data, successCallback);
+};
+
+request.getElecDormRechargeRecord = function (data, successCallback) {
+    data.type = 'recharge';
+    data.item = 'dorm';
+    url = config.elecRecordURL;
+    proxy(data, successCallback);
+};
+
+request.getElecUserRechargeRecord = function (data, successCallback) {
+    data.type = 'recharge';
+    data.item = 'user';
+    url = config.elecRecordURL;
+    proxy(data, successCallback);
+};
+
+request.getElecRemain = function (data, successCallback) {
+    url = config.elecRemainURL;
+    proxy(data, successCallback);
+};
+
 module.exports = request;

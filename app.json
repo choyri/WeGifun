@@ -10,6 +10,11 @@
         "pages/card/card",
         "pages/card/record/record",
 
+        "pages/electric/electric",
+        "pages/electric/recharge/recharge",
+        "pages/electric/record/record",
+        "pages/electric/setting/setting",
+
         "pages/setting/setting",
         "pages/setting/edu/edu",
         "pages/setting/about/about",

@@ -3,6 +3,7 @@ let app = getApp(),
         data: {
             stu_id: (app.cache.stu ? app.lang.home_stuid.replace('{0}', app.cache.stu.id) : app.lang.home_stuid_null),
             text_card: app.lang.card,
+            text_electric: app.lang.electric,
             text_setting: app.lang.home_setting,
             userInfo: app.cache.dataUserInfo || null
         }

@@ -7,6 +7,7 @@ let app = getApp(),
             text_edu: app.lang.edu,
             text_exit: app.lang.setting_exit,
             text_feedback: app.lang.setting_feedback,
+            isBindEdu: (app.cache.dataUserInfo && app.cache.dataUserInfo.isBindEdu ? true : false),
             isLogin: (app.cache.stu ? true : false),
             wxSettingCanUse: (wx.openSetting ? true : false)
         }
@@ -23,6 +24,7 @@ pageParams.onReady = function () {
 pageParams.renderPage = function() {
     if (app.cache.globalRefresh) {
         this.setData({
+            isBindEdu: app.cache.dataUserInfo && app.cache.dataUserInfo.isBindEdu ? true : false,
             isLogin: app.cache.stu ? true : false
         });
     }

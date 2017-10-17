@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.4.0 (20171016)',
+            '修复 第9-10小节课程块样式错误\n修复 未绑定教务系统但显示了设置入口\n更新 优化同一时间课程的显示方案\n更新 优化网络请求的处理方案\n更新 优化了部分样式和逻辑\n新增 宿舍电费服务'
+        ],
+        [
             'v0.3.1 (20170904)',
             '修复 「周几」标题错误\n修复 没课的时候不显示「周几」\n修复 用户状态更改时界面刷新出错\n更新 Tab栏改用原生上边框'
         ],
@@ -18,7 +22,7 @@ let changelog = {
         ],
         [
             'v0.2.0 (20170611)',
-            '更新 优化了外观样式\n更新 重构了程序\n新增 校园卡服务，包括余额和消费记录查询\n新增 获取用户微信资料，显示头像和昵称\n新增 多语言，当前支持简体中文和英文'
+            '更新 优化了外观样式\n更新 重构了程序\n新增 校园卡服务\n新增 获取用户微信资料，显示头像和昵称\n新增 多语言，当前支持简体中文和英文'
         ],
         [
             'v0.1.0 (20170401)',
@@ -26,6 +30,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.4.0 (20171016)',
+            'FIX: Section 9-10 style error\nFIX: The Education Management System is not bound but the setting entry is shown\nUPDATE: Optimize the display scheme of same time course\nUPDATE: Optimize the processing plan of network request\nUPDATE: Optimize some style and logic\nNEW: Dorm Electricity Service'
+        ],
         [
             'v0.3.1 (20170904)',
             'FIX: The error of \'Week\'\nFIX: The \'Week\' don\'t display when the schedule is empty\nFIX: Some UI problem occurred when the user status changed\nUPDATE: The Tab bar is changed to a native border'
@@ -44,7 +52,7 @@ let changelog = {
         ],
         [
             'v0.2.0 (20170611)',
-            'UPDATE: Optimize the appearance style\nUPDATE: Refactor the program\nNEW: Campus Card Service, include the query of balance and consumer records\nNEW: Get the user\'s WeChat info to show avatar and nickname\nNEW: Multi-language, now supports Chinese(Simplified) and English'
+            'UPDATE: Optimize the appearance style\nUPDATE: Refactor the program\nNEW: Campus Card Service\nNEW: Get the user\'s WeChat info to show avatar and nickname\nNEW: Multi-language, now supports Chinese(Simplified) and English'
         ],
         [
             'v0.1.0 (20170401)',

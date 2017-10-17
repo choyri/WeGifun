@@ -15,11 +15,23 @@ let host = 'https://www.test.com',
         // 校园卡消费记录
         cardRecordURL: host + '/test5',
 
+        // 宿舍编号
+        dormURL: host + '/test6',
+
+        // 电费充值
+        elecRechargeURL: host + '/test7',
+
+        // 电费记录
+        elecRecordURL: host + '/test8',
+
+        // 电费余量
+        elecRemainURL: host + '/test9',
+
         // 小程序版本
-        version: 'v0.3.0',
+        version: 'v0.4.0',
 
         // 新版本强制清理本地数据缓存
-        clearStorage: true,
+        clearStorage: false,
 
         quote: '那只敏捷的棕毛狐狸跃过那只懒狗。',
         qqGroup: '10001'

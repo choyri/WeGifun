@@ -146,7 +146,15 @@ pageParams.bindSubmit = function () {
             this.requestData.check = 'yes';
             this.requestData.money = this.amount;
 
+            let rechargeFail = true;
+
             request.elecRecharge(this.requestData, () => {
+                rechargeFail = false;
+            }, null, () => {
+                if (rechargeFail) {
+                    return;
+                }
+
                 wx.showToast({
                     title: app.lang.elec_recharge_success,
                     duration: 1900,

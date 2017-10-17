@@ -91,12 +91,12 @@ request.handleDorm = function (data, successCallback, completeCallback) {
     proxy(data, successCallback, null, completeCallback);
 };
 
-request.elecRecharge = function (data, successCallback, failCallback) {
+request.elecRecharge = function (data, successCallback, failCallback, completeCallback) {
     if (data.check) {
         targetStatusCode = 204;
     }
     url = config.elecRechargeURL;
-    proxy(data, successCallback, failCallback);
+    proxy(data, successCallback, failCallback, completeCallback);
 };
 
 request.getElecConsumeRecord = function (data, successCallback) {

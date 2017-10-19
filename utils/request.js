@@ -26,7 +26,7 @@ function proxy(data, successCallback, failCallback, completeCallback) {
         data,
         method: 'POST',
         success(res) {
-            if (res.statusCode === targetStatusCode && (res.data.data || res.data.code || res.data === '')) {
+            if (res.statusCode === targetStatusCode && (res.data.data !== undefined || res.data.code !== undefined || res.data === '')) {
                 console.info('服务正常：', res.data || '无返回');
                 typeof successCallback == 'function' && successCallback(res.data);
             } else {

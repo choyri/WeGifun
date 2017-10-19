@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.4.1 (20171018)',
+            '修复 购电成功时消息提示框一闪而过\n修复 判断网络请求结果时的逻辑错误'
+        ],
+        [
             'v0.4.0 (20171016)',
             '修复 第9-11小节课程块样式错误\n修复 未绑定教务系统但显示了设置入口\n更新 优化同一时间课程的显示方案\n更新 优化网络请求的处理方案\n更新 优化了部分样式和逻辑\n新增 宿舍电费服务'
         ],
@@ -30,6 +34,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.4.1 (20171018)',
+            'FIX: The toast flashed past when recharge success\nFIX: A logical error when determine the result of network request'
+        ],
         [
             'v0.4.0 (20171016)',
             'FIX: Section 9-11 style error\nFIX: The Education Management System is not bound but the setting entry is shown\nUPDATE: Optimize the display scheme of same time course\nUPDATE: Optimize the processing plan of network request\nUPDATE: Optimize some style and logic\nNEW: Dorm Electricity Service'

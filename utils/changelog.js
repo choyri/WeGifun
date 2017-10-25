@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.4.2 (20171025)',
+            '修复 跟在连上课程后的普通课程受其影响而隐藏\n修复 没有注销掉之前订阅的事件\n修复 电费记录页面一个不知道是什么也不知道是如何产生的Bug\n更新 支持第11-12小节课程\n更新 新的课程块背景颜色\n更新 第一次使用会有绑定服务的提示'
+        ],
+        [
             'v0.4.1 (20171018)',
             '修复 购电成功时消息提示框一闪而过\n修复 判断网络请求结果时的逻辑错误'
         ],
@@ -34,6 +38,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.4.2 (20171025)',
+            'FIX: The course after the continuous course  is hidden by its influence\nFIX: The previously subscribed event is not off\nFIX: A Bug that doesn\'t know what is it and how it happened in the electricity record page\nUPDATE: Support section 11-12\nUPDATE: New course block background color\nUPDATE: The first time you use the app, there will be a binding service prompt'
+        ],
         [
             'v0.4.1 (20171018)',
             'FIX: The toast flashed past when recharge success\nFIX: A logical error when determine the result of network request'

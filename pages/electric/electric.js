@@ -52,6 +52,10 @@ pageParams.renderPage = function (newDorm) {
     });
 };
 
+pageParams.onUnload = function () {
+    app.event.off(this);
+};
+
 pageParams.navigateTo = function (e) {
     let target = e.currentTarget.dataset.target;
 

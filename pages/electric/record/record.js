@@ -33,6 +33,10 @@ pageParams.onReady = function () {
     this.renderPage();
 };
 
+pageParams.onUnload = function () {
+    app.event.off(this);
+};
+
 pageParams.renderPage = function (newDorm) {
     this.dorm = app.cache.customDorm = newDorm || app.cache.dataDorm;
 

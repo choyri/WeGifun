@@ -10,6 +10,7 @@ module.exports = {
     intro: 'Click the avatar, you can bind or modify the services.',
     request_failed: 'Request failed, maybe there\'s something wrong with the network.',
     service_unavailable: 'Service Unavailable, please try again later.',
+    unknown_error: 'Unknown error, if it\'s convenient, please feedback, thanks.',
     wx_version_warn: 'WeChat version is too low, some features are limited.',
 
     modal_title: 'Uh',

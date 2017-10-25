@@ -10,6 +10,7 @@ module.exports = {
     intro: '点击上方头像，可以绑定或者修改服务。',
     request_failed: '请求失败，可能网络有点问题。',
     service_unavailable: '服务不可用，请稍后重试。',
+    unknown_error: '未知错误，如果方便请反馈，感谢。',
     wx_version_warn: '微信版本过低，部分功能受限。',
 
     modal_title: '嗯哼',

@@ -38,7 +38,12 @@ pageParams.onUnload = function () {
 };
 
 pageParams.renderPage = function (newDorm) {
-    this.dorm = app.cache.customDorm = newDorm || app.cache.dataDorm;
+    this.dorm = app.cache.customDorm = newDorm || app.cache.dataDorm || {};
+
+    if (this.dorm.id === undefined) {
+        app.showErrModal(app.lang.unknown_error);
+        return;
+    }
 
     if (this.dorm.id !== this.data.dormInfo.id) {
         this.setData({

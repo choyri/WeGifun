@@ -4,7 +4,7 @@ let app = getApp(),
     pageParams = {
         data: {
             // 课程块高度 # 课程块为绝对定位 # 通过设置其 top 进行上下定位 详见文档
-            courseTop: ['>_< 我是占位符', 0, 210, 420, 630, 840],
+            courseTop: ['>_< 我是占位符', 0, 210, 420, 630, 840, 1050],
 
             currWeek: app.lang.index_curr_week.replace('{0}', (schedule.currWeek || 0)),
             schedule: schedule.schedule || null,

@@ -177,7 +177,8 @@ function renderSchedule(currWeek, schedule) {
 
                             let startCourseData = tmpCourse.data;
                             if (startCourseData.display === true) {
-                                // 每个课程块高度 200  间隔 10 # 例如 两节连上的话高度就为 410 # 最后一节高度 100
+                                // 每个课程块高度 200  间隔 10 # 例如 两节连上的话高度就为 410
+                                // 第六大节如果是连上课程 说明和第五大节连上 目前来看只有 9-11 的情况 所以高度为 100
                                 startCourseData.height = (sectionIndex - courseData.forwardFrom) * 210 + (section.index === 6 ? 100 : 200);
                                 continue;
                             }

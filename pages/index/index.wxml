@@ -30,6 +30,7 @@
         </view>
         <view>
             <text>11</text>
+            <text>12</text>
         </view>
     </view>
     <view wx:if="{{schedule}}" class="content">

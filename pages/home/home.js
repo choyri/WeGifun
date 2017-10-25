@@ -28,6 +28,20 @@ pageParams.onReady = function () {
         console.log('首次授权');
         this.getUserWxInfo();
     }
+
+    if (app.cache.intro === undefined) {
+        wx.showModal({
+            title: app.lang.modal_title,
+            content: app.lang.intro,
+            confirmText: app.lang.modal_confirm,
+            showCancel: false,
+            success() {
+                app.saveData({
+                    intro: true
+                });
+            }
+        });
+    }
 };
 
 pageParams.onUnload = function () {

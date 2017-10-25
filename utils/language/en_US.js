@@ -7,6 +7,7 @@ module.exports = {
 
     btn_title: 'Confirm',
     loading: 'Loading',
+    intro: 'Click the avatar, you can bind or modify the services.',
     request_failed: 'Request failed, maybe there\'s something wrong with the network.',
     service_unavailable: 'Service Unavailable, please try again later.',
     wx_version_warn: 'WeChat version is too low, some features are limited.',

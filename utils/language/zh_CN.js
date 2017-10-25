@@ -7,6 +7,7 @@ module.exports = {
 
     btn_title: '确定',
     loading: '稍候',
+    intro: '点击上方头像，可以绑定或者修改服务。',
     request_failed: '请求失败，可能网络有点问题。',
     service_unavailable: '服务不可用，请稍后重试。',
     wx_version_warn: '微信版本过低，部分功能受限。',

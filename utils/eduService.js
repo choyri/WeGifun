@@ -144,40 +144,48 @@ function renderSchedule(currWeek, schedule) {
                 let previousSectionIndex = sectionIndex - 1,
                     previousSection = day.data[previousSectionIndex];
                 if (previousSection) {
-                    let currentValue = courseData.name + courseData.week + courseData.room,
+                    let currentValue = courseData.name + courseData.teacher + courseData.room + courseData.state,
                         previousValue = '',
                         flag = false;
 
                     for (let tmpCourse of previousSection.data) {
                         let previousCourseData = tmpCourse.data;
+                        previousValue = previousCourseData.name + previousCourseData.teacher + previousCourseData.room + previousCourseData.state;
 
-                        previousValue = previousCourseData.name + previousCourseData.week + previousCourseData.room;
-
-                        // 如果前一节需要上的课和本节课相同 或者前一节是连上课程
-                        if ((previousCourseData.display === true && currentValue === previousValue) || previousCourseData.forwardFrom !== undefined) {
-                            // 隐藏当前课程
-                            courseData.display = false;
-
-                            // 给当前课程打标记 第几节开始的课
-                            courseData.forwardFrom = previousCourseData.forwardFrom !== undefined ? previousCourseData.forwardFrom : previousSectionIndex;
-
-                            // 修改连上课程的高度
-                            let startSection = day.data[courseData.forwardFrom];
-                            for (let tmpCourse of startSection.data) {
-                                // 因为前面那个时间段可能不止一门课 所以用循环找出目标
-
-                                let startCourseData = tmpCourse.data;
-                                if (startCourseData.display === true) {
-                                    // 每个课程块高度 200  间隔 10 # 例如 两节连上的话高度就为 410 # 最后一节高度 100
-                                    startCourseData.height = (sectionIndex - courseData.forwardFrom) * 210 + (section.index === 6 ? 100 : 200);
-                                    continue;
-                                }
-                            }
-
-                            // 完成操作 跳出循环
-                            flag = true;
+                        // 如果前一节课和本节课不同 跳过
+                        if (previousValue !== currentValue) {
                             continue;
                         }
+
+                        // 此时 前一节课和本节课相同 如果同时都是显示状态 就是连上课程
+                        
+                        // 如果前一节课没有 forwardFrom（表明不是和前一节的前一节课连上） 而它又是不可见状态 跳过
+                        if (previousCourseData.forwardFrom === undefined && previousCourseData.display === false) {
+                            continue;
+                        }
+
+                        // 隐藏当前课程
+                        courseData.display = false;
+
+                        // 给当前课程打标记 第几节开始的课
+                        courseData.forwardFrom = previousCourseData.forwardFrom !== undefined ? previousCourseData.forwardFrom : previousSectionIndex;
+
+                        // 修改连上课程的高度
+                        let startSection = day.data[courseData.forwardFrom];
+                        for (let tmpCourse of startSection.data) {
+                            // 因为前面那个时间段可能不止一门课 所以用循环找出目标
+
+                            let startCourseData = tmpCourse.data;
+                            if (startCourseData.display === true) {
+                                // 每个课程块高度 200  间隔 10 # 例如 两节连上的话高度就为 410 # 最后一节高度 100
+                                startCourseData.height = (sectionIndex - courseData.forwardFrom) * 210 + (section.index === 6 ? 100 : 200);
+                                continue;
+                            }
+                        }
+
+                        // 完成操作 跳出循环
+                        flag = true;
+                        continue;
                     }
 
                     // 如果当前课程是连上课程 即可跳过本次循环

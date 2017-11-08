@@ -24,7 +24,7 @@ pageParams.onReady = function () {
 
     this.renderPage();
 
-    if (! app.cache.userWxInfo && app.cache.hasAuth !== false) {
+    if (! app.cache.userWxInfo && app.cache.hasAuth === undefined) {
         console.log('首次授权');
         this.getUserWxInfo();
     }

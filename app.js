@@ -30,14 +30,16 @@ appParams.onLaunch = function () {
         });
     }
 
-    this.cache.hasAuth = null;
-
     // 基础库 1.2.0 开始支持
     if (wx.getSetting) {
         wx.getSetting({
             success: res => {
-                // 这里是赋值并判断 只有一个等号
-                if (this.cache.hasAuth = res.authSetting['scope.userInfo']) {
+                res.authSetting = res.authSetting || {};
+                console.info('授权状态：', res.authSetting);
+
+                this.cache.hasAuth = res.authSetting['scope.userInfo'];
+
+                if (res.authSetting['scope.userInfo'] === true) {
                     console.log('已有权限 开始静默获取最新用户信息');
                     this.storeUserWxInfo();
                 }

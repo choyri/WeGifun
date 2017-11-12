@@ -37,11 +37,9 @@ class Event {
         for (let event in this._stores) {
             let store = this._stores[event];
 
-            for (let i = 0, len = store.length; i < len; i++) {
-                if (store[i].ctx === ctx) {
-                    store.splice(i, 1)
-                }
-            }
+            this._stores[event] = store.filter((tuple) => {
+                return tuple.ctx !== ctx;
+            });
         }
     }
 }

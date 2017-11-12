@@ -81,6 +81,7 @@ module.exports = {
     elec_setting_room: '房间',
     elec_setting_room_invalid: '无效的房间号。',
     elec_setting_history: '历史记录',
+    elec_setting_exit: '不选择房间的话将无法使用这项服务。',
 
     setting_edu_update_schedule: '更新课表',
     setting_edu_last_update: '上次更新：{0}',

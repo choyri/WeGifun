@@ -81,6 +81,7 @@ module.exports = {
     elec_setting_room: 'Room',
     elec_setting_room_invalid: 'Invalid room.',
     elec_setting_history: 'History',
+    elec_setting_exit: 'You must select a room or you will not be able to using this service.',
 
     setting_edu_update_schedule: 'Update schedule',
     setting_edu_last_update: 'Last update: {0}',

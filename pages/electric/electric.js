@@ -22,10 +22,17 @@ pageParams.onReady = function () {
     this.renderPage();
 };
 
-pageParams.renderPage = function (newDorm) {
-    let dorm = newDorm || app.cache.dataDorm || {};
+pageParams.renderPage = function (data, type, directBack) {
+    let dorm = data || app.cache.dataDorm || {};
 
     if (! dorm.id) {
+        if (directBack) {
+            app.showErrModal(app.lang.elec_setting_exit, () => {
+                wx.navigateBack();
+            });
+            return;
+        }
+
         console.log('首次使用 进入设置页');
         wx.navigateTo({
             url: 'setting/setting'

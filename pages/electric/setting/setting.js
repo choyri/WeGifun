@@ -18,6 +18,7 @@ let app = getApp(),
 
 pageParams.onLoad = function (e) {
     this.action = e.action || 'save';
+    this.directBack = true;
     this.id = e.id || '';
 };
 
@@ -71,6 +72,12 @@ pageParams.renderPage = function (newDorm) {
     data.btn_disabled = this.btnIsDisabled();
 
     this.setData(data);
+};
+
+pageParams.onUnload = function () {
+    if (this.directBack) {
+        app.event.emit('settingDorm', null, null, true);
+    }
 };
 
 pageParams.bindHistoryTap = function (e) {
@@ -178,6 +185,8 @@ pageParams.bindSubmit = function () {
         console.info('新的宿舍数据：', dataDorm, '历史记录：', dataDormHistory);
 
         app.saveData(data);
+
+        this.directBack = false;
         wx.navigateBack();
     }, () => {
         // navigateBack 会导致 Loading 消失  所以在完成回调里再触发事件

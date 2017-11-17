@@ -36,19 +36,25 @@ pageParams.onReady = function () {
         return;
     }
 
-    wx.showModal({
-        title: app.lang.modal_title,
-        content: app.lang.index_schedule_null,
-        confirmText: app.lang.modal_confirm,
-        cancelText: app.lang.modal_cancel,
-        success(res) {
-            if (res.confirm) {
-                wx.navigateTo({
-                    url: '/pages/login/login'
-                });
+    if (app.cache.intro === undefined) {
+        app.saveData({
+            intro: true
+        });
+        wx.showModal({
+            title: app.lang.modal_title,
+            content: app.lang.intro,
+            confirmText: app.lang.modal_confirm,
+            cancelText: app.lang.modal_cancel,
+            success(res) {
+                if (res.confirm) {
+                    wx.navigateTo({
+                        url: '/pages/intro/intro'
+                    });
+                }
             }
-        }
-    });
+        });
+        return;
+    }
 };
 
 pageParams.onUnload = function () {

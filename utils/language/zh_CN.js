@@ -7,7 +7,6 @@ module.exports = {
 
     btn_title: '确定',
     loading: '稍候',
-    intro: '点击上方头像，可以绑定或者修改服务。',
     request_failed: '请求失败，可能网络有点问题。',
     service_unavailable: '服务不可用，请稍后重试。',
     unknown_error: '未知错误，如果方便请反馈，感谢。',
@@ -15,9 +14,19 @@ module.exports = {
 
     modal_title: '嗯哼',
     modal_confirm: '确定',
-    modal_cancel: '以后',
+    modal_cancel: '不了',
 
-    index_schedule_null: '空荡荡的课表，现在就去获取？',
+    intro: '欢迎使用，是否查看引导？',
+    intro_title: '引导',
+    intro_blockquote: '这是一篇简要的介绍，阅读它可以让你更快速地了解微吉风。',
+    intro_noun: '名词解释',
+    intro_noun_service: '服务',
+    intro_noun_service_content: ['一个系统即一个服务。在微吉风主页点击「我的」，再点击自己的头像，即可看到当前的服务状态。你可以在那里绑定、更新各项服务。', '目前支持：教务管理系统、校园卡系统。'],
+    intro_noun_account: '帐号',
+    intro_noun_account_content: ['教务管理系统和校园卡系统的用户体系不同，二者帐号一致，但密码不同。所以，使用不同的服务时需要绑定不同的用户体系。'],
+    intro_guide: '使用指南',
+    intro_guide_content: ['只有绑定了某个服务，才能看到该服务的入口。目前各服务所包含的功能如下：', '教务管理系统：课表。', '校园卡系统：校园卡、宿舍电费。', '如果有疑问或者建议，可以在「设置」里找到「反馈」。', '如果想退出当前帐号，可以在「设置」里找到「退出」。该操作会清除微吉风在本地的所有缓存数据。'],
+
     index_schedule_detail_title: '详情',
     index_curr_week: '{0}\n周',
     index_week_title: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],

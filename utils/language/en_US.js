@@ -7,7 +7,6 @@ module.exports = {
 
     btn_title: 'Confirm',
     loading: 'Loading',
-    intro: 'Click the avatar, you can bind or modify the services.',
     request_failed: 'Request failed, maybe there\'s something wrong with the network.',
     service_unavailable: 'Service Unavailable, please try again later.',
     unknown_error: 'Unknown error, if it\'s convenient, please feedback, thanks.',
@@ -17,7 +16,17 @@ module.exports = {
     modal_confirm: 'OK',
     modal_cancel: 'No',
 
-    index_schedule_null: 'Empty schedule, get it now?',
+    intro: 'Welcome to use, whether to read the guide?',
+    intro_title: 'Intro',
+    intro_blockquote: 'This is a brief introduction, and reading it can make you more quickly learn more about WeGifun.',
+    intro_noun: 'Noun explanation',
+    intro_noun_service: 'Service',
+    intro_noun_service_content: ['A system is a service. Click on "Me" on the home page of WeGifun and then click on your avatar to see the current status of the services. You can bind and update the services there.', 'Currently supported: Education Management System, Campus Card System.'],
+    intro_noun_account: 'Account',
+    intro_noun_account_content: ['The user system between Education Management and Campus Card is different, their accounts are consistent, but the password is different. Therefore, use different services need to bind different user systems.'],
+    intro_guide: 'Use guide',
+    intro_guide_content: ['Only bind a service, you can see the entrance to the service. The current services include the following features:', 'Education Management System: schedule.', 'Campus Card System: campus card, dorm electricity.', 'If you have questions or suggestions, you can find "Feedback" in "Setting".', 'If you want to leave the current account, you can find "Exit" in "Setting". This action will clear all the local cache data of WeGifun.'],
+
     index_schedule_detail_title: 'Detail',
     index_curr_week: 'No \n {0}',
     index_week_title: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],

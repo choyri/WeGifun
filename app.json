@@ -2,6 +2,7 @@
     "pages": [
         "pages/index/index",
 
+        "pages/intro/intro",
         "pages/login/login",
 
         "pages/home/home",

@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.4.4 (20171117)',
+            '更新 不再自动跳转到「我的」\n新增 使用引导页'
+        ],
+        [
             'v0.4.3 (20171112)',
             '修复 一些已知的脚本错误\n更新 不选择房间的话无法使用电费服务'
         ],
@@ -42,6 +46,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.4.4 (20171117)',
+            'UPDATE: No longer automatically jump to "Me"\nNEW: Introduction page'
+        ],
         [
             'v0.4.3 (20171112)',
             'FIX: Some known script errors\nUPDATE: User must select a room or he(she) will not be able to using electricity service'

@@ -39,8 +39,16 @@ pageParams.renderPage = function (refresh) {
     refresh = refresh || app.cache.globalRefresh || false;
 
     if (this.data.userInfo && ! refresh) {
-        console.log('直接渲染用户信息缓存');
-        return;
+        let newUserInfo = app.cache.userWxInfo,
+            oldUserInfo = this.data.userInfo;
+
+        if (newUserInfo.avatarUrl === oldUserInfo.avatar && newUserInfo.nickName === oldUserInfo.nickName) {
+            console.log('直接渲染用户信息缓存');
+            return;
+        }
+
+        console.log('用户微信资料变更');
+        refresh = true;
     }
 
     console.log(refresh ? '强制刷新用户信息' : '开始生成用户信息');

@@ -3,7 +3,7 @@ let app = getApp(),
         data: {
             text_card: app.lang.card,
             text_edu: app.lang.edu,
-            tip: app.lang.profile_tip
+            tip: app.lang.service_tip
         }
     };
 
@@ -13,7 +13,7 @@ pageParams.onLoad = function () {
 
 pageParams.onReady = function () {
     wx.setNavigationBarTitle({
-        title: app.lang.profile_title
+        title: app.lang.service
     });
 
     this.renderPage();
@@ -29,8 +29,8 @@ pageParams.renderPage = function () {
             false: 'add'
         },
         bind = {
-            true: app.lang.profile_bind,
-            false: app.lang.profile_unbind
+            true: app.lang.service_bind,
+            false: app.lang.service_unbind
         },
         userInfo = app.cache.dataUserInfo,
         is_bind_card = userInfo.isBindCard || false,

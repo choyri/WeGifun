@@ -4,6 +4,7 @@ module.exports = {
     edu: '教务管理系统',
     card: '校园卡',
     electric: '宿舍电费',
+    service: '服务',
 
     btn_title: '确定',
     loading: '稍候',
@@ -38,11 +39,6 @@ module.exports = {
     home_stuid: '学号：{0}',
     home_stuid_null: '未登录',
     home_setting: '设置',
-
-    profile_title: '个人信息',
-    profile_bind: '已绑定',
-    profile_unbind: '未绑定',
-    profile_tip: '只允许绑定同一学号下的服务。',
 
     login_title_edu: '教务管理系统登录',
     login_title_card: '校园卡登录',
@@ -91,6 +87,10 @@ module.exports = {
     elec_setting_room_invalid: '无效的房间号。',
     elec_setting_history: '历史记录',
     elec_setting_exit: '不选择房间的话将无法使用这项服务。',
+
+    service_bind: '已绑定',
+    service_unbind: '未绑定',
+    service_tip: '只允许绑定同一学号下的服务。',
 
     setting_edu_update_schedule: '更新课表',
     setting_edu_last_update: '上次更新：{0}',

@@ -6,7 +6,6 @@
         "pages/login/login",
 
         "pages/home/home",
-        "pages/home/profile/profile",
 
         "pages/card/card",
         "pages/card/record/record",
@@ -15,6 +14,8 @@
         "pages/electric/recharge/recharge",
         "pages/electric/record/record",
         "pages/electric/setting/setting",
+
+        "pages/service/service",
 
         "pages/setting/setting",
         "pages/setting/edu/edu",

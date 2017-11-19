@@ -1,5 +1,5 @@
 <view class="weui-cells">
-    <navigator url="/pages/home/profile/profile" class="weui-cell head" hover-class="weui-cell_active">
+    <view class="weui-cell head">
         <view class="weui-cell__hd">
             <image src="{{userInfo.avatar}}" />
         </view>
@@ -7,7 +7,7 @@
             <view class="name">{{userInfo.nickName}}</view>
             <view class="id">{{stu_id}}</view>
         </view>
-    </navigator>
+    </view>
 </view>
 <view wx:if="{{userInfo.isBindCard}}" class="weui-cells">
     <navigator url="/pages/card/card" class="weui-cell" hover-class="weui-cell_active">
@@ -24,6 +24,12 @@
     </navigator>
 </view>
 <view class="weui-cells">
+    <navigator url="/pages/service/service" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="/images/icon_service.png" />
+        </view>
+        <view class="weui-cell__bd">{{text_service}}</view>
+    </navigator>
     <navigator url="/pages/setting/setting" class="weui-cell" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="/images/icon_setting.png" />

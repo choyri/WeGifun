@@ -4,6 +4,7 @@ module.exports = {
     edu: 'Education Management System',
     card: 'Campus Card',
     electric: 'Dorm Electricity',
+    service: 'Services',
 
     btn_title: 'Confirm',
     loading: 'Loading',
@@ -38,11 +39,6 @@ module.exports = {
     home_stuid: 'StuID：{0}',
     home_stuid_null: 'Not logged in',
     home_setting: 'Setting',
-
-    profile_title: 'My Profile',
-    profile_bind: 'Bind',
-    profile_unbind: 'Unbind',
-    profile_tip: 'Only allowed to bind services under the same StuID.',
 
     login_title_edu: 'Education Management System - Login',
     login_title_card: 'Campus Card - Login',
@@ -91,6 +87,10 @@ module.exports = {
     elec_setting_room_invalid: 'Invalid room.',
     elec_setting_history: 'History',
     elec_setting_exit: 'You must select a room or you will not be able to using this service.',
+
+    service_bind: 'Bind',
+    service_unbind: 'Unbind',
+    service_tip: 'Only allowed to bind services under the same StuID.',
 
     setting_edu_update_schedule: 'Update schedule',
     setting_edu_last_update: 'Last update: {0}',

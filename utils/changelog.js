@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.4.5 (20171119)',
+            '修复 用户微信资料不能及时更新\n更新 将「服务」页入口从点击头像改为独立的跳转按钮'
+        ],
+        [
             'v0.4.4 (20171117)',
             '更新 不再自动跳转到「我的」\n新增 使用引导页'
         ],
@@ -46,6 +50,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.4.5 (20171119)',
+            'FIX: User\'s WeChat info cannot be updated in time\nUPDATE: Change the entrance of "Service" page from the click avatar to the independent jump button'
+        ],
         [
             'v0.4.4 (20171117)',
             'UPDATE: No longer automatically jump to "Me"\nNEW: Introduction page'

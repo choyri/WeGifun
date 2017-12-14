@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.5.0 (20171214)',
+            '新增 课程成绩查询'
+        ],
+        [
             'v0.4.5 (20171119)',
             '修复 用户微信资料不能及时更新\n更新 将「服务」页入口从点击头像改为独立的跳转按钮'
         ],
@@ -50,6 +54,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.5.0 (20171214)',
+            'NEW: Course Score Inquiry'
+        ],
         [
             'v0.4.5 (20171119)',
             'FIX: User\'s WeChat info cannot be updated in time\nUPDATE: Change the entrance of "Service" page from the click avatar to the independent jump button'

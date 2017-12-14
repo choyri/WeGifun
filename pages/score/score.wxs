@@ -1,0 +1,13 @@
+module.exports = {
+    getState: function(value) {
+        if (value === undefined) {
+            return '';
+        }
+
+        if (value === false) {
+            return ' out';
+        }
+
+        return ' in';
+    },
+};

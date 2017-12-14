@@ -6,6 +6,9 @@ let host = 'https://www.test.com',
         // 课表
         eduScheduleURL: host + '/test2',
 
+        // 成绩
+        eduScoreURL: host + '/test10',
+
         // 校园卡帐号验证
         cardAuthURL: host + '/test3',
 

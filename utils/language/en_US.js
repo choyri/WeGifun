@@ -48,6 +48,13 @@ module.exports = {
     login_tip_edu: 'Password format: 6-16 characters.',
     login_tip_card: 'Password format: 6 digits.',
 
+    score: 'Course Score',
+    score_grade: ['1st', '2nd', '3rd', '4th', '5th'],
+    score_null: 'no record',
+    score_schooltime: ['Year', 'Semester'],
+    score_semester: ['Autumn', 'Spring'],
+    score_table_title: ['Name', 'Credit', 'GPA', 'Score'],
+
     card_balance: 'My Balance',
     card_record: 'Records',
     card_witticism: 'Money is not everything. There\'s Alipay and Tenpay.',

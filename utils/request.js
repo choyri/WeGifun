@@ -70,6 +70,11 @@ request.getEduSchedule = function (data, successCallback, failCallback) {
     proxy(data, successCallback, failCallback);
 };
 
+request.getEduScore = function (data, successCallback) {
+    url = config.eduScoreURL;
+    proxy(data, successCallback);
+};
+
 request.cardAuth = function (data, successCallback, failCallback) {
     targetStatusCode = 204;
     url = config.cardAuthURL;

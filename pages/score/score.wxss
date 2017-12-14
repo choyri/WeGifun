@@ -1,0 +1,111 @@
+@import '../../utils/template/template.wxss';
+
+page {
+    font-size: 34rpx;
+
+    position: relative;
+
+    box-sizing: border-box;
+    height: 100%;
+    padding-top: 1.17647059em;
+}
+
+.weui-cells {
+    margin-top: 0;
+}
+
+.report {
+    position: fixed;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    transition: all .8s cubic-bezier(.68, -.55, .27, 1.55);
+
+    opacity: 0;
+    background-color: #fff;
+}
+
+.report.in {
+    position: absolute;
+    top: 0;
+
+    opacity: 1;
+}
+
+.report.out {
+    top: 100%;
+
+    opacity: 0;
+}
+
+.header {
+    height: 5rem;
+
+    background-color: #576b95;
+}
+
+.main {
+    font-size: 34rpx;
+
+    width: auto;
+    margin: -3.5rem 15px 15px 15px;
+    padding: 10px;
+
+    border-top: 8px solid #7b8eb7;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+}
+
+.weui-msg__title {
+    font-size: 48rpx;
+    font-weight: lighter;
+
+    display: flex;
+
+    margin-bottom: 15px;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weui-cells__tips {
+    line-height: 60vh;
+}
+
+.table .tr {
+    line-height: 1.2rem;
+
+    height: auto;
+    height: 2rem;
+    padding: 10px 0;
+
+    background-color: #fff;
+
+    align-items: center;
+}
+
+.table .tr:first-child {
+    font-size: 36rpx;
+
+    height: auto;
+}
+
+.table .td {
+    flex: 0 0 3rem;
+}
+
+.table .td:first-child {
+    display: -webkit-box;
+    overflow: hidden;
+
+    padding-left: 10px;
+
+    text-align: left;
+
+    -webkit-box-orient: vertical;
+    flex: auto;
+    -webkit-line-clamp: 2;
+}

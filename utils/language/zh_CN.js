@@ -48,6 +48,13 @@ module.exports = {
     login_tip_edu: '密码格式为 6-16 位字符。',
     login_tip_card: '密码格式为 6 位数字。',
 
+    score: '课程成绩',
+    score_grade: ['大一', '大二', '大三', '大四', '大五'],
+    score_null: '没有记录',
+    score_schooltime: ['学年', '学期'],
+    score_semester: ['秋季', '春季'],
+    score_table_title: ['名称', '学分', '绩点', '成绩'],
+
     card_balance: '我的余额',
     card_record: '消费记录',
     card_witticism: '你五毛我五毛，那么咱俩就一块啦。',

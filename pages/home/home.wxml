@@ -9,6 +9,14 @@
         </view>
     </view>
 </view>
+<view wx:if="{{userInfo.isBindEdu}}" class="weui-cells">
+    <navigator url="/pages/score/score" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="/images/icon_score.png" />
+        </view>
+        <view class="weui-cell__bd">{{text_score}}</view>
+    </navigator>
+</view>
 <view wx:if="{{userInfo.isBindCard}}" class="weui-cells">
     <navigator url="/pages/card/card" class="weui-cell" hover-class="weui-cell_active">
         <view class="weui-cell__hd">

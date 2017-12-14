@@ -1,3 +1,5 @@
+let app = getApp();
+
 // 处理原始课表数据
 function processSchedule(data) {
     let schedule = data.schedule,
@@ -228,7 +230,55 @@ function renderSchedule(currWeek, schedule) {
     return res;
 }
 
+// 获取学校时间 # 年级 学期 学年
+function getSchoolTime({grade, semester} = {}) {
+    const DATE = new Date(),
+        CURR_YEAR = DATE.getFullYear(),
+        CURR_MONTH = DATE.getMonth() + 1,
+        ENROLLMENT_YEAR = 2000 + parseInt(app.cache.stu.id.substr(2, 2));
+
+    if (grade === undefined) {
+        grade = CURR_YEAR - ENROLLMENT_YEAR;
+        if (CURR_MONTH > 8) {
+            grade++;
+        }
+    }
+
+    semester = semester || (CURR_MONTH < 3 || CURR_MONTH > 8 ? 1 : 2);
+
+    // 年级 # 1-5 分别表示 大一至大五
+    // 学期 # 1 秋季  2 春季
+    // 学年 # 从入学年份到当前年份
+    return {
+        grade,
+        gradeName: app.lang.score_grade[grade - 1],
+        semester,
+        semesterName: app.lang.score_semester[semester - 1],
+        year: ENROLLMENT_YEAR,
+        yearGroup: app.util.getNumArr(grade, ENROLLMENT_YEAR),
+    };
+}
+
+// 处理成绩
+function processScore(data) {
+    let res = [{
+            unique: 'scoreTitle',
+            data: app.lang.score_table_title,
+        }];
+
+    for (let item of data) {
+        res.push({
+            unique: 'scoreTitle' + item[0],
+            data: item,
+        });
+    }
+
+    return res;
+}
+
 module.exports = {
     processSchedule,
-    renderSchedule
+    renderSchedule,
+    getSchoolTime,
+    processScore,
 };

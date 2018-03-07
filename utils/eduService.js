@@ -276,9 +276,81 @@ function processScore(data) {
     return res;
 }
 
+function getTimeTable(sectionIndex, course) {
+    const TIME_TABLE = [
+            ['08:20', '09:05'],
+            ['09:15', '10:00'],
+            [['10:20', '10:30'], ['11:05', '11:15']],
+            [['11:15', '11:25'], ['12:00', '12:10']],
+            ['14:00', '14:45'],
+            ['14:55', '15:40'],
+            ['16:00', '16:45'],
+            ['16:55', '17:40'],
+            ['18:40', '19:25'],
+            ['19:35', '20:20'],
+            ['20:30', '21:15']
+        ],
+        TIME_TABLE_SPORT = [
+            ['18:00', '19:30'],
+            ['19:30', '21:00']
+        ];
+
+    let sectionCount = (course.height === undefined || course.height === 100) ? 1 : Math.floor(course.height / 200),
+        hasSmallSection = (course.height && course.height % 200 > 100) ? true : false;
+
+    let sectionGroup = [],
+        smallSection = sectionIndex * 2 - 1;
+
+    for (let i = 0; i < sectionCount; i++) {
+        sectionGroup.push([smallSection + 2 * i, smallSection + 1 + 2 * i]);
+    }
+
+    if (hasSmallSection) {
+        let tmp = (sectionIndex + sectionCount - 1) * 2 + 1;
+        sectionGroup.push([tmp, tmp]);
+    }
+
+    if (course.offset !== undefined) {
+        if (course.offset === 0) {
+            sectionGroup[0][1]--;
+        } else {
+            sectionGroup[0][0]++;
+        }
+    }
+
+    let isFast = course.room.match(/二教|实验|室/g) === null;
+
+    let resValue = [];
+
+    for (let section of sectionGroup) {
+        let startTime, endTime;
+
+        if (section[0] === 11 && section[1] === 12) {
+            startTime = TIME_TABLE_SPORT[1][0];
+            endTime = TIME_TABLE_SPORT[1][1];
+        } else if (section[0] === 9 && section[1] === 10 && course.name.match(/球|健美|体育|武术|太极|散打|游泳/g) !== null && course.name !== '高尔夫球导程') {
+            startTime = TIME_TABLE_SPORT[0][0];
+            endTime = TIME_TABLE_SPORT[0][1];
+        } else {
+            startTime = TIME_TABLE[section[0] - 1][0];
+            endTime = TIME_TABLE[section[1] - 1][1];
+
+            if (section[0] === 3 || section[0] === 4) {
+                startTime = isFast ? startTime[0] : startTime[1];
+                endTime = isFast ? endTime[0] : endTime[1];
+            }
+        }
+
+        resValue.push(startTime + '-' + endTime)
+    }
+
+    return resValue.join(' ');
+}
+
 module.exports = {
     processSchedule,
     renderSchedule,
     getSchoolTime,
     processScore,
+    getTimeTable,
 };

@@ -104,7 +104,8 @@ pageParams.setNewData = function (data = null) {
 pageParams.showDetail = function (e) {
     let dataSet = e.currentTarget.dataset,
 
-        course = this.data.schedule[dataSet.day].data[dataSet.section].data[dataSet.course].data,
+        section = this.data.schedule[dataSet.day].data[dataSet.section],
+        course = section.data[dataSet.course].data,
         weekArr = [
             '',
             ', ' + app.lang.index_detail_odd,
@@ -115,7 +116,7 @@ pageParams.showDetail = function (e) {
 
     wx.showModal({
         title: app.lang.index_schedule_detail_title,
-        content: course.name + ' / ' + course.teacher + ' / ' + course.room + ' / ' + week,
+        content: [course.name, course.teacher, course.room, week, eduService.getTimeTable(section.index, course)].join(' / '),
         confirmText: app.lang.modal_confirm,
         showCancel: false
     });

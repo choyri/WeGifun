@@ -41,7 +41,7 @@
                 <!-- 循环 每门 # 单双周 -->
                 <block wx:for="{{section.data}}" wx:for-index="courseIndex" wx:for-item="course" wx:key="unique">
                     <block wx:if="{{course.data.display}}">
-                        <view class="course" hover-class="course-hover" style="{{course.data.bg ? ('background-color:' + course.data.bg + ';') : ''}}{{course.data.height ? ('height:' + course.data.height + 'rpx;') : ''}}{{course.data.offset ? ('margin-top:' + course.data.offset + 'rpx;') : ''}}" data-day="{{dayIndex}}" data-section="{{sectionIndex}}" data-course="{{courseIndex}}" bindtap="showDetail">
+                        <view class="course" hover-class="course-hover" style="{{course.data.bg ? ('background-color:' + course.data.bg + ';') : 'opacity: .6;'}}{{course.data.height ? ('height:' + course.data.height + 'rpx;') : ''}}{{course.data.offset ? ('margin-top:' + course.data.offset + 'rpx;') : ''}}" data-day="{{dayIndex}}" data-section="{{sectionIndex}}" data-course="{{courseIndex}}" bindtap="showDetail">
                             <text>{{course.data.name}}</text>
                             <text wx:if="{{! course.data.offset}}">{{course.data.room}}</text>
                         </view>

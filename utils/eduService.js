@@ -69,7 +69,7 @@ function renderSchedule(currWeek, schedule) {
         weekTitle = [],
 
         // 调色板 # 课程块背景颜色 每门课一种 当前内置十二种
-        palette = ['#75878a', '#6b6882', '#3d3b4f', '#75664d', '#c89b40', '#b35c44', '#21a675', '#db5a6b', '#8c4356', '#a98175', '#1685a9', '#426666'],
+        palette = ['#ff8a98', '#4aa0d5', '#FF8C00', '#c8be64', '#22c7a9', '#7B68EE', '#68c668', '#AF5E53', '#48829e', '#BC8F8F', '#eb586f', '#b062ea'],
 
         // 调色板下标
         paletteIndex = 0;

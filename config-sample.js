@@ -31,7 +31,7 @@ let host = 'https://www.test.com',
         elecRemainURL: host + '/test9',
 
         // 小程序版本
-        version: 'v0.5.0',
+        version: 'v0.5.1',
 
         // 新版本强制清理本地数据缓存
         clearStorage: false,

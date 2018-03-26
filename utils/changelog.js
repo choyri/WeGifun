@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.6.0 (20180326)',
+            '新增 书目查询'
+        ],
+        [
             'v0.5.1 (20180307)',
             '更新 显示课程时间\n更新 调整课程块背景颜色'
         ],
@@ -58,6 +62,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.6.0 (20180326)',
+            'NEW: Catalog Retrieval'
+        ],
         [
             'v0.5.1 (20180307)',
             'UPDATE: Display the course time\nUPDATE: Adjust the course block background color'

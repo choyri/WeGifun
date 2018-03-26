@@ -5,6 +5,7 @@ module.exports = {
     card: '校园卡',
     electric: '宿舍电费',
     service: '服务',
+    catalog: '书目检索',
 
     btn_title: '确定',
     loading: '稍候',
@@ -94,6 +95,13 @@ module.exports = {
     elec_setting_room_invalid: '无效的房间号。',
     elec_setting_history: '历史记录',
     elec_setting_exit: '不选择房间的话将无法使用这项服务。',
+
+    catalog_result: '{0} 条结果',
+    catalog_amount: '馆藏 {0} / 可借 {1}',
+    catalog_info: '书目信息',
+    catalog_info_meta: ['名称', '作者', '出版商', 'ISBN', '索书号', '馆藏地', '馆藏信息', '豆瓣图书', '简介'],
+    catalog_info_collection: ['条码号', '书刊状态'],
+    catalog_info_collection_state: ['可借', '待还：{0}'],
 
     service_bind: '已绑定',
     service_unbind: '未绑定',

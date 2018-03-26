@@ -5,6 +5,7 @@ module.exports = {
     card: 'Campus Card',
     electric: 'Dorm Electricity',
     service: 'Services',
+    catalog: 'Catalog Retrieval',
 
     btn_title: 'Confirm',
     loading: 'Loading',
@@ -94,6 +95,13 @@ module.exports = {
     elec_setting_room_invalid: 'Invalid room.',
     elec_setting_history: 'History',
     elec_setting_exit: 'You must select a room or you will not be able to using this service.',
+
+    catalog_result: '{0} results',
+    catalog_amount: 'Total {0} / Available {1}',
+    catalog_info: 'Catalog Info',
+    catalog_info_meta: ['Title', 'Author', 'Publisher', 'ISBN', 'Call number', 'Location', 'Collection Info', 'Douban Book', 'Summary'],
+    catalog_info_collection: ['Barcode', 'State'],
+    catalog_info_collection_state: ['Borrowable', 'Waiting: {0}'],
 
     service_bind: 'Bind',
     service_unbind: 'Unbind',

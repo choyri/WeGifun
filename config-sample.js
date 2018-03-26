@@ -30,6 +30,12 @@ let host = 'https://www.test.com',
         // 电费余量
         elecRemainURL: host + '/test9',
 
+        // 图书检索
+        bookSearchURL: host + '/test10',
+
+        // 图书详情
+        bookInfoURL: host + '/test11',
+
         // 小程序版本
         version: 'v0.5.1',
 

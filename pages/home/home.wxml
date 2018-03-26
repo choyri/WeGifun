@@ -32,6 +32,14 @@
     </navigator>
 </view>
 <view class="weui-cells">
+    <navigator url="/pages/catalog/catalog" class="weui-cell" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="/images/icon_catalog.png" />
+        </view>
+        <view class="weui-cell__bd">{{text_catalog}}</view>
+    </navigator>
+</view>
+<view class="weui-cells">
     <navigator url="/pages/service/service" class="weui-cell" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="/images/icon_service.png" />

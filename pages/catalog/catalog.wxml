@@ -1,0 +1,26 @@
+<view class="head{{showHead ? '' : ' hide'}}">
+    <image src="/images/icon_book.png" />
+</view>
+<view class="search">
+    <view class="search-input">
+        <input value="{{searchValue}}" confirm-type="search" bindinput="bindInput" bindconfirm="bindConfirm" />
+        <icon class="{{showClear ? '' : 'hide'}}" type="clear" size="20" bindtap="bindClear" />
+    </view>
+    <view class="search-btn" bindtap="bindSearch">
+        <icon type="search" color="#fff" size="18" />
+    </view>
+</view>
+<view class="result" wx:if="{{books}}">
+    <text class="result-info">{{resultInfo}}</text>
+    <block wx:for="{{books}}" wx:key="marc">
+        <navigator class="book" url="./info/info?marc={{item.marc}}">
+            <image class="cover" mode="widthFix" src="{{item.cover}}" />
+            <view class="book-info">
+                <text class="title">{{item.title}}</text>
+                <text>{{item.author}} / {{item.publisher}} / {{item.year}}</text>
+                <text>{{item.amount}}</text>
+                <text>{{item.callNum}}</text>
+            </view>
+        </navigator>
+    </block>
+</view>

@@ -129,4 +129,14 @@ request.getElecRemain = function (data, successCallback) {
     proxy(data, successCallback);
 };
 
+request.searchBook = function (data, successCallback) {
+    url = config.bookSearchURL;
+    proxy(data, successCallback);
+};
+
+request.getBookInfo = function (data, successCallback) {
+    url = config.bookInfoURL;
+    proxy(data, successCallback);
+};
+
 module.exports = request;

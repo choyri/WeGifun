@@ -19,6 +19,9 @@
 
         "pages/service/service",
 
+        "pages/catalog/catalog",
+        "pages/catalog/info/info",
+
         "pages/setting/setting",
         "pages/setting/edu/edu",
         "pages/setting/about/about",

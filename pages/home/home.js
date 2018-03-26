@@ -5,6 +5,7 @@ let app = getApp(),
             text_card: app.lang.card,
             text_electric: app.lang.electric,
             text_score: app.lang.score,
+            text_catalog: app.lang.catalog,
             text_service: app.lang.service,
             text_setting: app.lang.home_setting,
             userInfo: app.cache.dataUserInfo || null

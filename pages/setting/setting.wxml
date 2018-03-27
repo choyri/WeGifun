@@ -6,6 +6,21 @@
         <view class="weui-cell__bd">{{text_authorization}}</view>
     </view>
 </view>
+<view class="weui-cells__title">{{text_scheduleBg[0]}}</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell" hover-class="weui-cell_active" bindtap="bindSetScheduleBg">
+        <view class="weui-cell__bd">{{text_scheduleBg[1]}}</view>
+    </view>
+    <block wx:if="{{scheduleBg}}">
+        <view class="weui-cell" hover-class="weui-cell_active" bindtap="bindSetScheduleBgStyle">
+            <view class="weui-cell__bd">{{text_scheduleBg[2]}}</view>
+            <view class="weui-cell__ft">{{text_scheduleBgStyle[scheduleBg.style]}}</view>
+        </view>
+        <view class="weui-cell" hover-class="weui-cell_active" bindtap="bindRemoveScheduleBg">
+            <view class="weui-cell__bd">{{text_scheduleBg[3]}}</view>
+        </view>
+    </block>
+</view>
 <view class="weui-cells">
     <button class="weui-cell" hover-class="weui-cell_active" open-type="contact" bindtap="bindContact">
         <view class="weui-cell__bd">{{text_feedback}}</view>

@@ -102,6 +102,18 @@
     padding-top: 60rpx;
 }
 
+.body .bg {
+    position: fixed;
+    z-index: -1;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;

@@ -8,6 +8,7 @@ let app = getApp(),
 
             currWeek: app.lang.index_curr_week.replace('{0}', (schedule.currWeek || 0)),
             schedule: schedule.schedule || null,
+            scheduleBg: app.cache.dataScheduleBg || null,
             weekTitle: schedule.weekTitle || app.lang.index_week_title
         }
     };
@@ -15,6 +16,7 @@ let app = getApp(),
 pageParams.onLoad = function () {
     app.event.on('exit', this.setNewData, this);
     app.event.on('updateSchedule', this.renderPage, this);
+    app.event.on('changeScheduleBg', this.changeScheduleBg, this);
 };
 
 pageParams.onReady = function () {
@@ -125,6 +127,10 @@ pageParams.showDetail = function (e) {
     if (wx.vibrateShort) {
         wx.vibrateShort();
     }
+};
+
+pageParams.changeScheduleBg = function (scheduleBg) {
+    this.setData({scheduleBg});
 };
 
 Page(pageParams);

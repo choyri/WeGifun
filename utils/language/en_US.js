@@ -9,6 +9,7 @@ module.exports = {
 
     btn_title: 'Confirm',
     loading: 'Loading',
+    new_feature: 'New Feature',
     request_failed: 'Request failed, maybe there\'s something wrong with the network.',
     service_unavailable: 'Service Unavailable, please try again later.',
     unknown_error: 'Unknown error, if it\'s convenient, please feedback, thanks.',

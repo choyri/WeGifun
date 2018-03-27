@@ -25,6 +25,15 @@ appParams.onLaunch = function () {
             };
         }
 
+        if (this.cache.version && this.lang.feature && this.lang.feature !== '') {
+            wx.showModal({
+                title: this.lang.new_feature,
+                content: this.lang.feature,
+                confirmText: this.lang.modal_confirm,
+                showCancel: false,
+            });
+        }
+
         this.saveData({
             version: this.config.version
         });

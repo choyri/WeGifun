@@ -122,7 +122,11 @@ let changelog = {
             'v0.1.0 (20170401)',
             'Project released'
         ]
-    ]
+    ],
+    feature: {
+        zh_CN: '',
+        en_US: '',
+    },
 };
 
 module.exports = changelog;

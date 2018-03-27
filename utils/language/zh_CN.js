@@ -9,6 +9,7 @@ module.exports = {
 
     btn_title: '确定',
     loading: '稍候',
+    new_feature: '新版特性',
     request_failed: '请求失败，可能网络有点问题。',
     service_unavailable: '服务不可用，请稍后重试。',
     unknown_error: '未知错误，如果方便请反馈，感谢。',

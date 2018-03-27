@@ -12,6 +12,7 @@ if (currLang.indexOf('zh') > -1) {
 lang = require('./language/' + currLang + '.js');
 
 lang.changelog = require('./changelog.js')[currLang];
+lang.feature = require('./changelog.js')['feature'][currLang];
 lang.isCN = isCN;
 
 module.exports = lang;

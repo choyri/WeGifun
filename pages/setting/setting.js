@@ -104,7 +104,7 @@ pageParams.checkScheduleBgStyle = function () {
     this.renderPage();
 
     wx.showModal({
-        title: app.lang.index_schedule_detail_title,
+        title: app.lang.modal_title,
         content: app.lang.setting_schedule_bg_style_tip,
         confirmText: app.lang.modal_confirm,
         showCancel: false,

@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.6.1 (20180327)',
+            '新增 课表背景设置\n新增 新版特性提示'
+        ],
+        [
             'v0.6.0 (20180326)',
             '新增 书目查询'
         ],
@@ -63,6 +67,10 @@ let changelog = {
     ],
     en_US: [
         [
+            'v0.6.1 (20180327)',
+            'NEW: Schedule Background setting\nNEW: New feature tips'
+        ],
+        [
             'v0.6.0 (20180326)',
             'NEW: Catalog Retrieval'
         ],
@@ -124,8 +132,8 @@ let changelog = {
         ]
     ],
     feature: {
-        zh_CN: '',
-        en_US: '',
+        zh_CN: '😝 现在支持自定义课表背景啦，在「设置」里可以操作。',
+        en_US: '😝 Now supports the custom schedule background, which can be operated in Setting.',
     },
 };
 

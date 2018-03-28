@@ -8,7 +8,7 @@
     </view>
 </view>
 <view class="body">
-    <view class="bg" style="{{wxs.getBg(scheduleBg)}}{{wxs.getBlur(scheduleBg)}}"></view>
+    <image class="bg" mode="aspectFill" src="{{wxs.getBg(scheduleBg)}}" style="{{wxs.getBlur(scheduleBg)}}" />
     <view class="sidebar edge">
         <view>
             <text>1</text>

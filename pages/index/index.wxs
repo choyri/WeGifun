@@ -1,7 +1,7 @@
 module.exports = {
     getBg: function(scheduleBg) {
         if (scheduleBg) {
-            return 'background-image: url(' + scheduleBg.path +');';
+            return scheduleBg.path;
         }
 
         return '';

@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.6.2 (20180328)',
+            '修复 iOS 不显示课表背景\n更新 调整 iOS 上下拖动窗口时的背景颜色'
+        ],
+        [
             'v0.6.1 (20180327)',
             '新增 课表背景设置\n新增 新版特性提示'
         ],
@@ -67,6 +71,10 @@ let changelog = {
     ],
     en_US: [
         [
+            'v0.6.2 (20180328)',
+            'FIX: Schedule background does not appear on iOS\nUPDATE: Adjust the background color when dragging windows up and down on iOS'
+        ],
+        [
             'v0.6.1 (20180327)',
             'NEW: Schedule Background setting\nNEW: New feature tips'
         ],
@@ -132,8 +140,8 @@ let changelog = {
         ]
     ],
     feature: {
-        zh_CN: '😝 现在支持自定义课表背景啦，在「设置」里可以操作。',
-        en_US: '😝 Now supports the custom schedule background, which can be operated in Setting.',
+        zh_CN: 'iOS 上无法显示课表背景的问题已修正。',
+        en_US: 'The problem of not displaying the schedule background on iOS has been fixed.',
     },
 };
 

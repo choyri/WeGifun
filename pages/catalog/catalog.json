@@ -1,3 +1,5 @@
 {
-    "navigationBarTitleText": "书目检索"
+    "navigationBarTitleText": "书目检索",
+    "backgroundColorTop": "#ffffff",
+    "backgroundColorBottom": "#ffffff"
 }

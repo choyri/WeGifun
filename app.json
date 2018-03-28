@@ -29,7 +29,9 @@
     ],
     "window": {
         "navigationBarBackgroundColor": "#393A3F",
-        "navigationBarTitleText": "微吉风"
+        "navigationBarTitleText": "微吉风",
+        "backgroundColorTop": "#ebebeb",
+        "backgroundColorBottom": "#ebebeb"
     },
     "tabBar": {
         "color": "#999999",

@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.6.3 (20180401)',
+            '新增 课表周数切换'
+        ],
+        [
             'v0.6.2 (20180328)',
             '修复 iOS 不显示课表背景\n更新 调整 iOS 上下拖动窗口时的背景颜色'
         ],
@@ -71,6 +75,10 @@ let changelog = {
     ],
     en_US: [
         [
+            'v0.6.3 (20180401)',
+            'NEW: Schedule weeks switch'
+        ],
+        [
             'v0.6.2 (20180328)',
             'FIX: Schedule background does not appear on iOS\nUPDATE: Adjust the background color when dragging windows up and down on iOS'
         ],
@@ -140,8 +148,8 @@ let changelog = {
         ]
     ],
     feature: {
-        zh_CN: 'iOS 上无法显示课表背景的问题已修正。',
-        en_US: 'The problem of not displaying the schedule background on iOS has been fixed.',
+        zh_CN: '现在可以切换课表周数了。左右长划动切换，长按恢复。🍭 一周年快乐。',
+        en_US: 'Now you can switch the weeks of schedule. Swipe left and right to switch, long press to resume. 🍭 Happy anniversary.',
     },
 };
 

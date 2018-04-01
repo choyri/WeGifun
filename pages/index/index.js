@@ -61,6 +61,7 @@ pageParams.renderPage = function (refresh) {
 
     // 当前周数 # 根据开学日期和当前日期计算 # 参考资料 http://t.cn/RyAh1MZ
     let currWeek = Math.ceil(((new Date()).getTime() - (new Date(app.cache.edu.termBegin)).getTime()) / 604800000);     // 1000 * 3600 * 24 * 7
+    this.tmpOrginalCurrWeek = this.tmpCurrWeek = currWeek;
 
     if (currWeek == schedule.currWeek && ! refresh) {
         console.log('直接渲染课表缓存');
@@ -70,10 +71,19 @@ pageParams.renderPage = function (refresh) {
     console.log(refresh ? '强制刷新课表' : '周数变动');
     console.info('之前周数：', schedule.currWeek, '当前周数：', currWeek);
 
+    let res = this.renderSchedule(currWeek);
+
+    app.saveData({
+        dataSchedule: res
+    });
+};
+
+pageParams.renderSchedule = function (currWeek) {
     let res = {};
 
     if (app.cache.edu.schedule.length !== 0) {
-        res = eduService.renderSchedule(currWeek, app.cache.edu.schedule);
+        let tmpSchedule = JSON.parse(JSON.stringify(app.cache.edu.schedule));
+        res = eduService.renderSchedule(currWeek, tmpSchedule);
         for (let i = res.weekTitle.length - 1; i >= 0; i--) {
             res.weekTitle[i] = app.lang.index_week_title[res.weekTitle[i]];
         }
@@ -90,9 +100,7 @@ pageParams.renderPage = function (refresh) {
         weekTitle: res.weekTitle
     });
 
-    app.saveData({
-        dataSchedule: res
-    });
+    return res;
 };
 
 pageParams.setNewData = function (data = null) {
@@ -131,6 +139,56 @@ pageParams.showDetail = function (e) {
 
 pageParams.changeScheduleBg = function (scheduleBg) {
     this.setData({scheduleBg});
+};
+
+pageParams.touchStart = function (e) {
+    this.touchStartX = e.touches[0].pageX;
+    this.touchStartY = e.touches[0].pageY;
+};
+
+pageParams.touchMove = function (e) {
+    this.touchEndX = e.touches[0].pageX;
+    this.touchEndY = e.touches[0].pageY;
+};
+
+pageParams.touchEnd = function (e) {
+    if (this.touchEndX === undefined || this.touchEndY === undefined) {
+        return;
+    }
+
+    let x = this.touchEndX - this.touchStartX,
+        y = this.touchEndY - this.touchStartY;
+
+    if (Math.abs(x) < Math.abs(y) || Math.abs(x) < 200) {
+        return;
+    }
+
+    if (x < 0) {
+        this.tmpCurrWeek++;
+    } else {
+        this.tmpCurrWeek--;
+    }
+
+    if (this.tmpCurrWeek < 1 || this.tmpCurrWeek > 20) {
+        wx.showModal({
+            title: app.lang.modal_title,
+            content: app.lang.index_at_border,
+            confirmText: app.lang.modal_confirm,
+            showCancel: false,
+        });
+        return;
+    }
+
+    this.renderSchedule(this.tmpCurrWeek);
+
+    this.touchEndX = this.touchEndY = undefined;
+};
+
+pageParams.longpress = function () {
+    if (this.tmpCurrWeek !== this.tmpOrginalCurrWeek) {
+        this.tmpCurrWeek = this.tmpOrginalCurrWeek;
+        this.renderSchedule(this.tmpOrginalCurrWeek);
+    }
 };
 
 Page(pageParams);

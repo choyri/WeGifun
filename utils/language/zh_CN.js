@@ -36,6 +36,7 @@ module.exports = {
     index_detail_week: '{0} 周',
     index_detail_odd: '单',
     index_detail_even: '双',
+    index_at_border: '到头了。',
 
     home_default_nickname: '小吉风',
     home_stuid: '学号：{0}',

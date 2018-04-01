@@ -36,6 +36,7 @@ module.exports = {
     index_detail_week: 'Week {0}',
     index_detail_odd: 'Odd week',
     index_detail_even: 'Even week',
+    index_at_border: 'At border.',
 
     home_default_nickname: 'Gifuner',
     home_stuid: 'StuID：{0}',

@@ -24,11 +24,11 @@ module.exports = {
     intro_blockquote: 'This is a brief introduction, and reading it can make you more quickly learn more about WeGifun.',
     intro_noun: 'Noun explanation',
     intro_noun_service: 'Service',
-    intro_noun_service_content: ['A system is a service. Click on "Me" on the home page of WeGifun and then click on your avatar to see the current status of the services. You can bind and update the services there.', 'Currently supported: Education Management System, Campus Card System.'],
+    intro_noun_service_content: ['A system is a service. Click on "Me" on the home page of WeGifun and then click on "Services", you can bind and update the services there.', 'Currently supported: Education Management System, Campus Card System.'],
     intro_noun_account: 'Account',
     intro_noun_account_content: ['The user system between Education Management and Campus Card is different, their accounts are consistent, but the password is different. Therefore, use different services need to bind different user systems.'],
     intro_guide: 'Use guide',
-    intro_guide_content: ['Only bind a service, you can see the entrance to the service. The current services include the following features:', 'Education Management System: schedule.', 'Campus Card System: campus card, dorm electricity.', 'If you have questions or suggestions, you can find "Feedback" in "Setting".', 'If you want to leave the current account, you can find "Exit" in "Setting". This action will clear all the local cache data of WeGifun.'],
+    intro_guide_content: ['Only bind a service, you can use the service\'s corresponding features. The current services include the following features:', 'Education Management System: schedule, Course Score.', 'Campus Card System: campus card, dorm electricity.', 'Catalog Retrieval is not required for binding services.', 'If you have questions or suggestions, you can find "Feedback" in "Setting".', 'If you want to leave the current account, you can find "Exit" in "Setting". This action will clear all the local cache data of WeGifun.'],
 
     index_schedule_detail_title: 'Detail',
     index_curr_week: 'No \n {0}',

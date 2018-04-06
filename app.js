@@ -61,6 +61,7 @@ appParams.storeUserWxInfo = function (completeCallback) {
     let userWxInfo = null;
 
     wx.getUserInfo({
+        withCredentials: false,
         success(res) {
             console.info('获取成功：', res.userInfo);
             userWxInfo = res.userInfo;

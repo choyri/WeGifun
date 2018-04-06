@@ -152,7 +152,7 @@ pageParams.touchMove = function (e) {
 };
 
 pageParams.touchEnd = function (e) {
-    if (this.touchEndX === undefined || this.touchEndY === undefined) {
+    if (app.cache.edu === undefined || this.touchEndX === undefined || this.touchEndY === undefined) {
         return;
     }
 
@@ -185,6 +185,10 @@ pageParams.touchEnd = function (e) {
 };
 
 pageParams.longpress = function () {
+    if (app.cache.edu === undefined) {
+        return;
+    }
+
     if (this.tmpCurrWeek !== this.tmpOrginalCurrWeek) {
         this.tmpCurrWeek = this.tmpOrginalCurrWeek;
         this.renderSchedule(this.tmpOrginalCurrWeek);

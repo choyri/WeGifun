@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.6.4 (20180406)',
+            '修复 课表为空时切换周数导致的错误\n更新 调整引导文案\n更新 获取用户信息时不携带登录态信息'
+        ],
+        [
             'v0.6.3 (20180401)',
             '新增 课表周数切换'
         ],
@@ -75,6 +79,10 @@ let changelog = {
     ],
     en_US: [
         [
+            'v0.6.4 (20180406)',
+            'FIX: Error caused by switching weeks when schedule is empty\nUPDATE: Adjust the Introduction copywriting\nUPDATE: Do not carry login state information when obtaining user information'
+        ],
+        [
             'v0.6.3 (20180401)',
             'NEW: Schedule weeks switch'
         ],
@@ -148,8 +156,8 @@ let changelog = {
         ]
     ],
     feature: {
-        zh_CN: '现在可以切换课表周数了。左右长划动切换，长按恢复。🍭 一周年快乐。',
-        en_US: 'Now you can switch the weeks of schedule. Swipe left and right to switch, long press to resume. 🍭 Happy anniversary.',
+        zh_CN: '',
+        en_US: '',
     },
 };
 

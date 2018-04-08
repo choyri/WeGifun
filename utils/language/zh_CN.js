@@ -10,7 +10,7 @@ module.exports = {
     btn_title: '确定',
     loading: '稍候',
     new_feature: '新版特性',
-    request_failed: '请求失败，可能网络有点问题。',
+    request_failed: '请求失败，网络或者服务器可能出现了点问题。',
     service_unavailable: '服务不可用，请稍后重试。',
     unknown_error: '未知错误，如果方便请反馈，感谢。',
     wx_version_warn: '微信版本过低，部分功能受限。',
@@ -28,7 +28,7 @@ module.exports = {
     intro_noun_account: '帐号',
     intro_noun_account_content: ['教务管理系统和校园卡系统的用户体系不同，二者帐号一致，但密码不同。所以，使用不同的服务时需要绑定不同的用户体系。'],
     intro_guide: '使用指南',
-    intro_guide_content: ['只有绑定了某个服务，才能使用该服务对应的功能。目前各服务所包含的功能如下：', '教务管理系统：课表，课程成绩。', '校园卡系统：校园卡、宿舍电费。', '书目检索不需要绑定服务即可使用。', '如果有疑问或者建议，可以在「设置」里找到「反馈」。', '如果想退出当前帐号，可以在「设置」里找到「退出」。该操作会清除微吉风在本地的所有缓存数据。'],
+    intro_guide_content: ['只有绑定了某个服务，才能使用该服务对应的功能。目前各服务所包含的功能如下：', '教务管理系统：课表，课程成绩。', '校园卡系统：校园卡、宿舍电费。', '课表左右滑动可以切换周数，长按恢复。', '书目检索不需要绑定服务即可使用。', '如果有疑问或者建议，可以在「设置」里找到「反馈」。', '如果想退出当前帐号，可以在「设置」里找到「退出」。该操作会清除微吉风在本地的所有缓存数据。'],
 
     index_schedule_detail_title: '详情',
     index_curr_week: '{0}\n周',
@@ -126,8 +126,7 @@ module.exports = {
     about_open_source: '开源',
     about_copy_success: '已复制',
     about_security: '安全与隐私',
-    about_security_content: '您所绑定的各项服务，密码均储存于手机本地；每次使用服务时会携带学号与密码，通过 HTTPS 加密通道与服务端进行交互。请自行确保所使用网络的安全性，防止中间人攻击。\n请求数据时服务端会匿名储存部分信息（不包括密码），用于统计以及短时间内的缓存。\n如果对我不放心，请不要使用这个小程序。',
-    about_gratitude: '致谢',
+    about_security_content: '您所绑定的各项服务，密码均储存于手机本地；每次使用服务时会携带学号与密码，通过 HTTPS 加密通道与服务端进行交互。\n请求数据时服务端会匿名储存部分信息（不包括密码），用于统计以及短时间内的缓存。\n如果对我不放心，请不要使用这个小程序。',
     about_communication: '交流',
-    about_communication_content: '欢迎加入 QQ 群，进群请注明微吉风。'
+    about_communication_content: '欢迎加入 QQ 群。'
 };

@@ -16,15 +16,6 @@
         <text class="weui-article__p code" data-text="{{qqGroup}}" selectable="true" bindtap="bindCopy">{{qqGroup}}</text>
         <text>{{communication_content}}</text>
     </view>
-    <view class="weui-article__section">
-        <view class="weui-article__h3">{{text_gratitude}}</view>
-        <view class="weui-article__p gratitude">
-            <text>二绯</text>
-            <text>WeUI</text>
-            <text>Iconfont</text>
-            <text>Peeper</text>
-        </view>
-    </view>
 </view>
 <view class="weui-footer">
     <view class="weui-footer__links">

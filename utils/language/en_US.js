@@ -10,7 +10,7 @@ module.exports = {
     btn_title: 'Confirm',
     loading: 'Loading',
     new_feature: 'New Feature',
-    request_failed: 'Request failed, maybe there\'s something wrong with the network.',
+    request_failed: 'Request failed, maybe there\'s something wrong with the network or server.',
     service_unavailable: 'Service Unavailable, please try again later.',
     unknown_error: 'Unknown error, if it\'s convenient, please feedback, thanks.',
     wx_version_warn: 'WeChat version is too low, some features are limited.',
@@ -28,7 +28,7 @@ module.exports = {
     intro_noun_account: 'Account',
     intro_noun_account_content: ['The user system between Education Management and Campus Card is different, their accounts are consistent, but the password is different. Therefore, use different services need to bind different user systems.'],
     intro_guide: 'Use guide',
-    intro_guide_content: ['Only bind a service, you can use the service\'s corresponding features. The current services include the following features:', 'Education Management System: schedule, Course Score.', 'Campus Card System: campus card, dorm electricity.', 'Catalog Retrieval is not required for binding services.', 'If you have questions or suggestions, you can find "Feedback" in "Setting".', 'If you want to leave the current account, you can find "Exit" in "Setting". This action will clear all the local cache data of WeGifun.'],
+    intro_guide_content: ['Only bind a service, you can use the service\'s corresponding features. The current services include the following features:', 'Education Management System: schedule, Course Score.', 'Campus Card System: campus card, dorm electricity.', 'On schedule page, you can swipe left and right to switch weeks, long press to resume.', 'Catalog Retrieval is not required for binding services.', 'If you have questions or suggestions, you can find "Feedback" in "Setting".', 'If you want to leave the current account, you can find "Exit" in "Setting". This action will clear all the local cache data of WeGifun.'],
 
     index_schedule_detail_title: 'Detail',
     index_curr_week: 'No \n {0}',
@@ -126,8 +126,7 @@ module.exports = {
     about_open_source: 'Open Source',
     about_copy_success: 'Has been copied',
     about_security: 'Security and Privacy',
-    about_security_content: 'All the password of services you have bound are stored locally. Each time you use the service will carry the StuID and password, and then through the HTTPS encryption channel to interact with the server. Please ensure the safety of your network to prevent MITM.\nIn each request, the Server will store some information anonymously (not include password) for statistics and short-term cache.\nPlease DO NOT USE this program if you do not trust me.',
-    about_gratitude: 'Gratitude',
+    about_security_content: 'All the password of services you have bound are stored locally. Each time you use the service will carry the StuID and password, and then through the HTTPS encryption channel to interact with the server.\nIn each request, the Server will store some information anonymously (not include password) for statistics and short-term cache.\nPlease DO NOT USE this program if you do not trust me.',
     about_communication: 'Communication',
-    about_communication_content: 'Welcome to join the QQ Group. Please indicate \'WeGifun\'.'
+    about_communication_content: 'Welcome to join the QQ Group.'
 };

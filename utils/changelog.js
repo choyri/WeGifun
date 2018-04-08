@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.6.5 (20180408)',
+            '更新 调整文案'
+        ],
+        [
             'v0.6.4 (20180406)',
             '修复 课表为空时切换周数导致的错误\n更新 调整引导文案\n更新 获取用户信息时不携带登录态信息'
         ],
@@ -78,6 +82,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.6.5 (20180408)',
+            'UPDATE: Adjust the copywriting'
+        ],
         [
             'v0.6.4 (20180406)',
             'FIX: Error caused by switching weeks when schedule is empty\nUPDATE: Adjust the Introduction copywriting\nUPDATE: Do not carry login state information when obtaining user information'

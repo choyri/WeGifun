@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.6.6 (20180421)',
+            '更新 调整用户微信资料的获取和授权操作'
+        ],
+        [
             'v0.6.5 (20180408)',
             '更新 调整文案'
         ],
@@ -82,6 +86,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.6.6 (20180421)',
+            'UPDATE: Adjust the access and authorization of user\'s WeChat info.'
+        ],
         [
             'v0.6.5 (20180408)',
             'UPDATE: Adjust the copywriting'

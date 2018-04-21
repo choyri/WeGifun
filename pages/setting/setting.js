@@ -2,7 +2,6 @@ let app = getApp(),
     pageParams = {
         data: {
             text_about: app.lang.setting_about,
-            text_authorization: app.lang.setting_authorization,
             text_changelog: app.lang.setting_changelog,
             text_edu: app.lang.edu,
             text_exit: app.lang.setting_exit,
@@ -138,15 +137,6 @@ pageParams.bindExit = function () {
                     url: '/pages/home/home'
                 });
             }
-        }
-    });
-};
-
-pageParams.bindWxSetting = function () {
-    wx.openSetting({
-        success() {
-            console.info('授权状态已变更');
-            app.event.emit('changeAuth');
         }
     });
 };

@@ -7,6 +7,7 @@ module.exports = {
     service: 'Services',
     catalog: 'Catalog Retrieval',
 
+    authorization: 'Authorization',
     btn_title: 'Confirm',
     loading: 'Loading',
     new_feature: 'New Feature',
@@ -42,6 +43,14 @@ module.exports = {
     home_stuid: 'StuID：{0}',
     home_stuid_null: 'Not logged in',
     home_setting: 'Setting',
+    home_auth: 'If you want to use your WeChat avatar and nickname, just click the default avatar above to authorize it.',
+    home_auth_description: [
+        'If you are willing to authorize, we will obtain your avatar and nickname for display on the "My" page. The effect is, it might look pretty, that\'s all.',
+        'No authorization will not affect any service.',
+        'If you feel that you can design a better style than the avatar and nickname, we sincerely ask for your advice.',
+    ],
+    home_auth_state_yes: 'Currently authorized.',
+    home_auth_state_no: 'Currently unauthorized.',
 
     login_title_edu: 'Education Management System - Login',
     login_title_card: 'Campus Card - Login',
@@ -111,7 +120,6 @@ module.exports = {
 
     setting_edu_update_schedule: 'Update schedule',
     setting_edu_last_update: 'Last update: {0}',
-    setting_authorization: 'Authorization',
     setting_schedule_bg: ['Schedule Background', 'Custom', 'Style', 'Remove'],
     setting_schedule_bg_success: 'Done',
     setting_schedule_bg_remove: 'Are you sure?',

@@ -1,0 +1,7 @@
+<view class="weui-article">
+    <view wx:for="{{text.description}}" wx:key="*this" class="weui-article__p">{{item}}</view>
+    <view class="weui-article__p state">{{auth_state}}</view>
+</view>
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" open-type="getUserInfo" disabled="{{hasAuth}}" bindgetuserinfo="bindGetUserInfo">{{text.btn_title}}</button>
+</view>

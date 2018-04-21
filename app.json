@@ -6,6 +6,7 @@
         "pages/login/login",
 
         "pages/home/home",
+        "pages/home/auth/auth",
 
         "pages/score/score",
 

@@ -27,9 +27,16 @@ pageParams.onReady = function () {
 
     this.renderPage();
 
-    if (! app.cache.userWxInfo && app.cache.hasAuth === undefined) {
-        console.log('首次授权');
-        this.getUserWxInfo();
+    if (app.cache.authTip === undefined) {
+        app.saveData({
+            authTip: true
+        });
+        wx.showModal({
+            title: app.lang.modal_title,
+            content: app.lang.home_auth,
+            confirmText: app.lang.modal_confirm,
+            showCancel: false,
+        });
     }
 };
 

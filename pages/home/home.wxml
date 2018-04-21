@@ -1,5 +1,5 @@
 <view class="weui-cells">
-    <view class="weui-cell head">
+    <navigator url="/pages/home/auth/auth" class="weui-cell head" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
             <image src="{{userInfo.avatar}}" />
         </view>
@@ -7,7 +7,7 @@
             <view class="name">{{userInfo.nickName}}</view>
             <view class="id">{{stu_id}}</view>
         </view>
-    </view>
+    </navigator>
 </view>
 <view wx:if="{{userInfo.isBindEdu}}" class="weui-cells">
     <navigator url="/pages/score/score" class="weui-cell" hover-class="weui-cell_active">

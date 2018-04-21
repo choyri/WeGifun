@@ -7,6 +7,7 @@ module.exports = {
     service: '服务',
     catalog: '书目检索',
 
+    authorization: '授权',
     btn_title: '确定',
     loading: '稍候',
     new_feature: '新版特性',
@@ -42,6 +43,14 @@ module.exports = {
     home_stuid: '学号：{0}',
     home_stuid_null: '未登录',
     home_setting: '设置',
+    home_auth: '如果想要使用你的微信头像和昵称，点击上方的默认头像就可以授权啦。',
+    home_auth_description: [
+        '如果你愿意授权，我们将会获取你的头像和昵称，用于「我的」页面中的展示。作用是，可能会好看点，仅此。',
+        '不授权不会对任何功能造成影响。',
+        '如果你觉得除了头像昵称外，可以设计成更好的样式，我们衷心请教，期待你的建议。',
+    ],
+    home_auth_state_yes: '当前已授权。',
+    home_auth_state_no: '当前未授权。',
 
     login_title_edu: '教务管理系统登录',
     login_title_card: '校园卡登录',
@@ -111,7 +120,6 @@ module.exports = {
 
     setting_edu_update_schedule: '更新课表',
     setting_edu_last_update: '上次更新：{0}',
-    setting_authorization: '授权',
     setting_schedule_bg: ['课表背景', '自定义', '样式', '清除'],
     setting_schedule_bg_success: '搞定',
     setting_schedule_bg_remove: '确定清除吗？',

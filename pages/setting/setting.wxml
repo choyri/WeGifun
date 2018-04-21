@@ -2,9 +2,6 @@
     <navigator wx:if="{{isBindEdu}}" url="/pages/setting/edu/edu" class="weui-cell" hover-class="weui-cell_active">
         <view class="weui-cell__bd">{{text_edu}}</view>
     </navigator>
-    <view wx:if="{{wxSettingCanUse}}" class="weui-cell" hover-class="weui-cell_active" bindtap="bindWxSetting">
-        <view class="weui-cell__bd">{{text_authorization}}</view>
-    </view>
 </view>
 <view class="weui-cells__title">{{text_scheduleBg[0]}}</view>
 <view class="weui-cells weui-cells_after-title">

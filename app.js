@@ -39,6 +39,21 @@ appParams.onLaunch = function () {
         });
     }
 
+    if (this.cache.supportSoter === undefined) {
+        let flag = false;
+        wx.checkIsSoterEnrolledInDevice({
+            checkAuthMode: 'fingerPrint',
+            success(res) {
+                if (res.isEnrolled) {
+                    flag = true;
+                }
+            },
+            complete: () => {
+                this.saveData({supportSoter: flag});
+            },
+        });
+    }
+
     // 基础库 1.2.0 开始支持
     if (wx.getSetting) {
         wx.getSetting({

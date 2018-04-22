@@ -14,6 +14,7 @@ let app = getApp(),
             checkDorm: 'N/A',
             dorm: electricService.getDormInfo(),
             icon: {class: '', state: iconState.success},
+            supportSoter: true,
 
             text_btnTitle: app.lang.btn_title,
             text_check: app.lang.elec_recharge_check,
@@ -45,6 +46,12 @@ pageParams.renderPage = function (newDorm) {
     if (this.dorm.id !== this.data.dorm.id) {
         this.setData({
             dorm: electricService.getDormInfo(this.dorm)
+        });
+    }
+
+    if (this.data.supportSoter !== app.cache.supportSoter) {
+        this.setData({
+            supportSoter: app.cache.supportSoter,
         });
     }
 
@@ -150,30 +157,47 @@ pageParams.bindSubmit = function () {
             this.requestData.check = 'yes';
             this.requestData.money = this.amount;
 
-            let rechargeFail = true;
-
-            request.elecRecharge(this.requestData, () => {
-                rechargeFail = false;
-            }, null, () => {
-                if (rechargeFail) {
-                    return;
-                }
-
-                wx.showToast({
-                    title: app.lang.elec_recharge_success,
-                    duration: 1900,
-                    complete () {
-                        setTimeout(wx.navigateBack, 2000);
+            if (this.data.supportSoter) {
+                wx.startSoterAuthentication({
+                    requestAuthModes: ['fingerPrint'],
+                    challenge: this.data.checkDorm,
+                    authContent: app.lang.elec_recharge_soter_tip,
+                    success: res => {
+                        if (res.errCode === 0) {
+                            this.elecRecharge(this.requestData);
+                        }
                     }
-                });
-            });
+                })
+            } else {
+                this.elecRecharge(this.requestData);
+            }
         }
     });
 };
 
+pageParams.elecRecharge = function (data) {
+    let rechargeFail = true;
+
+    request.elecRecharge(data, () => {
+        rechargeFail = false;
+    }, null, () => {
+        if (rechargeFail) {
+            return;
+        }
+
+        wx.showToast({
+            title: app.lang.elec_recharge_success,
+            duration: 1900,
+            complete () {
+                setTimeout(wx.navigateBack, 2000);
+            }
+        });
+    });
+};
+
 pageParams.btnIsDisabled = function () {
-    // 校园卡密码正确 && 金额不为零
-    if (this.auth && (this.amount && this.amount > 0)) {
+    // 支持指纹认证或者校园卡密码正确 && 金额不为零
+    if ((this.data.supportSoter || this.auth) && (this.amount && this.amount > 0)) {
         return false;
     } else {
         return true;

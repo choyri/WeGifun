@@ -91,6 +91,7 @@ module.exports = {
     elec_recharge_confirm: '将为 {0} 充值 {1} 元，确定？',
     elec_recharge_custom: '自定义',
     elec_recharge_pwd_tip: '请输入校园卡密码',
+    elec_recharge_soter_tip: '证明你是你',
     elec_recharge_success: '充值成功',
     elec_record_title: ['宿舍用电', '宿舍购电', '用户购电'],
     elec_record_dorm_consume_info: ['电费余量 · 度', '日均用量 · 度', '预计可用 · 天'],

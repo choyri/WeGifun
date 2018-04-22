@@ -91,6 +91,7 @@ module.exports = {
     elec_recharge_confirm: 'Will recharge {1} yuan for {0}, sure?',
     elec_recharge_custom: 'Custom',
     elec_recharge_pwd_tip: 'Campus Card Password',
+    elec_recharge_soter_tip: 'Prove you are you',
     elec_recharge_success: 'Success',
     elec_record_title: ['Dorm Consume', 'Dorm Recharge', 'User Recharge'],
     elec_record_dorm_consume_info: ['Remain / kW·h', 'Avg / kW·h', 'Expect / Days'],

@@ -1,6 +1,10 @@
 let changelog = {
     zh_CN: [
         [
+            'v0.6.7 (20180422)',
+            '新增 电费充值支持指纹验证身份'
+        ],
+        [
             'v0.6.6 (20180421)',
             '更新 调整用户微信资料的获取和授权操作'
         ],
@@ -86,6 +90,10 @@ let changelog = {
         ]
     ],
     en_US: [
+        [
+            'v0.6.7 (20180422)',
+            'NEW: The recharge of the electricity bill supports fingerprint identification.'
+        ],
         [
             'v0.6.6 (20180421)',
             'UPDATE: Adjust the access and authorization of user\'s WeChat info.'

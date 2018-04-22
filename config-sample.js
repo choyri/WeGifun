@@ -37,7 +37,7 @@ let host = 'https://www.test.com',
         bookInfoURL: host + '/test11',
 
         // 小程序版本
-        version: 'v0.6.6',
+        version: 'v0.6.7',
 
         // 新版本强制清理本地数据缓存
         clearStorage: false,

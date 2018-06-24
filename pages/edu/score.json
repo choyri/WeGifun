@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "课程成绩",
+    "usingComponents": {
+        "school-time": "../../component/schoolTime"
+    }
+}

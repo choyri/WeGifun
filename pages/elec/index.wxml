@@ -1,0 +1,10 @@
+<view class="service-index">
+    <image src="/images/service_lightbulb.svg" />
+    <text>{{ _string.balance }}</text>
+    <text class="result">{{ balance }}</text>
+</view>
+
+<button class="oo-btn" data-target="deposit" bindtap="navigateTo">{{ _string.deposit }}</button>
+<button class="oo-btn common" data-target="record" bindtap="navigateTo">{{ _string.record }}</button>
+
+<text class="oo-footer fixed clickable" bindtap="navigateToSetting">{{ dormInfo.name }}</text>

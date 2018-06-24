@@ -1,0 +1,65 @@
+.history {
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+}
+
+.history .oo-label {
+    display: flex;
+
+    margin-bottom: 0;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.history-data {
+    display: flex;
+
+    margin: 0 15px 15px;
+
+    flex-wrap: wrap;
+}
+
+.history-grid {
+    width: 33.33333333%;
+    margin-top: 15px;
+}
+
+.history-grid:nth-child(3n + 2) {
+    text-align: center;
+}
+
+.history-grid:nth-child(3n + 3) {
+    text-align: right;
+}
+
+.history-item {
+    position: relative;
+
+    display: inline-block;
+
+    padding: 3px 5px;
+
+    color: #555;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+}
+
+.flex-wrap {
+    display: flex;
+
+    align-items: center;
+}
+
+icon {
+    display: none;
+
+    margin-left: 2px;
+}
+
+.edit icon {
+    display: inline;
+}
+

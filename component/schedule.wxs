@@ -1,0 +1,42 @@
+module.exports = {
+  isTransparent: function (bg) {
+    return bg ? 'transparent' : ''
+  },
+
+  isWeekTitleActive: function (target) {
+    var date = getDate()
+    return date.getDate() === target.date && date.getMonth() === target.month ? 'highlight' : ''
+  },
+
+  renderBg: function (type) {
+    if (type === 1) {
+      return 'mask'
+    } else if (type === 2) {
+      return 'blur'
+    }
+    return ''
+  },
+
+  renderCourse: function (course) {
+    var res = ''
+    if (course.bg) {
+      res += 'background-color: ' + course.bg + ';'
+      res += ''
+    }
+    if (course.height !== undefined) {
+      res += 'height: ' + course.height + 'rpx;'
+    }
+    if (course.top !== undefined) {
+      res += 'margin-top: ' + course.top + 'rpx;'
+    }
+    return res
+  },
+
+  renderDate: function (flag) {
+    return flag ? 'with-date' : ''
+  },
+
+  renderSection: function (sectionIndex) {
+    return 'top: ' + sectionIndex * 210 + 'rpx;'
+  },
+}

@@ -1,0 +1,8 @@
+<text class="label">{{ _string.label }}</text>
+<view class="select" hover-class="select-hover" hover-stay-time="50">
+    <picker mode="multiSelector" range="{{ picker.range }}" value="{{ picker.value }}"
+        bindchange="bindPickerChange">
+        <text>{{ schoolTime }}</text>
+    </picker>
+    <image class="select-arrow" src="/images/icon_arrow_down.svg" />
+</view>

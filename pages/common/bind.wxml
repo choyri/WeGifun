@@ -1,0 +1,32 @@
+<wxs module="wxs" src="./bind.wxs" />
+
+<view class="input-wrap {{ wxs.hasValue(account.id) }} {{ wxs.isFocus(focusState.id) }}">
+    <input id="id" class="{{ wxs.isDisabled(editMode) }}"
+        value="{{ account.id }}" type="number" disabled="{{ editMode }}" maxlength="8"
+        bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
+    <text class="placeholder">{{ _string.id }}</text>
+    <icon type="clear" color="#bfbfbf" data-target="id" bindtap="clearInput"></icon>
+    <view class="underline"></view>
+</view>
+
+<view class="input-wrap {{ wxs.hasValue(account.eduPwd) }} {{ wxs.isFocus(focusState.eduPwd) }}">
+    <input id="eduPwd" value="{{ account.eduPwd }}" type="text" maxlength="20" password
+        bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
+    <text class="placeholder">{{ _string.pwd_edu }}</text>
+    <icon type="clear" color="#bfbfbf" data-target="eduPwd" bindtap="clearInput"></icon>
+    <view class="underline"></view>
+</view>
+
+<view class="input-wrap {{ wxs.hasValue(account.cardPwd) }} {{ wxs.isFocus(focusState.cardPwd) }}">
+    <input id="cardPwd" value="{{ account.cardPwd }}" type="number" maxlength="6" password
+        bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
+    <text class="placeholder">{{ _string.pwd_card }}</text>
+    <icon type="clear" color="#bfbfbf" data-target="cardPwd" bindtap="clearInput"></icon>
+    <view class="underline"></view>
+</view>
+
+<view class="help">
+    <image class="oo-icon" src="/images/icon_help.svg" bindtap="bindHelp" />
+</view>
+
+<button class="oo-btn" bindtap="bindSubmit">{{ _string.btn }}</button>

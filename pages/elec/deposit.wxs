@@ -1,0 +1,17 @@
+module.exports = {
+  getIconColor: function (state) {
+    return state ? '#1aad19' : '#ff3e3e'
+  },
+
+  getIconType: function (state) {
+    return state ? 'success' : 'clear'
+  },
+
+  hasIcon: function (state) {
+    return state ? 'show' : ''
+  },
+
+  isChecked: function (state) {
+    return state ? 'checked' : ''
+  },
+}

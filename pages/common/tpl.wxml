@@ -1,0 +1,15 @@
+<template name="dormInfo">
+    <view class="dorm-info">
+        <text class="name">{{ name }}</text>
+        <text class="state {{ default ? 'default' : 'other' }}">{{ state }}</text>
+    </view>
+</template>
+
+<template name="table">
+    <view class="oo-table">
+        <view wx:for="{{ table }}" wx:key="unique" class="tr">
+            <view wx:for="{{ item.data }}" wx:key="*this"
+                class="td {{ item < 0.05 ? 'gray' : '' }}">{{ item }}</view>
+        </view>
+    </view>
+</template>

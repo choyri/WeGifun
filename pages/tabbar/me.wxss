@@ -1,0 +1,38 @@
+page {
+    background-color: #ebebeb;
+}
+
+page::before {
+    display: none;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+
+    height: 280rpx;
+
+    background-color: #fff;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar {
+    display: block;
+    overflow: hidden;
+
+    width: 134rpx;
+    height: 134rpx;
+
+    border-radius: 50%;
+}
+
+.nickname {
+    height: 1.6em;
+    margin-top: 10rpx;
+}
+
+.uid {
+    font-size: 24rpx;
+}

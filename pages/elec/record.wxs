@@ -1,0 +1,10 @@
+module.exports = {
+  renderTitleSlider: function (obj) {
+    var res = ''
+
+    res += 'width: ' + obj.width + '%;'
+    res += 'left: ' + obj.left + '%;'
+
+    return res
+  },
+}

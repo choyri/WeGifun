@@ -1,0 +1,2 @@
+<schedule value="{{ schedule }}" bg="{{ setting.showScheduleBg && scheduleBg }}"
+    showDate="{{ setting.showScheduleDate }}" />

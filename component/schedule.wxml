@@ -1,0 +1,67 @@
+<wxs module="wxs" src="./schedule.wxs" />
+
+<image wx:if="{{ bg }}" class="bg {{ wxs.renderBg(bg.style) }}" mode="aspectFill" src="{{ bg.path }}" />
+
+<view class="head edge">
+    <view class="curr-week">
+        <view class="curr-week-value {{ wxs.renderDate(showDate) }}">{{ currWeek }}</view>
+    </view>
+    <view class="week-title">
+        <view wx:for="{{ weekTitle }}" wx:key="date"
+            wx:if="{{ !item.hidden }}"
+            class="week-title-item {{ wxs.renderDate(showDate) }} {{ wxs.isWeekTitleActive(item) }}">
+            <text class="name">{{ item.name }}</text>
+            <text wx:if="{{ showDate }}" class="date">{{ item.date }}</text>
+        </view>
+    </view>
+</view>
+
+<view class="body {{ wxs.renderDate(showDate) }}"
+    bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" bindlongpress="longPress">
+    <view class="body-item sidebar edge">
+        <view class="sidebar-item">
+            <text>1</text>
+            <text>2</text>
+        </view>
+        <view class="sidebar-item">
+            <text>3</text>
+            <text>4</text>
+        </view>
+        <view class="sidebar-item">
+            <text>5</text>
+            <text>6</text>
+        </view>
+        <view class="sidebar-item">
+            <text>7</text>
+            <text>8</text>
+        </view>
+        <view class="sidebar-item">
+            <text>9</text>
+            <text>10</text>
+        </view>
+        <view class="sidebar-item last">
+            <text>11</text>
+            <text>12</text>
+        </view>
+    </view>
+    <view class="body-item content">
+        <!-- 循环 每天 -->
+        <view wx:for="{{ value }}" wx:for-index="dayIndex" wx:for-item="day" wx:key="unique"
+            wx:if="{{ day }}"
+            class="content-column">
+            <!-- 循环 每节次 -->
+            <view wx:for="{{ day.data }}" wx:for-index="sectionIndex" wx:for-item="section" wx:key="unique"
+                class="course-wrap" style="{{ wxs.renderSection(sectionIndex) }}">
+                <!-- 循环 每门 # 单双周 -->
+                <view wx:for="{{ section.data }}" wx:for-index="courseIndex" wx:for-item="course" wx:key="unique"
+                    wx:if="{{ course.data.display }}"
+                    class="course {{ wxs.isTransparent(bg) }}" style="{{ wxs.renderCourse(course.data) }}"
+                    data-day="{{ dayIndex }}" data-section="{{ sectionIndex }}" data-course="{{ courseIndex }}"
+                    bindtap="showDetail">
+                    <text class="value">{{ course.data.name }}</text>
+                    <text wx:if="{{ course.data.height != 100 }}" class="value">{{ course.data.location }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

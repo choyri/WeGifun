@@ -1,0 +1,21 @@
+<school-time bindchange="bindSchoolTimeChange" />
+<button class="oo-btn" bindtap="bindSubmit">{{ _string.btn }}</button>
+
+<view class="record {{ showRecord ? 'show' : '' }}">
+    <view class="record-bg"></view>
+    <view class="record-content">
+        <view class="record-title">
+            <text>{{ schoolTime.title }}</text>
+            <icon type="clear" bindtap="bindClose" />
+        </view>
+        <view class="oo-table">
+            <view wx:for="{{ scoreData }}" wx:key="name" class="tr">
+                <view class="td course-describe">
+                    <text>{{ item.name }}</text>
+                    <text>{{ item.nature }} / {{ item.credit }}</text>
+                </view>
+                <text class="td course-score">{{ item.score }}</text>
+            </view>
+        </view>
+    </view>
+</view>

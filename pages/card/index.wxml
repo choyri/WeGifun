@@ -1,0 +1,9 @@
+<view class="service-index">
+    <image src="/images/service_money.svg" />
+    <text>{{ _string.balance }}</text>
+    <text class="result">{{ balance }}</text>
+</view>
+
+<button class="oo-btn" bindtap="navigateToRecord">{{ _string.record }}</button>
+
+<text class="oo-footer fixed">{{ _string.witticism }}</text>

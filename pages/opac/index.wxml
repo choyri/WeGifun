@@ -1,0 +1,29 @@
+<view class="head {{ hideHead ? 'hide' : '' }}">
+    <image src="/images/service_bookshelf.svg" />
+</view>
+
+<view class="search">
+    <view class="search-input">
+        <input value="{{ searchValue }}" confirm-type="search" bindinput="bindInput" bindconfirm="bindConfirm" />
+        <icon hidden="{{ hideClear }}" type="clear" size="20" bindtap="bindClear" />
+    </view>
+    <view class="search-btn" bindtap="bindSearch">
+        <icon type="search" color="#fff" size="18" />
+    </view>
+</view>
+
+<view class="result" wx:if="{{ searchData }}">
+    <text class="result-info">{{ conclusion }}</text>
+    <navigator wx:for="{{ searchData }}" wx:key="marc"
+        class="result-item oo-shadow" url="./book?marc={{ item.marc }}" hover-stay-time="200">
+        <image class="cover" mode="widthFix" src="{{ item.cover || '/images/service_bookshelf.svg' }}" />
+        <view class="book-info">
+            <text class="title">{{ item.title }}</text>
+            <text>{{ item.author }} / {{ item.publisher }} / {{ item.year }}</text>
+            <text>{{ item.amount || 'N/A' }}</text>
+            <text>{{ item.callNum }}</text>
+        </view>
+    </navigator>
+</view>
+
+<view hidden="{{ hasMore || nullData }}" class="oo-footer">{{ _string.no_more }}</view>

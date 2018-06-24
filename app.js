@@ -1,133 +1,145 @@
-const Event = require('./utils/event.js');
+import regeneratorRuntime from './utils/libs/regenerator-runtime'
 
-let appParams = {
-    cache: {},
-    config: require('./config.js'),
-    event: new Event(),
-    lang: require('./utils/language.js'),
-    util: require('./utils/util.js')
-};
+import config from './config';
+import './utils/init'
 
-appParams.onLaunch = function () {
-    for (let key of wx.getStorageInfoSync().keys) {
-        this.cache[key] = wx.getStorageSync(key);
+let appParams = {}
+
+appParams.onLaunch = function (options) {
+  if (options.query && options.query.dev) {
+    console.log('真机预览模式')
+    wx.ooCache.dev = true
+  }
+
+  for (const key of wx.getStorageInfoSync().keys) {
+    wx.ooCache[key] = wx.getStorageSync(key)
+  }
+
+  console.info('缓存', wx.ooCache)
+
+  // 先检查更新
+  this.checkUpdate()
+
+  this.checkSoter()
+}
+
+appParams.checkUpdate = function () {
+  // 基础库 1.9.90 开始支持
+  if (wx.getUpdateManager) {
+    const updateManager = wx.getUpdateManager()
+
+    updateManager.onUpdateReady(async function () {
+      const modalRes = await wx.ooShowModal({ content: wx.ooString.global.updateManager })
+
+      if (modalRes.confirm) {
+        updateManager.applyUpdate()
+      }
+    })
+  }
+
+  if (wx.ooCache.version === config.version) {
+    return
+  }
+
+  console.log('已更新到新版', config.version)
+
+  // 新用户不显示新版特性 因此先判断缓存里是否存在版本项
+  if (wx.ooCache.version && wx.ooString.feature) {
+    wx.ooShowModal({
+      title: wx.ooString.global.new_feature,
+      content: wx.ooString.feature,
+    }, false)
+  }
+
+  if (wx.ooCache.version && wx.ooCache.version === 'v0.6.7') {
+    this.importOldVersion()
+  }
+
+  wx.ooSaveData({version: config.version})
+}
+
+appParams.checkSoter = async function () {
+  if (wx.ooCache.supportSoter) {
+    return
+  }
+
+  let flag = false
+
+  try {
+    if (wx.ooCache.systemInfo.model !== 'iPhone X') {
+      const res = await wx.ooIsSoterEnrolled()
+      flag = res.isEnrolled
     }
-    console.info('缓存 app.cache：', this.cache);
+  } catch (e) {
+    console.log('checkSoter 出现异常 可能当前是开发者工具', e)
+    return
+  }
 
-    if (this.cache.version !== this.config.version) {
-        console.log('小程序已更新', this.config.version);
+  wx.ooSaveData({ supportSoter: flag })
+}
 
-        if (this.cache.version !== undefined && this.config.clearStorage) {
-            console.log('该版本要求强制清理本地数据缓存');
-            wx.clearStorageSync();
-            this.cache = {
-                globalRefresh: true
-            };
+appParams.importOldVersion = function () {
+  wx.clearStorageSync()
+  wx.ooCache.supportSoter = null
+
+  if (wx.ooCache.edu) {
+    if (wx.ooCache.edu.schedule) {
+      let res = []
+
+      for (const day of wx.ooCache.edu.schedule) {
+        let course = {
+          day: day.index,
         }
 
-        if (this.cache.version && this.lang.feature && this.lang.feature !== '') {
-            wx.showModal({
-                title: this.lang.new_feature,
-                content: this.lang.feature,
-                confirmText: this.lang.modal_confirm,
-                showCancel: false,
-            });
+        for (const section of day.data) {
+          course.section = section.index
+          for (const _course of section.data) {
+            course.name = _course.data.name
+            course.teacher = _course.data.teacher
+            course.location = _course.data.room
+            course.week = _course.data.week.replace(/-/g, ':')
+
+            res.push(wx.ooUtil.copy(course))
+          }
         }
+      }
 
-        this.saveData({
-            version: this.config.version
-        });
+      wx.ooSaveData({ edu: { schedule: res } })
+      const schedule = wx.ooService.edu.renderSchedule()
+      wx.ooService.edu.saveSchedule(schedule)
     }
 
-    if (this.cache.supportSoter === undefined) {
-        let flag = false;
-        wx.checkIsSoterEnrolledInDevice({
-            checkAuthMode: 'fingerPrint',
-            success(res) {
-                if (res.isEnrolled) {
-                    flag = true;
-                }
-            },
-            complete: () => {
-                this.saveData({supportSoter: flag});
-            },
-        });
+    if (wx.ooCache.edu.termBegin) {
+      wx.ooSaveData({ edu: { startDate: wx.ooCache.edu.termBegin }})
+    }
+  }
+
+  if (wx.ooCache.stu) {
+    let user = wx.ooUtil.copy(wx.ooCache.stu)
+
+    if (wx.ooCache.dataDorm) {
+      user.dorm = parseInt(wx.ooCache.dataDorm.id)
     }
 
-    // 基础库 1.2.0 开始支持
-    if (wx.getSetting) {
-        wx.getSetting({
-            success: res => {
-                res.authSetting = res.authSetting || {};
-                console.info('授权状态：', res.authSetting);
+    wx.ooSaveData({ user })
+  }
 
-                this.cache.hasAuth = res.authSetting['scope.userInfo'];
+  if (wx.ooCache.dataDormHistory) {
+    const dormHistory = wx.ooCache.dataDormHistory.map(item => parseInt(item))
+    wx.ooSaveData({ dormHistory })
+  }
 
-                if (res.authSetting['scope.userInfo'] === true) {
-                    console.log('已有权限 开始静默获取最新用户信息');
-                    this.storeUserWxInfo();
-                }
-            }
-        });
-    }
-};
+  if (wx.ooCache.dataScheduleBg) {
+    const bg = wx.ooUtil.copy(wx.ooCache.dataScheduleBg)
+    wx.ooSaveData({
+      schedule: {
+        bg,
+      },
+      setting: {
+        showScheduleBg: true,
+      },
+    })
+  }
+}
 
-appParams.storeUserWxInfo = function (completeCallback) {
-    let userWxInfo = null;
-
-    wx.getUserInfo({
-        withCredentials: false,
-        success(res) {
-            console.info('获取成功：', res.userInfo);
-            userWxInfo = res.userInfo;
-        },
-        fail() {
-            console.error('获取失败 未授权');
-        },
-        complete: () => {
-            this.cache.userWxInfo = userWxInfo;
-            typeof completeCallback == 'function' && completeCallback();
-        }
-    });
-};
-
-appParams.showErrModal = function (content, completeCallback) {
-    wx.showModal({
-        title: this.lang.modal_title,
-        content,
-        confirmText: this.lang.modal_confirm,
-        showCancel: false,
-        complete() {
-            typeof completeCallback == 'function' && completeCallback();
-        }
-    });
-};
-
-appParams.saveData = function (newData) {
-    console.log('开始保存数据并更新缓存');
-
-    let data = {},
-        isObjData = null,
-        oldData = null;
-
-    for (let key in newData) {
-        isObjData = Object.prototype.toString.call(newData[key]) === '[object Object]';
-
-        // 如已存在数据 则只更新新的部分
-        oldData = this.cache[key] || (isObjData ? {} : null);
-
-        console.info('key：', key, '旧数据：', oldData);
-
-        data = isObjData ? Object.assign(oldData, newData[key]) : newData[key];
-
-        console.info('新数据：', newData[key], '更新后的数据：', data);
-
-        this.cache[key] = data;
-        wx.setStorage({
-            key,
-            data
-        });
-    }
-};
-
-App(appParams);
+App(appParams)

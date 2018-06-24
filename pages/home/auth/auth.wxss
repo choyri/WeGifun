@@ -1,9 +1,0 @@
-page {
-    font-size: 34rpx;
-
-    background-color: #fff;
-}
-
-.state {
-    margin: 2em 0 0 0;
-}

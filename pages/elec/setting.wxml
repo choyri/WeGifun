@@ -1,0 +1,29 @@
+<text class="oo-label">{{ _string.dorm_label }}</text>
+<view class="oo-select oo-underline horizontal">
+    <picker class="oo-select-item"
+        mode="multiSelector" range="{{ picker.range }}" value="{{ picker.value }}"
+        bindchange="bindPickerChange" bindcolumnchange="bindPickerColumnChange">
+        <text>{{ dormInfo.locationName }}</text>
+    </picker>
+    <text class="oo-select-separator">#</text>
+    <input class="oo-select-item" value="{{ dormInfo.room }}" type="number" maxlength="3" bindinput="bindInput" />
+</view>
+
+<button class="oo-btn" bindtap="bindSubmit">{{ _string.btn }}</button>
+
+<view wx:if="{{ dormHistory.length > 0 }}" class="history {{ editHistory ? 'edit' : '' }}">
+    <view class="oo-label">
+        <text>{{ _string.history }}</text>
+        <image hidden="{{ hideEdit }}" class="oo-icon" src="/images/icon_edit.svg" bindtap="bindEditHistory" />
+    </view>
+    <view class="history-data">
+        <view wx:for="{{ dormHistory }}" wx:key="id" class="history-grid">
+            <view class="history-item" data-id="{{ item.id }}" data-index="{{ index }}" bindtap="bindHistoryTap">
+                <view class="flex-wrap">
+                    <text>{{ item.name }}</text>
+                    <icon wx:if="{{ index !== 0 }}" type="clear" size="18" color="#ff3e3e"></icon>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

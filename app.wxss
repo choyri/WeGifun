@@ -1,70 +1,425 @@
-@import '/utils/weui.wxss';
-
 page {
     /* 移动端字体设置 http://t.cn/Rad9zxW */
     font-family: -apple-system, BlinkMacSystemFont, PingFang, 'Helvetica Neue', STHeiti, Tahoma, sans-serif;
+    font-size: 32rpx;
 
-    background-color: #ebebeb;
+    background-color: #fff;
 }
 
-button,
+page::before,
+._page::before {
+    position: fixed;
+    z-index: 9999;
+    top: -1px;
+
+    width: 100%;
+    height: 1rpx;
+
+    content: '';
+
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+}
+
 button::after {
-    border-radius: 3px;
+    /* 去除原生按钮边框 */
+    border: none;
 }
 
-button[disabled][type='primary'] {
-    background-color: #a3dea3;
+input {
+    height: 2em;
 }
 
-.weui-cells::before,
-.weui-cells::after {
-    border: 0;
+/* 默认 hover 样式 */
+.navigator-hover,
+.view-hover,
+.oo-cell-hover {
+    transition: all .2s;
+
+    background-color: #d9d9d9 !important;
 }
 
-.weui-cells:last-child {
+.oo-btn {
+    margin: 3em 15px 1.17647059em;
+
+    color: #fff;
+    border-radius: 4px;
+    background-color: #4285f4;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
+}
+
+/* 重写 button 默认 hover 样式 # 该样式得放在 oo-btn 后面 要不然无效 */
+.button-hover {
+    transition: all .2s;
+
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12), 0 5px 5px -3px rgba(0,0,0,.2);
+}
+
+.oo-btn.common {
+    color: #000;
+    background-color: #eee;
+}
+
+.oo-cells {
+  line-height: 1.41176471;
+
+  position: relative;
+
+  margin-top: 1.17647059em;
+
+  background-color: #fff;
+}
+
+.oo-cells:last-child {
     margin-bottom: 1.17647059em;
 }
 
-.weui-cells__tips.center {
-    margin-top: 1.17647059em;
+.oo-cells-title {
+    font-size: 28rpx;
 
-    text-align: center;
+    display: block;
+
+    margin-top:.77em;
+    margin-bottom:.3em;
+    padding: 0 15px;
+
+    color: #999;
 }
 
-.weui-cell::before {
-    right: 15px;
+.oo-cells-after-title {
+    margin-top: 0;
+}
 
-    transform-origin: top;
+.oo-cell {
+    position: relative;
+
+    display: flex;
+
+    padding: 12px 15px;
+
+    align-items: center;
+    justify-content:space-between;
+}
+
+.oo-cell.thin {
+    padding: 5px 15px;
+}
+
+.oo-cell::before {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  left: 15px;
+
+  content: '';
+  transform-origin: top;
+
+  border-top: 1rpx solid #d9d9d9;
+}
+
+.oo-cell:first-child::before {
+  display: none;
 }
 
 @media (min-resolution: 2dppx) {
-    .weui-cell::before {
+    .oo-cell::before {
         transform: scaleY(.5);
     }
 }
 
 @media (min-resolution: 3dppx) {
-    .weui-cell::before {
+    .oo-cell::before {
         transform: scaleY(.333333);
     }
 }
 
-.weui-cell {
-    padding-top: 12px;
-    padding-bottom: 12px;
+.oo-cell.button {
+    font-size: 32rpx;
+    line-height: 1.41176471;
+
+    border-radius: 0;
+    background-color: transparent;
 }
 
-.weui-cell.weui-cell_input {
-    padding-top: 0;
-    padding-bottom: 0;
+.oo-cell.button::after {
+    display: none;
 }
 
-.weui-cell_active {
-    transition: all .2s ease-in-out;
-
-    background-color: #d9d9d9;
+.oo-cell switch {
+    position: absolute;
+    right: 15px;
 }
 
-.weui-badge {
-    vertical-align: inherit;
+.oo-cell-label {
+    width: 5em;
+}
+
+.oo-cell-edge {
+    color: #999;
+}
+
+.oo-code {
+    font-size: 90%;
+
+    margin-right: 4px;
+    padding: 2px 4px;
+
+    word-break: break-all;
+
+    color: #c7254e;
+    border-radius: 4px;
+    background-color: #f9f2f4;
+}
+
+.oo-footer {
+    font-size: 24rpx;
+
+    text-align: center;
+
+    color: #999;
+}
+
+.oo-footer.fixed {
+    position: fixed;
+    bottom: .52em;
+
+    width: 100%;
+}
+
+.oo-footer.clickable {
+    color: #586C94;
+}
+
+.oo-icon {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.oo-label {
+    font-size: 28rpx;
+
+    display: block;
+
+    margin-top: 1em;
+    margin-bottom: .3em;
+    padding: 0 15px;
+
+    color: #999;
+}
+
+.oo-loading {
+    width: 100vw;
+    height: 100vh;
+}
+
+.oo-record {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1.17647059em;
+    padding: 5px 15px;
+
+    background-color: #fff;
+}
+
+.oo-record:last-child {
+    margin-bottom: 1.17647059em;
+}
+
+.oo-record > view {
+    display: flex;
+
+    padding: 5px 0;
+
+    justify-content: space-between;
+}
+
+.oo-record .head {
+    font-size: 36rpx;
+
+    position: relative;
+
+    margin-bottom: 5px;
+    padding: 10px 0;
+}
+
+.oo-record .head::after {
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+
+    content: '';
+    transform-origin: bottom;
+
+    border-bottom: 1rpx dashed #d9d9d9;
+}
+
+.oo-record text:first-child {
+    text-align: justify;
+    text-align-last: justify;
+
+    flex: 0 0 3em;
+}
+
+.oo-section {
+    font-size: 32rpx;
+
+    padding: 20px 15px;
+}
+
+.oo-section-h1,
+.oo-section-h2 {
+    font-weight: bold;
+}
+
+.oo-section-h1 {
+    font-size: 36rpx;
+
+    display: block;
+
+    margin-bottom: .8em;
+    padding-bottom: .3em;
+
+    border-bottom: 1rpx solid #eee;
+}
+
+.oo-section-h2 {
+    font-size: 34rpx;
+
+    margin-bottom: .5em;
+}
+
+.oo-section-p {
+    line-height: 1.8em;
+
+    display: block;
+
+    margin-bottom: .8em;
+
+    text-align: justify;
+}
+
+.oo-section-p:last-child {
+    margin-bottom: 0;
+}
+
+.oo-select {
+    line-height: 2em;
+
+    position: relative;
+
+    display: flex;
+
+    margin: 0 15px;
+
+    justify-content: space-between;
+}
+
+.oo-select.horizontal {
+    text-align: center;
+}
+
+.oo-select-item {
+    flex: 0 0 40%;
+}
+
+.oo-select-separator {
+    flex: 0 0 20%;
+}
+
+.oo-shadow {
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, .28);
+}
+
+.oo-table {
+    flex: auto;
+}
+
+.oo-table .tr {
+    display: flex;
+
+    padding: .5em 0;
+
+    align-items: center;
+}
+
+.oo-table .tr:nth-child(odd) {
+    background-color: #f3f3f7;
+}
+
+.oo-table .td {
+    line-height: normal;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    flex: auto;
+}
+
+.oo-tips {
+    font-size: 28rpx;
+    line-height: 1.2em;
+
+    display: block;
+
+    margin-top: .3em;
+    padding: 0 15px;
+
+    color: #999;
+}
+
+.oo-tips.center {
+    margin-top: 1.17647059em;
+
+    text-align: center;
+}
+
+.oo-underline::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    content: '';
+    transform-origin: bottom;
+
+    border-bottom: 1rpx solid #d9d9d9;
+}
+
+@media (min-resolution: 2dppx) {
+    .oo-underline::after {
+        transform: scaleY(.5);
+    }
+}
+
+@media (min-resolution: 3dppx) {
+    .oo-underline::after {
+        transform: scaleY(.333333);
+    }
+}
+
+.service-index {
+    margin-top: 2em;
+
+    text-align: center;
+}
+
+.service-index image {
+    width: 250rpx;
+    height: 250rpx;
+
+    vertical-align: top;
+}
+
+.service-index text {
+    display: block;
+}
+
+.service-index .result {
+    font-size: 72rpx;
+    line-height: 1.4em;
 }

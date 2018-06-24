@@ -1,0 +1,91 @@
+@import '../common/tpl.wxss';
+
+page {
+    background-color: #ebebeb;
+}
+
+.amount-list {
+    flex-wrap: wrap;
+}
+
+.amount-list label {
+    width: 33.33333333%;
+    margin-top: 15px;
+}
+
+.amount-list label:nth-child(1),
+.amount-list label:nth-child(2),
+.amount-list label:nth-child(3) {
+    margin-top: 0;
+}
+
+.amount-list label:nth-child(3n-2) .amount-check-label {
+    margin-right: 10px;
+}
+
+.amount-list label:nth-child(3n-1) .amount-check-label {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.amount-list label:nth-child(3n) .amount-check-label {
+    margin-left: 10px;
+}
+
+.amount-check {
+    position: absolute;
+    left: -9999px;
+}
+
+.amount-check-label {
+    display: flex;
+
+    height: 4em;
+
+    text-align: center;
+
+    border: 1rpx solid #d9d9d9;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.amount-check-label.checked {
+    color: #4285f4;
+    border-color: #4285f4;
+}
+
+.amount-check-label.checked .oo-underline::after {
+    border-bottom-color: #4285f4;
+}
+
+.amount-custom {
+    position: relative;
+
+    width: 4em;
+}
+
+.oo-cell.check {
+    justify-content: flex-start;
+}
+
+.confirm-pwd {
+    flex: auto;
+}
+
+icon {
+    opacity: 0;
+}
+
+icon.show {
+    opacity: 1;
+}
+
+.deposit-tip {
+    display: block;
+
+    margin-top: 1.17647059em;
+    padding: 0 15px;
+
+    color: #999;
+}

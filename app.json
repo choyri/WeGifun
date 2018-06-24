@@ -1,57 +1,61 @@
 {
     "pages": [
-        "pages/index/index",
+        "pages/tabbar/schedule",
+        "pages/tabbar/discover",
+        "pages/tabbar/me",
 
-        "pages/intro/intro",
-        "pages/login/login",
+        "pages/common/bind",
+        "pages/common/setting",
+        "pages/common/guide",
+        "pages/common/about",
 
-        "pages/home/home",
-        "pages/home/auth/auth",
+        "pages/edu/score",
 
-        "pages/score/score",
+        "pages/card/index",
+        "pages/card/record",
 
-        "pages/card/card",
-        "pages/card/record/record",
+        "pages/elec/index",
+        "pages/elec/deposit",
+        "pages/elec/record",
+        "pages/elec/setting",
 
-        "pages/electric/electric",
-        "pages/electric/recharge/recharge",
-        "pages/electric/record/record",
-        "pages/electric/setting/setting",
-
-        "pages/service/service",
-
-        "pages/catalog/catalog",
-        "pages/catalog/info/info",
-
-        "pages/setting/setting",
-        "pages/setting/edu/edu",
-        "pages/setting/about/about",
-        "pages/setting/changelog/changelog"
+        "pages/opac/index",
+        "pages/opac/book"
     ],
-    "window": {
-        "navigationBarBackgroundColor": "#393A3F",
+    "window":
+    {
+        "navigationBarBackgroundColor": "#fff",
         "navigationBarTitleText": "微吉风",
-        "backgroundColorTop": "#ebebeb",
-        "backgroundColorBottom": "#ebebeb"
+        "navigationBarTextStyle": "black"
     },
-    "tabBar": {
-        "color": "#999999",
-        "selectedColor": "#46C01B",
-        "backgroundColor": "#FCFCFC",
+    "tabBar":
+    {
+        "color": "#999",
+        "selectedColor": "#303030",
+        "backgroundColor": "#fcfcfc",
         "borderStyle": "black",
-        "list": [{
-            "pagePath": "pages/index/index",
+        "list": [
+        {
+            "pagePath": "pages/tabbar/schedule",
             "text": "课表",
-            "iconPath": "images/icon_index.png",
-            "selectedIconPath": "images/icon_index_hl.png"
-         }, {
-            "pagePath": "pages/home/home",
-            "text": "我的",
-            "iconPath": "images/icon_home.png",
-            "selectedIconPath": "images/icon_home_hl.png"
+            "iconPath": "images/tabbar_schedule.png",
+            "selectedIconPath": "images/tabbar_schedule_hl.png"
+        },
+        {
+            "pagePath": "pages/tabbar/discover",
+            "text": "发现",
+            "iconPath": "/images/tabbar_services.png",
+            "selectedIconPath": "images/tabbar_services_hl.png"
+        },
+        {
+            "pagePath": "pages/tabbar/me",
+            "text": "我",
+            "iconPath": "images/tabbar_me.png",
+            "selectedIconPath": "images/tabbar_me_hl.png"
         }]
     },
-    "networkTimeout": {
+    "networkTimeout":
+    {
         "request": 5000
     }
 }

@@ -1,47 +1,27 @@
-// 跨页面通信 # 参考资料 http://t.cn/RS9Uq58
+// 跨页面通信 # 参考资料 http://t.cn/RS9Uq58 http://t.cn/RjZ8U10
 
 class Event {
-    on(event, fn, ctx) {
-        this._stores = this._stores || {};
+  static stores = {}
 
-        (this._stores[event] = this._stores[event] || []).push({
-            cb: fn,
-            ctx: ctx
-        });
+  static on (event, fn, ctx) {
+    (this.stores[event] = this.stores[event] || []).push({ cb: fn, ctx: ctx })
+  }
+
+  static emit (event, ...args) {
+    if (!this.stores[event]) {
+      return
     }
 
-    emit(event) {
-        this._stores = this._stores || {};
+    this.stores[event].map(store => {
+      store.cb.apply(store.ctx, args)
+    })
+  }
 
-        let store = this._stores[event],
-            args;
-
-        if (store) {
-            store = store.slice(0);
-            args = [].slice.call(arguments, 1);
-
-            store.map((tmp) => {
-                tmp.cb.apply(tmp.ctx, args);
-            });
-        }
+  static off (ctx) {
+    for (let event in this.stores) {
+      this.stores[event] = this.stores[event].filter(store => store.ctx !== ctx)
     }
-
-    off(ctx) {
-        this._stores = this._stores || {};
-
-        if (! arguments.length) {
-            this._stores = {};
-            return;
-        }
-
-        for (let event in this._stores) {
-            let store = this._stores[event];
-
-            this._stores[event] = store.filter((tuple) => {
-                return tuple.ctx !== ctx;
-            });
-        }
-    }
+  }
 }
 
-module.exports = Event;
+export default Event

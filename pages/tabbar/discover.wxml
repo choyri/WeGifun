@@ -1,0 +1,18 @@
+<view class="oo-cells">
+    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
+        bindtap="bindUpdateSchedule">{{ _string.edu_schedule }}</view>
+    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
+        data-url="/pages/edu/score" data-type="edu" bindtap="bindNavigator">{{ _string.edu_score }}</view>
+</view>
+
+<view class="oo-cells">
+    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
+        data-url="/pages/card/index" data-type="card" bindtap="bindNavigator">{{ _string.card }}</view>
+    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
+        data-url="/pages/elec/index" data-type="card" bindtap="bindNavigator">{{ _string.elec }}</view>
+</view>
+
+<view class="oo-cells">
+    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
+        data-url="/pages/opac/index" bindtap="bindNavigator">{{ _string.opac }}</view>
+</view>

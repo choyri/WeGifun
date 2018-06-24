@@ -1,0 +1,55 @@
+.metadata {
+    position: relative;
+}
+
+.metadata image {
+    position: absolute;
+    z-index: -1;
+    top: 15px;
+    right: 0;
+
+    width: 50%;
+    height: calc(100% - 30px);
+
+    opacity: .2;
+}
+
+.metadata .title {
+    font-size: 36rpx;
+
+    display: block;
+
+    margin-bottom: 1em;
+}
+
+.metadata view {
+    display: flex;
+
+    padding: .4em 0;
+
+    align-items: center;
+}
+
+.metadata text {
+    line-height: 1.2em;
+}
+
+.metadata .attr {
+    width: 200rpx;
+
+    flex: none;
+}
+
+.oo-table .td {
+    text-align: center;
+
+    flex: 0 0 50%;
+}
+
+.green {
+    color: #008000;
+}
+
+.summary {
+    margin-top: .8em;
+}

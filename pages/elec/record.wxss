@@ -1,0 +1,115 @@
+@import '../common/tpl.wxss';
+
+page {
+    background-color: #ebebeb;
+}
+
+page::before {
+    display: none;
+}
+
+.default-bg {
+    display: flex;
+
+    align-items: center;
+    flex: auto;
+    justify-content: center;
+}
+
+.default-bg image {
+    width: 250rpx;
+    height: 250rpx;
+
+    opacity: .5;
+}
+
+.tab-title {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+    display: flex;
+
+    width: 100%;
+
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+
+    justify-content: space-around;
+}
+
+.tab-title text {
+    line-height: 80rpx;
+
+    height: 80rpx;
+
+    text-align: center;
+
+    flex: auto;
+}
+
+.tab-title text.selected {
+    color: #4285f4;
+}
+
+.title-slider {
+    position: absolute;
+    bottom: 0;
+
+    transition: left .3s;
+}
+
+.title-slider::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    width: 4em;
+    height: 2px;
+    margin-left: -2em;
+
+    content: '';
+
+    background-color: #4285f4;
+}
+
+.tab-panel {
+    height: calc(100vh - 80rpx);
+    padding-top: 80rpx;
+}
+
+.tab-content {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100%;
+
+    flex: auto;
+}
+
+.consume-info view {
+    font-size: 48rpx;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    flex: auto;
+}
+
+.consume-info text:last-child {
+    font-size: 26rpx;
+}
+
+.consume-list .oo-table .tr:nth-child(odd) {
+    background-color: transparent;
+}
+
+.consume-list .oo-table .tr:nth-child(even) {
+    background-color: #f3f3f7;
+}
+
+.oo-table .td {
+    flex: 1;
+}

@@ -1,0 +1,38 @@
+<view class="userinfo">
+    <block wx:if="{{ canUseOpenData }}">
+        <open-data class="avatar" type="userAvatarUrl"></open-data>
+        <open-data class="nickname" type="userNickName"></open-data>
+    </block>
+    <block wx:else>
+        <image class="avatar" src="/images/avatar.png" />
+        <text class="nickname">{{ _string.default_nickname }}</text>
+    </block>
+    <text class="uid">({{ uid }})</text>
+</view>
+
+<view class="oo-cells">
+    <navigator class="oo-cell" hover-stay-time="200" url="/pages/common/bind">
+        <text>{{ _string.menu_bind }}</text>
+    </navigator>
+    <navigator class="oo-cell" url="/pages/common/setting" hover-stay-time="200">
+        <text>{{ _string.menu_setting }}</text>
+    </navigator>
+</view>
+
+<view class="oo-cells">
+    <button class="oo-cell button" hover-class="oo-cell-hover" open-type="contact">
+        <text>{{ _string.menu_feedback }}</text>
+    </button>
+    <navigator class="oo-cell" hover-stay-time="200" url="/pages/common/guide">
+        <text>{{ _string.menu_guide }}</text>
+    </navigator>
+</view>
+
+<view class="oo-cells">
+    <button class="oo-cell button" hover-class="oo-cell-hover" open-type="share">
+        <text>{{ _string.menu_share }}</text>
+    </button>
+    <navigator class="oo-cell" hover-stay-time="200" url="/pages/common/about">
+        <text>{{ _string.menu_about }}</text>
+    </navigator>
+</view>

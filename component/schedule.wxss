@@ -1,0 +1,180 @@
+.bg {
+    position: fixed;
+    z-index: -1;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.bg.mask {
+    opacity: .3;
+}
+
+.bg.blur {
+    filter: blur(3px);
+}
+
+.edge {
+    font-size: 28rpx;
+
+    text-align: center;
+
+    color: #999;
+    background-color: #fff;
+}
+
+.head {
+    position: fixed;
+    z-index: 100;
+    top: -1rpx;
+
+    display: flex;
+
+    width: 100%;
+
+    box-shadow: 0 2rpx 12rpx rgba(32, 33, 36, .28);
+}
+
+.curr-week {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.curr-week,
+.sidebar {
+    width: 40rpx;
+}
+
+.curr-week-value {
+    line-height: 30rpx;
+
+    display: block;
+}
+
+.curr-week-value.with-date {
+    line-height: 40rpx;
+}
+
+.week-title {
+    display: flex;
+
+    flex: auto;
+}
+
+.week-title-item {
+    line-height: 60rpx;
+
+    display: flex;
+    flex-direction: column;
+
+    flex: auto;
+}
+
+.week-title-item.with-date {
+    padding: 10rpx 0 10rpx;
+}
+
+.week-title-item.with-date > .name {
+    line-height: 40rpx;
+}
+
+.week-title-item > .date {
+    font-size: 24rpx;
+    line-height: 30rpx;
+}
+
+.week-title-item.highlight {
+    color: #3367d6;
+}
+
+.body {
+    display: flex;
+}
+
+.body-item {
+    padding: 70rpx 0 10rpx;
+}
+
+.body.with-date > .body-item {
+    padding: 100rpx 0 10rpx;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+    flex: none;
+}
+
+.sidebar-item {
+    display: flex;
+    flex-direction: column;
+
+    height: 200rpx;
+    margin-bottom: 10rpx;
+
+    justify-content: space-around;
+}
+
+.sidebar-item.last {
+    margin-bottom: 0;
+}
+
+.content {
+    display: flex;
+
+    flex: auto;
+}
+
+.content-column {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 6rpx;
+
+    flex: auto;
+}
+
+.course-wrap {
+    position: absolute;
+
+    overflow: hidden;
+
+    width: 100%;
+}
+
+.course {
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    height: 200rpx;
+    padding: 2rpx;
+
+    text-align: center;
+
+    color: #fff;
+    background-color: #b2b2b2;
+
+    justify-content: space-around;
+}
+
+.course.transparent {
+    opacity: .8;
+}
+
+.course > .value {
+    font-size: 28rpx;
+    line-height: 32rpx;
+
+    display: -webkit-box;
+    overflow: hidden;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* 多行溢出省略号 http://t.cn/zWUS0VF */
+}

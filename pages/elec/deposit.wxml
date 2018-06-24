@@ -1,0 +1,46 @@
+<import src="../common/tpl.wxml" />
+
+<wxs module="wxs" src="./deposit.wxs" />
+
+<view class="oo-cells">
+    <navigator class="oo-cell" url="setting?action=retrieve&id={{ dormInfo.id }}" hover-stay-time="200">
+        <template is="dormInfo" data="{{ ...dormInfo }}" />
+    </navigator>
+    <radio-group class="oo-cell amount-list" bindchange="bindAmountChange">
+        <label wx:for="{{ amountItems }}" wx:key="value">
+            <radio class="amount-check" value="{{ item.value }}" />
+            <view class="amount-check-label {{ wxs.isChecked(item.checked) }}">
+                <text wx:if="{{ item.value > 0 }}">￥{{ item.value }}</text>
+                <block wx:else>
+                    <text>￥</text>
+                    <input class="amount-custom oo-underline" type="number" maxlength="3"
+                        placeholder="{{ _string.custom }}" bindinput="bindAmountInput" />
+                </block>
+            </view>
+        </label>
+    </radio-group>
+</view>
+
+<view class="oo-cells">
+    <view class="oo-cell thin check">
+        <text class="oo-cell-label">{{ _string.check }}</text>
+        <input value="{{ checkDorm }}" disabled="true" />
+    </view>
+</view>
+<text class="oo-tips">{{ _string.check_tip }}</text>
+
+<block wx:if="{{ !supportSoter }}">
+    <view class="oo-cells">
+        <view class="oo-cell thin">
+            <input class="confirm-pwd" type="number" maxlength="6"
+                password="true" placeholder="{{ _string.pwd }}" bindinput="bindPwdInput" />
+            <icon class="oo-cell-edge {{ wxs.hasIcon(pwdIcon.show) }}"
+                type="{{ wxs.getIconType(pwdIcon.right) }}" color="{{ wxs.getIconColor(pwdIcon.right) }}"></icon>
+        </view>
+    </view>
+    <text class="oo-tips">{{ _string.prove_tip }}</text>
+</block>
+
+<text class="deposit-tip">{{ _string.deposit_tip }}</text>
+
+<button class="oo-btn" bindtap="bindSubmit">{{ _string.btn }}</button>

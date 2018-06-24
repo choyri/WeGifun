@@ -1,0 +1,3 @@
+<view class="oo-section">
+    <view wx:for="{{ _string.content }}" wx:key="*this" class="oo-section-p">{{ item }}</view>
+</view>

@@ -1,0 +1,35 @@
+<view class="oo-cells">
+    <view class="oo-cell">
+        <text>{{ _string.schedule_date }}</text>
+        <switch checked="{{ setting.showScheduleDate }}" color="#4285f4" bindchange="bindSwitchScheduleDate" />
+    </view>
+</view>
+
+<view class="oo-cells">
+    <view class="oo-cell">
+        <text>{{ _string.schedule_bg.title }}</text>
+        <switch checked="{{ setting.showScheduleBg }}" color="#4285f4" bindchange="bindSwitchScheduleBg" />
+    </view>
+    <block wx:if="{{ setting.showScheduleBg }}">
+        <view class="oo-cell" hover-class="oo-cell-hover" bindtap="bindSetScheduleBg">
+            <view>{{ _string.schedule_bg.choose }}</view>
+            <image class="oo-cell-edge preview-image" mode="aspectFill" src="{{ scheduleBg.path }}" />
+        </view>
+        <view class="oo-cell" hover-class="oo-cell-hover" bindtap="bindSetScheduleBgStyle">
+            <text>{{ _string.schedule_bg.style }}</text>
+            <text class="oo-cell-edge">{{ _string.schedule_bg_style[scheduleBg.style] }}</text>
+        </view>
+    </block>
+</view>
+
+<view class="oo-cells">
+    <button class="oo-cell button" hover-class="oo-cell-hover" open-type="openSetting">
+        <text>{{ _string.authorization }}</text>
+    </button>
+</view>
+
+<view wx:if="{{ isLogin }}" class="oo-cells">
+    <view class="oo-cell logout" hover-class="oo-cell-hover" hover-stay-time="200" bindtap="bindLogout">
+        <text>{{ _string.logout }}</text>
+    </view>
+</view>

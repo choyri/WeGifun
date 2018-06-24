@@ -1,0 +1,58 @@
+<view class="_page {{ showPageShadow ? 'show' : '' }}"></view>
+
+<image class="head-bg" src="/images/about.jpg" bindtap="bindEgg" />
+
+<view class="oo-section">
+    <view class="oo-section-h1">{{ _string.security }}</view>
+    <view wx:for="{{ _string.security_content }}" wx:key="*this" class="oo-section-p">{{ item }}</view>
+</view>
+
+<view class="oo-section changelog">
+    <view class="oo-section-h1">{{ _string.changelog }}</view>
+    <view wx:for="{{ changelog }}" wx:key="*this" class="oo-section-p">{{ item }}</view>
+    <view class="oo-section-p history">
+        <text>{{ _string.changelog_history }}</text>
+        <text class="oo-code" data-text="http://url.cn/5JLgXbC" bindtap="bindCopy">http://url.cn/5JLgXbC</text>
+    </view>
+</view>
+
+<view class="oo-section">
+    <view class="oo-section-h1">{{ _string.open_source }}</view>
+    <view class="oo-section-p">
+        <text class="oo-code" data-text="http://url.cn/5IJu6DP" bindtap="bindCopy">http://url.cn/5IJu6DP</text>
+    </view>
+</view>
+
+<view class="oo-section">
+    <view class="oo-section-h1">{{ _string.communication }}</view>
+    <view class="oo-section-p">
+        <text>{{ _string.communication_content }}</text>
+        <text class="oo-code" data-text="{{ qqGroup }}" bindtap="bindCopy">{{ qqGroup }}</text>
+    </view>
+</view>
+
+<view class="oo-section">
+    <view class="oo-section-h1">{{ _string.reward }}</view>
+    <view class="oo-section-p">
+        <view>{{ _string.reward_content }}</view>
+        <image class="reward" mode="aspectFit" src="{{ rewardCode }}" bindtap="bindPreviewRewardCode" />
+    </view>
+</view>
+
+<view class="oo-footer">
+    <view bindtap="bindDev">海畔吉风</view>
+    <view bindtap="bindDebug">© 2018 菜头 {{ version }}</view>
+</view>
+
+<view class="egg-bubbles {{ showEgg ? 'show' : '' }}">
+    <view></view>
+    <view></view>
+    <view>菜</view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view></view>
+    <view>蛋</view>
+    <view></view>
+    <view></view>
+</view>

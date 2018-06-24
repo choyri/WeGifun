@@ -1,142 +1,259 @@
-let app = getApp(),
-    request = {},
-    targetStatusCode = 200,
-    url = '';
+import regeneratorRuntime from './libs/regenerator-runtime'
 
-const config = app.config;
+const AUTH_TYPE_CARD = 'card',
+  AUTH_TYPE_EDU = 'edu'
 
-function proxy(data, successCallback, failCallback, completeCallback) {
-    app.cache.requestSum = app.cache.requestSum || 0;
+class Request {
+  static _authCache = []
 
-    if (app.cache.requestSum === 0) {
-        // 基础库 1.1.0 开始支持
-        if (wx.showLoading) {
-            wx.showLoading({
-                title: app.lang.loading
-            });
-        } else {
-            wx.showNavigationBarLoading();
-        }
+  static _getAuthValue ({ id, pwd }) {
+    return 'Basic ' + wx.ooUtil.base64(`${id}:${pwd}`)
+  }
+
+  static _getAuthorization (authType) {
+    if (this._authCache[authType]) {
+      return this._authCache[authType]
     }
 
-    app.cache.requestSum++;
+    const userAccount = wx.ooService.user.getAccount()
 
-    wx.request({
-        url,
-        data,
-        method: 'POST',
-        success(res) {
-            if (res.statusCode === targetStatusCode && (res.data.data !== undefined || res.data.code !== undefined || res.data === '')) {
-                console.info('服务正常：', res.data || '无返回');
-                typeof successCallback == 'function' && successCallback(res.data);
-            } else {
-                console.warn('服务出错 状态码：', res.statusCode, '详细信息：', res);
-                let content = res.data.code ? ('#' + res.data.code + '，' + res.data.msg) : app.lang.service_unavailable;
-                app.showErrModal(content, failCallback);
-            }
+    return this._authCache[authType] = this._getAuthValue({
+      id: userAccount.id,
+      pwd: userAccount[`${authType}Pwd`],
+    })
+  }
 
-            // 复位
-            targetStatusCode = 200;
-        },
-        fail(res) {
-            console.error(res);
-            app.showErrModal(app.lang.request_failed);
-        },
-        complete() {
-            app.cache.requestSum--;
+  static async _proxy(params) {
+    if (!params.hideLoading) {
+      wx.showLoading({
+        title: wx.ooString.global.loading,
+        mask: true,
+      })
+    }
 
-            if (app.cache.requestSum === 0) {
-                // 基础库 1.1.0 开始支持
-                if (wx.hideLoading) {
-                    wx.hideLoading();
-                } else {
-                    wx.hideNavigationBarLoading();
-                }
-            }
+    if (params.url === undefined) {
+      throw new TypeError('缺少属性 URL')
+    }
 
-            typeof completeCallback == 'function' && completeCallback();
-        }
-    });
+    if (params.auth) {
+      params.header = params.header || {}
+      params.header.Authorization = params.auth
+    }
+
+    try {
+      const response = await wx.ooPro.request(params)
+      console.log(response)
+
+      if (!params.hideLoading) {
+        wx.hideLoading()
+      }
+
+      if (response.statusCode < 400) {
+        return response
+      }
+
+      if (!params.quietMode) {
+        const content = response.data.code ? `#${response.data.code} ${response.data.msg}` : wx.ooString.global.service_unavailable
+        await wx.ooShowModal({ content }, false)
+      }
+    } catch (e) {
+      if (!params.hideLoading) {
+        wx.hideLoading()
+      }
+
+      if (!params.quietMode) {
+        wx.ooShowModal({ content: wx.ooString.global.request_failed }, false)
+      }
+    }
+  }
+
+  static async _cardProxy(params) {
+    params.auth = this._getAuthorization(AUTH_TYPE_CARD)
+
+    return this._proxy(params)
+  }
+
+  static async _eduProxy(params) {
+    params.auth = this._getAuthorization(AUTH_TYPE_EDU)
+
+    return this._proxy(params)
+  }
+
+  static async getUserDorm () {
+    const res = await this._cardProxy({
+      url: wx.ooApi('dorm'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async checkDorm (id) {
+    const url = wx.ooApi('dormCheck').replace('{id}', id)
+    const res = await this._proxy({ url })
+
+    return res && res.statusCode === 200 ? true : false
+  }
+
+  static async eduAuth (id, pwd) {
+    const auth = this._getAuthValue({ id, pwd })
+
+    const res = await this._proxy({
+      auth,
+      url: wx.ooApi('eduAuth'),
+    })
+
+    const authRes = res && res.statusCode === 204 ? true : false
+
+    if (authRes) {
+      this._authCache[AUTH_TYPE_EDU] = auth
+    }
+
+    return authRes
+  }
+
+  static async getSchoolStartDate () {
+    const res = await this._proxy({
+      url: wx.ooApi('eduStartDate'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async getEduSchedule ({ grade, semester }) {
+    const res = await this._eduProxy({
+      data: { grade, semester },
+      url: wx.ooApi('eduSchedule'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async getEduScore ({ grade, semester }) {
+    const res = await this._eduProxy({
+      data: { grade, semester },
+      url: wx.ooApi('eduScore'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async cardAuth (id, pwd) {
+    const auth = this._getAuthValue({ id, pwd })
+
+    const res = await this._proxy({
+      auth,
+      url: wx.ooApi('cardAuth'),
+    })
+
+    const authRes = res && res.statusCode === 204 ? true : false
+
+    if (authRes) {
+      this._authCache[AUTH_TYPE_CARD] = auth
+    }
+
+    return authRes
+  }
+
+  static async getCardBalance () {
+    const res = await this._cardProxy({
+      url: wx.ooApi('cardBalance'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async getCardRecord ([start_date, end_date]) {
+    const res = await this._cardProxy({
+      data: { start_date, end_date },
+      url: wx.ooApi('cardRecord'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async checkElecDeposit (dorm_id) {
+    const res = await this._cardProxy({
+      data: { dorm_id },
+      url: wx.ooApi('excardElecDeposit'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async elecDeposit (dorm_id, money) {
+    const res = await this._cardProxy({
+      data: { dorm_id, money },
+      method: 'POST',
+      url: wx.ooApi('excardElecDeposit'),
+    })
+
+    return res && res.statusCode === 204 || false
+  }
+
+  static async getElecDepositRecordOfUser (page = 1) {
+    const res = await this._cardProxy({
+      data: { page },
+      url: wx.ooApi('excardElecRecord'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async getElecBalance (dorm_id) {
+    const res = await this._proxy({
+      data: { dorm_id },
+      url: wx.ooApi('elecBalance'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async getElecConsumeRecord (dorm_id) {
+    const res = await this._proxy({
+      data: { dorm_id },
+      url: wx.ooApi('elecRecordConsumption'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async getElecDepositRecordOfDorm (dorm_id) {
+    const res = await this._proxy({
+      data: { dorm_id },
+      url: wx.ooApi('elecRecordDeposit'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async opacSearch (query, page = 1) {
+    const res = await this._proxy({
+      data: { query, page },
+      url: wx.ooApi('opacSearch'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async opacHandShake (marc, isbn) {
+    const res = await this._proxy({
+      data: { marc, isbn },
+      hideLoading: true,
+      quietMode: true,
+      url: wx.ooApi('opacHandShake'),
+    })
+
+    return res && res.data.data
+  }
+
+  static async getOpacBookInfo (marc) {
+    const res = await this._proxy({
+      data: { marc },
+      url: wx.ooApi('opacBook'),
+    })
+
+    return res && res.data.data
+  }
 }
 
-request.eduAuth = function (data, successCallback, failCallback) {
-    targetStatusCode = 204;
-    url = config.eduAuthURL;
-    proxy(data, successCallback);
-};
-
-request.getEduSchedule = function (data, successCallback, failCallback) {
-    url = config.eduScheduleURL;
-    proxy(data, successCallback, failCallback);
-};
-
-request.getEduScore = function (data, successCallback) {
-    url = config.eduScoreURL;
-    proxy(data, successCallback);
-};
-
-request.cardAuth = function (data, successCallback, failCallback) {
-    targetStatusCode = 204;
-    url = config.cardAuthURL;
-    proxy(data, successCallback, failCallback);
-};
-
-request.getCardBalance = function (data, successCallback) {
-    url = config.cardBalanceURL;
-    proxy(data, successCallback);
-};
-
-request.getCardRecord = function (data, successCallback) {
-    url = config.cardRecordURL;
-    proxy(data, successCallback);
-};
-
-request.handleDorm = function (data, successCallback, completeCallback) {
-    url = config.dormURL;
-    proxy(data, successCallback, null, completeCallback);
-};
-
-request.elecRecharge = function (data, successCallback, failCallback, completeCallback) {
-    if (data.check) {
-        targetStatusCode = 204;
-    }
-    url = config.elecRechargeURL;
-    proxy(data, successCallback, failCallback, completeCallback);
-};
-
-request.getElecConsumeRecord = function (data, successCallback) {
-    data.type = 'consume';
-    url = config.elecRecordURL;
-    proxy(data, successCallback);
-};
-
-request.getElecDormRechargeRecord = function (data, successCallback) {
-    data.type = 'recharge';
-    data.item = 'dorm';
-    url = config.elecRecordURL;
-    proxy(data, successCallback);
-};
-
-request.getElecUserRechargeRecord = function (data, successCallback) {
-    data.type = 'recharge';
-    data.item = 'user';
-    url = config.elecRecordURL;
-    proxy(data, successCallback);
-};
-
-request.getElecRemain = function (data, successCallback) {
-    url = config.elecRemainURL;
-    proxy(data, successCallback);
-};
-
-request.searchBook = function (data, successCallback) {
-    url = config.bookSearchURL;
-    proxy(data, successCallback);
-};
-
-request.getBookInfo = function (data, successCallback) {
-    url = config.bookInfoURL;
-    proxy(data, successCallback);
-};
-
-module.exports = request;
+export default Request

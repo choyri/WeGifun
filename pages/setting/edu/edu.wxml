@@ -1,6 +1,0 @@
-<view class="weui-cells">
-    <view class="weui-cell" hover-class="weui-cell_active" bindtap="bindUpdate">
-        <view class="weui-cell__bd">{{text_update_shcedule}}</view>
-    </view>
-</view>
-<view class="weui-cells__tips">{{updateTime}}</view>

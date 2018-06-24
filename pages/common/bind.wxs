@@ -1,0 +1,13 @@
+module.exports = {
+  hasValue: function (state) {
+    return state ? 'value' : ''
+  },
+
+  isDisabled: function (state) {
+    return state ? 'disabled' : ''
+  },
+
+  isFocus: function (state) {
+    return state ? 'focus' : ''
+  },
+}

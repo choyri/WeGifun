@@ -1,0 +1,176 @@
+page::before {
+    display: none;
+}
+
+._page {
+    transition: all .5s;
+
+    opacity: 0;
+}
+
+._page.show {
+    opacity: 1;
+}
+
+.head-bg {
+    width: 100%;
+    height: 250rpx;
+
+    vertical-align: bottom;
+}
+
+.changelog .oo-section-p {
+    margin-bottom: .2em;
+}
+
+.oo-section-p.history {
+    margin-top: .8em;
+}
+
+text + .oo-code {
+    margin-left: 4px;
+}
+
+.reward {
+    width: 100%;
+    height: 150px;
+}
+
+.oo-footer {
+    margin: 15px;
+}
+
+.egg-bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+    height: 100%;
+}
+
+.egg-bubbles.show {
+    display: block;
+}
+
+.egg-bubbles view {
+    font-size: 75rpx;
+    line-height: 75rpx;
+
+    position: absolute;
+    bottom: -200rpx;
+
+    width: 75rpx;
+    height: 75rpx;
+
+    animation: square 20s infinite;
+
+    background-color: rgba(57, 58, 62, .15);
+}
+
+.egg-bubbles view:nth-child(1) {
+    left: 5%;
+
+    animation-delay: 2s;
+}
+
+.egg-bubbles view:nth-child(2) {
+    left: 15%;
+
+    width: 30rpx;
+    height: 30rpx;
+
+    animation-duration: 15s;
+}
+
+.egg-bubbles view:nth-child(3) {
+    left: 25%;
+
+    animation-duration: 25s;
+    animation-delay: 6s;
+
+    background-color: transparent;
+}
+
+.egg-bubbles view:nth-child(4) {
+    left: 35%;
+
+    width: 180rpx;
+    height: 180rpx;
+
+    animation-duration: 25s;
+    animation-delay: 4s;
+
+    background-color: rgba(57, 58, 62, .25);
+}
+
+.egg-bubbles view:nth-child(5) {
+    left: 45%;
+}
+
+.egg-bubbles view:nth-child(6) {
+    left: 55%;
+
+    width: 110rpx;
+    height: 110rpx;
+
+    animation-delay: 6s;
+
+    background-color: rgba(57, 58, 62, .2);
+}
+
+.egg-bubbles view:nth-child(7) {
+    left: 65%;
+
+    width: 120rpx;
+    height: 120rpx;
+
+    animation-duration: 30s;
+    animation-delay: 15s;
+}
+
+.egg-bubbles view:nth-child(8) {
+    font-size: 120rpx;
+    line-height: 120rpx;
+
+    left: 75%;
+
+    width: 120rpx;
+    height: 120rpx;
+
+    animation-delay: 3s;
+
+    background-color: transparent;
+}
+
+.egg-bubbles view:nth-child(9) {
+    left: 85%;
+
+    width: 90rpx;
+    height: 90rpx;
+
+    animation-duration: 35s;
+    animation-delay: 2s;
+
+    background-color: rgba(57, 58, 62, .3);
+}
+
+.egg-bubbles view:nth-child(10) {
+    left: 95%;
+
+    width: 30rpx;
+    height: 30rpx;
+
+    animation-delay: 10s;
+}
+
+@keyframes square {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+    100% {
+        transform: translateY(-2000rpx) rotate(600deg);
+    }
+}

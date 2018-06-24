@@ -1,0 +1,47 @@
+<view wx:if="{{ !bookInfo }}" class="oo-loading"></view>
+
+<view class="oo-section metadata">
+    <image mode="aspectFit" src="{{ book.cover }}" />
+    <text class="title">{{ book.title }}</text>
+    <view>
+        <text class="attr">{{ _string.meta[0] }}</text>
+        <text>{{ book.author }}</text>
+    </view>
+    <view>
+        <text class="attr">{{ _string.meta[1] }}</text>
+        <text>{{ book.publisher }} / {{ book.year }}</text>
+    </view>
+    <view>
+        <text class="attr">{{ _string.meta[2] }}</text>
+        <text>{{ book.isbn }}</text>
+    </view>
+    <view>
+        <text class="attr">{{ _string.meta[3] }}</text>
+        <text>{{ book.callNum }}</text>
+    </view>
+    <view>
+        <text class="attr">{{ _string.meta[4] }}</text>
+        <text>{{ bookInfo.location }}</text>
+    </view>
+</view>
+
+<view wx:if="{{ bookInfo.collection.length > 0 }}" class="oo-section">
+    <text class="oo-section-h1">{{ _string.meta[5] }}</text>
+    <view class="oo-table">
+        <view class="tr">
+            <text class="td">{{ _string.collection[0] }}</text>
+            <text class="td">{{ _string.collection[1] }}</text>
+        </view>
+        <view wx:for="{{ bookInfo.collection }}" wx:key="barCode" class="tr">
+            <text class="td">{{ item.barCode }}</text>
+            <text class="td {{ item.available ? 'green' : '' }}">{{ item.state }}</text>
+        </view>
+    </view>
+</view>
+<text wx:else class="oo-section">{{ _string.collection_null }}</text>
+
+<view wx:if="{{ bookInfo.link || bookInfo.summary }}" class="oo-section">
+    <text class="oo-section-h1">{{ _string.meta[6] }}</text>
+    <text wx:if="{{ bookInfo.link }}" class="oo-code" bindtap="bindCopy">{{ bookInfo.link }}</text>
+    <view wx:if="{{ bookInfo.summary }}" class="oo-section-p summary">{{ bookInfo.summary }}</view>
+</view>

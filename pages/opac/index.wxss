@@ -1,0 +1,115 @@
+text {
+    display: block;
+}
+
+input {
+    line-height: 30px;
+
+    height: 30px;
+    padding-left: 15px;
+
+    flex: auto;
+}
+
+.head {
+    overflow: hidden;
+
+    height: 250rpx;
+    margin: 2em 0 3em;
+
+    transition: all .5s cubic-bezier(.68, -.55, .27, 1.55);
+    text-align: center;
+}
+
+.head.hide {
+    height: 0;
+    margin: 0;
+}
+
+.head image {
+    width: 250rpx;
+    height: 250rpx;
+
+    vertical-align: top;
+}
+
+.search {
+    display: flex;
+
+    margin: 15px;
+}
+
+.search-input {
+    display: flex;
+
+    border: 1rpx solid #d9d9d9;
+    border-right: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    align-items: center;
+    flex: auto;
+}
+
+.search-input icon {
+    padding-right: 10px;
+}
+
+.search-btn {
+    display: flex;
+
+    width: 40px;
+    height: 40px;
+
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #4285f4;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.result {
+    margin: 0 15px;
+}
+
+.result-info {
+    font-size: 28rpx;
+
+    margin-bottom: 15px;
+}
+
+.result-item {
+    display: flex;
+
+    margin-top: 1.17647059em;
+    padding: 12px 10px;
+}
+
+.result-item:last-child {
+    margin-bottom: 1.17647059em;
+}
+
+.cover {
+    width: 160rpx;
+    max-height: 240rpx;
+
+    flex: none;
+}
+
+.book-info {
+    font-size: 28rpx;
+
+    margin-left: 15px;
+}
+
+.book-info .title {
+    font-size: 34rpx;
+    line-height: 1.2em;
+
+    margin-bottom: 10px;
+}
+
+.oo-footer {
+    margin-bottom: 1.17647059em;
+}

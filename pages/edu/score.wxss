@@ -1,0 +1,81 @@
+.record {
+    position: fixed;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    transition: all .8s cubic-bezier(.68, -.55, .27, 1.55);
+
+    opacity: 0;
+    background-color: #fff;
+}
+
+.record.show {
+    position: absolute;
+    top: 0;
+
+    opacity: 1;
+}
+
+.record-bg {
+    height: 5em;
+    margin-bottom: -4em;
+
+    background-color: #4285f4;
+}
+
+.record-content {
+    margin: 15px;
+    padding: 10px;
+
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, .28);
+}
+
+.record-title {
+    font-size: 40rpx;
+    font-weight: lighter;
+
+    display: flex;
+
+    margin-bottom: 15px;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.oo-table .tr {
+    padding: .6em 0;
+}
+
+.oo-table .td {
+    text-align: left;
+}
+
+.course-describe {
+    margin-left: 10px;
+}
+
+.course-describe text {
+    line-height: 1.2em;
+}
+
+.course-describe text:last-child {
+    font-size: 24rpx;
+
+    margin-top: 4px;
+}
+
+.course-score {
+    font-size: 40rpx;
+
+    margin-right: 10px;
+
+    align-items: flex-end;
+}
+
+.oo-table .td.course-score {
+    flex: 0 0 3em;
+}

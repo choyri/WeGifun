@@ -1,0 +1,17 @@
+page {
+    background-color: #ebebeb;
+}
+
+.preview-image {
+    position: absolute;
+    right: 15px;
+
+    width: 2em;
+    height: 2em;
+}
+
+.logout {
+    color: #e64340;
+
+    justify-content: center;
+}

@@ -1,0 +1,54 @@
+.dorm-info {
+    position: relative;
+
+    display: flex;
+
+    padding-right: 20px;
+
+    align-items: center;
+    flex: auto;
+    justify-content: space-between;
+}
+
+.dorm-info::after {
+    position: relative;
+    position: absolute;
+    top: -2px;
+    top: 50%;
+    right: 5px;
+
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+    margin-top: -4px;
+
+    content: '';
+    transform: matrix(.71, .71, -.71, .71, 0, 0);
+
+    border-width: 2px 2px 0 0;
+    border-style: solid;
+    border-color: #bfbfbf;
+}
+
+.dorm-info .name {
+    font-size: 48rpx;
+}
+
+.dorm-info .state {
+    font-size: 26rpx;
+}
+
+.dorm-info .state.default {
+    color: #4285f4;
+}
+
+.dorm-info .state.other {
+    color: #e64340;
+}
+
+/********************************/
+
+.gray {
+    color: #ccc;
+}

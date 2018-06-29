@@ -9,6 +9,7 @@
         "pages/common/guide",
         "pages/common/about",
 
+        "pages/edu/schedule",
         "pages/edu/score",
 
         "pages/card/index",

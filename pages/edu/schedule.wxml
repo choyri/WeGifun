@@ -1,0 +1,2 @@
+<school-time forSchedule="true" bindchange="bindSchoolTimeChange" />
+<button class="oo-btn" bindtap="bindSubmit">{{ _string.btn }}</button>

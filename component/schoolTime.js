@@ -14,10 +14,16 @@ let componentParams = {
     _string: wx.ooString.component_schoolTime,
   },
   methods: {},
+  properties: {
+    forSchedule: {
+      type: Boolean,
+      value: false,
+    },
+  },
 }
 
 componentParams.attached = function () {
-  const { grade, semester } = wx.ooService.edu.getSchoolTime()
+  const { grade, semester } = wx.ooService.edu.getSchoolTime(this.data.forSchedule)
 
   let picker = wx.ooUtil.copy(this.data.picker)
 

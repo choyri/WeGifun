@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "课表",
+    "usingComponents": {
+        "school-time": "../../component/schoolTime"
+    }
+}

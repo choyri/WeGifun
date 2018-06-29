@@ -128,6 +128,10 @@ const string = {
     title: 'Settings',
   },
 
+  service_edu_schedule: {
+    title: 'Class Schedule',
+  },
+
   service_edu_score: {
     noRecord: 'No Record',
     title: 'Course Score',

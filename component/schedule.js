@@ -64,6 +64,7 @@ let componentParams = {
 let _tmp = {}
 
 componentParams.attached = function () {
+  wx.ooEvent.on('updateCurrWeek', this._updateCurrWeek, this)
   this._updateCurrWeek()
 }
 
@@ -128,7 +129,12 @@ componentParams.methods.touchEnd = async function (e) {
     return
   }
 
-  _tmp.currWeek += x < 0 ? 1 : -1
+  if (_tmp.currWeek < 0) {
+    _tmp.currWeek = 1
+  } else {
+    _tmp.currWeek += x < 0 ? 1 : -1
+  }
+
   _tmp.touchEndX = _tmp.touchEndY = undefined
 
   this.renderPage()

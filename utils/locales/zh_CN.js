@@ -128,6 +128,10 @@ const string = {
     title: '设置',
   },
 
+  service_edu_schedule: {
+    title: '课表',
+  },
+
   service_edu_score: {
     noRecord: '没有记录',
     title: '课程成绩',

@@ -34,14 +34,14 @@ const TIME_TABLE = [
 class Edu {
   static _currWeek = null
 
-  static async getCurrWeek () {
-    if (this._currWeek) {
+  static async getCurrWeek (refresh = false) {
+    if (!refresh && this._currWeek) {
       return this._currWeek
     }
 
     let startDate = this._getSchoolStartDate()
 
-    if (!startDate) {
+    if (refresh || !startDate) {
       startDate = await wx.ooRequest.getSchoolStartDate()
       if (!startDate) {
         return
@@ -311,12 +311,13 @@ class Edu {
     wx.ooSaveData({ edu: { startDate } })
   }
 
-  static getSchoolTime () {
+  static getSchoolTime (forSchedule = false) {
     const _DATE = new Date(),
       CURR_YEAR = _DATE.getFullYear(),
       CURR_MONTH = _DATE.getMonth() + 1,
       _USER_ACCOUNT = wx.ooService.user.getAccount(),
       COLLEGE = _USER_ACCOUNT.id.substr(0, 2),
+      HIGHEST_GRADE = COLLEGE == '11' ? 5 : 4,
       ENROLLMENT_YEAR = 2000 + parseInt(_USER_ACCOUNT.id.substr(2, 2))
 
     let res = {
@@ -329,11 +330,21 @@ class Edu {
 
     // 设置最高年级 # 建筑大五 其他大四
     if (res.grade > 4) {
-      res.grade = COLLEGE == '11' ? 5 : 4
+      res.grade = HIGHEST_GRADE
     }
 
     // 学期
     res.semester = CURR_MONTH < 3 || CURR_MONTH > 8 ? 1 : 2
+
+    // 为课表获取学期时 多增加一学期 # 如果当前已是最后一年最后一学期 不增加
+    if (forSchedule && (res.grade !== HIGHEST_GRADE || res.semester !== 2)) {
+      if (res.semester === 1) {
+        res.semester++
+      } else {
+        res.grade++
+        res.semester = 1
+      }
+    }
 
     return res
   }

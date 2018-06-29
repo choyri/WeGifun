@@ -24,24 +24,4 @@ pageParams.bindNavigator = function (e) {
   wx.navigateTo({ url })
 }
 
-pageParams.bindUpdateSchedule = async function () {
-  if (!wx.ooService.user.isBindEdu()) {
-    wx.ooShowToast({ title: this.data._string.bind })
-    return
-  }
-
-  const modalRes = await wx.ooShowModal({ content: this.data._string.update_schedule })
-
-  if (!modalRes.confirm) {
-    return
-  }
-
-  const res = await wx.ooService.edu.fetchSchedule()
-  if (!res) {
-    return
-  }
-
-  wx.switchTab({ url: '/pages/tabbar/schedule' })
-}
-
 Page(pageParams)

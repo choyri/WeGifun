@@ -31,6 +31,10 @@ class Tip {
       wx.navigateTo({ url: '/pages/common/guide' })
     }
   }
+
+  static score () {
+    this._do('score')
+  }
 }
 
 export default Tip

@@ -32,6 +32,7 @@ const string = {
     bind_edit: 'If the password has changed, you can enter the new password to rebind.',
     bind_new: 'You can choose to enter one or more passwords, no binding without input.',
     guide: 'Welcome to use, whether to read the guide?',
+    score: 'On the left is the course name, nature, and credits. On the right is the score and grade point.',
   },
 
   component_schedule: {
@@ -106,7 +107,7 @@ const string = {
       'Because the original intention of the application is the schedule, the homepage will always be it, no matter how it is updated.',
       'On the schedule page, swipe left or right to switch weeks, long press to resume.',
       'The time in the course info is calculated by myself, and it is not 100% accurate. If you happen to meet the mistaken course, I sincerely await your feedback.',
-      'As a third-party application, I will voluntarily answer some questions in the customer service message; but similar to “Why is there no electricity supply after deposit a long time?”, please look for Dorm Aunt.',
+      'As a third-party application, I will voluntarily answer some questions in the customer service message; but similar to “Why is there no elctric supply long time after depositing?”, please look for Dorm Aunt.',
       'For security and privacy issues, see the About page.',
       'If you are the subject of a non-commercial Subscription Account, you may contact me for binding when you are interested in this application.',
     ],

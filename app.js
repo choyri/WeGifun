@@ -53,11 +53,7 @@ appParams.checkUpdate = function () {
     }, false)
   }
 
-  if (wx.ooCache.version && wx.ooCache.version === 'v0.6.7') {
-    this.importOldVersion()
-  }
-
-  wx.ooSaveData({version: config.version})
+  wx.ooSaveData({ version: config.version })
 }
 
 appParams.checkSoter = async function () {
@@ -78,70 +74,6 @@ appParams.checkSoter = async function () {
   }
 
   wx.ooSaveData({ supportSoter: flag })
-}
-
-appParams.importOldVersion = function () {
-  wx.clearStorageSync()
-  wx.ooCache.supportSoter = null
-
-  if (wx.ooCache.edu) {
-    if (wx.ooCache.edu.schedule) {
-      let res = []
-
-      for (const day of wx.ooCache.edu.schedule) {
-        let course = {
-          day: day.index,
-        }
-
-        for (const section of day.data) {
-          course.section = section.index
-          for (const _course of section.data) {
-            course.name = _course.data.name
-            course.teacher = _course.data.teacher
-            course.location = _course.data.room
-            course.week = _course.data.week.replace(/-/g, ':')
-
-            res.push(wx.ooUtil.copy(course))
-          }
-        }
-      }
-
-      wx.ooSaveData({ edu: { schedule: res } })
-      const schedule = wx.ooService.edu.renderSchedule()
-      wx.ooService.edu.saveSchedule(schedule)
-    }
-
-    if (wx.ooCache.edu.termBegin) {
-      wx.ooSaveData({ edu: { startDate: wx.ooCache.edu.termBegin }})
-    }
-  }
-
-  if (wx.ooCache.stu) {
-    let user = wx.ooUtil.copy(wx.ooCache.stu)
-
-    if (wx.ooCache.dataDorm) {
-      user.dorm = parseInt(wx.ooCache.dataDorm.id)
-    }
-
-    wx.ooSaveData({ user })
-  }
-
-  if (wx.ooCache.dataDormHistory) {
-    const dormHistory = wx.ooCache.dataDormHistory.map(item => parseInt(item))
-    wx.ooSaveData({ dormHistory })
-  }
-
-  if (wx.ooCache.dataScheduleBg) {
-    const bg = wx.ooUtil.copy(wx.ooCache.dataScheduleBg)
-    wx.ooSaveData({
-      schedule: {
-        bg,
-      },
-      setting: {
-        showScheduleBg: true,
-      },
-    })
-  }
 }
 
 appParams.getNotice = async function () {

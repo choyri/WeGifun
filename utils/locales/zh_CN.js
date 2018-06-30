@@ -32,6 +32,7 @@ const string = {
     bind_edit: '如果密码已更改，可以输入新密码重新绑定。',
     bind_new: '你可以自主选择输入一项或多项密码，不输入不会绑定。',
     guide: '欢迎使用，是否查看使用指南？',
+    score: '左边是课程名称、性质、学分，右边是成绩、绩点。',
   },
 
   component_schedule: {

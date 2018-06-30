@@ -37,6 +37,8 @@ pageParams.bindSubmit = async function () {
     showRecord: true,
     scoreData,
   })
+
+  wx.ooTip.score()
 }
 
 Page(pageParams)

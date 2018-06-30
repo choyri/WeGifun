@@ -50,7 +50,7 @@ for (const fn of fnGroup) {
   }
 }
 
-if (locales.isDefault() === false) {
+if (locales.isDefault() === false && wx.setTabBarItem) {
   wx.setTabBarItem({
     index: 0,
     text: wx.ooString.tabbar.schedule,

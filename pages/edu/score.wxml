@@ -14,7 +14,10 @@
                     <text>{{ item.name }}</text>
                     <text>{{ item.nature }} / {{ item.credit }}</text>
                 </view>
-                <text class="td course-score">{{ item.score }}</text>
+                <view class="td course-score">
+                    <text>{{ item.score }}</text>
+                    <text>{{ item.gpa }}</text>
+                </view>
             </view>
         </view>
     </view>

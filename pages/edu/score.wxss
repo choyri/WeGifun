@@ -54,6 +54,12 @@
     text-align: left;
 }
 
+.oo-table .td text:last-child {
+    font-size: 24rpx;
+
+    margin-top: 4px;
+}
+
 .course-describe {
     margin-left: 10px;
 }
@@ -62,14 +68,8 @@
     line-height: 1.2em;
 }
 
-.course-describe text:last-child {
-    font-size: 24rpx;
-
-    margin-top: 4px;
-}
-
 .course-score {
-    font-size: 40rpx;
+    font-size: 36rpx;
 
     margin-right: 10px;
 

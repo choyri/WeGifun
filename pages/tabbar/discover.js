@@ -11,14 +11,22 @@ let pageParams = {
 
 pageParams.onReady = function () {
   wx.ooSetTitle(wx.ooString.global.title)
+
+  this.setData({
+    notice: wx.ooCache.notice || null,
+  })
 }
 
 pageParams.bindNavigator = function (e) {
-  const { url, type } = e.currentTarget.dataset
+  let { url, type, src } = e.currentTarget.dataset
 
   if (type && !wx.ooService.user.isBind(type)) {
     wx.ooShowToast({ title: this.data._string.bind })
     return
+  }
+
+  if (src) {
+    url += `?src=${src}`
   }
 
   wx.navigateTo({ url })

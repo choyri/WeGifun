@@ -79,6 +79,16 @@ class Request {
     return this._proxy(params)
   }
 
+  static async getNotice () {
+    const res = await this._proxy({
+      hideLoading: true,
+      quietMode: true,
+      url: wx.ooApi('notice'),
+    })
+
+    return res && res.data.data
+  }
+
   static async getUserDorm () {
     const res = await this._cardProxy({
       url: wx.ooApi('dorm'),

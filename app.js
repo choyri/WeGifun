@@ -21,6 +21,8 @@ appParams.onLaunch = function (options) {
   this.checkUpdate()
 
   this.checkSoter()
+
+  this.getNotice()
 }
 
 appParams.checkUpdate = function () {
@@ -140,6 +142,10 @@ appParams.importOldVersion = function () {
       },
     })
   }
+}
+
+appParams.getNotice = async function () {
+  wx.ooCache.notice = await wx.ooRequest.getNotice()
 }
 
 App(appParams)

@@ -16,3 +16,9 @@
     <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
         data-url="/pages/opac/index" bindtap="bindNavigator">{{ _string.opac }}</view>
 </view>
+
+<view wx:if="{{ notice.length > 0 }}" class="oo-cells">
+    <view wx:for="{{ notice }}" wx:key="url"
+        class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
+        data-url="/pages/common/webview" data-src="{{ item.url }}" bindtap="bindNavigator">{{ item.content }}</view>
+</view>

@@ -1,6 +1,9 @@
 import config from '../config'
 
 const url = {
+  // 公告
+  notice: '/notice',
+
   // 宿舍
   dorm: '/dorm',
   dormCheck: '/dorm/{id}',

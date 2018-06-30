@@ -8,6 +8,7 @@
         "pages/common/setting",
         "pages/common/guide",
         "pages/common/about",
+        "pages/common/webview",
 
         "pages/edu/schedule",
         "pages/edu/score",

@@ -1,9 +1,12 @@
 const string = {
   changelog: [
-    'Refactoring and Optimization',
+    'New: Support to get the class schedule for the specified semester',
+    'New: Notice module',
+    'Improve: Grade points are added to course score results',
+    'Improve: Optimization of some details'
   ],
 
-  feature: '',
+  feature: 'Now support to get the class schedule for the specified semester',
 
   global: {
     btn_title: 'Confirm',

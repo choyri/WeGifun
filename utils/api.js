@@ -1,6 +1,9 @@
 import config from '../config'
 
 const url = {
+  // 微信登录
+  wechatLogin: '/wechat/login',
+
   // 公告
   notice: '/notice',
 

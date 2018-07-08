@@ -31,6 +31,7 @@ wx.ooUtil = util
 const fnGroup = [
   'checkIsSoterEnrolledInDevice',
   'chooseImage',
+  'login',
   'request',
   'saveFile',
   'showActionSheet',

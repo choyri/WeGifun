@@ -23,6 +23,8 @@ appParams.onLaunch = function (options) {
   this.checkSoter()
 
   this.getNotice()
+
+  this.wechatLogin()
 }
 
 appParams.checkUpdate = function () {
@@ -78,6 +80,19 @@ appParams.checkSoter = async function () {
 
 appParams.getNotice = async function () {
   wx.ooCache.notice = await wx.ooRequest.getNotice()
+}
+
+appParams.wechatLogin = async function () {
+  const user = wx.ooService.user.getAccount()
+
+  if (!user.id || wx.ooCache.openID) {
+    return
+  }
+
+  const loginRet = await wx.ooPro.login()
+
+  const openID = await wx.ooRequest.wechatLogin([loginRet.code, user.id])
+  wx.ooSaveData({ openID })
 }
 
 App(appParams)

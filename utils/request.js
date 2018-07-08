@@ -79,6 +79,18 @@ class Request {
     return this._proxy(params)
   }
 
+  static async wechatLogin ([code, uid]) {
+    const resp = await this._proxy({
+      data: { code, uid },
+      hideLoading: true,
+      method: 'POST',
+      quietMode: true,
+      url: wx.ooApi('wechatLogin'),
+    })
+
+    return resp && resp.data.data
+  }
+
   static async getNotice () {
     const res = await this._proxy({
       hideLoading: true,

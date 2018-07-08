@@ -3,7 +3,7 @@ import regeneratorRuntime from '../utils/libs/regenerator-runtime'
 // 调色板 # 课程块背景颜色 每门课一种 当前内置十二种
 const SCHEDULE_PALETTE = [
   '#ff8a98', '#29b6f6', '#26a69a', '#7986cb', '#ff7043', '#4caf50',
-  '#af5e53', '#48829e', '#ba68c8', '#eb586f', '#ffa726', '#bc8f8f',
+  '#af5e53', '#48829e', '#ba68c8', '#eb586f', '#ffa726', '#c75080',
 ]
 
 // 课程时间表

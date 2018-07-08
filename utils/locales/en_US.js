@@ -192,7 +192,8 @@ const string = {
   },
 
   service_elec_setting: {
-    dorm_label: 'Choose Dorm',
+    dorm_label_update: 'Choose the default dorm you want',
+    dorm_label_retrieve: 'Choose the dorm you want to look over',
     dorm_garden: ['Zhu', 'Gui', 'Mei', 'Rong', 'Kang'],
     dorm_null: 'The dorm does not exist',
     dorm_state_default: 'Default Dorm',

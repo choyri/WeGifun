@@ -18,6 +18,10 @@ pageParams.onLoad = async function (options) {
   console.log('页面参数', options)
   Object.assign(this._tmp, options)
 
+  this.setData({
+    isUpdate: this._tmp.action === 'update',
+  })
+
   let dormId = parseInt(this._tmp.id) || wx.ooService.user.getDorm()
 
   if (!dormId) {
@@ -175,17 +179,15 @@ pageParams.bindSubmit = async function () {
     dormInfo = wx.ooService.elec.renderDormInfo(dormId)
   }
 
-  const isUpdate = this._tmp.action === 'update'
-
-  if (isUpdate) {
+  if (this.data.isUpdate) {
     wx.ooService.user.saveDorm(dormId)
   }
 
   // 先返回 否则看不到 loading
   wx.navigateBack()
 
-  wx.ooEvent.emit(isUpdate ? 'dormUpdate' : 'dormRetrieve', dormInfo)
-  wx.ooService.elec.updateDormHistory(dormId, isUpdate)
+  wx.ooEvent.emit(this.data.isUpdate ? 'dormUpdate' : 'dormRetrieve', dormInfo)
+  wx.ooService.elec.updateDormHistory(dormId, this.data.isUpdate)
 }
 
 pageParams._ooSetData = function (obj) {

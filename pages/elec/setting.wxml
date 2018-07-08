@@ -1,4 +1,4 @@
-<text class="oo-label">{{ _string.dorm_label }}</text>
+<text class="oo-label">{{ isUpdate ? _string.dorm_label_update : _string.dorm_label_retrieve }}</text>
 <view class="oo-select oo-underline horizontal">
     <picker class="oo-select-item"
         mode="multiSelector" range="{{ picker.range }}" value="{{ picker.value }}"

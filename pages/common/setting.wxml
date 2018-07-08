@@ -3,6 +3,10 @@
         <text>{{ _string.schedule_date }}</text>
         <switch checked="{{ setting.showScheduleDate }}" color="#4285f4" bindchange="bindSwitchScheduleDate" />
     </view>
+    <view class="oo-cell">
+        <text>{{ _string.schedule_hide_course }}</text>
+        <switch checked="{{ setting.hideCourse }}" color="#4285f4" bindchange="bindSwitchScheduleHideCourse" />
+    </view>
 </view>
 
 <view class="oo-cells">

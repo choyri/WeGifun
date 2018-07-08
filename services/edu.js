@@ -136,7 +136,6 @@ class Edu {
       if (currSection && currSection.data.length > 0) {
         // 当前课程不在周期内的话 跳过后续处理
         if (outOfRange) {
-          // 已经有隔壁课程了 当前课程既然不在周期内 那就直接跳过
           continue
         }
 
@@ -248,6 +247,10 @@ class Edu {
         course.bg = scheduleBg[bgKey]
       }
 
+      if (course.display && !course.attend && currWeek > 0 && currWeek < 17 && wx.ooCache.setting.hideCourse) {
+        continue
+      }
+
       // 循环结束 打入课程
       _pushCourse(course)
     }
@@ -265,7 +268,7 @@ class Edu {
     wx.ooSaveData({ schedule: { data, week: this._currWeek } })
   }
 
-  static async updateSchedule () {
+  static updateSchedule (force) {
     if (!this.getSchedule()) {
       console.log('课表数据不存在')
       return
@@ -276,15 +279,14 @@ class Edu {
       return
     }
 
-    if (this._currWeek === this._getScheduleWeek()) {
+    if (this._currWeek === this._getScheduleWeek() && !force) {
       console.log('周数无变化')
       return
     }
 
-    console.log('周数改变 重新渲染课表')
+    console.log(force ? '强制' : '周数改变', '重新渲染课表')
 
-    const schedule = await this.renderSchedule()
-    this.saveSchedule(schedule)
+    this.saveSchedule(this.renderSchedule())
   }
 
   static getScheduleBg () {

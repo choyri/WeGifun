@@ -70,6 +70,15 @@ pageParams.bindSwitchScheduleDate = function (e) {
   this._updateSetting('showScheduleDate', value)
 }
 
+pageParams.bindSwitchScheduleHideCourse = function (e) {
+  const value = e.detail.value
+
+  this._ooSetData({ 'setting.hideCourse': value })
+  this._updateSetting('hideCourse', value)
+
+  wx.ooService.edu.updateSchedule(true)
+}
+
 pageParams._ooSetData = function (obj) {
   for (let key in obj) {
     // 同步更改 pageParams 里对应的值 这样重新打开本页时就可以保持最新状态

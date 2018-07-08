@@ -127,6 +127,7 @@ const string = {
       title: '课表背景',
     },
     schedule_date: '课表页显示日期',
+    schedule_hide_course: '隐藏非本周课程',
     schedule_bg_exit: '课表背景图片未设置，重新关闭',
     schedule_bg_style: ['原图', '半透明遮罩', '高斯模糊'],
     title: '设置',

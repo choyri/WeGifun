@@ -127,6 +127,7 @@ const string = {
       title: 'Schedule Background',
     },
     schedule_date: 'Show date on schedule page',
+    schedule_hide_course: 'Hide the courses which are not in this week',
     schedule_bg_exit: 'Schedule Background is not set, re-close.',
     schedule_bg_style: ['Original', 'Mask', 'Blur'],
     title: 'Settings',

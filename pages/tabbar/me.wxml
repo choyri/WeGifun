@@ -32,6 +32,9 @@
     <button class="oo-cell button" hover-class="oo-cell-hover" open-type="share">
         <text>{{ _string.menu_share }}</text>
     </button>
+    <button class="oo-cell button" hover-class="oo-cell-hover" bindtap="bindReward">
+        <text>{{ _string.menu_reward }}</text>
+    </button>
     <navigator class="oo-cell" hover-stay-time="200" url="/pages/common/about">
         <text>{{ _string.menu_about }}</text>
     </navigator>

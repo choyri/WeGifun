@@ -31,14 +31,6 @@
     </view>
 </view>
 
-<view class="oo-section">
-    <view class="oo-section-h1">{{ _string.reward }}</view>
-    <view class="oo-section-p">
-        <view>{{ _string.reward_content }}</view>
-        <image class="reward" mode="aspectFit" src="{{ rewardCode }}" bindtap="bindPreviewRewardCode" />
-    </view>
-</view>
-
 <view class="oo-footer">
     <view bindtap="bindDev">海畔吉风</view>
     <view bindtap="bindDebug">© 2018 菜头 {{ version }}</view>

@@ -15,6 +15,12 @@ pageParams.onReady = function () {
   wx.ooSetTitle(wx.ooString.global.title)
 }
 
+pageParams.bindReward = function () {
+  wx.previewImage({
+    urls: [wx.ooConfig.rewardCodeImageUrl]
+  })
+}
+
 pageParams.onShareAppMessage = function () {
   return {
     title: wx.ooConfig.shareTitle[Math.floor(Math.random() * wx.ooConfig.shareTitle.length)],

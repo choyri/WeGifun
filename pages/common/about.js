@@ -2,7 +2,6 @@ let pageParams = {
   data: {
     changelog: wx.ooString.changelog,
     qqGroup: wx.ooConfig.qqGroup,
-    rewardCode: wx.ooConfig.rewardCodeImageUrl,
     version: wx.ooConfig.version,
     _string: wx.ooString.common_about,
   },
@@ -71,12 +70,6 @@ pageParams.bindEgg = function () {
     wx.vibrateLong()
     this.setData({ showEgg: true })
   }
-}
-
-pageParams.bindPreviewRewardCode = function () {
-  wx.previewImage({
-    urls: [this.data.rewardCode]
-  })
 }
 
 Page(pageParams)

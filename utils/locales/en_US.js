@@ -68,6 +68,7 @@ const string = {
     menu_bind: 'Bind',
     menu_feedback: 'Suggestions & Feedback',
     menu_guide: 'Guide',
+    menu_reward: 'Reward',
     menu_setting: 'Settings',
     menu_share: 'Share with friends',
     unbind: 'Unbind',
@@ -79,8 +80,6 @@ const string = {
     communication: 'Communication',
     communication_content: 'Welcome to join the QQ Group',
     open_source: 'Open Source',
-    reward: 'Reward',
-    reward_content: 'If you think that the application has given you help, consider supporting me slightly 😀 .',
     security: 'Security and Privacy',
     security_content: [
       'The student ID and password you entered when you logged in will be stored locally on your phone, and the server will not save it.',

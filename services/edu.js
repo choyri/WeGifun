@@ -25,10 +25,6 @@ const TIME_TABLE = [
     ['18:40', '19:25'],
     ['19:35', '20:20'],
     ['20:30', '21:15'],
-  ],
-  TIME_TABLE_PE = [
-    ['18:00', '19:30'],
-    ['19:30', '21:00'],
   ]
 
 class Edu {
@@ -392,32 +388,18 @@ class Edu {
     // 是否较快下课
     const isFast = course.location.match(/二教|实验|室/g) === null
 
-    // 是否是体育课 # 高尔夫球导程是选修课 非体育课 按照正常课程时间上课
-    const isPE = course.name.match(/球|健美|体育|武术|太极|散打|游泳/g) && course.name !== '高尔夫球导程' || false
-
     let res = []
 
     for (const section of sectionGroup) {
       let startTime, endTime
 
-      if (section.start === 11 && section.end === 12) {
-        // 第 11 12 节的体育课
-        startTime = TIME_TABLE_PE[1][0]
-        endTime = TIME_TABLE_PE[1][1]
-      } else if (section.start === 9 && section.end === 10 && isPE) {
-        // 第 9 10 节的体育课
-        startTime = TIME_TABLE_PE[0][0]
-        endTime = TIME_TABLE_PE[0][1]
-      } else {
-        // 普通课程
-        startTime = TIME_TABLE[section.start - 1][0]
-        endTime = TIME_TABLE[section.end - 1][1]
+      startTime = TIME_TABLE[section.start - 1][0]
+      endTime = TIME_TABLE[section.end - 1][1]
 
-        // 如果是第 3 4 节开始的课程 还需要再细分
-        if (section.start === 3 || section.start === 4) {
-          startTime = isFast ? startTime[0] : startTime[1]
-          endTime = isFast ? endTime[0] : endTime[1]
-        }
+      // 如果是第 3 4 节开始的课程 还需要再细分
+      if (section.start === 3 || section.start === 4) {
+        startTime = isFast ? startTime[0] : startTime[1]
+        endTime = isFast ? endTime[0] : endTime[1]
       }
 
       res.push(`${startTime}-${endTime}`)

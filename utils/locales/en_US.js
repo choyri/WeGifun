@@ -1,12 +1,12 @@
 const string = {
   changelog: [
-    'New: Support to get the class schedule for the specified semester',
-    'New: Notice module',
-    'Improve: Grade points are added to course score results',
-    'Improve: Optimization of some details'
+    'New: Support to hide the courses which are not in this week',
+    'Improve: Tips of Dorm setting',
+    'Improve: Adjust the background color of course block',
+    'Improve: Cancel the independent timetable for P.E.',
   ],
 
-  feature: 'Now support to get the class schedule for the specified semester',
+  feature: 'Now support to hide the courses which are not in this week',
 
   global: {
     btn_title: 'Confirm',

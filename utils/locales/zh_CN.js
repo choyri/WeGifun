@@ -58,7 +58,7 @@ const string = {
   },
 
   tabbar_discover: {
-    bind: '请先绑定帐号',
+    bind: '请先绑定帐户',
     update_schedule: '获取最新课表？',
   },
 
@@ -82,8 +82,8 @@ const string = {
     open_source: '开源',
     security: '安全与隐私',
     security_content: [
-      '你登录时所输入的学号和密码会储存于手机本地，服务端不保存。',
-      '每次使用各项服务时，会携带学号与密码通过 HTTPS 加密通道与服务端进行交互。',
+      '你登录时所输入的帐号和密码会储存于手机本地，服务端不保存。',
+      '每次使用各项服务时，会携带帐号与密码通过 HTTPS 加密通道与服务端进行交互。',
       '服务端会保存部分数据（不包括明文密码），用于统计以及缓存。',
       '本程序是第三方应用，如果对我不放心，请不要使用这个小程序。',
     ],
@@ -91,11 +91,11 @@ const string = {
   },
 
   common_bind: {
-    error_id: '请检查学号',
+    error_id: '请检查帐号',
     error_pwd: '请检查密码',
     error_card: '请检查一卡通密码',
     error_edu: '请检查教务密码',
-    id: '学号',
+    id: '帐号',
     pwd_card: '一卡通密码',
     pwd_edu: '教务密码',
     title: '绑定',

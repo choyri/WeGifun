@@ -82,8 +82,8 @@ const string = {
     open_source: 'Open Source',
     security: 'Security and Privacy',
     security_content: [
-      'The student ID and password you entered when you logged in will be stored locally on your phone, and the server will not save it.',
-      'Each time the various services are used, the StuID and password are carried through the HTTPS encrypted channel to interact with the server.',
+      'The username and password you entered when you logged in will be stored locally on your phone, and the server will not save it.',
+      'Each time the various services are used, the username and password are carried through the HTTPS encrypted channel to interact with the server.',
       'The server will store some data anonymously (not include password) for statistics and caching.',
       'This program is a third-party application, if you do not trust me, please DO NOT USE it.',
     ],
@@ -91,11 +91,11 @@ const string = {
   },
 
   common_bind: {
-    error_id: 'Please check StuID',
+    error_id: 'Please check username',
     error_pwd: 'Please check password(s)',
     error_card: 'Please check card password',
     error_edu: 'Please check edu password',
-    id: 'StuID',
+    id: 'Username',
     pwd_card: 'Card Password',
     pwd_edu: 'Edu Password',
     title: 'Bind',
@@ -105,7 +105,7 @@ const string = {
 
   common_guide: {
     content: [
-      'The user system of the Education System and the Campus Card System is different. The two accounts are the same, but the passwords are different. Therefore, different user systems need to be bound when using different functions.',
+      'The user system of the Education System and the Campus Card System is different. The two usernames are the same, but the passwords are different. Therefore, different user systems need to be bound when using different functions.',
       'Because the original intention of the application is the schedule, the homepage will always be it, no matter how it is updated.',
       'On the schedule page, swipe left or right to switch weeks, long press to resume.',
       'The time in the course info is calculated by myself, and it is not 100% accurate. If you happen to meet the mistaken course, I sincerely await your feedback.',

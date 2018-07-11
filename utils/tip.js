@@ -8,7 +8,7 @@ class Tip {
       return false
     }
 
-    await wx.ooSleep(500)
+    await wx.ooSleep(200)
 
     wx.ooSaveData({ tip: { [key]: true } })
 

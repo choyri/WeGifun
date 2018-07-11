@@ -1,12 +1,10 @@
 const string = {
   changelog: [
-    'New: Support to hide the courses which are not in this week',
-    'Improve: Tips of Dorm setting',
-    'Improve: Adjust the background color of course block',
-    'Improve: Cancel the independent timetable for P.E.',
+    'Improve: Some modules of dorm electricity that can use in the unbound state',
+    'Improve: Support for binding teacher accounts',
   ],
 
-  feature: 'Now support to hide the courses which are not in this week',
+  feature: 'Some modules of dorm electricity that can use in the unbound state / Support for binding teacher accounts',
 
   global: {
     btn_title: 'Confirm',

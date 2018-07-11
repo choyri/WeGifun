@@ -4,7 +4,11 @@ import regeneratorRuntime from '../../utils/libs/regenerator-runtime'
 let pageParams = {
   data: {
     balance: 'N/A',
-    _string: wx.ooString.service_elec,
+    _string: Object.assign({
+        bind: wx.ooString.tabbar_discover.bind,
+      },
+      wx.ooString.service_elec,
+    ),
   },
   _tmp: {},
 }
@@ -59,7 +63,14 @@ pageParams.changeBalance = function (balance) {
 }
 
 pageParams.navigateTo = function (e) {
-  wx.navigateTo({ url: e.currentTarget.dataset.target })
+  const target = e.currentTarget.dataset.target
+
+  if (target === 'deposit' && !wx.ooService.user.isBindCard()) {
+    wx.ooShowToast({ title: this.data._string.bind })
+    return
+  }
+
+  wx.navigateTo({ url: target })
 }
 
 pageParams.navigateToSetting = function () {

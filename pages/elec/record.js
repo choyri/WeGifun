@@ -9,7 +9,11 @@ let pageParams = {
       width: 100 / _string.tab_title.length, // 百分比
       left: 0,
     },
-    _string,
+    _string: Object.assign({
+        bind: wx.ooString.tabbar_discover.bind,
+      },
+      _string,
+    ),
   },
   _tmp: {},
 }
@@ -54,18 +58,19 @@ pageParams.bindTitleTap = function (e) {
 
   let { selectedIndex, titleSlider } = this.data
 
-  if (selectedIndex !== id) {
-    selectedIndex = id
-
-    titleSlider.left = titleSlider.width * id
-
-    this.setData({
-      selectedIndex,
-      titleSlider,
-    })
-
-    this.getRecord(id)
+  if (selectedIndex === id) {
+    return
   }
+
+  selectedIndex = id
+  titleSlider.left = titleSlider.width * id
+
+  this.setData({
+    selectedIndex,
+    titleSlider,
+  })
+
+  this.getRecord(id)
 }
 
 pageParams.getRecord = function (index) {
@@ -126,6 +131,11 @@ pageParams._getDepositRecordOfDorm = async function () {
 }
 
 pageParams._getDepositRecordOfUser = async function (reachBottom = false) {
+  if (!wx.ooService.user.isBindCard()) {
+    wx.ooShowToast({ title: this.data._string.bind })
+    return
+  }
+
   if (this.data.userDeposit && !reachBottom) {
     console.log('用户购电 已有数据')
     return

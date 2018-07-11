@@ -24,11 +24,13 @@ pageParams.onLoad = async function (options) {
 
   let dormId = parseInt(this._tmp.id) || wx.ooService.user.getDorm()
 
-  if (!dormId) {
+  if (dormId) {
+    this._tmp.originalDormId = dormId
+  } else if (wx.ooService.user.isBindCard()) {
     dormId = await wx.ooService.user.fetchDorm()
     this._tmp.fetchDorm = true
   } else {
-    this._tmp.originalDormId = dormId
+    dormId = 101101
   }
 
   let dormInfo = wx.ooService.elec.renderDormInfo(dormId)

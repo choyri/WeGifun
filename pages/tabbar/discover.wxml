@@ -9,7 +9,7 @@
     <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
         data-url="/pages/card/index" data-type="card" bindtap="bindNavigator">{{ _string.card }}</view>
     <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
-        data-url="/pages/elec/index" data-type="card" bindtap="bindNavigator">{{ _string.elec }}</view>
+        data-url="/pages/elec/index" bindtap="bindNavigator">{{ _string.elec }}</view>
 </view>
 
 <view class="oo-cells">

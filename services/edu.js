@@ -310,17 +310,23 @@ class Edu {
   }
 
   static getSchoolTime (forSchedule = false) {
+    // 默认值
+    let res = { grade: 5, semester: 2 }
+
+    const _USER_ACCOUNT = wx.ooService.user.getAccount()
+
+    if (_USER_ACCOUNT.id.length < 8) {
+      return res
+    }
+
     const _DATE = new Date(),
       CURR_YEAR = _DATE.getFullYear(),
       CURR_MONTH = _DATE.getMonth() + 1,
-      _USER_ACCOUNT = wx.ooService.user.getAccount(),
       COLLEGE = _USER_ACCOUNT.id.substr(0, 2),
       HIGHEST_GRADE = COLLEGE == '11' ? 5 : 4,
       ENROLLMENT_YEAR = 2000 + parseInt(_USER_ACCOUNT.id.substr(2, 2))
 
-    let res = {
-      grade: CURR_YEAR - ENROLLMENT_YEAR,
-    }
+    res.grade = CURR_YEAR - ENROLLMENT_YEAR
 
     if (CURR_MONTH > 8) {
       res.grade++

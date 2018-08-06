@@ -19,7 +19,11 @@ pageParams.bindSchoolTimeChange = function (e) {
 }
 
 pageParams.bindSubmit = async function () {
-  await wx.ooService.edu.getCurrWeek(true)
+  const ret = await wx.ooService.edu.getCurrWeek(true)
+
+  if (!ret) {
+    return
+  }
 
   const scheduleData = await wx.ooService.edu.fetchSchedule(this.data.schoolTime)
   if (!scheduleData) {

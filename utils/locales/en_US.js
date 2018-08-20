@@ -1,10 +1,12 @@
 const string = {
   changelog: [
-    'Improve: Some modules of dorm electricity that can use in the unbound state',
-    'Improve: Support for binding teacher accounts',
+    'New: CET Admission Ticket',
+    'Fix: Compatible teacher accounts for the school time',
+    'Fix: When update schedule without network, error modals will be displayed twice',
+    'Improve: Optimization of some details',
   ],
 
-  feature: 'Some modules of dorm electricity that can use in the unbound state / Support for binding teacher accounts',
+  feature: '',
 
   global: {
     btn_title: 'Confirm',

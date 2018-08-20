@@ -341,7 +341,7 @@ class Edu {
     res.semester = CURR_MONTH < 3 || CURR_MONTH > 8 ? 1 : 2
 
     // 为课表获取学期时 多增加一学期 # 如果当前已是最后一年最后一学期 不增加
-    if (forSchedule && (res.grade !== HIGHEST_GRADE || res.semester !== 2)) {
+    if (forSchedule && !(res.grade === HIGHEST_GRADE && res.semester === 2)) {
       if (res.semester === 1) {
         res.semester++
       } else {

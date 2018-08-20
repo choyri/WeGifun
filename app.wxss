@@ -59,6 +59,10 @@ input {
     background-color: #eee;
 }
 
+.oo-btn + .oo-btn.common {
+    margin-top: 1.17647059em;
+}
+
 .oo-cells {
   line-height: 1.41176471;
 

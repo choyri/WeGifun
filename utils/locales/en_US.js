@@ -89,10 +89,10 @@ const string = {
   },
 
   common_bind: {
-    error_id: 'Please check username',
-    error_pwd: 'Please check password(s)',
-    error_card: 'Please check card password',
-    error_edu: 'Please check edu password',
+    error_id: 'Please check the username',
+    error_pwd: 'Please check the password(s)',
+    error_card: 'Please check the card password',
+    error_edu: 'Please check the edu password',
     id: 'Username',
     pwd_card: 'Card Password',
     pwd_edu: 'Edu Password',
@@ -156,6 +156,7 @@ const string = {
 
   service_elec: {
     balance: 'Balance (kW·h)',
+    bind: 'Please bind the campus card account first',
     deposit: 'Deposit',
     dorm_null: 'Please set up the dorm for the first time',
     exit: 'This function cannot be used without a dorm.',
@@ -169,8 +170,8 @@ const string = {
     confirm: 'Will deposit {1} CNY for {0}, sure?',
     custom: 'Custom',
     deposit_tip: 'This app only help you to deposit, if more than half an hour without power supply, please contact the dorm aunt.',
-    error_amount: 'Please check amount',
-    error_auth: 'Please check password',
+    error_amount: 'Please check the amount',
+    error_auth: 'Please check the password',
     prove_tip: 'Prove you are you',
     pwd: 'Campus Card Password',
     soter_fail: 'Fingerprint verification is abnormal, please use the password to re-verify.',

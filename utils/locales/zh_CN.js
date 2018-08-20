@@ -91,10 +91,10 @@ const string = {
   common_bind: {
     error_id: '请检查帐号',
     error_pwd: '请检查密码',
-    error_card: '请检查一卡通密码',
+    error_card: '请检查校园卡密码',
     error_edu: '请检查教务密码',
     id: '帐号',
-    pwd_card: '一卡通密码',
+    pwd_card: '校园卡密码',
     pwd_edu: '教务密码',
     title: '绑定',
     unchange: '无变动',
@@ -156,6 +156,7 @@ const string = {
 
   service_elec: {
     balance: '余量（度）',
+    bind: '请先绑定校园卡帐户',
     deposit: '充值',
     dorm_null: '第一次使用请先设置宿舍',
     exit: '不设置宿舍的话将无法使用这项功能。',

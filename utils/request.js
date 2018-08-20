@@ -57,6 +57,8 @@ class Request {
         await wx.ooShowModal({ content }, false)
       }
     } catch (e) {
+      console.error(e)
+
       if (!params.hideLoading) {
         wx.hideLoading()
       }

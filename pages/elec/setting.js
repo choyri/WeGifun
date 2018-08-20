@@ -1,5 +1,7 @@
 import regeneratorRuntime from '../../utils/libs/regenerator-runtime'
 
+const DEFAULT_DORMID = 101101
+
 let pageParams = {
   data: {
     // 页面默认值
@@ -30,7 +32,7 @@ pageParams.onLoad = async function (options) {
     dormId = await wx.ooService.user.fetchDorm()
     this._tmp.fetchDorm = true
   } else {
-    dormId = 101101
+    dormId = DEFAULT_DORMID
   }
 
   let dormInfo = wx.ooService.elec.renderDormInfo(dormId)

@@ -413,6 +413,10 @@ class Edu {
 
     return res.join(' ')
   }
+
+  static async fetchUserInfo () {
+    return await wx.ooRequest.getEduUserInfo()
+  }
 }
 
 export default Edu

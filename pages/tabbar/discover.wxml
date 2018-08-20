@@ -17,6 +17,11 @@
         data-url="/pages/opac/index" bindtap="bindNavigator">{{ _string.opac }}</view>
 </view>
 
+<view class="oo-cells">
+    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
+        data-url="/pages/cet/ticket" bindtap="bindNavigator">{{ _string.cet_ticket }}</view>
+</view>
+
 <view wx:if="{{ notice.length > 0 }}" class="oo-cells">
     <view wx:for="{{ notice }}" wx:key="url"
         class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"

@@ -161,6 +161,14 @@ class Request {
     return res && res.data.data
   }
 
+  static async getEduUserInfo () {
+    const ret = await this._eduProxy({
+      url: wx.ooApi('eduUserInfo'),
+    })
+
+    return ret && ret.data.data
+  }
+
   static async cardAuth (id, pwd) {
     const auth = this._getAuthValue({ id, pwd })
 
@@ -277,6 +285,15 @@ class Request {
     })
 
     return res && res.data.data
+  }
+
+  static async getCetTicket ({ idcard, name }) {
+    const ret = await this._proxy({
+      data: { idcard, name },
+      url: wx.ooApi('cetTicket'),
+    })
+
+    return ret && ret.data.data
   }
 }
 

@@ -22,7 +22,9 @@
         "pages/elec/setting",
 
         "pages/opac/index",
-        "pages/opac/book"
+        "pages/opac/book",
+
+        "pages/cet/ticket"
     ],
     "window":
     {

@@ -1,0 +1,26 @@
+<wxs module="wxs" src="./../common/bind.wxs" />
+
+<text class="page_title">{{ _string.page_title }}</text>
+
+<view class="input-wrap  {{ wxs.hasValue(user.idcard) }} {{ wxs.isFocus(focusState.idcard) }}">
+    <input id="idcard" value="{{ user.idcard }}" type="idcard" maxlength="18"
+        bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
+    <text class="placeholder">{{ _string.idcard }}</text>
+    <icon type="clear" color="#bfbfbf" data-target="idcard" bindtap="bindClearInput"></icon>
+    <view class="underline"></view>
+</view>
+
+<view class="input-wrap {{ wxs.hasValue(user.name) }} {{ wxs.isFocus(focusState.name) }}">
+    <input id="name" value="{{ user.name }}" type="text" maxlength="10"
+        bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
+    <text class="placeholder">{{ _string.name }}</text>
+    <icon type="clear" color="#bfbfbf" data-target="name" bindtap="bindClearInput"></icon>
+    <view class="underline"></view>
+</view>
+
+<view class="help">
+    <image class="oo-icon" src="/images/icon_help.svg" bindtap="bindHelp" />
+</view>
+
+<button class="oo-btn" bindtap="bindSubmit">{{ _string.btn }}</button>
+<button class="oo-btn common" bindtap="bindQuickFill">{{ _string.quick_fill }}</button>

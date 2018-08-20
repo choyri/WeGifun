@@ -16,6 +16,7 @@ const url = {
   eduStartDate: '/edu/date',
   eduSchedule: '/edu/schedule',
   eduScore: '/edu/score',
+  eduUserInfo: '/edu/user',
 
   // 校园一卡通
   cardAuth: '/card/auth',
@@ -35,6 +36,9 @@ const url = {
   opacSearch: '/opac/search',
   opacHandShake: '/opac/handshake',
   opacBook: '/opac/book',
+
+  // CET
+  cetTicket: '/cet/ticket',
 }
 
 let host = wx.getSystemInfoSync().platform === 'devtools' ? config.host.dev : config.host.prod

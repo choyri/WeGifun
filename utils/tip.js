@@ -24,6 +24,10 @@ class Tip {
     return is_disabled ? this._do('bind_edit') : this._do('bind_new')
   }
 
+  static cetFill() {
+    this._do('cet_fill')
+  }
+
   static async guide () {
     const res = await this._do('guide', true)
 

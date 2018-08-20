@@ -23,6 +23,7 @@ const string = {
 
   services: {
     card: '校园卡',
+    cet_ticket: 'CET 准考证',
     edu_schedule: '课表',
     edu_score: '课程成绩',
     elec: '宿舍电费',
@@ -32,6 +33,7 @@ const string = {
   tip: {
     bind_edit: '如果密码已更改，可以输入新密码重新绑定。',
     bind_new: '你可以自主选择输入一项或多项密码，不输入不会绑定。',
+    cet_fill: '如果已绑定教务系统帐户，可一键获取并填写相关信息。',
     guide: '欢迎使用，是否查看使用指南？',
     score: '左边是课程名称、性质、学分，右边是成绩、绩点。',
   },
@@ -216,6 +218,17 @@ const string = {
     collection_null: '此书刊可能正在订购中或者处理中。',
     collection_state: ['阅览', '可借', '待还：{0}'],
     title: '图书信息',
+  },
+
+  service_cet_ticket: {
+    bind: '请先绑定教务系统帐户',
+    error_input: '请检查输入值',
+    idcard: '身份证号码',
+    name: '姓名',
+    page_title: '查询准考证号',
+    quick_fill: '快速填写',
+    result: '查询结果：{0}\n[已复制，可直接粘贴使用]',
+    title: 'CET 准考证',
   },
 }
 

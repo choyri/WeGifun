@@ -23,6 +23,7 @@ const string = {
 
   services: {
     card: 'Campus Card',
+    cet_ticket: 'CET Admission Ticket',
     edu_schedule: 'Class Schedule',
     edu_score: 'Course Score',
     elec: 'Dorm Electricity',
@@ -32,6 +33,7 @@ const string = {
   tip: {
     bind_edit: 'If the password has changed, you can enter the new password to rebind.',
     bind_new: 'You can choose to enter one or more passwords, no binding without input.',
+    cet_fill: 'If you have bound the education account, you can get and fill in the relevant information with one click.',
     guide: 'Welcome to use, whether to read the guide?',
     score: 'On the left is the course name, nature, and credits. On the right is the score and grade point.',
   },
@@ -216,6 +218,17 @@ const string = {
     collection_null: 'This publication may be in the process of ordering or processing.',
     collection_state: ['Read', 'Borrowable', 'Waiting: {0}'],
     title: 'Book Info',
+  },
+
+  service_cet_ticket: {
+    bind: 'Please bind the education account first',
+    error_input: 'Please check the input values',
+    idcard: 'ID Card Number',
+    name: 'Name',
+    page_title: 'Query Admission Ticket ID',
+    quick_fill: 'Quick Fill',
+    result: 'Query result: {0}\n[Copied, can be used directly paste]',
+    title: 'CET Admission Ticket',
   },
 }
 

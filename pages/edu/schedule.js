@@ -21,7 +21,7 @@ pageParams.bindSchoolTimeChange = function (e) {
 pageParams.bindSubmit = async function () {
   const ret = await wx.ooService.edu.getCurrWeek(true)
 
-  if (!ret) {
+  if (ret === undefined) {
     return
   }
 

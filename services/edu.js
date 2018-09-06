@@ -340,8 +340,11 @@ class Edu {
     // 学期
     res.semester = CURR_MONTH < 3 || CURR_MONTH > 8 ? 1 : 2
 
-    // 为课表获取学期时 多增加一学期 # 如果当前已是最后一年最后一学期 不增加
-    if (forSchedule && !(res.grade === HIGHEST_GRADE && res.semester === 2)) {
+    const isNormalMonth = () => (CURR_MONTH > 2 && CURR_MONTH < 7) || CURR_MONTH > 8,
+      isLatestSemester = () => res.grade === HIGHEST_GRADE && res.semester === 2
+
+    // 为课表获取学期时 指定情况下多增加一学期 # 非正常月份 即只有学期末才加 / 非最后学年学期
+    if (forSchedule && !isNormalMonth() && !isLatestSemester()) {
       if (res.semester === 1) {
         res.semester++
       } else {

@@ -1,12 +1,10 @@
 const string = {
   changelog: [
-    'New: CET Admission Ticket',
-    'Fix: Compatible teacher accounts for the school time',
-    'Fix: When update schedule without network, error modals will be displayed twice',
-    'Improve: Optimization of some details',
+    'Fix: Unable to fetch schedule at week 0',
+    'Fix: The incorrect semester value of the fetch schedule page during the end of the semester',
   ],
 
-  feature: '',
+  feature: '🌚 Fixed a fatal bug that could not fetch the schedule.',
 
   global: {
     btn_title: 'Confirm',

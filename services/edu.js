@@ -298,7 +298,7 @@ class Edu {
   }
 
   static _getScheduleWeek () {
-    return wx.ooCache.schedule && wx.ooCache.schedule.week || 1
+    return wx.ooCache.schedule ? wx.ooCache.schedule.week : 1
   }
 
   static _getSchoolStartDate () {

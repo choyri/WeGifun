@@ -27,6 +27,21 @@ appParams.onLaunch = function (options) {
   this.wechatLogin()
 }
 
+appParams.onError = function (error)  {
+  const isAboutSchedule = error.indexOf('schedule1') !== -1
+
+  let content = [
+    `系统信息：${JSON.stringify(wx.ooCache.systemInfo)}`,
+    `错误堆栈：${error}`,
+  ]
+
+  if (error.indexOf('schedule') !== -1) {
+    content.push(`课程信息：${JSON.stringify(wx.ooCache.schedule)}`)
+  }
+
+  wx.ooRequest.triggerAlarm(content.join('\n\n'))
+}
+
 appParams.checkUpdate = function () {
   // 基础库 1.9.90 开始支持
   if (wx.getUpdateManager) {

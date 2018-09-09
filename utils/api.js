@@ -7,6 +7,9 @@ const url = {
   // 公告
   notice: '/notice',
 
+  // 警报
+  alarm: '/alarm',
+
   // 宿舍
   dorm: '/dorm',
   dormCheck: '/dorm/{id}',

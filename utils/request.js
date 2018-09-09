@@ -103,6 +103,16 @@ class Request {
     return res && res.data.data
   }
 
+  static triggerAlarm (content) {
+    this._proxy({
+      data: { content },
+      hideLoading: true,
+      method: 'POST',
+      quietMode: true,
+      url: wx.ooApi('alarm'),
+    })
+  }
+
   static async getUserDorm () {
     const res = await this._cardProxy({
       url: wx.ooApi('dorm'),

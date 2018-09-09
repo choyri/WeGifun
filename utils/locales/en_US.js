@@ -1,7 +1,6 @@
 const string = {
   changelog: [
-    'New: Error alarm mechanism',
-    'Fix: Wrong judgment at week 0',
+    'Fix: Unable to view details of course in section 6',
   ],
 
   feature: '',

@@ -1,10 +1,10 @@
 const string = {
   changelog: [
-    'Fix: Unable to fetch schedule at week 0',
-    'Fix: The incorrect semester value of the fetch schedule page during the end of the semester',
+    'New: Error alarm mechanism',
+    'Fix: Wrong judgment at week 0',
   ],
 
-  feature: '🌚 Fixed a fatal bug that could not fetch the schedule.',
+  feature: '',
 
   global: {
     btn_title: 'Confirm',

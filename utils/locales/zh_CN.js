@@ -194,7 +194,7 @@ const string = {
   service_elec_setting: {
     dorm_label_update: '选择你要的默认宿舍',
     dorm_label_retrieve: '选择你要查看的宿舍',
-    dorm_garden: ['竹', '桂', '梅', '榕', '康'],
+    dorm_garden: ['竹', '桂', '梅', '榕', '康', '松', '综合'],
     dorm_null: '不存在该宿舍',
     dorm_state_default: '默认宿舍',
     dorm_state_other: '其他宿舍',

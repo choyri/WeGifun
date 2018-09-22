@@ -11,7 +11,7 @@ class Elec {
 
   // 楼栋序号 # 各园区的楼栋数量 # 下标从 1 开始
   static getBuildingSN () {
-    return this._buildingSN || (this._buildingSN = [10, 7, 6, 14, 2].map(x => [...Array(x + 1).keys()].slice(1)))
+    return this._buildingSN || (this._buildingSN = [10, 7, 6, 14, 2, 3, 1].map(x => [...Array(x + 1).keys()].slice(1)))
   }
 
   static async checkDorm (dormId) {
@@ -67,7 +67,12 @@ class Elec {
       room: parseInt(_id.substr(3, 3)),
     })
 
-    const locationName = `${wx.ooString.service_elec_setting.dorm_garden[res.garden - 1]} ${res.building}`
+    let locationName = wx.ooString.service_elec_setting.dorm_garden[res.garden - 1]
+
+    // 7表示综合楼 不需要跟楼号
+    if (res.garden !== 7) {
+      locationName += ` ${res.building}`
+    }
 
     Object.assign(res, {
       locationName,

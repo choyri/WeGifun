@@ -123,7 +123,7 @@ class Request {
 
   static async checkDorm (id) {
     const url = wx.ooApi('dormCheck').replace('{id}', id)
-    const res = await this._proxy({ url })
+    const res = await this._proxy({ quietMode: true, url })
 
     return res && res.statusCode === 200 ? true : false
   }

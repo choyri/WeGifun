@@ -1,9 +1,12 @@
 const string = {
   changelog: [
-    'Fix: Unable to view details of course in section 6',
+    'Fix: Extra error pop-ups when target dorm does not exist',
+    'Fix: The error in rendering the schedule in some cases',
+    'Improve: Filter unnecessary errors',
+    'Improve: Available building for Dorm Electricity',
   ],
 
-  feature: '',
+  feature: 'Dorm Electricity have been adapted to the Zonghelou and Songyuan.',
 
   global: {
     btn_title: 'Confirm',

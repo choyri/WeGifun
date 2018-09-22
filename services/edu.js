@@ -71,7 +71,7 @@ class Edu {
   }
 
   static renderSchedule (schedule, currWeek) {
-    schedule = schedule || (wx.ooCache.edu && wx.ooCache.edu.schedule) || null
+    schedule = schedule || this._getSchoolSchedule()
 
     if (!schedule) {
       throw new TypeError('缺少参数 schedule')
@@ -266,7 +266,7 @@ class Edu {
   }
 
   static updateSchedule (force) {
-    if (!this.getSchedule()) {
+    if (!this._getSchoolSchedule()) {
       console.log('课表数据不存在')
       return
     }
@@ -304,6 +304,10 @@ class Edu {
 
   static _getSchoolStartDate () {
     return wx.ooCache.edu && wx.ooCache.edu.startDate || null
+  }
+
+  static _getSchoolSchedule () {
+    return wx.ooCache.edu && wx.ooCache.edu.schedule || null
   }
 
   static _saveSchoolStartDate (startDate) {

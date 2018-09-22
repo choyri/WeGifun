@@ -28,7 +28,10 @@ appParams.onLaunch = function (options) {
 }
 
 appParams.onError = function (error)  {
-  const isAboutSchedule = error.indexOf('schedule1') !== -1
+  // 过滤 webview 这种奇怪的错误
+  if (error.indexOf('webview') !== -1) {
+    return
+  }
 
   let content = [
     `系统信息：${JSON.stringify(wx.ooCache.systemInfo)}`,

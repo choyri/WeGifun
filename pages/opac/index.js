@@ -87,13 +87,13 @@ pageParams.searchBook = async function () {
     })
 
     wx.createSelectorQuery().select('.result').boundingClientRect().exec(res => {
-      this._tmp.pageHeight = res[0].height
+      this._tmp.pageHeight = res[0] && res[0].height
     })
   })
 }
 
 pageParams._scrollPage = function () {
-  if (this._tmp.nextPage < 3) {
+  if (this._tmp.nextPage < 3 || !this._tmp.pageHeight) {
     return
   }
 

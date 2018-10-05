@@ -56,7 +56,7 @@ pageParams.bindInput = function (e) {
 pageParams.bindSubmit = async function () {
   const { id, cardPwd, eduPwd } = this.data.account
 
-  const isIdError = () => !id || id.length < 5 || id.length > 8 ? true : false,
+  const isIdError = () => !id || id.length < 5 || id.length > 10 ? true : false,
     isPwdError = () => {
       const isCardPwdError = () => cardPwd && cardPwd.length !== 6 ? true : false,
         isEduPwdError = () => eduPwd && eduPwd.length < 6 ? true : false,

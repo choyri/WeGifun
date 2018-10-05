@@ -83,7 +83,7 @@ wx.ooSaveData = function (obj) {
 
   for (const key in obj) {
     const newData = obj[key],
-      isObj = Object.prototype.toString.call(newData) === '[object Object]',
+      isObj = util.isObject(newData),
       oldData = util.copy(wx.ooCache[key] || (isObj ? {} : null)),
       finallyData = isObj ? Object.assign({}, oldData, newData) : newData
 

@@ -50,6 +50,10 @@ class Util {
   static copy (obj) {
     return JSON.parse(JSON.stringify(obj))
   }
+
+  static isObject (target) {
+    return Object.prototype.toString.call(target) === '[object Object]'
+  }
 }
 
 export default Util

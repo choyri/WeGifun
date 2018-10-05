@@ -12,7 +12,8 @@ appParams.onLaunch = function (options) {
   }
 
   for (const key of wx.getStorageInfoSync().keys) {
-    wx.ooCache[key] = wx.getStorageSync(key)
+    const data = wx.getStorageSync(key)
+    wx.ooCache[key] = !wx.ooUtil.isObject(data) ? data : Object.assign({}, wx.ooCache[key] || {}, data)
   }
 
   console.info('缓存', wx.ooCache)

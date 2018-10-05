@@ -74,7 +74,7 @@ class Edu {
     schedule = schedule || this._getSchoolSchedule()
 
     if (!schedule) {
-      throw new TypeError('缺少参数 schedule')
+      return null
     }
 
     schedule = wx.ooUtil.copy(schedule)

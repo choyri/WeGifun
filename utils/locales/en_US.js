@@ -1,12 +1,15 @@
 const string = {
   changelog: [
-    'Fix: Extra error pop-ups when target dorm does not exist',
-    'Fix: The error in rendering the schedule in some cases',
-    'Improve: Filter unnecessary errors',
-    'Improve: Available building for Dorm Electricity',
+    'New: Language setting',
+    'New: Teaching calendar(external link version)',
+    'Fix: Error in rendering the schedule when no data',
+    'Fix: Error in cannot get page element height',
+    'Improve: Username length limit is relaxed',
+    'Improve: Steps and content of error reporting',
+    'Improve: Preset data is not overridden when reading local data',
   ],
 
-  feature: 'Dorm Electricity have been adapted to the Zonghelou and Songyuan.',
+  feature: 'Language setting & Teaching calendar(external link version)',
 
   global: {
     btn_title: 'Confirm',

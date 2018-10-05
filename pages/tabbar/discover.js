@@ -2,6 +2,7 @@ import regeneratorRuntime from '../../utils/libs/regenerator-runtime'
 
 let pageParams = {
   data: {
+    eduCalendarUrl: wx.ooConfig.eduCalendarUrl,
     _string: Object.assign({},
       wx.ooString.services,
       wx.ooString.tabbar_discover,

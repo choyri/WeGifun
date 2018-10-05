@@ -3,6 +3,8 @@
         data-url="/pages/edu/schedule" data-type="edu" bindtap="bindNavigator">{{ _string.edu_schedule }}</view>
     <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
         data-url="/pages/edu/score" data-type="edu" bindtap="bindNavigator">{{ _string.edu_score }}</view>
+    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
+        data-url="/pages/common/webview" data-src="{{ eduCalendarUrl }}" bindtap="bindNavigator">{{ _string.edu_calendar }}</view>
 </view>
 
 <view class="oo-cells">

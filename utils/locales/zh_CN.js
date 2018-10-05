@@ -26,6 +26,7 @@ const string = {
   services: {
     card: '校园卡',
     cet_ticket: 'CET 准考证',
+    edu_calendar: '教学日历',
     edu_schedule: '课表',
     edu_score: '课程成绩',
     elec: '宿舍电费',

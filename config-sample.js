@@ -1,4 +1,5 @@
 const config = {
+  eduCalendarUrl: 'https://www.example.com/calendar',
   host: {
     dev: 'https://test.example.com',
     prod: 'https://www.example.com',

@@ -26,6 +26,7 @@ const string = {
   services: {
     card: 'Campus Card',
     cet_ticket: 'CET Admission Ticket',
+    edu_calendar: 'Teaching Calendar',
     edu_schedule: 'Class Schedule',
     edu_score: 'Course Score',
     elec: 'Dorm Electricity',

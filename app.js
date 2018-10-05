@@ -28,18 +28,23 @@ appParams.onLaunch = function (options) {
 }
 
 appParams.onError = function (error)  {
-  // 过滤 webview 这种奇怪的错误
-  if (error.indexOf('webview') !== -1) {
+  // 过滤奇怪的错误
+  if (error.indexOf('webview') !== -1 || error.indexOf('appServiceSDKScriptError') !== -1) {
     return
   }
 
   let content = [
+    `用户：${wx.ooCache.user && wx.ooCache.user.id} / ${wx.ooCache.openID}`,
     `系统信息：${JSON.stringify(wx.ooCache.systemInfo)}`,
     `错误堆栈：${error}`,
   ]
 
   if (error.indexOf('schedule') !== -1) {
     content.push(`课程信息：${JSON.stringify(wx.ooCache.schedule)}`)
+  }
+
+  if (error.indexOf('split') !== -1) {
+    content.push(`教务数据：${JSON.stringify(wx.ooCache.edu)}`)
   }
 
   wx.ooRequest.triggerAlarm(content.join('\n\n'))

@@ -120,6 +120,9 @@ const string = {
 
   common_setting: {
     authorization: 'Authorization',
+    language: 'Language',
+    language_list: ['Auto', '简体中文', 'English'],
+    language_tip: 'This setting item will take effect after clean the mini program background process and restart it.',
     logout: 'Log Out',
     logout_tip: 'It will clear all local cache, continue?',
     schedule_bg: {

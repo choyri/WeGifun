@@ -27,6 +27,13 @@
 </view>
 
 <view class="oo-cells">
+    <view class="oo-cell" hover-class="oo-cell-hover" bindtap="bindSetLanguage">
+        <text>{{ _string.language }}</text>
+        <text class="oo-cell-edge">{{ _string.language_list[setting.languageIndex] }}</text>
+    </view>
+</view>
+
+<view class="oo-cells">
     <button class="oo-cell button" hover-class="oo-cell-hover" open-type="openSetting">
         <text>{{ _string.authorization }}</text>
     </button>

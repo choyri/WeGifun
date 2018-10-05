@@ -120,6 +120,9 @@ const string = {
 
   common_setting: {
     authorization: '授权',
+    language: '语言',
+    language_list: ['自动', '简体中文', 'English'],
+    language_tip: '该设置项会在清理小程序后台并重新打开后生效。',
     logout: '退出',
     logout_tip: '该操作会清空本地缓存，是否继续？',
     schedule_bg: {

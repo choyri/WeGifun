@@ -11,6 +11,7 @@ import Promise from './libs/es6-promise'
 
 const DEFAULT_CACHE = {
   setting: {
+    languageIndex: 0,
     showScheduleDate: true,
   },
   systemInfo: wx.getSystemInfoSync(),

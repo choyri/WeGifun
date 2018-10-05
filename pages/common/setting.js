@@ -37,6 +37,16 @@ pageParams.bindLogout = async function () {
   }
 }
 
+pageParams.bindSetLanguage = async function () {
+  const ret = await wx.ooPro.showActionSheet({ itemList: this.data._string.language_list })
+  const index = ret.tapIndex
+
+  this._ooSetData({ 'setting.languageIndex': index })
+  this._updateSetting('languageIndex', index)
+
+  wx.ooShowModal({ content: this.data._string.language_tip }, false)
+}
+
 pageParams.bindSetScheduleBg = async function (e) {
   const oldFilePath = this.data.scheduleBg.path
 

@@ -36,6 +36,7 @@ appParams.onError = function (error)  {
 
   let content = [
     `用户：${wx.ooCache.user && wx.ooCache.user.id} / ${wx.ooCache.openID}`,
+    `版本：${wx.ooCache.version}`,
     `系统信息：${JSON.stringify(wx.ooCache.systemInfo)}`,
     `错误堆栈：${error}`,
   ]

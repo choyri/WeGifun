@@ -2,7 +2,7 @@
 
 <view class="input-wrap {{ wxs.hasValue(account.id) }} {{ wxs.isFocus(focusState.id) }}">
     <input id="id" class="{{ wxs.isDisabled(editMode) }}"
-        value="{{ account.id }}" type="number" disabled="{{ editMode }}" maxlength="8"
+        value="{{ account.id }}" type="text" disabled="{{ editMode }}" maxlength="10"
         bindinput="bindInput" bindfocus="bindFocusBlur" bindblur="bindFocusBlur" />
     <text class="placeholder">{{ _string.id }}</text>
     <icon type="clear" color="#bfbfbf" data-target="id" bindtap="clearInput"></icon>

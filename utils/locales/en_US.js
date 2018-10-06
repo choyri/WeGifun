@@ -38,7 +38,7 @@ const string = {
 
   tip: {
     bind_edit: 'If the password has changed, you can enter the new password to rebind.',
-    bind_new: 'You can choose to enter one or more passwords, no binding without input.',
+    bind_new: 'The ID is the student/job id; you can choose to enter one or more passwords, no binding without input.',
     cet_fill: 'If you have bound the education account, you can get and fill in the relevant information with one click.',
     guide: 'Welcome to use, whether to read the guide?',
     score: 'On the left is the course name, nature, and credits. On the right is the score and grade point.',
@@ -64,7 +64,8 @@ const string = {
   },
 
   tabbar_discover: {
-    bind: 'Please bind the account first',
+    bind_card: 'Please bind the campus card account first',
+    bind_edu: 'Please bind the education account first',
     update_schedule: 'Get the latest class schedule?',
   },
 
@@ -101,7 +102,7 @@ const string = {
     error_pwd: 'Please check the password(s)',
     error_card: 'Please check the card password',
     error_edu: 'Please check the edu password',
-    id: 'Username',
+    id: 'ID',
     pwd_card: 'Card Password',
     pwd_edu: 'Edu Password',
     title: 'Bind',
@@ -167,7 +168,6 @@ const string = {
 
   service_elec: {
     balance: 'Balance (kW·h)',
-    bind: 'Please bind the campus card account first',
     deposit: 'Deposit',
     dorm_null: 'Please set up the dorm for the first time',
     exit: 'This function cannot be used without a dorm.',

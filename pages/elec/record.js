@@ -10,7 +10,7 @@ let pageParams = {
       left: 0,
     },
     _string: Object.assign({
-        bind: wx.ooString.service_elec.bind,
+        bind: wx.ooString.tabbar_discover.bind_card,
       },
       _string,
     ),

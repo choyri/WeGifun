@@ -4,7 +4,11 @@ import regeneratorRuntime from '../../utils/libs/regenerator-runtime'
 let pageParams = {
   data: {
     balance: 'N/A',
-    _string: wx.ooString.service_elec,
+    _string: Object.assign({
+        bind: wx.ooString.tabbar_discover.bind_card,
+      },
+      wx.ooString.service_elec,
+    ),
   },
   _tmp: {},
 }

@@ -22,7 +22,7 @@ pageParams.bindNavigator = function (e) {
   let { url, type, src } = e.currentTarget.dataset
 
   if (type && !wx.ooService.user.isBind(type)) {
-    wx.ooShowToast({ title: this.data._string.bind })
+    wx.ooShowToast({ title: this.data._string[`bind_${type}`] })
     return
   }
 

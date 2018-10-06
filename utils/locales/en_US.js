@@ -7,9 +7,10 @@ const string = {
     'Improve: Username length limit is relaxed',
     'Improve: Steps and content of error reporting',
     'Improve: Preset data is not overridden when reading local data',
+    'Improve: Copy of bind',
   ],
 
-  feature: 'Language setting & Teaching calendar(external link version)',
+  feature: '',
 
   global: {
     btn_title: 'Confirm',

@@ -11,7 +11,7 @@ const config = {
     '分享标题一',
     '分享标题二',
   ],
-  version: 'v1.2.0 (181005)',
+  version: 'v1.2.1 (181006)',
 }
 
 export default config

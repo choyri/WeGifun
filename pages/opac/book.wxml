@@ -42,6 +42,6 @@
 
 <view wx:if="{{ bookInfo.link || bookInfo.summary }}" class="oo-section">
     <text class="oo-section-h1">{{ _string.meta[6] }}</text>
-    <text wx:if="{{ bookInfo.link }}" class="oo-code" bindtap="bindCopy">{{ bookInfo.link }}</text>
+    <text wx:if="{{ bookInfo.link }}" class="oo-code" data-text="{{ bookInfo.link }}" bindtap="bindCopy">{{ bookInfo.link }}</text>
     <view wx:if="{{ bookInfo.summary }}" class="oo-section-p summary">{{ bookInfo.summary }}</view>
 </view>

@@ -105,14 +105,17 @@ pageParams.bindSubmit = async function () {
   }
 
   if (this.data.supportSoter) {
-    const soterRes = await wx.ooStartSoter({
+    const soterRet = await wx.ooStartSoter({
       challenge: this.data.checkDorm,
       authContent: this.data._string.prove_tip,
+    }).catch(ret => {
+      wx.ooSaveData({ supportSoter: false })
+      return ret
     })
 
-    console.log(soterRes)
+    console.log(soterRet)
 
-    if (soterRes.errCode !== 0) {
+    if (soterRet.errCode !== 0) {
       wx.ooShowModal({ content: this.data._string.soter_fail }, false)
       this.setData({ supportSoter: false })
       return

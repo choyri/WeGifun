@@ -1,16 +1,10 @@
 const string = {
   changelog: [
-    'New: Language setting',
-    'New: Teaching calendar(external link version)',
-    'Fix: Error in rendering the schedule when no data',
-    'Fix: Error in cannot get page element height',
-    'Improve: Username length limit is relaxed',
-    'Improve: Steps and content of error reporting',
-    'Improve: Preset data is not overridden when reading local data',
-    'Improve: Copy of bind',
+    'Fix: Invalid copy of link address in OPAC book information page',
+    'Fix: Several problems of biometric authentication interface',
   ],
 
-  feature: '',
+  feature: 'Fixed several problems of fingerprint verification.',
 
   global: {
     btn_title: 'Confirm',

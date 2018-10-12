@@ -84,20 +84,15 @@ appParams.checkUpdate = function () {
 }
 
 appParams.checkSoter = async function () {
-  if (wx.ooCache.supportSoter) {
+  if (wx.ooCache.supportSoter !== undefined) {
     return
   }
 
   let flag = false
 
-  try {
-    if (wx.ooCache.systemInfo.model.toLowerCase().indexOf('iphone x') === -1) {
-      const res = await wx.ooIsSoterEnrolled()
-      flag = res.isEnrolled
-    }
-  } catch (e) {
-    console.log('checkSoter 出现异常 可能当前是开发者工具', e)
-    return
+  if (wx.ooCache.systemInfo.model.toLowerCase().indexOf('iphone x') === -1) {
+    const ret = await wx.ooIsSoterEnrolled().catch(ret => ret)
+    flag = ret.isEnrolled || false
   }
 
   wx.ooSaveData({ supportSoter: flag })

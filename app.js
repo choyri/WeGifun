@@ -91,7 +91,7 @@ appParams.checkSoter = async function () {
   let flag = false
 
   try {
-    if (wx.ooCache.systemInfo.model !== 'iPhone X') {
+    if (wx.ooCache.systemInfo.model.toLowerCase().indexOf('iphone x') === -1) {
       const res = await wx.ooIsSoterEnrolled()
       flag = res.isEnrolled
     }

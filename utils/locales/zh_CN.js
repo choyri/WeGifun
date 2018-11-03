@@ -61,7 +61,7 @@ const string = {
   tabbar_discover: {
     bind_card: '请先绑定校园卡帐户',
     bind_edu: '请先绑定教务系统帐户',
-    update_schedule: '获取最新课表？',
+    schedule_list: ['更新课表', '自定义课表'],
   },
 
   tabbar_me: {
@@ -139,6 +139,21 @@ const string = {
 
   service_edu_schedule: {
     title: '课表',
+  },
+
+  service_edu_schedule_custom: {
+    'delete_confirm': '确定删除？',
+    'error_incomplete': '信息不全',
+    'error_repeat': '与已有的自定义课程重复',
+    'form_field': ['时间', '课程周期', '课程名称', '教室位置', '教师姓名'],
+    'form_section_list': ['第一大节', '第二大节', '第三大节', '第四大节', '第五大节', '第六大节'],
+    'form_section_half_list': ['正常', '前半节', '后半节'],
+    'form_title': '填写课程信息',
+    'form_week_list': ['正常', '单', '双'],
+    'handle_delete': '删除',
+    'list_title': '已添加的课程',
+    'success': '添加成功',
+    'title': '自定义课表',
   },
 
   service_edu_score: {

@@ -10,7 +10,8 @@
         "pages/common/about",
         "pages/common/webview",
 
-        "pages/edu/schedule",
+        "pages/edu/schedule/update",
+        "pages/edu/schedule/custom",
         "pages/edu/score",
 
         "pages/card/index",

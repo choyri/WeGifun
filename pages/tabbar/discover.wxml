@@ -1,6 +1,5 @@
 <view class="oo-cells">
-    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
-        data-url="/pages/edu/schedule" data-type="edu" bindtap="bindNavigator">{{ _string.edu_schedule }}</view>
+    <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200" bindtap="bindSchedule">{{ _string.edu_schedule }}</view>
     <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"
         data-url="/pages/edu/score" data-type="edu" bindtap="bindNavigator">{{ _string.edu_score }}</view>
     <view class="oo-cell" hover-class="oo-cell-hover" hover-stay-time="200"

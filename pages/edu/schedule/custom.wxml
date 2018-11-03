@@ -1,0 +1,53 @@
+<text class="oo-label">{{ _string.form_title }}</text>
+
+<view class="oo-cells">
+    <view class="oo-cell thin">
+        <text class="oo-cell-label">{{ _string.form_field[0] }}</text>
+        <view class="oo-select value">
+            <picker mode="multiSelector" range="{{ timePicker.range }}" value="{{ timePicker.value }}"
+                bindchange="bindTimePickerChange">
+                <text class="oo-select-text">{{ timePickerText }}</text>
+            </picker>
+        </view>
+    </view>
+    <view class="oo-cell thin">
+        <text class="oo-cell-label">{{ _string.form_field[1] }}</text>
+        <view class="oo-select value">
+            <picker mode="multiSelector" range="{{ weekPicker.range }}" value="{{ weekPicker.value }}"
+                bindchange="bindWeekPickerChange" bindcolumnchange="bindWeekPickerColumnChange">
+                <text class="oo-select-text">{{ weekPickerText }}</text>
+            </picker>
+        </view>
+    </view>
+    <view class="oo-cell thin">
+        <text class="oo-cell-label">{{ _string.form_field[2] }}</text>
+        <input class="value" data-type="name" bindblur="bindInputBlur" />
+    </view>
+    <view class="oo-cell thin">
+        <text class="oo-cell-label">{{ _string.form_field[3] }}</text>
+        <input class="value" data-type="location" bindblur="bindInputBlur" />
+    </view>
+    <view class="oo-cell thin">
+        <text class="oo-cell-label">{{ _string.form_field[4] }}</text>
+        <input class="value" data-type="teacher" bindblur="bindInputBlur" />
+    </view>
+</view>
+
+<button class="oo-btn" bindtap="bindSubmit">{{ _string.btn }}</button>
+
+<view class="schedule-list {{ showList ? 'show' : '' }} {{ disableList ? 'disable' : '' }}">
+    <view class="list-header">
+        <text>{{ _string.list_title }}</text>
+        <icon type="info" color="#999" bindtap="bindTriggerList" />
+    </view>
+    <view wx:for="{{ originCustomSchedule }}" wx:key="random"
+        class="list-item oo-shadow" hover-class="oo-cell-hover" hover-stay-time="200">
+        <view class="schedule-info">
+            <text>{{ item.name }} / {{ item.teacher }}</text>
+            <text>{{ timePicker.range[0][item.day - 1] }} / {{ timePicker.range[1][item.section - 1] }}</text>
+        </view>
+        <view class="item-handle">
+            <text data-id="{{ index }}" bindtap="bindDeleteCourse">{{ _string.handle_delete }}</text>
+        </view>
+    </view>
+</view>

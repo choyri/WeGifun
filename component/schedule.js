@@ -140,11 +140,28 @@ componentParams.methods.touchEnd = async function (e) {
   this.renderPage()
 }
 
-componentParams.methods.longPress = function () {
+componentParams.methods.tap = function (e) {
+  const lastTapTimestamp = (_tmp.tapTimetamp = _tmp.tapTimetamp || 0)
+
+  _tmp.tapTimetamp = e.timeStamp
+
+  if (e.timeStamp - lastTapTimestamp > 250) {
+    return
+  }
+
+  console.log('触发双击')
+
   if (_tmp.currWeek !== _tmp.orginalCurrWeek) {
     _tmp.currWeek = _tmp.orginalCurrWeek
     this.renderPage()
   }
+}
+
+componentParams.methods.longPress = function () {
+  console.log('触发长按')
+
+  wx.vibrateLong()
+  wx.navigateTo({ url: '/pages/edu/schedule/custom' })
 }
 
 componentParams.methods._scheduleObserver = function (newValue) {

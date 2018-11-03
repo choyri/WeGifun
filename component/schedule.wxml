@@ -17,7 +17,8 @@
 </view>
 
 <view class="body {{ wxs.renderDate(showDate) }}"
-    bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" bindlongpress="longPress">
+    bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd"
+    bindtap="tap" bindlongpress="longPress">
     <view class="body-item sidebar edge">
         <view class="sidebar-item">
             <text>1</text>

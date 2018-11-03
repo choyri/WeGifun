@@ -61,7 +61,7 @@ const string = {
   tabbar_discover: {
     bind_card: 'Please bind the campus card account first',
     bind_edu: 'Please bind the education account first',
-    update_schedule: 'Get the latest class schedule?',
+    schedule_list: ['Update Schedule', 'Customize Schedule'],
   },
 
   tabbar_me: {
@@ -139,6 +139,21 @@ const string = {
 
   service_edu_schedule: {
     title: 'Class Schedule',
+  },
+
+  service_edu_schedule_custom: {
+    'delete_confirm': 'Confirm delete?',
+    'error_incomplete': 'Incomplete information',
+    'error_repeat': 'Duplicate with existing custom courses',
+    'form_field': ['Time', 'Week', 'Name', 'Classroom', 'Teacher'],
+    'form_section_list': ['Section 1', 'Section 2', 'Section 3', 'Section 4', 'Section 5', 'Section 6'],
+    'form_section_half_list': ['Normal', 'First half', 'Second half'],
+    'form_title': 'Fill in the course information',
+    'form_week_list': ['Normal', 'Odd', 'Even'],
+    'handle_delete': 'Delete',
+    'list_title': 'Added courses',
+    'success': 'Added successfully',
+    'title': 'Customize Schedule',
   },
 
   service_edu_score: {

@@ -1,4 +1,4 @@
-import regeneratorRuntime from '../../utils/libs/regenerator-runtime'
+import regeneratorRuntime from '../../../utils/libs/regenerator-runtime'
 
 let pageParams = {
   data: {

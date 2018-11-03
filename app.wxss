@@ -73,6 +73,10 @@ input {
   background-color: #fff;
 }
 
+.oo-label + .oo-cells {
+    margin-top: 0;
+}
+
 .oo-cells:last-child {
     margin-bottom: 1.17647059em;
 }

@@ -34,6 +34,10 @@ appParams.onLaunch = async function (options) {
 }
 
 appParams.onError = function (error)  {
+  if (wx.ooCache.systemInfo.platform === 'devtools') {
+    return
+  }
+
   // 过滤奇怪的错误
   if (error.indexOf('webview') !== -1 || error.indexOf('appServiceSDKScriptError') !== -1) {
     return

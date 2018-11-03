@@ -1,10 +1,11 @@
 const string = {
   changelog: [
-    'Fix: Invalid copy of link address in OPAC book information page',
-    'Fix: Several problems of biometric authentication interface',
+    'New: Customize schedule',
+    'Improve: Tip and guide of the schedule',
+    'Improve: Reduce the transparency of the idle course',
   ],
 
-  feature: 'Fixed several problems of fingerprint verification.',
+  feature: 'Support add customize course of schedule.',
 
   global: {
     btn_title: 'Confirm',

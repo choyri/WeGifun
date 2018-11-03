@@ -29,11 +29,16 @@ class Tip {
   }
 
   static async guide () {
-    const res = await this._do('guide', true)
+    const ret = await this._do('guide', true)
 
-    if (res) {
+    if (ret) {
+      wx.ooSaveData({ tip: { schedule: true } })
       wx.navigateTo({ url: '/pages/common/guide' })
     }
+  }
+
+  static schedule () {
+    this._do('schedule')
   }
 
   static score () {

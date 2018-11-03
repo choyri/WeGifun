@@ -36,6 +36,7 @@ const string = {
     bind_new: 'The ID is the student/job id; you can choose to enter one or more passwords, no binding without input.',
     cet_fill: 'If you have bound the education account, you can get and fill in the relevant information with one click.',
     guide: 'Welcome to use, whether to read the guide?',
+    schedule: 'Swipe left or right to switch weeks, double-click to return to the current week, long press to enter the customize schedule page.',
     score: 'On the left is the course name, nature, and credits. On the right is the score and grade point.',
   },
 
@@ -109,7 +110,7 @@ const string = {
     content: [
       'The user system of the Education System and the Campus Card System is different. The two usernames are the same, but the passwords are different. Therefore, different user systems need to be bound when using different functions.',
       'Because the original intention of the application is the schedule, the homepage will always be it, no matter how it is updated.',
-      'On the schedule page, swipe left or right to switch weeks, long press to resume.',
+      'On the schedule page, swipe left or right to switch weeks, double-click to return to the current week, long press to enter the customize schedule page.',
       'The time in the course info is calculated by myself, and it is not 100% accurate. If you happen to meet the mistaken course, I sincerely await your feedback.',
       'As a third-party application, I will voluntarily answer some questions in the customer service message; but similar to “Why is there no elctric supply long time after depositing?”, please look for Dorm Aunt.',
       'For security and privacy issues, see the About page.',

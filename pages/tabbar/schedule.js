@@ -15,9 +15,14 @@ pageParams.onLoad = function () {
 
 pageParams.onReady = function () {
   wx.ooSetTitle(wx.ooString.global.title)
-  wx.ooTip.guide()
 
   wx.ooService.edu.updateSchedule()
+}
+
+pageParams.onShow = function () {
+  if (wx.ooCache.updateFeatureFinished) {
+    wx.ooTip.schedule()
+  }
 }
 
 pageParams.recovery = function () {

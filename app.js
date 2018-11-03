@@ -5,7 +5,7 @@ import './utils/init'
 
 let appParams = {}
 
-appParams.onLaunch = function (options) {
+appParams.onLaunch = async function (options) {
   if (options.query && options.query.dev) {
     console.log('真机预览模式')
     wx.ooCache.dev = true
@@ -18,8 +18,13 @@ appParams.onLaunch = function (options) {
 
   console.info('缓存', wx.ooCache)
 
-  // 先检查更新
-  this.checkUpdate()
+  // 先检查更新 有新特性就弹窗
+  await this.checkUpdate()
+
+  // 然后再判断是否需要引导
+  wx.ooTip.guide()
+
+  // 最后再做其他事
 
   this.checkSoter()
 
@@ -52,7 +57,7 @@ appParams.onError = function (error)  {
   wx.ooRequest.triggerAlarm(content.join('\n\n'))
 }
 
-appParams.checkUpdate = function () {
+appParams.checkUpdate = async function () {
   // 基础库 1.9.90 开始支持
   if (wx.getUpdateManager) {
     const updateManager = wx.getUpdateManager()
@@ -74,10 +79,12 @@ appParams.checkUpdate = function () {
 
   // 新用户不显示新版特性 因此先判断缓存里是否存在版本项
   if (wx.ooCache.version && wx.ooString.feature) {
-    wx.ooShowModal({
+    await wx.ooShowModal({
       title: wx.ooString.global.new_feature,
       content: wx.ooString.feature,
     }, false)
+
+    wx.ooCache.updateFeatureFinished = true
   }
 
   wx.ooSaveData({ version: config.version })

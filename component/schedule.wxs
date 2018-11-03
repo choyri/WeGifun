@@ -18,18 +18,19 @@ module.exports = {
   },
 
   renderCourse: function (course) {
-    var res = ''
+    var ret = ''
     if (course.bg) {
-      res += 'background-color: ' + course.bg + ';'
-      res += ''
+      ret += 'background-color: ' + course.bg + ';'
+    } else {
+      ret += 'opacity: .5;'
     }
     if (course.height !== undefined) {
-      res += 'height: ' + course.height + 'rpx;'
+      ret += 'height: ' + course.height + 'rpx;'
     }
     if (course.top !== undefined) {
-      res += 'margin-top: ' + course.top + 'rpx;'
+      ret += 'margin-top: ' + course.top + 'rpx;'
     }
-    return res
+    return ret
   },
 
   renderDate: function (flag) {

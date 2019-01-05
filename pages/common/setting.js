@@ -89,6 +89,15 @@ pageParams.bindSwitchScheduleHideCourse = function (e) {
   wx.ooService.edu.updateSchedule(true)
 }
 
+pageParams.bindSwitchScheduleLightUp = function (e) {
+  const value = e.detail.value
+
+  this._ooSetData({ 'setting.lightUpSchedule': value })
+  this._updateSetting('lightUpSchedule', value)
+
+  wx.ooService.edu.updateSchedule(true)
+}
+
 pageParams._ooSetData = function (obj) {
   for (let key in obj) {
     // 同步更改 pageParams 里对应的值 这样重新打开本页时就可以保持最新状态

@@ -7,6 +7,10 @@
         <text>{{ _string.schedule_hide_course }}</text>
         <switch checked="{{ setting.hideCourse }}" color="#4285f4" bindchange="bindSwitchScheduleHideCourse" />
     </view>
+    <view class="oo-cell">
+        <text>{{ _string.schedule_light_up }}</text>
+        <switch checked="{{ setting.lightUpSchedule }}" color="#4285f4" bindchange="bindSwitchScheduleLightUp" />
+    </view>
 </view>
 
 <view class="oo-cells">

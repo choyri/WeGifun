@@ -1,11 +1,10 @@
 const string = {
   changelog: [
-    'New: Customize schedule',
-    'Improve: Tip and guide of the schedule',
-    'Improve: Reduce the transparency of the idle course',
+    'New: Light up schedule',
+    'Fix: Inconsistent schedule header bar width.',
   ],
 
-  feature: 'Support add customize course of schedule.',
+  feature: '✨ Now you can light up the schedule. Turn it on in the Settings page.',
 
   global: {
     btn_title: 'Confirm',
@@ -116,7 +115,7 @@ const string = {
       'The time in the course info is calculated by myself, and it is not 100% accurate. If you happen to meet the mistaken course, I sincerely await your feedback.',
       'As a third-party application, I will voluntarily answer some questions in the customer service message; but similar to “Why is there no elctric supply long time after depositing?”, please look for Dorm Aunt.',
       'For security and privacy issues, see the About page.',
-      'If you are the subject of a non-commercial Subscription Account, you may contact me for binding when you are interested in this application.',
+      'Welcome the subject of non-commercial Subscription Account to contact me binding this mini program.',
     ],
     title: 'Guide',
   },

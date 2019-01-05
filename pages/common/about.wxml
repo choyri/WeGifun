@@ -33,7 +33,7 @@
 
 <view class="oo-footer">
     <view bindtap="bindDev">海畔吉风</view>
-    <view bindtap="bindDebug">© 2018 菜头 {{ version }}</view>
+    <view bindtap="bindDebug">© 2019 菜头 {{ version }}</view>
 </view>
 
 <view class="egg-bubbles {{ showEgg ? 'show' : '' }}">

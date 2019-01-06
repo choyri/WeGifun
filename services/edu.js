@@ -328,12 +328,18 @@ class Edu {
       return res
     }
 
+    const FURTHER_EDUCATION = _USER_ACCOUNT.id.substr(0, 1) === 'Z'
+
+    // 普通学号格式为 0118xxxx # 前两位院系 接下来两位入学年份
+    // 继教学号格式为 Z18xxxxx # 只包含入学年份 无法判断院系
+    const STUDENT_ID = !FURTHER_EDUCATION ? _USER_ACCOUNT.id : '_' + _USER_ACCOUNT.id
+
     const _DATE = new Date(),
       CURR_YEAR = _DATE.getFullYear(),
       CURR_MONTH = _DATE.getMonth() + 1,
-      COLLEGE = _USER_ACCOUNT.id.substr(0, 2),
-      HIGHEST_GRADE = COLLEGE == '11' ? 5 : 4,
-      ENROLLMENT_YEAR = 2000 + parseInt(_USER_ACCOUNT.id.substr(2, 2))
+      COLLEGE = STUDENT_ID.substr(0, 2),
+      HIGHEST_GRADE = (FURTHER_EDUCATION || COLLEGE == '11') ? 5 : 4,
+      ENROLLMENT_YEAR = 2000 + parseInt(STUDENT_ID.substr(2, 2))
 
     res.grade = CURR_YEAR - ENROLLMENT_YEAR
 

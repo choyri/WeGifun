@@ -1,10 +1,10 @@
 const string = {
   changelog: [
-    'New: Light up schedule',
-    'Fix: Inconsistent schedule header bar width.',
+    'Fix: Further education students cannot fetch the schedule.',
+    'Improve: Tips when there is no class schedule.',
   ],
 
-  feature: '✨ Now you can light up the schedule. Turn it on in the Settings page.',
+  feature: '🖊️ The problem of FE students cannot fetch the schedule has been resolved',
 
   global: {
     btn_title: 'Confirm',

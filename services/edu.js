@@ -63,7 +63,7 @@ class Edu {
     const schedule = this.renderSchedule(rawSchedule)
     this.saveSchedule(schedule)
 
-    return true
+    return rawSchedule
   }
 
   static getSchedule () {

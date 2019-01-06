@@ -30,6 +30,11 @@ pageParams.bindSubmit = async function () {
     return
   }
 
+  if (scheduleData.length === 0) {
+    wx.ooShowToast({ title: this.data._string.empty_schedule })
+    return
+  }
+
   wx.ooEvent.emit('updateCurrWeek')
   wx.switchTab({ url: '/pages/tabbar/schedule' })
 }

@@ -141,6 +141,7 @@ const string = {
   },
 
   service_edu_schedule: {
+    empty_schedule: '该学年学期尚无课表',
     title: '课表',
   },
 

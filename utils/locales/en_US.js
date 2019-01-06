@@ -141,6 +141,7 @@ const string = {
   },
 
   service_edu_schedule: {
+    empty_schedule: 'There is no schedule for the target semester',
     title: 'Class Schedule',
   },
 

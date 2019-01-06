@@ -236,7 +236,7 @@ class Edu {
       }
 
       // 课程背景色 # 不用上的课没有背景色 即默认的灰色
-      if (outOfRange === false && course.attend) {
+      if (wx.ooCache.setting.lightUpSchedule || (outOfRange === false && course.attend)) {
         // 每门课一种颜色 # 以课程名字当索引
         const bgKey = course.name
         scheduleBg[bgKey] = scheduleBg[bgKey] || SCHEDULE_PALETTE[scheduleBgIndex++ % SCHEDULE_PALETTE.length]

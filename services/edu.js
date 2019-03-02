@@ -60,8 +60,7 @@ class Edu {
 
     wx.ooSaveData({ edu: { schedule: rawSchedule } })
 
-    const schedule = this.renderSchedule(rawSchedule)
-    this.saveSchedule(schedule)
+    this.saveSchedule(this.renderSchedule())
 
     return rawSchedule
   }

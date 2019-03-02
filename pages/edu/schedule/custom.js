@@ -94,7 +94,7 @@ pageParams.bindSubmit = async function () {
   this.save(newCourse)
 
   wx.ooShowToast({ title: this.data._string.success })
-  await wx.ooSleep(2000)
+  await wx.ooSleep(1500)
   wx.switchTab({ url: '/pages/tabbar/schedule' })
 }
 

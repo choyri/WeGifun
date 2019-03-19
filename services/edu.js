@@ -243,6 +243,29 @@ class Edu {
         course.bg = scheduleBg[bgKey]
       }
 
+      // 隐藏超长的连上课程 # e.g. 1-8节的课A 这周不用上 5-8节有课B 这时候隐藏课A
+      for (let i = 0; i < sectionIndex; i++) {
+        const sectionSets = res[dayIndex] && res[dayIndex].data[i] || null
+        if (!sectionSets) {
+          continue
+        }
+
+        for (let targetCourse of sectionSets.data) {
+          if (targetCourse.data.height === undefined || targetCourse.data.forwardFrom !== undefined) {
+            continue
+          }
+
+          if ((course.section - targetCourse.data.section) * 210 > targetCourse.data.height) {
+            continue
+          }
+
+          if (targetCourse.data.display === true) {
+            targetCourse.data.display = false
+          }
+        }
+      }
+
+      // 隐藏非本周课程
       if (course.display && !course.attend && currWeek > 0 && currWeek < 17 && wx.ooCache.setting.hideCourse) {
         continue
       }

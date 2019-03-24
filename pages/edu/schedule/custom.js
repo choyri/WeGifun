@@ -5,7 +5,12 @@ const weekNum = [...Array(19).keys()].slice(1),
 
 let pageParams = {
   data: {
+    hideSectionPicker: true,
     disableList: true,
+    sectionPicker: {
+      range: _string.form_duration_list,
+      value: 0,
+    },
     timePicker: {
       range: [
         wx.ooString.component_schedule.weekName,
@@ -26,6 +31,7 @@ let pageParams = {
   },
   _tmp: {
     ret: {},
+    duration: 0,
   },
 }
 
@@ -35,6 +41,7 @@ pageParams.onLoad = function () {
   this.setData({
     originCustomSchedule,
     disableList: originCustomSchedule.length === 0,
+    sectionPickerText: this.data.sectionPicker.range[this.data.sectionPicker.value]
   })
 }
 
@@ -89,9 +96,19 @@ pageParams.bindSubmit = async function () {
     }
   }
 
-  newCourse.random = Math.random()
+  let courses = []
 
-  this.save(newCourse)
+  newCourse.random = Math.random()
+  courses.push(newCourse)
+
+  for (let i = 1; i < this._tmp.duration; i++) {
+    let course = wx.ooUtil.copy(newCourse)
+    course.section = course.section + i
+    course.random = Math.random()
+    courses.push(course)
+  }
+
+  this.save(courses)
 
   wx.ooShowToast({ title: this.data._string.success })
   await wx.ooSleep(1500)
@@ -115,13 +132,29 @@ pageParams.bindTimePickerChange = function (e) {
     this.data.timePicker.range[1][sectionIndex],
   ]
 
+  let hideSectionPicker = false
+
   if (halfIndex !== 0) {
+    hideSectionPicker = true
     timePickerText.push(this.data.timePicker.range[2][halfIndex])
+  } else {
+    this._tmp.duration = this._tmp.duration || 1
+
+    // 根据当前选中的节数次序更新持续节数中的可选项
+    let sectionPicker = this.data.sectionPicker
+    sectionPicker.range = _string.form_duration_list.slice(0, 6 - sectionIndex)
+    if (sectionPicker.value > sectionPicker.range.length - 1) {
+      sectionPicker.value = sectionPicker.range.length - 1
+    }
+    this.setData({
+      sectionPicker,
+      sectionPickerText: sectionPicker.range[sectionPicker.value],
+    })
   }
 
   timePickerText = timePickerText.join(' # ')
 
-  this.setData({ timePickerText })
+  this.setData({ hideSectionPicker, timePickerText })
   this._tmp.ret = Object.assign({}, this._tmp.ret, {
     day: dayIndex + 1,
     section: sectionIndex + 1,
@@ -179,14 +212,24 @@ pageParams.bindWeekPickerColumnChange = function (e) {
   this.setData({ weekPicker })
 }
 
-pageParams.save = function (newCourse) {
-  let customSchedule = []
+pageParams.bindSectionPickerChange = function (e) {
+  console.log('picker 新值为', e.detail.value)
 
-  if (newCourse) {
-    customSchedule.push(newCourse)
-  }
+  let sectionPicker = this.data.sectionPicker
+  sectionPicker.value = e.detail.value
 
-  wx.ooSaveData({ edu: { schedule_custom: [...this.data.originCustomSchedule, ...customSchedule] } })
+  this.setData({
+    sectionPicker,
+    sectionPickerText: this.data.sectionPicker.range[e.detail.value],
+  })
+
+  this._tmp.duration = parseInt(e.detail.value) + 1
+}
+
+pageParams.save = function (courses) {
+  courses = courses || []
+
+  wx.ooSaveData({ edu: { schedule_custom: [...this.data.originCustomSchedule, ...courses] } })
   wx.ooService.edu.saveSchedule(wx.ooService.edu.renderSchedule())
 }
 

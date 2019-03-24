@@ -33,6 +33,18 @@
     </view>
 </view>
 
+<view class="oo-cells" hidden="{{ hideSectionPicker }}">
+    <view class="oo-cell thin">
+        <text class="oo-cell-label">{{ _string.form_field[5] }}</text>
+        <view class="oo-select value">
+            <picker range="{{ sectionPicker.range }}" value="{{ sectionPicker.value }}"
+                bindchange="bindSectionPickerChange">
+                <text class="oo-select-text">{{ sectionPickerText }}</text>
+            </picker>
+        </view>
+    </view>
+</view>
+
 <button class="oo-btn" bindtap="bindSubmit">{{ _string.btn }}</button>
 
 <view class="schedule-list {{ showList ? 'show' : '' }} {{ disableList ? 'disable' : '' }}">

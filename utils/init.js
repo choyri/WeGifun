@@ -31,6 +31,7 @@ wx.ooUtil = util
 
 const fnGroup = [
   'checkIsSoterEnrolledInDevice',
+  'checkIsSupportSoterAuthentication',
   'chooseImage',
   'login',
   'request',
@@ -130,15 +131,15 @@ wx.ooSleep = ms => {
   })
 }
 
-wx.ooIsSoterEnrolled = () => {
+wx.ooIsSoterEnrolled = (checkAuthMode) => {
   return wx.ooPro.checkIsSoterEnrolledInDevice({
-    checkAuthMode: 'fingerPrint',
+    checkAuthMode,
   })
 }
 
 wx.ooStartSoter = (options = {}) => {
   return wx.ooPro.startSoterAuthentication(Object.assign({
-    requestAuthModes: ['fingerPrint'],
+    requestAuthModes: ['fingerPrint', 'facial'],
     challenge: '123456',
   }, options))
 }

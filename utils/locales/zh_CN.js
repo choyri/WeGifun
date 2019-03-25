@@ -200,7 +200,7 @@ const string = {
     error_auth: '请检查密码',
     prove_tip: '证明你是你',
     pwd: '请输入校园卡密码',
-    soter_fail: '指纹验证出现异常，请使用密码重新验证。',
+    soter_fail: '生物验证出现异常，请使用密码重新验证。',
     success: '充值成功',
     title: '充值',
   },

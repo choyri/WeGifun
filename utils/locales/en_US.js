@@ -200,7 +200,7 @@ const string = {
     error_auth: 'Please check the password',
     prove_tip: 'Prove you are you',
     pwd: 'Campus Card Password',
-    soter_fail: 'Fingerprint verification is abnormal, please use the password to re-verify.',
+    soter_fail: 'Biometric Authentication is abnormal, please use the password to re-verify.',
     success: 'Deposit Success',
     title: 'Deposit',
   },

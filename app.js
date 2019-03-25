@@ -95,18 +95,40 @@ appParams.checkUpdate = async function () {
 }
 
 appParams.checkSoter = async function () {
-  if (wx.ooCache.supportSoter !== undefined) {
+  const now = (new Date()).getTime()
+
+  if (wx.ooCache.supportSoter !== undefined && wx.ooCache.supportSoterUpdatedAt && wx.ooCache.supportSoterUpdatedAt + 86400000 > now) {
     return
   }
 
-  let flag = false
+  const isSupportSoter = async () => {
+    let flag = false
+    const is_iOS = wx.ooCache.systemInfo.system.toLowerCase().indexOf('ios') !== -1,
+      isVersionSeven = wx.ooCache.systemInfo.version.startsWith('7.'),
+      hasFaceIdOfIphone = wx.ooCache.systemInfo.model.toLowerCase().indexOf('iphone x') !== -1
 
-  if (wx.ooCache.systemInfo.model.toLowerCase().indexOf('iphone x') === -1) {
-    const ret = await wx.ooIsSoterEnrolled().catch(ret => ret)
-    flag = ret.isEnrolled || false
+    if (is_iOS) {
+      // http://t.cn/EJ4o0kR
+      if (isVersionSeven) {
+        const data = await wx.ooIsSoterEnrolled('facial').then(ret => ret)
+        if (data.isEnrolled || false) {
+          return true
+        }
+      }
+
+      if (hasFaceIdOfIphone) {
+        return false
+      }
+    }
+
+    const data = await wx.ooIsSoterEnrolled('fingerPrint').catch(ret => ret)
+    return data.isEnrolled || false
   }
 
-  wx.ooSaveData({ supportSoter: flag })
+  wx.ooSaveData({
+    supportSoter: await isSupportSoter(),
+    supportSoterUpdatedAt: now,
+  })
 }
 
 appParams.getNotice = async function () {

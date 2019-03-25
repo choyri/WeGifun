@@ -81,6 +81,13 @@ input {
     margin-bottom: 1.17647059em;
 }
 
+@supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+    .oo-cells:last-child {
+        margin-bottom: constant(safe-area-inset-bottom);
+        margin-bottom: env(safe-area-inset-bottom);
+    }
+}
+
 .oo-cells-title {
     font-size: 28rpx;
 
@@ -193,6 +200,13 @@ input {
     width: 100%;
 }
 
+@supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+    .oo-footer.fixed {
+        bottom: constant(safe-area-inset-bottom);
+        bottom: env(safe-area-inset-bottom);
+    }
+}
+
 .oo-footer.clickable {
     color: #586C94;
 }
@@ -231,6 +245,13 @@ input {
 
 .oo-record:last-child {
     margin-bottom: 1.17647059em;
+}
+
+@supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+    .oo-record:last-child {
+        margin-bottom: constant(safe-area-inset-bottom);
+        margin-bottom: env(safe-area-inset-bottom);
+    }
 }
 
 .oo-record > view {

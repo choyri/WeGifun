@@ -330,10 +330,9 @@ class Edu {
 
   static _getSchoolSchedule () {
     const schedule = wx.ooCache.edu && wx.ooCache.edu.schedule || []
-    const customSchedule = wx.ooCache.edu && wx.ooCache.edu.schedule_custom || []
-    const ret = [...schedule, ...customSchedule]
+    const customSchedule = !wx.ooCache.setting.hideCustomCourse && wx.ooCache.edu && wx.ooCache.edu.schedule_custom || []
 
-    return ret.length > 0 ? ret : null
+    return [...schedule, ...customSchedule]
   }
 
   static _saveSchoolStartDate (startDate) {

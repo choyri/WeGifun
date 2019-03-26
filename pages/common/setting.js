@@ -89,6 +89,15 @@ pageParams.bindSwitchScheduleHideCourse = function (e) {
   wx.ooService.edu.updateSchedule(true)
 }
 
+pageParams.bindSwitchScheduleHideCustomCourse = function (e) {
+  const value = e.detail.value
+
+  this._ooSetData({ 'setting.hideCustomCourse': value })
+  this._updateSetting('hideCustomCourse', value)
+
+  wx.ooService.edu.updateSchedule(true)
+}
+
 pageParams.bindSwitchScheduleLightUp = function (e) {
   const value = e.detail.value
 

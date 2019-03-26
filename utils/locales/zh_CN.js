@@ -134,6 +134,7 @@ const string = {
     },
     schedule_date: '课表页显示日期',
     schedule_hide_course: '隐藏非本周课程',
+    schedule_hide_custom_course: '隐藏自定义课程',
     schedule_light_up: '点亮课表',
     schedule_bg_exit: '课表背景图片未设置，重新关闭',
     schedule_bg_style: ['原图', '半透明遮罩', '高斯模糊'],

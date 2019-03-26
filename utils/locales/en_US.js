@@ -134,6 +134,7 @@ const string = {
     },
     schedule_date: 'Show date on schedule page',
     schedule_hide_course: 'Hide the courses which are not in this week',
+    schedule_hide_custom_course: 'Hide custom courses',
     schedule_light_up: 'Light up schedule',
     schedule_bg_exit: 'Schedule Background is not set, re-close.',
     schedule_bg_style: ['Original', 'Mask', 'Blur'],

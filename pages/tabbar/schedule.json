@@ -1,4 +1,5 @@
 {
+    "backgroundColor": "#ebebeb",
     "usingComponents": {
         "schedule": "../../component/schedule"
     }

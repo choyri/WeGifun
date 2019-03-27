@@ -10,6 +10,8 @@
 
     opacity: 0;
     background-color: #fff;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .record.show {

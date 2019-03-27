@@ -71,6 +71,8 @@ input {
 
 .result {
     margin: 0 15px;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .result-info {

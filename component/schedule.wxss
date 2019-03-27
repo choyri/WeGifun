@@ -91,6 +91,8 @@
 
 .body {
     display: flex;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .body-item {

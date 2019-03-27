@@ -72,4 +72,10 @@ pageParams.bindEgg = function () {
   }
 }
 
+pageParams.bindReward = function () {
+  wx.previewImage({
+    urls: [wx.ooConfig.rewardCodeImageUrl]
+  })
+}
+
 Page(pageParams)

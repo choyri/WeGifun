@@ -27,6 +27,12 @@ page::before {
     margin-top: .8em;
 }
 
+.oo-section-p.reward-ok {
+    text-align: right;
+
+    color: #4285f4;
+}
+
 text + .oo-code {
     margin-left: 4px;
 }

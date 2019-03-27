@@ -71,7 +71,6 @@ const string = {
     menu_bind: '绑定',
     menu_feedback: '建议与反馈',
     menu_guide: '使用指南',
-    menu_reward: '赞赏',
     menu_setting: '设置',
     menu_share: '分享给好友',
     unbind: '未绑定',
@@ -83,6 +82,9 @@ const string = {
     communication: '交流',
     communication_content: '欢迎加入 QQ 群',
     open_source: '开源',
+    reward: '赞赏',
+    reward_content: '愿意请我喝奶茶吗？ ：）',
+    reward_ok: '好呀！',
     security: '安全与隐私',
     security_content: [
       '你登录时所输入的帐号和密码会储存于手机本地，服务端不保存。',

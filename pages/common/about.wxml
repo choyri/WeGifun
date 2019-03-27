@@ -24,6 +24,12 @@
 </view>
 
 <view class="oo-section">
+    <view class="oo-section-h1">{{ _string.reward }}</view>
+    <view class="oo-section-p">{{ _string.reward_content }}</view>
+    <view class="oo-section-p reward-ok" bindtap="bindReward">{{ _string.reward_ok }}</view>
+</view>
+
+<view class="oo-section">
     <view class="oo-section-h1">{{ _string.communication }}</view>
     <view class="oo-section-p">
         <text>{{ _string.communication_content }}</text>

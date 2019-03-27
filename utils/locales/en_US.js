@@ -1,10 +1,19 @@
 const string = {
   changelog: [
-    'Fix: Further education students cannot fetch the schedule.',
-    'Improve: Tips when there is no class schedule.',
+    'New: Hide custom courses',
+    'Fix: Do not display custom courses after updating the schedule',
+    'Fix: The judgment of the same time courses',
+    'Fix: Continuous courses are covered by other courses',
+    'Improve: You can set the duration directly when adding a custom course.',
+    'Improve: Support Face ID',
+    'Improve: Page style adaptation iPhone full screen device',
+    'Improve: Page background color when dropping it on an iOS device',
+    'Improve: Lazy-load of OPAC Search Cover',
+    'Improve: Move reward entrance',
+    'Improve: Detail adjustment',
   ],
 
-  feature: '🖊️ The problem of FE students cannot fetch the schedule has been resolved',
+  feature: '🙈 Long-lost update! New & Fix & Improve several issues.',
 
   global: {
     btn_title: 'Confirm',

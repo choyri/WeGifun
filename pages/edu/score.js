@@ -20,6 +20,8 @@ pageParams.bindSchoolTimeChange = function (e) {
 
 pageParams.bindClose = function () {
   this.setData({ showRecord: false })
+
+  this.setBackgroundColorTop('#ffffff')
 }
 
 pageParams.bindSubmit = async function () {
@@ -38,7 +40,15 @@ pageParams.bindSubmit = async function () {
     scoreData,
   })
 
+  this.setBackgroundColorTop('#4285f4')
+
   wx.ooTip.score()
+}
+
+pageParams.setBackgroundColorTop = function (value) {
+  if (wx.setBackgroundColor) {
+    wx.setBackgroundColor({ backgroundColorTop: value })
+  }
 }
 
 Page(pageParams)

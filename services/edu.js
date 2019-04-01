@@ -201,7 +201,7 @@ class Edu {
           for (const _headCourse of headSection.data) {
             const headCourse = _headCourse.data
 
-            if ((headCourse.name + headCourse.week) !== (course.name + course.week)) {
+            if (headCourse.name !== course.name || headCourse.attend !== course.attend) {
               continue
             }
 

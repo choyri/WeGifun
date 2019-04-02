@@ -31,6 +31,8 @@ appParams.onLaunch = async function (options) {
   this.getNotice()
 
   this.wechatLogin()
+
+  wx.ooCache.launched = true
 }
 
 appParams.onError = function (error)  {
@@ -87,9 +89,9 @@ appParams.checkUpdate = async function () {
       title: wx.ooString.global.new_feature,
       content: wx.ooString.feature,
     }, false)
-
-    wx.ooCache.updateFeatureFinished = true
   }
+
+  wx.ooCache.updateSucceed = true
 
   wx.ooSaveData({ version: config.version })
 }

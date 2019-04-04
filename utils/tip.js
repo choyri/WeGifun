@@ -28,6 +28,10 @@ class Tip {
     this._do('cet_fill')
   }
 
+  static elecZero() {
+    this._do('elec_zero')
+  }
+
   static async guide () {
     const ret = await this._do('guide', true)
 

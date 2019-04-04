@@ -44,6 +44,7 @@ const string = {
     bind_edit: 'If the password has changed, you can enter the new password to rebind.',
     bind_new: 'The ID is the student/job id; you can choose to enter one or more passwords, no binding without input.',
     cet_fill: 'If you have bound the education account, you can get and fill in the relevant information with one click.',
+    elec_zero: 'When the balance is zero, it may be that the current dormitory does not support query.',
     guide: 'Welcome to use, whether to read the guide?',
     schedule: 'Swipe left or right to switch weeks, double-click to return to the current week, long press to enter the customize schedule page.',
     score: 'On the left is the course name, nature, and credits. On the right is the score and grade point.',

@@ -1,6 +1,9 @@
 <view class="service-index">
     <image src="/images/service_lightbulb.svg" />
-    <text>{{ _string.balance }}</text>
+    <view class="block">
+        <text>{{ _string.balance }}</text>
+        <image class="oo-icon" src="/images/icon_help.svg" bindtap="bindHelp" />
+    </view>
     <text class="result">{{ balance }}</text>
 </view>
 

@@ -51,7 +51,17 @@ pageParams.renderPage = async function (dormInfo) {
   const balance = await wx.ooService.elec.fetchBalance(dormInfo.id)
   if (balance) {
     this.changeBalance(balance)
+
+    if (balance == 0) {
+      wx.ooTip.elecZero()
+    }
   }
+}
+
+pageParams.bindHelp = function () {
+  wx.ooShowModal({
+    content: wx.ooString.tip.elec_zero,
+  }, false)
 }
 
 pageParams.changeBalance = function (balance) {

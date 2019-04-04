@@ -1,0 +1,17 @@
+.block {
+    display: flex;
+
+    align-content: center;
+    justify-content: center;
+}
+
+.block text {
+    line-height: 48rpx;
+
+    margin: 0 10rpx 0 24rpx;
+}
+
+.block image {
+    width: 48rpx;
+    height: 48rpx;
+}

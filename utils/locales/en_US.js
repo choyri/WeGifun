@@ -1,19 +1,11 @@
 const string = {
   changelog: [
-    'New: Hide custom courses',
-    'Fix: Do not display custom courses after updating the schedule',
-    'Fix: The judgment of the same time courses',
-    'Fix: Continuous courses are covered by other courses',
-    'Improve: You can set the duration directly when adding a custom course.',
-    'Improve: Support Face ID',
-    'Improve: Page style adaptation iPhone full screen device',
-    'Improve: Page background color when dropping it on an iOS device',
-    'Improve: Lazy-load of OPAC Search Cover',
-    'Improve: Move reward entrance',
-    'Improve: Detail adjustment',
+    'Fix: The judgment of the continuous courses',
+    'Improve: Force refresh Class Schedule after program upgrade',
+    'Improve: Friendly tips for dorms that do not support the query for electricity balance',
   ],
 
-  feature: '🙈 Long-lost update! New & Fix & Improve several issues.',
+  feature: '',
 
   global: {
     btn_title: 'Confirm',

@@ -1,8 +1,6 @@
 const string = {
   changelog: [
-    'Fix: The judgment of the continuous courses',
-    'Improve: Force refresh Class Schedule after program upgrade',
-    'Improve: Friendly tips for dorms that do not support the query for electricity balance',
+    'Improve: The calculation of school time',
   ],
 
   feature: '',

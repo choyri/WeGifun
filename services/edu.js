@@ -376,16 +376,15 @@ class Edu {
     // 学期
     res.semester = CURR_MONTH < 3 || CURR_MONTH > 8 ? 1 : 2
 
-    const isNormalMonth = () => (CURR_MONTH > 2 && CURR_MONTH < 7) || CURR_MONTH > 8,
+    res.gradeUpper = res.grade
+
+    const isNormalMonth = () => (CURR_MONTH > 2 && CURR_MONTH < 6) || CURR_MONTH > 8,
       isLatestSemester = () => res.grade === HIGHEST_GRADE && res.semester === 2
 
     // 为课表获取学期时 指定情况下多增加一学期 # 非正常月份 即只有学期末才加 / 非最后学年学期
     if (forSchedule && !isNormalMonth() && !isLatestSemester()) {
-      if (res.semester === 1) {
-        res.semester++
-      } else {
-        res.grade++
-        res.semester = 1
+      if (CURR_MONTH >= 6) {
+        res.gradeUpper++
       }
     }
 

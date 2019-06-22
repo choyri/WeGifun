@@ -23,12 +23,12 @@ let componentParams = {
 }
 
 componentParams.attached = function () {
-  const { grade, semester } = wx.ooService.edu.getSchoolTime(this.data.forSchedule)
+  const { grade, semester, gradeUpper } = wx.ooService.edu.getSchoolTime(this.data.forSchedule)
 
   let picker = wx.ooUtil.copy(this.data.picker)
 
   // 隐藏未达到的高年级
-  picker.range[0] = picker.range[0].slice(0, grade)
+  picker.range[0] = picker.range[0].slice(0, gradeUpper)
 
   picker.value = [grade - 1, semester - 1]
 
